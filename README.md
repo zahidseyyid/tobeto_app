@@ -1,6 +1,6 @@
 <p align="middle">
 
-<img src="https://github.com/MuhammetMM/pairProject/assets/app.png" width="250" height="480">
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/app.png" width="250" height="480">
 
 
 </p>
