@@ -34,6 +34,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       .min, // Column'un boyutunu içeriğe göre ayarlar
                   mainAxisAlignment:
                       MainAxisAlignment.center, // Dikey olarak ortalar
+
                   children: <Widget>[
                     Container(
                       child: Image.asset(
@@ -46,8 +47,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: TextField(
                         controller: nameController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           prefixIcon: Icon(Icons.person),
                           labelText: 'Kullanıcı Kodu',
                         ),
@@ -60,8 +62,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       child: TextField(
                         obscureText: true,
                         controller: passwordController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           prefixIcon: Icon(Icons.lock),
                           labelText: 'Parola',
                         ),
@@ -72,9 +75,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(screenWidth * 0.8,
-                              50), // Buton boyutunu ekran genişliğine göre ayarla
-                        ),
+                            minimumSize: Size(screenWidth * 0.8,
+                                50), // Buton boyutunu ekran genişliğine göre ayarla
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            )),
                         child: const Text('Giriş Yap'),
                         onPressed: () {
                           // ...
@@ -90,13 +95,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           vertical: 20), // Çizginin üst ve altında boşluk
                     ),
                     Container(
-                      padding: const EdgeInsets.only(top: 1, bottom: 5),
+                      padding: const EdgeInsets.only(bottom: 5),
                       child: TextButton(
                         onPressed: () {
                           //forgot password screen
                         },
                         child: const Text(
                           'Parolamı Unuttum',
+                          style: TextStyle(color: Colors.blue),
                         ),
                       ),
                     ),
