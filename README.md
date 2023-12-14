@@ -18,12 +18,4 @@ Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek 
 <img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageLight.png" width="250" height=“500">
 
 </p>
-## Dark Mode
 
-<p align="middle">
-
-<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/loginDark.png" width="250" height=“500">
-<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageDrawerDark.png.png" width="250" height=“500">
-<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageDark.png" width="250" height=“500">
-
-</p>
