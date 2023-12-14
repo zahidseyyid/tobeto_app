@@ -47,7 +47,7 @@ class MyDrawer extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => ProfilePage()));
+                        MaterialPageRoute(builder: (context) => const ProfilePage()));
                   },
                   child: const Text('Profilim'),
                 ),
