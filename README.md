@@ -8,7 +8,7 @@ Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek 
 - [Muhammet Ölmez](https://github.com/MuhammetMM)
 
 ## Proje Çıktıları
-### Ligh-Dark Mode
+### Light-Dark Mode
 
 <p align="middle">
 
