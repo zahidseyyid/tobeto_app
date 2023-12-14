@@ -76,6 +76,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(context)
+                                .colorScheme
+                                .secondary, // Buton rengini tema rengi olarak ayarla
                             minimumSize: Size(screenWidth * 0.8,
                                 50), // Buton boyutunu ekran genişliğine göre ayarla
                             shape: RoundedRectangleBorder(
@@ -87,21 +90,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         },
                       ),
                     ),
-                    Container(
-                      width: constraints
-                          .maxWidth, // Çizginin genişliği Card'ın genişliği ile aynı olacak
-                      height: 1.0,
+                    const Divider(
                       color: Colors.grey,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 20), // Çizginin üst ve altında boşluk
+                      height: 30,
+                      thickness: 1,
                     ),
-
-                    //Bu kısmı Divider ile değiştirip değiştirmemeyi sor
-                    // const Divider(
-                    //   height: 30,
-                    //   thickness: 1,
-                    // ),
-
                     Container(
                       padding: const EdgeInsets.only(bottom: 5),
                       child: TextButton(
