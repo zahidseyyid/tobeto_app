@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/home_page.dart';
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
@@ -8,11 +9,21 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  late String logoAsset;
+  bool _isVisible = true;
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    logoAsset = Theme.of(context).brightness == Brightness.dark
+        ? "lib/assets/tobetoDarkModeLogo.png"
+        : "lib/assets/tobetoLightModeLogo.png";
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
@@ -38,8 +49,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
                   children: <Widget>[
                     Container(
+                      padding: const EdgeInsets.only(top: 15),
                       child: Image.asset(
-                        "lib/assets/tobeto.png",
+                        logoAsset,
                         width: 200,
                       ),
                     ),
@@ -51,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: const Icon(Icons.person),
                           labelText: 'Kullanıcı Kodu',
                         ),
                       ),
@@ -61,13 +73,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       padding:
                           const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: TextField(
-                        obscureText: true,
+                        obscureText: _isVisible,
                         controller: passwordController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: const Icon(Icons.lock),
                           labelText: 'Parola',
+                          suffixIcon: IconButton(
+                            icon: Icon(_isVisible
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                            onPressed: () => setState(() {
+                              _isVisible = !_isVisible;
+                            }),
+                          ),
                         ),
                       ),
                     ),
@@ -84,9 +104,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             )),
-                        child: const Text('Giriş Yap'),
+                        child: const Text('Giriş Yap',
+                            style: TextStyle(color: Colors.white)),
                         onPressed: () {
-                          // ...
+                          // signIn();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -98,9 +125,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     Container(
                       padding: const EdgeInsets.only(bottom: 5),
                       child: TextButton(
-                        onPressed: () {
-                          //forgot password screen
-                        },
+                        onPressed: () {},
                         child: const Text(
                           'Parolamı Unuttum',
                           style: TextStyle(color: Colors.blue),
