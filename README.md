@@ -1,23 +1,29 @@
+# Tobeto Projesi
+
+Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek amacıyla oluşturulmuştur. Proje, Flutter kullanılarak geliştirilecektir. Tobeto'nun web sitesinin klonu mobil olarak uygulanacaktır.
+
+## Ekip Üyeleri
+- [Seyyid Hamza Zahid](https://github.com/zahidseyyid)
+- [Beyza Koşer](https://github.com/beyzakoser)
+- [Muhammet Ölmez](https://github.com/MuhammetMM)
+
+## Proje Çıktıları
+
+## Light Mode
+
 <p align="middle">
 
-<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/app.png" width="250" height="480">
-
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/loginLight.png" width="250" height=“500">
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageDrawerLight.png" width="250" height=“500">
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageLight.png" width="250" height=“500">
 
 </p>
+## Dark Mode
 
-# flutter_application_1
+<p align="middle">
 
-A new Flutter project.
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/loginDark.png" width="250" height=“500">
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageDrawerDark.png.png" width="250" height=“500">
+<img src="https://github.com/MuhammetMM/pairProject/blob/main/assets/readmeImages/homePageDark.png" width="250" height=“500">
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</p>
