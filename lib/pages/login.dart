@@ -16,11 +16,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("lib/assets/background.png"),
-            fit: BoxFit.cover,
-          ),
+              image: AssetImage("lib/assets/background.png"), fit: BoxFit.fill),
         ),
         child: Center(
           // İçeriği ortalamak için Center ekliyoruz
@@ -29,6 +27,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
               return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize
                       .min, // Column'un boyutunu içeriğe göre ayarlar
@@ -94,6 +95,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       margin: const EdgeInsets.symmetric(
                           vertical: 20), // Çizginin üst ve altında boşluk
                     ),
+
+                    //Bu kısmı Divider ile değiştirip değiştirmemeyi sor
+                    // const Divider(
+                    //   height: 30,
+                    //   thickness: 1,
+                    // ),
+
                     Container(
                       padding: const EdgeInsets.only(bottom: 5),
                       child: TextButton(
