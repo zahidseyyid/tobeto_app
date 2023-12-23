@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tobeto',
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
       home: const MyStatefulWidget(),

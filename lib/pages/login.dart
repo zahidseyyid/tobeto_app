@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 
 class MyStatefulWidget extends StatefulWidget {
@@ -21,15 +22,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    logoAsset = Theme.of(context).brightness == Brightness.dark
-        ? "lib/assets/tobetoDarkModeLogo.png"
-        : "lib/assets/tobetoLightModeLogo.png";
+    Brightness brightness = Theme.of(context).brightness;
+    logoAsset = getLogo(brightness);
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("lib/assets/background.png"), fit: BoxFit.fill),
+              image: AssetImage(backgorundImage), fit: BoxFit.fill),
         ),
         child: Center(
           // İçeriği ortalamak için Center ekliyoruz

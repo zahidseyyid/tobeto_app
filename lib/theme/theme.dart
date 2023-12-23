@@ -4,7 +4,7 @@ class AppTheme {
   static final ThemeData lightMode = ThemeData(
       brightness: Brightness.light,
       colorScheme: const ColorScheme.light(
-        background: Colors.white,
+        background: Color(0xFFfbf9fd),
         primary: Colors.black,
         secondary: Colors.purple,
       ));
