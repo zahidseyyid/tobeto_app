@@ -3,7 +3,7 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/topbar_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,8 +20,7 @@ class HomePage extends StatelessWidget {
             width: 0.5,
           ),
           borderRadius: BorderRadius.vertical(
-            bottom:
-                Radius.circular(25),
+            bottom: Radius.circular(25),
           ),
         ),
       ),
@@ -30,9 +29,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             HeaderWidget(),
-            TopBarWidget(),
+            TabBarWidget(),
             ExamsWidget(),
-            TopBarWidget(),
+            //TopBarWidget(),
           ],
         ),
       ),
