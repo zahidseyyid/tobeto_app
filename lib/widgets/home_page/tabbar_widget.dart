@@ -17,7 +17,7 @@ class TabBarWidget extends StatelessWidget {
         children: [
           Center(
             child: SizedBox(
-              width: 200,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Image.asset("lib/assets/istanbulkodluyor.png"),
             ),
           ),
@@ -34,6 +34,7 @@ class TabBarWidget extends StatelessWidget {
             ),
           ),
           const Text.rich(
+            //Tırnak işaretli yeşil kısım
             TextSpan(
               text: 'Aradığın ',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -59,6 +60,7 @@ class TabBarWidget extends StatelessWidget {
               ],
             ),
           ),
+          //Tabbar kod başlangıcı
           DefaultTabController(
             length: 4,
             child: Column(
@@ -67,8 +69,6 @@ class TabBarWidget extends StatelessWidget {
                   indicatorColor: Colors.black,
                   labelColor: Colors.black,
                   labelStyle: TextStyle(),
-
-                  //labelPadding: EdgeInsets.only(bottom: 10),
                   tabs: [
                     Tab(
                       text: "Başvurularım",
@@ -84,20 +84,18 @@ class TabBarWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  height: 200,
+                SizedBox(
+                  //bu kısım sonradan Expanded ile çözülecek
+                  height: MediaQuery.of(context).size.height * 0.25,
                   child: TabBarView(
                     children: [
-                      // Başvurularım tabı
                       ListView(
                         children: [
                           // Başvurularım içeriği
-                          ApplicationsWidget(),
 
-                          // ...
+                          ApplicationsWidget(),
                         ],
                       ),
-                      // Eğitimlerim tabı
                       ListView(
                         children: [
                           // Eğitimlerim içeriği
@@ -106,7 +104,6 @@ class TabBarWidget extends StatelessWidget {
                           // ...
                         ],
                       ),
-                      // Duyuru ve Haberlerim tabı
                       ListView(
                         children: [
                           // Duyuru ve Haberlerim içeriği
@@ -115,13 +112,11 @@ class TabBarWidget extends StatelessWidget {
                           // ...
                         ],
                       ),
-                      // Anketlerim tabı
                       ListView(
                         children: [
                           // Anketlerim içeriği
                           Text('Anketlerim 1'),
                           Text('Anketlerim 2'),
-                          // ...
                         ],
                       ),
                     ],
@@ -135,3 +130,4 @@ class TabBarWidget extends StatelessWidget {
     );
   }
 }
+//Tema özellikleri yok dark mode da sıkıntı var sonra bakılacak
