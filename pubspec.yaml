@@ -67,6 +67,7 @@ flutter:
     - lib/assets/tobetoDarkModeLogo.png
     - lib/assets/tobetoLightModeLogo.png
     - lib/assets/background.png
+    - lib/assets/istanbulkodluyor.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
