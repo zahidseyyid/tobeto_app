@@ -7,35 +7,38 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFF9933FF),
-      padding: const EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    const Image(image: AssetImage(loginHeaderImage), width: 125),
-                    const SizedBox(width: 90),
-                    CustomButton(onPressed: () {}, buttonText: "Bize Ulaşın" , buttonColor: Colors.white , buttonTextColor: Colors.black, width: 150, height: 35, ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top:16.0),
-            child: Text(
-                  '© 2022 Tobeto',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Color.fromARGB(255, 255, 255, 255),
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Container(
+        color: const Color(0xFF9933FF),
+        padding: const EdgeInsets.all(30),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      const Image(image: AssetImage(loginHeaderImage), width: 125),
+                      const SizedBox(width: 90),
+                      CustomButton(onPressed: () {}, buttonText: "Bize Ulaşın" , buttonColor: Colors.white , buttonTextColor: Colors.black, width: 150, height: 35, ),
+                    ],
                   ),
                 ),
-          ),
-        ],
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top:16.0),
+              child: Text(
+                    '© 2022 Tobeto',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

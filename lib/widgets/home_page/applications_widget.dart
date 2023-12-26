@@ -23,13 +23,13 @@ class ApplicationsWidget extends StatelessWidget {
                 border: Border(
                     left: BorderSide(color: Color(0xFF076B34), width: 10)),
               ),
-              padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+              padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
               alignment: Alignment.centerLeft,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("İstanbul Kodluyor",
@@ -47,13 +47,13 @@ class ApplicationsWidget extends StatelessWidget {
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.03,
                           width: MediaQuery.of(context).size.width * 0.43,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFF076B34),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 bottomLeft: Radius.circular(20)),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Kabul Edildi",
                               style:
@@ -64,8 +64,8 @@ class ApplicationsWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Row(
                       children: [
                         Icon(
@@ -78,8 +78,8 @@ class ApplicationsWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       top: 10,
                     ),
                     child: Row(

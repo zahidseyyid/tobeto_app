@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/gradientCard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widget.dart';
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
 
             GradientCardWidget(
               buttonText: 'Profilini oluştur',
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
                 colors: [
@@ -44,7 +45,6 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               onPressed: () {
-                print("string1");
               },
             ),
             GradientCardWidget(
@@ -58,7 +58,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
-                  print("string2");
                 }),
             GradientCardWidget(
                 buttonText: 'Öğrenmeye başla',
@@ -71,10 +70,8 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
-                  print("string3");
                 }),
-
-            //TopBarWidget(),
+                const FooterWidget(),
           ],
         ),
       ),

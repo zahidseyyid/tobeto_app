@@ -92,15 +92,15 @@ class TabBarWidget extends StatelessWidget {
                   child: TabBarView(
                     children: [
                       ListView(
-                        physics: NeverScrollableScrollPhysics(),
-                        children: [
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: const [
                           // Başvurularım içeriği
 
                           ApplicationsWidget(),
                         ],
                       ),
                       ListView(
-                        children: [
+                        children: const [
                           // Eğitimlerim içeriği
                           Text('Eğitimlerim 1'),
                           Text('Eğitimlerim 2'),
@@ -108,7 +108,7 @@ class TabBarWidget extends StatelessWidget {
                         ],
                       ),
                       ListView(
-                        children: [
+                        children: const [
                           // Duyuru ve Haberlerim içeriği
                           Text('Duyuru ve Haberlerim 1'),
                           Text('Duyuru ve Haberlerim 2'),
@@ -116,7 +116,7 @@ class TabBarWidget extends StatelessWidget {
                         ],
                       ),
                       ListView(
-                        children: [
+                        children: const [
                           // Anketlerim içeriği
                           Text('Anketlerim 1'),
                           Text('Anketlerim 2'),
