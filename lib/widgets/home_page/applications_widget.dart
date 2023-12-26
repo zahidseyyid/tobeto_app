@@ -11,91 +11,93 @@ class ApplicationsWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        //shadowColor: const Color.fromARGB(255, 12, 90, 14),
         elevation: 20,
         child: ClipPath(
           clipper: ShapeBorderClipper(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15))),
-          child: Container(
-              height: MediaQuery.of(context).size.height * 0.18,
-              decoration: const BoxDecoration(
-                border: Border(
-                    left: BorderSide(color: Color(0xFF076B34), width: 10)),
-              ),
-              padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
-              alignment: Alignment.centerLeft,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.18,
+                decoration: const BoxDecoration(
+                  border: Border(left: BorderSide(color: Color(0xFF076B34), width: 10)),
+                ),
+                padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                alignment: Alignment.centerLeft,
+                child: const Column(
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("İstanbul Kodluyor",
+                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                            Text("Bilgilendirme",
+                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
+                          ],
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Row(
                         children: [
-                          Text("İstanbul Kodluyor",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
-                          Text("Bilgilendirme",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold))
+                          Icon(
+                            Icons.check,
+                            color: Color(0xFF076B34),
+                          ),
+                          Expanded(
+                            child: Text("İstanbul Kodluyor Başvuru Formu onaylandı"),
+                          ),
                         ],
                       ),
-
-                      //Text("Kabul edildi"),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                          width: MediaQuery.of(context).size.width * 0.43,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF076B34),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20)),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "Kabul Edildi",
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
-                            ),
-                          ),
-                        ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 10,
                       ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.check,
-                          color: Color(0xFF076B34),
-                        ),
-                        Expanded(
-                            child: Text(
-                                "İstanbul Kodluyor Başvuru Formu onaylandı")),
-                      ],
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.check,
+                            color: Color(0xFF076B34),
+                          ),
+                          Expanded(
+                            child: Text("İstanbul Kodluyor Belge Yükleme Formu onaylandı."),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: -0,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                  width: MediaQuery.of(context).size.width * 0.43,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF076B34),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      top: 10,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.check,
-                          color: Color(0xFF076B34),
-                        ),
-                        Expanded(
-                            child: Text(
-                                "İstanbul Kodluyor Belge Yükleme Formu onaylandı.")),
-                      ],
+                  child: const Center(
+                    child: Text(
+                      "Kabul Edildi",
+                      style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),
-                ],
-              )),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

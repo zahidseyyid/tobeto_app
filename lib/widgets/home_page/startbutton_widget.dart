@@ -26,6 +26,7 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
           "Başla",
           style: TextStyle(
             fontSize: 16,
+            color: Colors.white,
             fontWeight: FontWeight.w800,
           ),
         ),
