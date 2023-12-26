@@ -17,7 +17,7 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(153, 185, 61, 235),
+          backgroundColor: const Color(0xFF9933FF),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
