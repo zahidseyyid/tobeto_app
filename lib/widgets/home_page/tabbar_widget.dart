@@ -10,7 +10,7 @@ class TabBarWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.background,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -30,6 +30,7 @@ class TabBarWidget extends StatelessWidget {
                 fontSize: 18,
                 letterSpacing: 1,
                 fontWeight: FontWeight.w500,
+                //color: Colors.black,
               ),
             ),
           ),
@@ -68,7 +69,8 @@ class TabBarWidget extends StatelessWidget {
                 const TabBar(
                   indicatorColor: Colors.black,
                   labelColor: Colors.black,
-                  labelStyle: TextStyle(),
+                  isScrollable: true,
+                  padding: EdgeInsets.zero,
                   tabs: [
                     Tab(
                       text: "Başvurularım",
@@ -86,10 +88,11 @@ class TabBarWidget extends StatelessWidget {
                 ),
                 SizedBox(
                   //bu kısım sonradan Expanded ile çözülecek
-                  height: MediaQuery.of(context).size.height * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.23,
                   child: TabBarView(
                     children: [
                       ListView(
+                        physics: NeverScrollableScrollPhysics(),
                         children: [
                           // Başvurularım içeriği
 

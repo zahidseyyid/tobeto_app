@@ -18,21 +18,19 @@ class ApplicationsWidget extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),
           child: Container(
-              height: MediaQuery.of(context).size.height * 0.2,
+              height: MediaQuery.of(context).size.height * 0.18,
               decoration: const BoxDecoration(
-                border:
-                    Border(left: BorderSide(color: Colors.green, width: 10)),
+                border: Border(
+                    left: BorderSide(color: Color(0xFF076B34), width: 10)),
               ),
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
               alignment: Alignment.centerLeft,
               child: Column(
                 children: [
                   Row(
-                    //mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        //mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text("İstanbul Kodluyor",
                               style: TextStyle(
@@ -47,18 +45,13 @@ class ApplicationsWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.04,
-                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.03,
+                          width: MediaQuery.of(context).size.width * 0.43,
                           decoration: BoxDecoration(
-                            color: Colors.green,
+                            color: Color(0xFF076B34),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 bottomLeft: Radius.circular(20)),
-                            border: Border.all(
-                              width: 3,
-                              color: Colors.green,
-                              style: BorderStyle.solid,
-                            ),
                           ),
                           child: Center(
                             child: Text(
@@ -86,7 +79,9 @@ class ApplicationsWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(
+                      top: 10,
+                    ),
                     child: Row(
                       children: [
                         Icon(
