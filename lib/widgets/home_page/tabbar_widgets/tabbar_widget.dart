@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/home_page/applications_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/applications_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
 
 class TabBarWidget extends StatelessWidget {
   const TabBarWidget({super.key});
@@ -7,7 +8,6 @@ class TabBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Theme.of(context).colorScheme.background,
@@ -30,7 +30,6 @@ class TabBarWidget extends StatelessWidget {
                 fontSize: 18,
                 letterSpacing: 1,
                 fontWeight: FontWeight.w500,
-                //color: Colors.black,
               ),
             ),
           ),
@@ -65,13 +64,13 @@ class TabBarWidget extends StatelessWidget {
           DefaultTabController(
             length: 4,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                const TabBar(
-                  indicatorColor: Colors.black,
-                  labelColor: Colors.black,
+                TabBar(
+                  indicatorColor: Theme.of(context).colorScheme.primary,
+                  labelColor: Theme.of(context).colorScheme.primary,
                   isScrollable: true,
-                  padding: EdgeInsets.zero,
-                  tabs: [
+                  tabs: const [
                     Tab(
                       text: "Başvurularım",
                     ),
@@ -87,24 +86,22 @@ class TabBarWidget extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  //bu kısım sonradan Expanded ile çözülecek
                   height: MediaQuery.of(context).size.height * 0.23,
                   child: TabBarView(
                     children: [
                       ListView(
-                        physics: const NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
                         children: const [
                           // Başvurularım içeriği
-
+                          ApplicationsWidget(),
                           ApplicationsWidget(),
                         ],
                       ),
                       ListView(
+                        scrollDirection: Axis.horizontal,
                         children: const [
                           // Eğitimlerim içeriği
-                          Text('Eğitimlerim 1'),
-                          Text('Eğitimlerim 2'),
-                          // ...
+                          LessonsWidget(),
                         ],
                       ),
                       ListView(
@@ -112,7 +109,6 @@ class TabBarWidget extends StatelessWidget {
                           // Duyuru ve Haberlerim içeriği
                           Text('Duyuru ve Haberlerim 1'),
                           Text('Duyuru ve Haberlerim 2'),
-                          // ...
                         ],
                       ),
                       ListView(
@@ -133,4 +129,3 @@ class TabBarWidget extends StatelessWidget {
     );
   }
 }
-//Tema özellikleri yok dark mode da sıkıntı var sonra bakılacak

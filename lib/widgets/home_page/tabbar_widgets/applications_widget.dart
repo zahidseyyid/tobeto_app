@@ -6,12 +6,13 @@ class ApplicationsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(top: 20, left: 10, bottom: 20),
+      //padding: const EdgeInsets.all(20),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        elevation: 20,
+        elevation: 5,
         child: ClipPath(
           clipper: ShapeBorderClipper(
             shape: RoundedRectangleBorder(
@@ -22,8 +23,10 @@ class ApplicationsWidget extends StatelessWidget {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.18,
+                width: MediaQuery.of(context).size.width * 0.85,
                 decoration: const BoxDecoration(
-                  border: Border(left: BorderSide(color: Color(0xFF076B34), width: 10)),
+                  border: Border(
+                      left: BorderSide(color: Color(0xFF076B34), width: 10)),
                 ),
                 padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
                 alignment: Alignment.centerLeft,
@@ -35,15 +38,17 @@ class ApplicationsWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("İstanbul Kodluyor",
-                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold)),
                             Text("Bilgilendirme",
-                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold))
                           ],
                         ),
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
                         children: [
                           Icon(
@@ -51,7 +56,8 @@ class ApplicationsWidget extends StatelessWidget {
                             color: Color(0xFF076B34),
                           ),
                           Expanded(
-                            child: Text("İstanbul Kodluyor Başvuru Formu onaylandı"),
+                            child: Text(
+                                "İstanbul Kodluyor Başvuru Formu onaylandı"),
                           ),
                         ],
                       ),
@@ -67,7 +73,8 @@ class ApplicationsWidget extends StatelessWidget {
                             color: Color(0xFF076B34),
                           ),
                           Expanded(
-                            child: Text("İstanbul Kodluyor Belge Yükleme Formu onaylandı."),
+                            child: Text(
+                                "İstanbul Kodluyor Belge Yükleme Formu onaylandı."),
                           ),
                         ],
                       ),

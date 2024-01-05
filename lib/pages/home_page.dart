@@ -5,7 +5,7 @@ import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/gradientCard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/tabbar_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,7 +33,6 @@ class HomePage extends StatelessWidget {
             const HeaderWidget(),
             const TabBarWidget(),
             const ExamsWidget(),
-
             GradientCardWidget(
               buttonText: 'Profilini oluştur',
               gradient: const LinearGradient(
@@ -44,8 +43,7 @@ class HomePage extends StatelessWidget {
                   Color(0xFF1d0b8c),
                 ],
               ),
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
             GradientCardWidget(
                 buttonText: 'Kendini değerlendir',
@@ -57,8 +55,7 @@ class HomePage extends StatelessWidget {
                     Color(0xFF5eb6ca),
                   ],
                 ),
-                onPressed: () {
-                }),
+                onPressed: () {}),
             GradientCardWidget(
                 buttonText: 'Öğrenmeye başla',
                 gradient: const LinearGradient(
@@ -69,9 +66,8 @@ class HomePage extends StatelessWidget {
                     Color(0xFFe3a6fe),
                   ],
                 ),
-                onPressed: () {
-                }),
-                const FooterWidget(),
+                onPressed: () {}),
+            const FooterWidget(),
           ],
         ),
       ),
