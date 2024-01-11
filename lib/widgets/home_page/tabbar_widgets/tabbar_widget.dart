@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/applications_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 
 class TabBarWidget extends StatelessWidget {
   const TabBarWidget({super.key});
@@ -70,6 +72,7 @@ class TabBarWidget extends StatelessWidget {
                   indicatorColor: Theme.of(context).colorScheme.primary,
                   labelColor: Theme.of(context).colorScheme.primary,
                   isScrollable: true,
+                  labelPadding: const EdgeInsets.all(5),
                   tabs: const [
                     Tab(
                       text: "Başvurularım",
@@ -105,17 +108,17 @@ class TabBarWidget extends StatelessWidget {
                         ],
                       ),
                       ListView(
+                        scrollDirection: Axis.horizontal,
                         children: const [
                           // Duyuru ve Haberlerim içeriği
-                          Text('Duyuru ve Haberlerim 1'),
-                          Text('Duyuru ve Haberlerim 2'),
+                          AnnouncementsWidget(),
                         ],
                       ),
                       ListView(
+                        physics: const NeverScrollableScrollPhysics(),
                         children: const [
                           // Anketlerim içeriği
-                          Text('Anketlerim 1'),
-                          Text('Anketlerim 2'),
+                          SurveysWidget(),
                         ],
                       ),
                     ],
