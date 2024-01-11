@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/data.dart';
+import 'package:flutter_application_1/datas/lesson_dummy_data.dart';
 import 'package:flutter_application_1/models/lesson_model.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:intl/intl.dart';

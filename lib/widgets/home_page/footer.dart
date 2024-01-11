@@ -7,6 +7,9 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final double deviceHeight = mediaQueryData.size.height;
+    final double deviceWidth = mediaQueryData.size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Container(
@@ -19,23 +22,32 @@ class FooterWidget extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      const Image(image: AssetImage(loginHeaderImage), width: 125),
-                      const SizedBox(width: 90),
-                      CustomButton(onPressed: () {}, buttonText: "Bize Ulaşın" , buttonColor: Colors.white , buttonTextColor: Colors.black, width: 150, height: 35, ),
+                      Image(
+                          image: const AssetImage(loginHeaderImage),
+                          width: deviceWidth / 3.5),
+                      SizedBox(width: deviceWidth / 5),
+                      CustomButton(
+                        onPressed: () {},
+                        buttonText: "Bize Ulaşın",
+                        buttonColor: Colors.white,
+                        buttonTextColor: Colors.black,
+                        width: deviceWidth / 2.80,
+                        height: deviceHeight / 25,
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
             const Padding(
-              padding: EdgeInsets.only(top:16.0),
+              padding: EdgeInsets.symmetric(vertical: 20),
               child: Text(
-                    '© 2022 Tobeto',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ),
+                '© 2022 Tobeto',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
             ),
           ],
         ),
