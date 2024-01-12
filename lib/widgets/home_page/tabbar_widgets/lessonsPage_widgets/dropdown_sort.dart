@@ -16,6 +16,8 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     List<String> dropdownSort = [
       "Adına göre (A-Z)",
       "Adına göre (Z-A)",
@@ -72,7 +74,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.78,
+                  width: deviceWidth * 0.78,
                   margin: const EdgeInsets.only(left: 15),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

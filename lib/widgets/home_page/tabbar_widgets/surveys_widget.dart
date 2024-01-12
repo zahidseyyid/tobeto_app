@@ -6,18 +6,19 @@ class SurveysWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: deviceWidth,
         decoration: BoxDecoration(
           color: Color(0xFFe6e6e6), //değişecek
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
           children: [
-            Image.asset(surveyImage,
-                height: MediaQuery.of(context).size.height / 6),
+            Image.asset(surveyImage, height: deviceHeight / 6),
             Padding(
               padding: const EdgeInsets.only(left: 10, bottom: 10),
               child: Text(

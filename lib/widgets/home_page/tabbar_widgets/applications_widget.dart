@@ -5,6 +5,8 @@ class ApplicationsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 10, bottom: 20),
       //padding: const EdgeInsets.all(20),
@@ -22,8 +24,8 @@ class ApplicationsWidget extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.18,
-                width: MediaQuery.of(context).size.width * 0.85,
+                height: deviceHeight * 0.18,
+                width: deviceWidth * 0.9,
                 decoration: const BoxDecoration(
                   border: Border(
                       left: BorderSide(color: Color(0xFF076B34), width: 10)),
@@ -86,8 +88,8 @@ class ApplicationsWidget extends StatelessWidget {
                 top: 10,
                 right: -0,
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                  width: MediaQuery.of(context).size.width * 0.43,
+                  height: deviceHeight * 0.03,
+                  width: deviceWidth * 0.43,
                   decoration: const BoxDecoration(
                     color: Color(0xFF076B34),
                     borderRadius: BorderRadius.only(

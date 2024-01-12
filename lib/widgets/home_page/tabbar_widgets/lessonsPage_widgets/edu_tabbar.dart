@@ -16,6 +16,7 @@ class EduTabbarWidget extends StatelessWidget {
             labelColor: Theme.of(context).colorScheme.primary,
             labelPadding: const EdgeInsets.all(5),
             isScrollable: true,
+            tabAlignment: TabAlignment.start,
             tabs: const [
               Tab(
                 text: "Tüm Eğitimlerim",

@@ -9,6 +9,8 @@ class TabBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -19,7 +21,7 @@ class TabBarWidget extends StatelessWidget {
         children: [
           Center(
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: deviceWidth * 0.6,
               child: Image.asset("lib/assets/istanbulkodluyor.png"),
             ),
           ),
@@ -73,6 +75,7 @@ class TabBarWidget extends StatelessWidget {
                   labelColor: Theme.of(context).colorScheme.primary,
                   isScrollable: true,
                   labelPadding: const EdgeInsets.all(5),
+                  tabAlignment: TabAlignment.start,
                   tabs: const [
                     Tab(
                       text: "Başvurularım",
@@ -89,7 +92,7 @@ class TabBarWidget extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.23,
+                  height: deviceHeight * 0.23,
                   child: TabBarView(
                     children: [
                       ListView(

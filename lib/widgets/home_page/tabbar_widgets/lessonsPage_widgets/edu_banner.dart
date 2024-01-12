@@ -6,6 +6,8 @@ class EduBannerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Stack(
@@ -14,13 +16,13 @@ class EduBannerWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
               edubanner,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4.5,
+              width: deviceWidth,
+              height: deviceHeight / 4.5,
               fit: BoxFit.cover,
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 10,
+            top: deviceHeight / 10,
             left: 20,
             child: const Text(
               'Eğitimlerim',

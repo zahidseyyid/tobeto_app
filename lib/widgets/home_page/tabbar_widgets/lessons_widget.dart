@@ -9,10 +9,11 @@ class LessonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: deviceWidth,
         color: Theme.of(context).colorScheme.background,
         child: ListView.builder(
           itemCount: 4, // 3 ders + daha fazla göster butonunu için
@@ -36,7 +37,7 @@ class LessonsWidget extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(5),
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: deviceWidth * 0.8,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                     borderRadius: BorderRadius.circular(20),
