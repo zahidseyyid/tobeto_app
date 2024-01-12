@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_result_dialog.dart';
 
-void examDialogWidget(BuildContext context, String dialogTitle, String dialogText, String examTime, int numberOfQuestions, String questionType) {
+void examDialogWidget(
+    BuildContext context,
+    String dialogTitle,
+    String dialogText,
+    String examTime,
+    int numberOfQuestions,
+    String questionType) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -13,7 +19,6 @@ void examDialogWidget(BuildContext context, String dialogTitle, String dialogTex
         content: Container(
           width: screenSize.width,
           height: screenSize.height, // Ekranın genişliği kadar
-          color: Colors.white, 
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -43,17 +48,26 @@ void examDialogWidget(BuildContext context, String dialogTitle, String dialogTex
               const SizedBox(height: 20),
               Text(dialogText),
               const SizedBox(height: 70),
-              Text('Sınav Süresi: $examTime', style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text('Soru Sayısı: $numberOfQuestions', style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text('Soru Tipi: $questionType', style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text('Sınav Süresi: $examTime',
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text('Soru Sayısı: $numberOfQuestions',
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text('Soru Tipi: $questionType',
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 40),
               Align(
-                alignment: Alignment.center,
-                child: CustomButton(onPressed: () {
-                  Navigator.of(context).pop();
-                  examResultDialogWidget(context, dialogTitle, dialogText);
-                } , buttonText: "Raporu Görüntüle", buttonColor: const Color(0xFF9933FF), buttonTextColor: Colors.white, width: 200 , height: 40)
-              ),
+                  alignment: Alignment.center,
+                  child: CustomButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        examResultDialogWidget(
+                            context, dialogTitle, dialogText);
+                      },
+                      buttonText: "Raporu Görüntüle",
+                      buttonColor: const Color(0xFF9933FF),
+                      buttonTextColor: Colors.white,
+                      width: 200,
+                      height: 40)),
             ],
           ),
         ),

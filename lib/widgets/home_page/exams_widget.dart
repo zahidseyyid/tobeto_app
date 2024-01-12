@@ -12,7 +12,6 @@ class ExamsWidget extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       width: 500,
       height: 320,
-      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,7 +28,8 @@ class ExamsWidget extends StatelessWidget {
             description: "Herkes için Kodlama - 1D",
             time: "45 Dakika",
             onTap: () {
-              examDialogWidget(context, dialogTitle, dialogText, "45 Dakika", 25, "Çoktan Seçmeli");
+              examDialogWidget(context, dialogTitle, dialogText, "45 Dakika",
+                  25, "Çoktan Seçmeli");
             },
           ),
         ],

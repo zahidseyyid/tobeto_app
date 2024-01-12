@@ -34,7 +34,7 @@ class ExamItem extends StatelessWidget {
               ],
             ),
             child: Card(
-              color: Colors.white, // Card'ın arka plan rengi burada belirlenir
+              // Card'ın arka plan rengi burada belirlenir
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: Stack(
@@ -81,7 +81,7 @@ class ExamItem extends StatelessWidget {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: Colors.purple,
+                          color: Theme.of(context).colorScheme.secondary,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Padding(

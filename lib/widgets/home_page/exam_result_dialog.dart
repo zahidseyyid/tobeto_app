@@ -14,7 +14,6 @@ void examResultDialogWidget(
         content: Container(
           width: screenSize.width,
           height: screenSize.height, // Ekranın genişliği kadar
-          color: Colors.white,
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
@@ -31,7 +30,7 @@ void examResultDialogWidget(
                   child: const Text(
                     'Test Bitti',
                     style: TextStyle(
-                      color: Colors.white, // Text'in metin rengi
+                      // Text'in metin rengi
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
