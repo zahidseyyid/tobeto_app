@@ -37,7 +37,12 @@ class MyDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()));
+                  },
                   child: const Text('Anasayfa'),
                 ),
                 TextButton(
@@ -46,8 +51,10 @@ class MyDrawer extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => const ProfilePage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfilePage()));
                   },
                   child: const Text('Profilim'),
                 ),
@@ -66,7 +73,7 @@ class MyDrawer extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => const HomePage()));
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: const Row(
               children: [Text("Tobeto"), Icon(Icons.home_outlined)],
