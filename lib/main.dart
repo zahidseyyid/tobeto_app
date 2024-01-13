@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
+import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/theme/theme.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Tobeto',
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
-      home: const MyStatefulWidget(),
+      home: const ProfilePage(),
+      //home: const LoginPage(),
     );
   }
 }

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/education_edit.dart';
-import 'package:flutter_application_1/widgets/profile_page/experience_edit.dart';
-import 'package:flutter_application_1/widgets/profile_page/profile_edit.dart';
-import 'package:flutter_application_1/widgets/profile_page/settings_edit.dart';
-import 'package:flutter_application_1/widgets/profile_page/social_media_edit.dart';
+import 'package:flutter_application_1/widgets/profile_edit_page/education_edit.dart';
+import 'package:flutter_application_1/widgets/profile_edit_page/experience_edit.dart';
+import 'package:flutter_application_1/widgets/profile_edit_page/profile_edit.dart';
+import 'package:flutter_application_1/widgets/profile_edit_page/settings_edit.dart';
+import 'package:flutter_application_1/widgets/profile_edit_page/social_media_edit.dart';
 
-class IconTapBarWidget extends StatefulWidget {
-  const IconTapBarWidget({Key? key}) : super(key: key);
+class IconTabBarWidget extends StatefulWidget {
+  const IconTabBarWidget({Key? key}) : super(key: key);
 
   @override
-  State<IconTapBarWidget> createState() => _IconTapBarWidgetState();
+  State<IconTabBarWidget> createState() => _IconTabBarWidgetState();
 }
 
-class _IconTapBarWidgetState extends State<IconTapBarWidget>
+class _IconTabBarWidgetState extends State<IconTabBarWidget>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 

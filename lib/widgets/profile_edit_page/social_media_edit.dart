@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_text_formfield_profile.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
+import 'package:flutter_application_1/widgets/custom_text_formfield_profile.dart';
 
 class SocialMediaEdit extends StatefulWidget {
   const SocialMediaEdit({super.key});
@@ -10,7 +11,6 @@ class SocialMediaEdit extends StatefulWidget {
 }
 
 class _SocialMediaEditState extends State<SocialMediaEdit> {
-  EdgeInsets paddingFormField = const EdgeInsets.symmetric(vertical: 10.0);
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController socialMediaController = TextEditingController();
 
@@ -42,12 +42,12 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
       body: Center(
         child: ListView(
           children: [
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Sosyal Medya*",
                 controller: socialMediaController,
                 hintText: "Sosyal Medya Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             CustomElevatedButton(text: "Kaydet", onPressed: () {}),
           ],
         ),

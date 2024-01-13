@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_text_formfield_profile.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
+import 'package:flutter_application_1/widgets/custom_text_formfield_profile.dart';
 
 class ExperienceEdit extends StatefulWidget {
   const ExperienceEdit({super.key});
@@ -10,7 +11,6 @@ class ExperienceEdit extends StatefulWidget {
 }
 
 class _ExperienceEditState extends State<ExperienceEdit> {
-  EdgeInsets paddingFormField = const EdgeInsets.symmetric(vertical: 10.0);
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController companyController = TextEditingController();
   TextEditingController positionController = TextEditingController();
@@ -48,43 +48,43 @@ class _ExperienceEditState extends State<ExperienceEdit> {
         body: Center(
       child: ListView(
         children: [
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Kurum Adı*",
               controller: companyController,
               hintText: "Kurum Adı Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Pozisyon*",
               controller: positionController,
               hintText: "Pozisyon Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Sektör*",
               controller: sectorController,
               hintText: "Sektör Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Şehir*",
               controller: companyCityController,
               hintText: "Şehir Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Başlangıç Tarihi*",
               controller: startDateController,
               hintText: "Başlangıç Tarihi Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Bitiş Tarihi*",
               controller: endDateController,
               hintText: "Bitiş Tarihi Giriniz"),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
               labelText: "Açıklama*",
               controller: descriptionController,
               hintText: "Açıklama Giriniz",
               maxLines: 5),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           CustomElevatedButton(text: "Kaydet", onPressed: () {}),
         ],
       ),

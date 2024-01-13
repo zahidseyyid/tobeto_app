@@ -29,9 +29,7 @@ class HeaderWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                     )),
-                TextSpan(
-                    text: nameUser,
-                    style: TextStyle(fontSize: 24)),
+                TextSpan(text: userName, style: TextStyle(fontSize: 24)),
               ],
             ),
           ),
@@ -40,7 +38,9 @@ class HeaderWidget extends StatelessWidget {
             child: Text(
               "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500), // Yatayda ortalama ekleniyor
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500), // Yatayda ortalama ekleniyor
             ),
           ),
         ],

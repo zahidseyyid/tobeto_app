@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_text_formfield_profile.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
+import 'package:flutter_application_1/widgets/custom_text_formfield_profile.dart';
 
 class EducationEdit extends StatefulWidget {
   const EducationEdit({super.key});
@@ -10,7 +11,6 @@ class EducationEdit extends StatefulWidget {
 }
 
 class _EducationEditState extends State<EducationEdit> {
-  EdgeInsets paddingFormField = const EdgeInsets.symmetric(vertical: 10.0);
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController educationStatusController = TextEditingController();
   TextEditingController schoolNameController = TextEditingController();
@@ -46,32 +46,32 @@ class _EducationEditState extends State<EducationEdit> {
       body: Center(
         child: ListView(
           children: [
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Eğitim Durumu*",
                 controller: educationStatusController,
                 hintText: "Eğitim Durumu Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Okul Adı*",
                 controller: schoolNameController,
                 hintText: "Okul Adı Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Bölüm*",
                 controller: departmentController,
                 hintText: "Bölüm Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Başlangıç Tarihi*",
                 controller: startDateController,
                 hintText: "Başlangıç Tarihi Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             buildUserInfoFormField(
                 labelText: "Bitiş Tarihi*",
                 controller: endDateController,
                 hintText: "Bitiş Tarihi Giriniz"),
-            Padding(padding: paddingFormField),
+            Padding(padding: paddingMedium),
             CustomElevatedButton(text: "Kaydet", onPressed: () => {}),
           ],
         ),

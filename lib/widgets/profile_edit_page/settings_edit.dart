@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_text_formfield_profile.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
+import 'package:flutter_application_1/widgets/custom_text_formfield_profile.dart';
 
 class SettingsEdit extends StatefulWidget {
   const SettingsEdit({super.key});
@@ -10,7 +11,6 @@ class SettingsEdit extends StatefulWidget {
 }
 
 class _SettingsEditState extends State<SettingsEdit> {
-  EdgeInsets paddingFormField = const EdgeInsets.symmetric(vertical: 10.0);
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController ownPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
@@ -46,7 +46,7 @@ class _SettingsEditState extends State<SettingsEdit> {
       body: Center(
           child: ListView(
         children: [
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
             labelText: "Mevcut Şifre*",
             controller: ownPasswordController,
@@ -54,7 +54,7 @@ class _SettingsEditState extends State<SettingsEdit> {
             obscureText: true,
             maxLines: 1,
           ),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
             labelText: "Yeni Şifre*",
             controller: newPasswordController,
@@ -62,7 +62,7 @@ class _SettingsEditState extends State<SettingsEdit> {
             obscureText: true,
             maxLines: 1,
           ),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           buildUserInfoFormField(
             labelText: "Yeni Şifre Tekrar*",
             controller: newPasswordAgainController,
@@ -70,9 +70,9 @@ class _SettingsEditState extends State<SettingsEdit> {
             obscureText: true,
             maxLines: 1,
           ),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingMedium),
           CustomElevatedButton(text: "Şifre Değiştir", onPressed: () {}),
-          Padding(padding: paddingFormField),
+          Padding(padding: paddingSmall),
           CustomElevatedButton(
               text: "Üyeliği Sonlandır",
               onPressed: () {},

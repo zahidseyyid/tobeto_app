@@ -17,7 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final double deviceWidth = mediaQueryData.size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor:

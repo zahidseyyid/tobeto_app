@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/profile_page/custom_text_formfield_profile.dart';
+import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/widgets/custom_circle_avatar.dart';
+import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
+import 'package:flutter_application_1/widgets/custom_text_formfield_profile.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({Key? key}) : super(key: key);
@@ -21,7 +24,6 @@ class _ProfileEditState extends State<ProfileEdit> {
   TextEditingController districtController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
-  EdgeInsets paddingFormField = const EdgeInsets.symmetric(vertical: 10.0);
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
 
   Widget buildUserInfoFormField({
@@ -55,17 +57,12 @@ class _ProfileEditState extends State<ProfileEdit> {
         child: ListView(
           children: [
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             Center(
               child: Stack(
                 children: [
-                  CircleAvatar(
-                    radius: deviceWidth / 5.5,
-                    backgroundImage:
-                        const AssetImage("lib/assets/profile_background.png"),
-                    backgroundColor: Colors.transparent,
-                  ),
+                  const CustomCircleAvatar(),
                   Positioned(
                     top: deviceWidth / 4.5,
                     left: deviceWidth / 4.5,
@@ -79,7 +76,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               ),
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Adınız*",
@@ -87,7 +84,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               hintText: "Adınızı giriniz",
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Soyadınız*",
@@ -95,7 +92,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               hintText: "Soyadınızı giriniz",
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Telefon Numaranız*",
@@ -104,7 +101,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               keyboardType: TextInputType.phone,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Doğum Tarihiniz*",
@@ -113,7 +110,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               keyboardType: TextInputType.datetime,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "TC Kimlik Numaranız*",
@@ -122,7 +119,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               keyboardType: TextInputType.number,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "E-posta Adresiniz*",
@@ -131,7 +128,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               keyboardType: TextInputType.emailAddress,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Ülke*",
@@ -139,7 +136,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               hintText: "Ülkenizi giriniz",
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Şehir*",
@@ -147,7 +144,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               hintText: "Şehrinizi giriniz",
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "İlçe*",
@@ -155,7 +152,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               hintText: "İlçenizi giriniz",
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Adres*",
@@ -164,7 +161,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               maxLines: 4,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             buildUserInfoFormField(
               labelText: "Hakkınızda*",
@@ -173,7 +170,7 @@ class _ProfileEditState extends State<ProfileEdit> {
               maxLines: 4,
             ),
             Padding(
-              padding: paddingFormField,
+              padding: paddingMedium,
             ),
             CustomElevatedButton(text: "Kaydet", onPressed: () {}),
           ],

@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+class CustomCardWidget extends StatelessWidget {
+  const CustomCardWidget({
+    super.key,
+    this.height,
+    required this.width,
+    this.child,
+  });
+
+  final double? height;
+  final double width;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
+            color: Theme.of(context).colorScheme.onError,
+            shape: BoxShape.rectangle),
+        //padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        child: child,
+      ),
+    );
+  }
+}
