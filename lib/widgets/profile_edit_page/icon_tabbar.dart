@@ -29,6 +29,7 @@ class _IconTabBarWidgetState extends State<IconTabBarWidget>
         TabBar(
           indicatorSize: TabBarIndicatorSize.values[0],
           indicatorColor: Theme.of(context).colorScheme.secondary,
+          labelColor: Theme.of(context).colorScheme.primary,
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           tabs: const [
@@ -43,7 +44,7 @@ class _IconTabBarWidgetState extends State<IconTabBarWidget>
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: const [
+            children: [
               ProfileEdit(),
               ExperienceEdit(),
               EducationEdit(),

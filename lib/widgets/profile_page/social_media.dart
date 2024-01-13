@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/constant_text.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
 import 'package:flutter_application_1/widgets/profile_page/education.dart';
 import 'package:url_launcher/url_launcher.dart'; // url_launcher eklenmiş hali
 
