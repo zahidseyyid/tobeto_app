@@ -3,7 +3,6 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_edit_page.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/profile_edit.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});

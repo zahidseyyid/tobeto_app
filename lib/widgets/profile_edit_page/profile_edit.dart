@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/custom_circle_avatar.dart';
 import 'package:flutter_application_1/widgets/custom_elevated_button.dart';
