@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class StateData extends ChangeNotifier {
   late String pattern = "";
-  late String sort = "Adına göre (A-Z)";
+  late String sort = "";
 
   void searchData(String newPattern) {
     pattern = newPattern.toLowerCase();

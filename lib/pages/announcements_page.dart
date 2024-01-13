@@ -4,31 +4,28 @@ import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_banner.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_tabbar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/search_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
-class LessonsPage extends StatefulWidget {
-  const LessonsPage({super.key});
+class AnnouncementsPage extends StatefulWidget {
+  const AnnouncementsPage({super.key});
 
   @override
-  State<LessonsPage> createState() => _LessonsPageState();
+  State<AnnouncementsPage> createState() => _AnnouncementsPageState();
 }
 
-class _LessonsPageState extends State<LessonsPage> {
+class _AnnouncementsPageState extends State<AnnouncementsPage> {
+  List<String> dropdownSortItems = [
+    "Haber",
+    "Duyuru",
+  ];
+  List<String> dropdownCorporationItems = [
+    "İstanbul Kodluyor",
+  ];
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
-    List<String> dropdownSortItems = [
-      "Adına göre (A-Z)",
-      "Adına göre (Z-A)",
-      "Tarihe göre (Y-E)",
-      "Tarihe göre (E-Y)"
-    ];
-    List<String> dropdownCorporationItems = [
-      "İstanbul Kodluyor",
-    ];
     return ChangeNotifierProvider<StateData>(
       //Arama ve filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
       create: (context) => StateData(),
@@ -48,17 +45,16 @@ class _LessonsPageState extends State<LessonsPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const EduBannerWidget(title: "Eğitimlerim"),
+              const EduBannerWidget(title: "Duyurularım"),
               const SearchWidget(hintText: "Arama"),
-              DropdownSortWidget(
-                dropdownValue: dropdownCorporationItems.first,
-                dropdownItems: dropdownCorporationItems,
-              ),
               DropdownSortWidget(
                 dropdownValue: dropdownSortItems.first,
                 dropdownItems: dropdownSortItems,
               ),
-              const EduTabbarWidget(),
+              DropdownSortWidget(
+                dropdownValue: dropdownCorporationItems.first,
+                dropdownItems: dropdownCorporationItems,
+              ),
               const FooterWidget()
             ],
           ),

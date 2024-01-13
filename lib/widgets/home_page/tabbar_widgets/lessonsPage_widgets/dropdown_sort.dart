@@ -2,35 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
-// Beyza burayı sil
-
-// (Dropdown) Derslerin adına ve tarihine göre sıralama
-
 class DropdownSortWidget extends StatefulWidget {
-  const DropdownSortWidget({super.key});
+  const DropdownSortWidget(
+      {super.key, required this.dropdownValue, required this.dropdownItems});
+  final String dropdownValue;
+  final List<String> dropdownItems;
 
   @override
   State<DropdownSortWidget> createState() => _DropdownWidgetState();
 }
 
 class _DropdownWidgetState extends State<DropdownSortWidget> {
-  String dropdownValue = "Adına göre (A-Z)";
+  late String dropdownValue;
+  late List<String> dropdownItems;
+
+  @override
+  void initState() {
+    super.initState();
+    dropdownValue = widget.dropdownValue;
+    dropdownItems = widget.dropdownItems;
+  }
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    //hamza
 
-    List<String> dropdownSort = [
-      "Adına göre (A-Z)",
-      "Adına göre (Z-A)",
-      "Tarihe göre (Y-E)",
-      "Tarihe göre (E-Y)"
-    ];
     Function sort = Provider.of<StateData>(context).sortData;
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(left: 10, right: 10),
+      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -71,9 +71,8 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                 dropdownValue = newValue!;
               });
               sort(newValue);
-              // print(Provider.of<StateData>(context, listen: false).sort);
             },
-            items: dropdownSort.map<DropdownMenuItem<String>>((String value) {
+            items: dropdownItems.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Container(

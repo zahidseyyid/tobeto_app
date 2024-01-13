@@ -92,7 +92,7 @@ class TabBarWidget extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: deviceHeight * 0.23,
+                  height: deviceHeight * 0.24,
                   child: TabBarView(
                     children: [
                       ListView(

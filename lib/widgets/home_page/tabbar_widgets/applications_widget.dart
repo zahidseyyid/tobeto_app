@@ -9,7 +9,6 @@ class ApplicationsWidget extends StatelessWidget {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 10, bottom: 20),
-      //padding: const EdgeInsets.all(20),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -24,8 +23,7 @@ class ApplicationsWidget extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: deviceHeight * 0.18,
-                width: deviceWidth * 0.9,
+                width: deviceWidth * 0.85,
                 decoration: const BoxDecoration(
                   border: Border(
                       left: BorderSide(color: Color(0xFF076B34), width: 10)),
@@ -50,7 +48,7 @@ class ApplicationsWidget extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      padding: EdgeInsets.only(top: 10),
                       child: Row(
                         children: [
                           Icon(

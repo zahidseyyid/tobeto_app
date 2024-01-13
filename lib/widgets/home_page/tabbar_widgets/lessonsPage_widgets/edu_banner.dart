@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 
 class EduBannerWidget extends StatelessWidget {
-  const EduBannerWidget({super.key});
+  const EduBannerWidget({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,9 @@ class EduBannerWidget extends StatelessWidget {
           Positioned(
             top: deviceHeight / 10,
             left: 20,
-            child: const Text(
-              'Eğitimlerim',
-              style: TextStyle(
+            child: Text(
+              title,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 25,
                 letterSpacing: 2,

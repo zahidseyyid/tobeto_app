@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
-//Eğitimlerim sayfası Textfield'a yazılana göre arama
-
 class SearchWidget extends StatelessWidget {
-  const SearchWidget({super.key});
+  const SearchWidget({super.key, required this.hintText});
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class SearchWidget extends StatelessWidget {
         ),
         child: TextField(
           decoration: InputDecoration(
-            hintText: 'Arama',
+            hintText: hintText,
             suffixIcon: const Icon(
               Icons.search,
               size: 40,
