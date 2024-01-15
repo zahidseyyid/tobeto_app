@@ -3,6 +3,7 @@ class AnnouncementModel {
   final String title;
   final String text;
   final bool isAnnouncement;
+  bool isRead;
   final DateTime date;
 
   AnnouncementModel(
@@ -10,5 +11,6 @@ class AnnouncementModel {
       required this.title,
       required this.text,
       required this.isAnnouncement,
+      required this.isRead,
       required this.date});
 }

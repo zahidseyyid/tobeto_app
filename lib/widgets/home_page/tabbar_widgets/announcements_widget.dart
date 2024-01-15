@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/datas/announcements_dummy_data.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_dialog.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class AnnouncementsWidget extends StatelessWidget {
   const AnnouncementsWidget({super.key});
@@ -9,6 +12,7 @@ class AnnouncementsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
+
     return Container(
       width: deviceWidth,
       color: Theme.of(context).colorScheme.background,
@@ -57,16 +61,21 @@ class AnnouncementsWidget extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Row(
+                              Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Duyuru",
-                                      style: TextStyle(
+                                  Text(
+                                      (announcementsData[index]
+                                                  .isAnnouncement ==
+                                              true)
+                                          ? "Duyuru"
+                                          : "Haber",
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           color: Color(0xFF076B34),
                                           fontWeight: FontWeight.bold)),
-                                  Text(
+                                  const Text(
                                     "İstanbul Kodluyor",
                                     style: TextStyle(
                                         fontSize: 14,
@@ -77,7 +86,7 @@ class AnnouncementsWidget extends StatelessWidget {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 20, bottom: 20),
+                                    const EdgeInsets.only(top: 20, bottom: 10),
                                 child: SizedBox(
                                   child: Text(announcementsData[index].title,
                                       style: TextStyle(
@@ -123,7 +132,18 @@ class AnnouncementsWidget extends StatelessWidget {
                                               .primary),
                                     ),
                                     onTap: () {
-                                      //Announcements Details a yönlendirilecek
+                                      if (announcementsData[index].isRead ==
+                                          false) {
+                                        //eğer mesaj okunmamış ise tıklandığında bildirimden 1 azalacak
+                                        Provider.of<StateData>(context,
+                                                listen: false)
+                                            .countAnnouncement();
+                                        announcementsData[index].isRead = true;
+                                      }
+                                      announcementDialogWidget(
+                                          context,
+                                          announcementsData[index].title,
+                                          announcementsData[index].text);
                                     },
                                   ),
                                 ],

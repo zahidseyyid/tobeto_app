@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_item_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/visibility_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_banner.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/search_widget.dart';
@@ -16,12 +18,17 @@ class AnnouncementsPage extends StatefulWidget {
 }
 
 class _AnnouncementsPageState extends State<AnnouncementsPage> {
-  List<String> dropdownSortItems = [
-    "Haber",
+  //bool _isVisible = true;
+  List<String> dropdownTypeItems = [
     "Duyuru",
+    "Haber",
   ];
   List<String> dropdownCorporationItems = [
     "İstanbul Kodluyor",
+  ];
+  List<String> dropdownSortItems = [
+    "Adına göre (A-Z)",
+    "Adına göre (Z-A)",
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,17 +51,29 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
         drawer: const MyDrawer(),
         body: SingleChildScrollView(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               const EduBannerWidget(title: "Duyurularım"),
-              const SearchWidget(hintText: "Arama"),
-              DropdownSortWidget(
-                dropdownValue: dropdownSortItems.first,
-                dropdownItems: dropdownSortItems,
+              const Row(
+                children: [
+                  Expanded(child: SearchWidget(hintText: "Arama")),
+                  VisibilityWidget(),
+                  SizedBox(width: 15),
+                ],
               ),
               DropdownSortWidget(
-                dropdownValue: dropdownCorporationItems.first,
+                hint: "Tür",
+                dropdownItems: dropdownTypeItems,
+              ),
+              DropdownSortWidget(
+                hint: "Organizasyon",
                 dropdownItems: dropdownCorporationItems,
               ),
+              DropdownSortWidget(
+                hint: "Sıralama",
+                dropdownItems: dropdownSortItems,
+              ),
+              AnnouncementItemWidget(), //const yapma
               const FooterWidget()
             ],
           ),

@@ -51,7 +51,7 @@ class _LessonsPageState extends State<LessonsPage> {
               const EduBannerWidget(title: "Eğitimlerim"),
               const SearchWidget(hintText: "Arama"),
               DropdownSortWidget(
-                dropdownValue: dropdownCorporationItems.first,
+                hint: "Kurum Seçiniz..",
                 dropdownItems: dropdownCorporationItems,
               ),
               DropdownSortWidget(

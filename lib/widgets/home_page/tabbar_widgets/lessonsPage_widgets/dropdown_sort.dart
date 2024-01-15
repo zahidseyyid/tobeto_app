@@ -4,23 +4,26 @@ import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
   const DropdownSortWidget(
-      {super.key, required this.dropdownValue, required this.dropdownItems});
-  final String dropdownValue;
+      {super.key, required this.dropdownItems, this.hint, this.dropdownValue});
+  final String? dropdownValue;
   final List<String> dropdownItems;
+  final String? hint;
 
   @override
   State<DropdownSortWidget> createState() => _DropdownWidgetState();
 }
 
 class _DropdownWidgetState extends State<DropdownSortWidget> {
-  late String dropdownValue;
+  late String? dropdownValue;
   late List<String> dropdownItems;
+  late String? hintText;
 
   @override
   void initState() {
     super.initState();
     dropdownValue = widget.dropdownValue;
     dropdownItems = widget.dropdownItems;
+    hintText = widget.hint ?? "Seçiniz..";
   }
 
   @override
@@ -47,6 +50,11 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
         children: [
           DropdownButton<String>(
             value: dropdownValue,
+            alignment: Alignment.center,
+            hint: Text(
+              hintText.toString(),
+              textAlign: TextAlign.center,
+            ),
             icon: const Row(
               children: [
                 Text(
