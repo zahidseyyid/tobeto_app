@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/sign_in_page.dart';
+
+final firebaseAuthInstance = FirebaseAuth.instance;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,6 +23,25 @@ class _MyStatefulWidgetState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> signInWithEmail(String email, password) async {
+    try {
+      await firebaseAuthInstance.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomePage()));
+
+      if (kDebugMode) {
+        print(firebaseAuthInstance.currentUser!.uid);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 
   @override
@@ -107,16 +131,20 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                         child: const Text('Giriş Yap',
                             style: TextStyle(color: Colors.white)),
                         onPressed: () {
-                          // signIn();
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
-                            ),
-                          );
+                          signInWithEmail(
+                              nameController.text, passwordController.text);
                         },
                       ),
                     ),
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignInPage()));
+                        },
+                        child: const Text("Kayıt Ol")),
                     const Divider(
                       color: Colors.grey,
                       height: 30,
@@ -124,12 +152,20 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                     ),
                     Container(
                       padding: const EdgeInsets.only(bottom: 5),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Parolamı Unuttum',
-                          style: TextStyle(color: Colors.blue),
-                        ),
+                      child: Column(
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              if (kDebugMode) {
+                                print(firebaseAuthInstance.currentUser!.uid);
+                              }
+                            },
+                            child: const Text(
+                              'Parolamı Unuttum',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

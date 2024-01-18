@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_edit_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
+  void signOut() async {
+    await firebaseAuthInstance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
     var logoAsset = getLogo(brightness);
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    //final double deviceHeight = mediaQueryData.size.height;
+    final double deviceWidth = mediaQueryData.size.width;
     return Drawer(
       child: ListView(
         children: [
@@ -86,18 +94,31 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const Column(
+          Column(
             children: [
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('Halit Enes Kalaycı'),
                     CircleAvatar(
                       radius: 20,
-                      child: Icon(Icons.person),
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                      child: const Icon(Icons.person_3_outlined),
                     ),
+                    SizedBox(width: deviceWidth / 20),
+                    Text(firebaseAuthInstance.currentUser!.email.toString()),
+                    SizedBox(width: deviceWidth / 7),
+                    GestureDetector(
+                        onTap: () {
+                          signOut();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()));
+                        },
+                        child: const Icon(Icons.exit_to_app)),
                   ],
                 ),
               ),
