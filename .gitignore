@@ -51,3 +51,4 @@ ios/Podfile.lock
 ios/Podfile
 ios/Flutter/AppFrameworkInfo.plist
 .vscode/settings.json
+macos/Runner.xcodeproj/project.pbxproj
