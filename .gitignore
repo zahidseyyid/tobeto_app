@@ -50,10 +50,4 @@ ios/Runner.xcodeproj/project.pbxproj
 ios/Podfile.lock
 ios/Podfile
 ios/Flutter/AppFrameworkInfo.plist
-pubspec.lock
-macos/Runner.xcworkspace/contents.xcworkspacedata
-macos/Runner.xcodeproj/project.pbxproj
-ios/Runner.xcodeproj/project.pbxproj
-ios/Podfile.lock
-ios/Podfile
-ios/Flutter/AppFrameworkInfo.plist
+.vscode/settings.json
