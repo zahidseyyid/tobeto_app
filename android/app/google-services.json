@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30785568935",
+    "project_id": "tobetopair",
+    "storage_bucket": "tobetopair.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30785568935:android:15a185ea7595e54113db82",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoSMKelu2Yvo8hdluJDgkMlGNGU0tN1JY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
