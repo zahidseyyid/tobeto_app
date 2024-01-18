@@ -13,7 +13,7 @@ class SurveysWidget extends StatelessWidget {
       child: Container(
         width: deviceWidth,
         decoration: BoxDecoration(
-          color: const Color(0xFFe6e6e6), //değişecek
+          color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

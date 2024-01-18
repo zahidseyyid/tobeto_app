@@ -41,7 +41,7 @@ class SearchWidget extends StatelessWidget {
             ),
             filled: true,
             fillColor: Theme.of(context).colorScheme.background,
-            contentPadding: const EdgeInsets.all(10.0),
+            contentPadding: const EdgeInsets.all(15.0),
           ),
           onChanged: (value) {
             // arama sorgusu ile ilgili işlemler

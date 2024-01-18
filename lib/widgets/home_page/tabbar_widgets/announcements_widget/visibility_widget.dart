@@ -12,7 +12,7 @@ class VisibilityWidget extends StatefulWidget {
 //Okunanları gizle ve hepsini göster olarak çalışan gözlük iconu
 
 class _VisibilityWidgetState extends State<VisibilityWidget> {
-  bool _isVisible = true;
+  bool _isVisible = false;
   @override
   Widget build(BuildContext context) {
     Function sort = Provider.of<StateData>(context).sortData;

@@ -27,8 +27,8 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
     "İstanbul Kodluyor",
   ];
   List<String> dropdownSortItems = [
-    "Adına göre (A-Z)",
-    "Adına göre (Z-A)",
+    "Tarihe göre (Y-E)",
+    "Tarihe göre (E-Y)",
   ];
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
     return ChangeNotifierProvider<StateData>(
-      //Arama ve filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
+      //Bildirim güncellenmesi için ChangeNotifierProvider ile sarmalladım
       create: (context) => StateData(),
       child: Scaffold(
         appBar: CustomAppBarWidget(brightness: brightness),

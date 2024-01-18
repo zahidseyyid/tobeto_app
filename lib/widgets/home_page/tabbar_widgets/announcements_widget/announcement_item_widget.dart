@@ -32,8 +32,11 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
         setState(() {
           filtering = list.where((element) => !(element.isRead)).toList();
         });
-      case "Adına göre (Z-A)":
-        list.sort((a, b) => b.title.compareTo(a.title));
+      case "Tarihe göre (Y-E)":
+        list.sort((a, b) => b.date.compareTo(a.date));
+        break;
+      case "Tarihe göre (E-Y)":
+        list.sort((a, b) => a.date.compareTo(b.date));
         break;
       default:
         //"Adına göre alfabetik sırayla (A-Z)"
@@ -89,8 +92,9 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                      border: Border(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.background,
+                      border: const Border(
                           left:
                               BorderSide(color: Color(0xFF076B34), width: 10)),
                     ),

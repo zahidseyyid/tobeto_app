@@ -55,15 +55,26 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
               hintText.toString(),
               textAlign: TextAlign.center,
             ),
-            icon: const Row(
+            icon: Row(
               children: [
-                Text(
+                GestureDetector(
+                  onTap: () {
+                    dropdownValue = null;
+                    sort("");
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    size: 25,
+                    color: Colors.grey,
+                  ),
+                ),
+                const Text(
                   "I",
-                  textScaleFactor: 2.5,
+                  textScaler: TextScaler.linear(2),
                   style: TextStyle(
                       color: Colors.grey, fontWeight: FontWeight.w100),
                 ),
-                Icon(
+                const Icon(
                   Icons.keyboard_arrow_down,
                   color: Colors.grey,
                 ),
@@ -84,7 +95,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Container(
-                  width: deviceWidth * 0.78,
+                  width: deviceWidth * 0.72,
                   margin: const EdgeInsets.only(left: 15),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
