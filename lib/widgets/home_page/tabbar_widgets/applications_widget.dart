@@ -23,7 +23,7 @@ class ApplicationsWidget extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: deviceWidth * 0.85,
+                width: deviceWidth * 0.87,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.background,
                   border: const Border(

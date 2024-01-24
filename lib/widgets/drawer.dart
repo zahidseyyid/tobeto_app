@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/pages/evaluation_page.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/pages/catalog_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/pages/profile.dart';
@@ -17,9 +19,9 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
     var logoAsset = getLogo(brightness);
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    //final MediaQueryData mediaQueryData = MediaQuery.of(context);
     //final double deviceHeight = mediaQueryData.size.height;
-    final double deviceWidth = mediaQueryData.size.width;
+    //final double deviceWidth = mediaQueryData.size.width;
     return Drawer(
       child: ListView(
         children: [
@@ -83,7 +85,12 @@ class MyDrawer extends StatelessWidget {
                   child: const Text('Katalog'),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CatalogPage()));
+                  },
                   child: const Text('Takvim'),
                 ),
               ],
@@ -103,7 +110,7 @@ class MyDrawer extends StatelessWidget {
           Column(
             children: [
               ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                contentPadding: paddingHBig,
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -113,9 +120,11 @@ class MyDrawer extends StatelessWidget {
                       backgroundColor: Theme.of(context).colorScheme.secondary,
                       child: const Icon(Icons.person_3_outlined),
                     ),
-                    SizedBox(width: deviceWidth / 20),
+                    //SizedBox(width: deviceWidth / 20),
+                    Padding(padding: paddingHBig),
                     Text(firebaseAuthInstance.currentUser!.email.toString()),
-                    SizedBox(width: deviceWidth / 7),
+                    // SizedBox(width: deviceWidth / 16),
+                    Padding(padding: paddingHBig),
                     GestureDetector(
                         onTap: () {
                           signOut();
