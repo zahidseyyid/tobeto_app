@@ -83,7 +83,7 @@ class LessonsWidget extends StatelessWidget {
                         children: [
                           Text(
                             DateFormat('dd-MM-yyyy kk:mm')
-                                .format(lessonsData[index].date)
+                                .format(lessonsData[index].date!)
                                 .toString(),
                             style: const TextStyle(
                               fontSize: 12,

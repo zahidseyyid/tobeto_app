@@ -10,6 +10,7 @@ class LessonItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceHeight = MediaQuery.of(context).size.height;
     //Textfielda yazılan ile filtreleme kısmı
     var filtering = filterLessons(
       lessonsData,
@@ -30,7 +31,7 @@ class LessonItemWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(5),
             child: Container(
-              height: 250,
+              height: deviceHeight * .27,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(20),
@@ -76,7 +77,7 @@ class LessonItemWidget extends StatelessWidget {
                     children: [
                       Text(
                         DateFormat('dd-MM-yyyy kk:mm')
-                            .format(filtering[index].date)
+                            .format(filtering[index].date!)
                             .toString(),
                         style: const TextStyle(
                           fontSize: 12,
@@ -104,10 +105,10 @@ void sortLessons(List<LessonModel> list, String sortData) {
       list.sort((a, b) => b.title.compareTo(a.title));
       break;
     case "Tarihe göre (Y-E)":
-      list.sort((a, b) => b.date.compareTo(a.date));
+      list.sort((a, b) => b.date!.compareTo(a.date!));
       break;
     case "Tarihe göre (E-Y)":
-      list.sort((a, b) => a.date.compareTo(b.date));
+      list.sort((a, b) => a.date!.compareTo(b.date!));
       break;
     default:
       //"Adına göre alfabetik sırayla (A-Z)"
