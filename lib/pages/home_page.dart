@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
-import 'package:flutter_application_1/widgets/home_page/gradientCard_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
+
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
@@ -28,19 +29,19 @@ class HomePage extends StatelessWidget {
               const TabBarWidget(),
               const ExamsWidget(),
               GradientCardWidget(
-                buttonText: 'Profilini oluştur',
+                title: "Profilini oluştur",
                 gradient: const LinearGradient(
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight,
                   colors: [
-                    Color(0xFF3c0b8c),
-                    Color(0xFFe3a6fe),
+                    Color(0xFFbda6fe),
+                    Color(0xFF1d0b8c),
                   ],
                 ),
                 onPressed: () {},
               ),
               GradientCardWidget(
-                  buttonText: 'Kendini değerlendir',
+                  title: 'Kendini değerlendir',
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
                   ),
                   onPressed: () {}),
               GradientCardWidget(
-                  buttonText: 'Öğrenmeye başla',
+                  title: 'Öğrenmeye başla',
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
