@@ -3,7 +3,6 @@ import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/evaluation_page/gradientcard2_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
-
 import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 

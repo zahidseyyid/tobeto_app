@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/datas/lesson_dummy_data.dart';
@@ -28,96 +29,95 @@ class CatalogLessonsItem extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(5),
-          child: Container(
-            height: deviceHeight * 0.3,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(categoryLessons[index].img.toString()),
+          child: GestureDetector(
+            onTap: () {
+              // Tıklanılan dersin detay sayfasına yönlendirilmesi
+            },
+            child: Container(
+              height: deviceHeight * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(categoryLessons[index].img.toString()),
+                ),
               ),
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 20,
-                  right: 20,
-                  child: GestureDetector(
-                    onTap: () {
-                      //Dersin detayı sayfasına gidecek
-                    },
-                    child: const Icon(
+              child: Stack(
+                children: [
+                  const Positioned(
+                    top: 20,
+                    right: 20,
+                    child: Icon(
                       Icons.play_circle,
                       size: 40,
                       color: Color(0xFF9933FF),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(65, 65, 65, .5)
-                              .withOpacity(0.5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.person_outline_sharp,
-                                    color: color,
-                                  ),
-                                  Padding(padding: paddingHSmall),
-                                  Text(
-                                    categoryLessons[index].teacher ?? "",
-                                    style: TextStyle(
-                                      fontSize: 13,
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(65, 65, 65, .5).withOpacity(0.5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.person_outline_sharp,
                                       color: color,
                                     ),
-                                  ),
-                                  Padding(padding: paddingHSmall),
-                                  Icon(
-                                    Icons.access_time,
-                                    color: color,
-                                  ),
-                                  Padding(padding: paddingHSmall),
-                                  Text(
-                                    categoryLessons[index].lessonDuration ?? "",
-                                    style: TextStyle(
-                                      fontSize: 13,
+                                    Padding(padding: paddingHSmall),
+                                    Text(
+                                      categoryLessons[index].teacher ?? "",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: color,
+                                      ),
+                                    ),
+                                    Padding(padding: paddingHSmall),
+                                    Icon(
+                                      Icons.access_time,
                                       color: color,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Padding(padding: paddingHMedium),
-                              Text(
-                                categoryLessons[index].title.toString(),
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: color,
+                                    Padding(padding: paddingHSmall),
+                                    Text(
+                                      categoryLessons[index].lessonDuration ?? "",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: color,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                                Padding(padding: paddingHMedium),
+                                Text(
+                                  categoryLessons[index].title.toString(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: color,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
