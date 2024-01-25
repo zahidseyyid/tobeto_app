@@ -9,7 +9,7 @@ class GradientCardWidget extends StatelessWidget {
   final bool includeStartButton;
   final bool showArrowIcon;
   final VoidCallback onPressed;
-  final double cardHeight;
+  final double? cardHeight;
   const GradientCardWidget({
     Key? key,
     required this.title,
@@ -19,7 +19,7 @@ class GradientCardWidget extends StatelessWidget {
     required this.onPressed,
     this.includeStartButton = true,
     this.showArrowIcon = false,
-    this.cardHeight = 150.0,
+    this.cardHeight,
   }) : super(key: key);
 
   @override
@@ -92,9 +92,9 @@ class GradientCardWidget extends StatelessWidget {
                   ),
                 ),
               if (showArrowIcon)
-                const Icon(
-                  Icons.arrow_right,
-                  color: Colors.white,
+                Text(
+                  ">>>",
+                  style: TextStyle(fontSize: 26, color: Colors.white),
                 ),
               if (includeStartButton)
                 Padding(

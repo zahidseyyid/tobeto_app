@@ -4,13 +4,13 @@ class StartButtonWidget extends StatefulWidget {
   final VoidCallback onPressed;
   final Color backgroundColor;
   final Color textColor;
-  final double buttonWidth;
+  final double? buttonWidth;
   const StartButtonWidget({
     Key? key,
     required this.onPressed,
     required this.backgroundColor,
     required this.textColor,
-    required this.buttonWidth,
+    this.buttonWidth,
   }) : super(key: key);
 
   @override
