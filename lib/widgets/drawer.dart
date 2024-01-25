@@ -50,46 +50,32 @@ class MyDrawer extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
                   },
                   child: const Text('Anasayfa'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EvaluationPage()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const EvaluationPage()));
                   },
                   child: const Text('Değerlendirmeler'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfilePage()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
                   },
                   child: const Text('Profilim'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfileEditPage()));
+                        context, MaterialPageRoute(builder: (context) => const ProfileEditPage()));
                   },
                   child: const Text('Katalog'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CatalogPage()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const CatalogPage()));
                   },
                   child: const Text('Takvim'),
                 ),
@@ -99,8 +85,7 @@ class MyDrawer extends StatelessWidget {
           const Divider(),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: const Row(
               children: [Text("Tobeto"), Icon(Icons.home_outlined)],
@@ -113,7 +98,7 @@ class MyDrawer extends StatelessWidget {
                 contentPadding: paddingHBig,
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CircleAvatar(
                       radius: 20,
@@ -121,17 +106,13 @@ class MyDrawer extends StatelessWidget {
                       child: const Icon(Icons.person_3_outlined),
                     ),
                     //SizedBox(width: deviceWidth / 20),
-                    Padding(padding: paddingHBig),
                     Text(firebaseAuthInstance.currentUser!.email.toString()),
                     // SizedBox(width: deviceWidth / 16),
-                    Padding(padding: paddingHBig),
                     GestureDetector(
                         onTap: () {
                           signOut();
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginPage()));
+                              context, MaterialPageRoute(builder: (context) => const LoginPage()));
                         },
                         child: const Icon(Icons.exit_to_app)),
                   ],
