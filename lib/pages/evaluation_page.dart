@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/evaluation_page/gradientcard2_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 
 class EvaluationPage extends StatelessWidget {
+  const EvaluationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.height;
@@ -44,8 +47,7 @@ class EvaluationPage extends StatelessWidget {
               children: [
                 GradientCardWidget(
                   title: "Tobeto İşte Başarı Modeli",
-                  subtitle:
-                      "80 soru ile yetkinliklerini ölç,     önerilen eğitimleri tamamla,        rozetini kazan.",
+                  subtitle: "80 soru ile yetkinliklerini ölç,     önerilen eğitimleri tamamla,        rozetini kazan.",
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
@@ -60,8 +62,7 @@ class EvaluationPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 GradientCardWidget(
                   title: "Yazılımda Başarı Testi",
-                  subtitle:
-                      "Çoktan seçmeli sorular                                  ile teknik bilgini test et.",
+                  subtitle: "Çoktan seçmeli sorular                                  ile teknik bilgini test et.",
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
@@ -99,36 +100,39 @@ class EvaluationPage extends StatelessWidget {
                   onPressed: () {},
                 ),
                 SizedBox(
-                  height: 100,
+                  height: size / 6.5,
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 15),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Aboneliğe özel",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.purple,
+                          padding: paddingHSuperBig,
+                          child: const Text.rich(
+                            //Tırnak işaretli yeşil kısım
+                            TextSpan(
+                              text: '',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                              children: <InlineSpan>[
+                                TextSpan(
+                                  text: "Aboneliğe özel ",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.purple,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                "değerlendirme ",
-                                textAlign: TextAlign.center,
-                                style: evalutionTextStyle(),
-                              ),
-                            ],
+                                TextSpan(text: 'değerlendirme'),
+                              ],
+                            ),
                           ),
                         ),
-                        Text(
+                        const Text(
                           "araçları için",
-                          style: evalutionTextStyle(),
-                        ),
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -154,12 +158,10 @@ class EvaluationPage extends StatelessWidget {
                   height: 20,
                 ),
                 GradientCardWidget(
-                  title:
-                      "Huawei Talent Interview                 Teknik Bilgi Sınavı*",
+                  title: "Huawei Talent Interview                 Teknik Bilgi Sınavı*",
                   subtitle:
-                      "Sertifika alabilmen için, eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.              4400+ soru | 30+ programlama                              dili                                                                4zorluk seviyesi",
-                  subtitle2:
-                      "*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.",
+                      "Sertifika alabilmen için, eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.\n4400+ soru | 30+ programlama dili, 4 zorluk seviyesi",
+                  subtitle2: "*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.",
                   gradient: const LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -170,7 +172,7 @@ class EvaluationPage extends StatelessWidget {
                   ),
                   onPressed: () {},
                   includeStartButton: false,
-                  cardHeight: size / 3,
+                  cardHeight: size / 2.5,
                 ),
                 const FooterWidget(),
               ],
@@ -182,7 +184,7 @@ class EvaluationPage extends StatelessWidget {
   }
 
   TextStyle evalutionTextStyle() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.normal,
     );

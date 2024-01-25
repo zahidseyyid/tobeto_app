@@ -15,6 +15,8 @@ class GradientCardWidget2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQuery = MediaQuery.of(context);
+    double deviceWidth = mediaQuery.size.width;
     return Padding(
       padding: const EdgeInsets.only(
         left: 10,
@@ -46,7 +48,7 @@ class GradientCardWidget2 extends StatelessWidget {
                 onPressed: () {},
               ),
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 5,
@@ -62,7 +64,7 @@ class GradientCardWidget2 extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Container(
                   padding: const EdgeInsets.only(right: 10),
                   child: StartButtonWidget(
