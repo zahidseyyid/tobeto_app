@@ -70,7 +70,8 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                 ),
                 const Text(
                   "I",
-                  textScaler: TextScaler.linear(2),
+                  textScaleFactor: 2.5,
+                  //textScaler: TextScaler.linear(2),
                   style: TextStyle(
                       color: Colors.grey, fontWeight: FontWeight.w100),
                 ),

@@ -69,7 +69,6 @@ class GradientCardWidget2 extends StatelessWidget {
                     onPressed: onPressed,
                     backgroundColor: Colors.white,
                     textColor: Colors.black,
-                    buttonWidth: 80,
                   ),
                 ),
               ),
