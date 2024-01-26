@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/catalog_page/catalog_banner.dart';
+import 'package:flutter_application_1/widgets/catalog_page/catalog_filter_widget.dart';
 import 'package:flutter_application_1/widgets/catalog_page/catalog_lessons_item.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
@@ -37,7 +38,9 @@ class CatalogPage extends StatelessWidget {
               const CatalogBanner(),
               Padding(padding: paddingMedium),
               CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    catalogFilterWidget(context);
+                  },
                   buttonText: "Filtrele",
                   buttonColor: const Color(0xFF9933FF),
                   width: deviceWidth * .85,

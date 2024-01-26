@@ -52,9 +52,8 @@ class AnnouncementsWidget extends StatelessWidget {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 0.85,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.background,
-                            border: const Border(
+                          decoration: const BoxDecoration(
+                            border: Border(
                                 left: BorderSide(
                                     color: Color(0xFF076B34), width: 10)),
                           ),
