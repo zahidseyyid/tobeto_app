@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/datas/lesson_dummy_data.dart';
@@ -14,6 +13,7 @@ class CatalogLessonsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     Color color = Theme.of(context).colorScheme.background;
+    Color purple = const Color(0xFF9933FF);
 
     //Textfielda yazılan ile filtreleme kısmı
     var categoryLessons = filterLessons(
@@ -28,7 +28,7 @@ class CatalogLessonsItem extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.only(top: 15),
           child: GestureDetector(
             onTap: () {
               // Tıklanılan dersin detay sayfasına yönlendirilmesi
@@ -37,6 +37,7 @@ class CatalogLessonsItem extends StatelessWidget {
               height: deviceHeight * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.white70),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(categoryLessons[index].img.toString()),
@@ -44,13 +45,13 @@ class CatalogLessonsItem extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  const Positioned(
+                  Positioned(
                     top: 20,
                     right: 20,
                     child: Icon(
                       Icons.play_circle,
                       size: 40,
-                      color: Color(0xFF9933FF),
+                      color: purple,
                     ),
                   ),
                   Positioned(
@@ -63,7 +64,7 @@ class CatalogLessonsItem extends StatelessWidget {
                         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color.fromRGBO(65, 65, 65, .5).withOpacity(0.5),
+                            color: purple.withOpacity(0.7),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(12),
@@ -83,6 +84,7 @@ class CatalogLessonsItem extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 13,
                                         color: color,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                     Padding(padding: paddingHSmall),
@@ -92,9 +94,11 @@ class CatalogLessonsItem extends StatelessWidget {
                                     ),
                                     Padding(padding: paddingHSmall),
                                     Text(
-                                      categoryLessons[index].lessonDuration ?? "",
+                                      categoryLessons[index].lessonDuration ??
+                                          "",
                                       style: TextStyle(
                                         fontSize: 13,
+                                        fontWeight: FontWeight.w600,
                                         color: color,
                                       ),
                                     ),
