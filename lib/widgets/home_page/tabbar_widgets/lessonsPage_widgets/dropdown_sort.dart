@@ -4,10 +4,15 @@ import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
   const DropdownSortWidget(
-      {super.key, required this.dropdownItems, this.hint, this.dropdownValue});
+      {super.key,
+      required this.dropdownItems,
+      this.hint,
+      this.dropdownValue,
+      this.size});
   final String? dropdownValue;
   final List<String> dropdownItems;
   final String? hint;
+  final double? size;
 
   @override
   State<DropdownSortWidget> createState() => _DropdownWidgetState();
@@ -17,6 +22,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
   late String? dropdownValue;
   late List<String> dropdownItems;
   late String? hintText;
+  late double? size;
 
   @override
   void initState() {
@@ -29,6 +35,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
+    size = widget.size ?? deviceWidth;
 
     Function sort = Provider.of<StateData>(context).sortData;
     return Container(
@@ -70,10 +77,10 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                 ),
                 const Text(
                   "I",
-                  textScaleFactor: 2.5,
+                  textScaleFactor: 2,
                   //textScaler: TextScaler.linear(2),
                   style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.w100),
+                      color: Colors.grey, fontWeight: FontWeight.w200),
                 ),
                 const Icon(
                   Icons.keyboard_arrow_down,
@@ -96,7 +103,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Container(
-                  width: deviceWidth * 0.72,
+                  width: size! * 0.72,
                   margin: const EdgeInsets.only(left: 15),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

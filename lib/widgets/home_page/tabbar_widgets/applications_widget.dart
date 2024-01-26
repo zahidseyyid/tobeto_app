@@ -24,9 +24,8 @@ class ApplicationsWidget extends StatelessWidget {
             children: [
               Container(
                 width: deviceWidth * 0.87,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
-                  border: const Border(
+                decoration: const BoxDecoration(
+                  border: Border(
                       left: BorderSide(color: Color(0xFF076B34), width: 10)),
                 ),
                 padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
