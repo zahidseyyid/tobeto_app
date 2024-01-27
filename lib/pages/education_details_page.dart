@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/datas/education_dummy_data.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
+import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
@@ -17,7 +18,7 @@ class EducationDetailsPage extends StatefulWidget {
 
 class _EducationDetailsPageState extends State<EducationDetailsPage> {
   final videoUrlNotifier = ValueNotifier<String>(dummyEducations[0].videoList[0].link);
-
+  int selectedVideoIndex = 0;
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -104,21 +105,31 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: dummyEducations[0].videoList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                videoUrlNotifier.value = dummyEducations[0].videoList[index].link;
-                              },
-                              child: Card(
-                                child: EducationListTile(video: dummyEducations[0].videoList[index]),
-                              ),
-                            );
-                          },
+                        Padding(
+                          padding: paddingMedium,
+                          child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: dummyEducations[0].videoList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  videoUrlNotifier.value = dummyEducations[0].videoList[index].link;
+                                  setState(() {
+                                    selectedVideoIndex = index; // Seçili video indeksini güncelleyin
+                                  });
+                                },
+                                child: Card(
+                                  elevation: 3,
+                                  color: selectedVideoIndex == index
+                                      ? const Color.fromARGB(255, 202, 198, 198)
+                                      : Colors.white, // Seçili öğe mavi olarak belirlenir
+                                  child: EducationListTile(video: dummyEducations[0].videoList[index]),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                        const LessonsWidget(),
+                        const EducationAbout(),
                       ],
                     ),
                   ),
