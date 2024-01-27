@@ -4,9 +4,11 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({Key? key, required this.width, required this.height}) : super(key: key);
+  const CustomVideoPlayer({Key? key, required this.width, required this.height, required this.videoUrlNotifier})
+      : super(key: key);
   final double width;
   final double height;
+  final ValueNotifier<String> videoUrlNotifier;
 
   @override
   State<CustomVideoPlayer> createState() => _CustomVideoPlayerState();
@@ -19,13 +21,28 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
     super.initState();
     flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.networkUrl(
-        Uri.parse("https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4"),
+        Uri.parse(widget.videoUrlNotifier.value),
       ),
+      autoPlay: false,
     );
+    widget.videoUrlNotifier.addListener(updateVideoUrl);
+  }
+
+  void updateVideoUrl() {
+    setState(() {
+      flickManager.dispose();
+      flickManager = FlickManager(
+        videoPlayerController: VideoPlayerController.networkUrl(
+          Uri.parse(widget.videoUrlNotifier.value),
+        ),
+        autoPlay: false,
+      );
+    });
   }
 
   @override
   void dispose() {
+    widget.videoUrlNotifier.removeListener(updateVideoUrl);
     flickManager.dispose();
     super.dispose();
   }
@@ -47,12 +64,32 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
         color: Colors.grey,
         child: FlickVideoPlayer(
           flickManager: flickManager,
-          flickVideoWithControls: const FlickVideoWithControls(
-            closedCaptionTextStyle: TextStyle(fontSize: 8),
-            controls: FlickPortraitControls(),
+          flickVideoWithControls: FlickVideoWithControls(
+            closedCaptionTextStyle: const TextStyle(fontSize: 8),
+            controls: FlickPortraitControls(
+                iconSize: 30,
+                progressBarSettings: FlickProgressBarSettings(
+                  playedColor: Colors.amber,
+                  handleColor: Colors.black,
+                  backgroundColor: Colors.green,
+                  handleRadius: 10,
+                  height: 10,
+                  bufferedColor: Colors.transparent,
+                )),
+            iconThemeData: const IconThemeData(color: Colors.red),
           ),
-          flickVideoWithControlsFullscreen: const FlickVideoWithControls(
-            controls: FlickLandscapeControls(),
+          flickVideoWithControlsFullscreen: FlickVideoWithControls(
+            controls: FlickPortraitControls(
+                iconSize: 30,
+                progressBarSettings: FlickProgressBarSettings(
+                  playedColor: Colors.amber,
+                  handleColor: Colors.black,
+                  backgroundColor: Colors.green,
+                  handleRadius: 10,
+                  height: 10,
+                  bufferedColor: Colors.transparent,
+                )),
+            iconThemeData: const IconThemeData(color: Colors.red),
           ),
         ),
       ),

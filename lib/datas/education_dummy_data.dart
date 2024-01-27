@@ -1,5 +1,11 @@
 import 'package:flutter_application_1/models/education_model.dart';
 
+List videoLink = [
+  "https://cdn.cms.medianova.com/p/132/sp/13200/serveFlavor/entryId/0_402pg2wr/v/2/ev/10/flavorId/0_jpibng14/forceproxy/true/name/a.mp4",
+  "https://cdn.cms.medianova.com/p/132/sp/13200/serveFlavor/entryId/0_1d1xnbrn/v/2/ev/10/flavorId/0_ccav4sj4/forceproxy/true/name/a.mp4",
+  "https://cdn.cms.medianova.com/p/132/sp/13200/serveFlavor/entryId/0_yiu6meor/v/2/ev/10/flavorId/0_t84jbjzz/forceproxy/true/name/a.mp4"
+];
+
 List<Education> dummyEducations = [
   Education(
     id: "1",
@@ -12,13 +18,13 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
-    videoCount: 10,
+    videoCount: 3,
     videoList: List.generate(
-      10,
+      3,
       (index) => Video(
         id: index + 1,
         videoTitle: "Flutter Video ${index + 1}",
-        link: "https://www.youtube.com/watch?v=flutter_video_${index + 1}",
+        link: videoLink[index], // "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
         duration: Duration(minutes: (index + 1) * 10),
         status: index == 0
             ? "Completed"
@@ -39,13 +45,13 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
-    videoCount: 5,
+    videoCount: 3,
     videoList: List.generate(
-      5,
+      3,
       (index) => Video(
         id: index + 1,
         videoTitle: "Dart Video ${index + 1}",
-        link: "https://www.youtube.com/watch?v=dart_video_${index + 1}",
+        link: videoLink[index],
         duration: Duration(minutes: (index + 1) * 15),
         status: index == 0 ? "Completed" : "Not Started", // İlk video tamamlandı, diğerleri başlamadı
       ),
@@ -62,13 +68,13 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
-    videoCount: 5,
+    videoCount: 3,
     videoList: List.generate(
-      5,
+      3,
       (index) => Video(
         id: index + 1,
         videoTitle: "Firebase Video ${index + 1}",
-        link: "https://www.youtube.com/watch?v=firebase_video_${index + 1}",
+        link: videoLink[index],
         duration: Duration(minutes: (index + 1) * 20),
         status: index == 0
             ? "Completed"
@@ -89,13 +95,13 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 0),
     estimatedTime: const Duration(days: 1),
     category: "Category",
-    videoCount: 5,
+    videoCount: 3,
     videoList: List.generate(
-      5,
+      3,
       (index) => Video(
         id: index + 1,
         videoTitle: "SQL Video ${index + 1}",
-        link: "https://www.youtube.com/watch?v=sql_video_${index + 1}",
+        link: videoLink[index],
         duration: Duration(minutes: (index + 1) * 25),
         status: index == 0 ? "Completed" : "Not Started", // İlk video tamamlandı, diğerleri başlamadı
       ),

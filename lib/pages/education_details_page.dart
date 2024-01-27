@@ -1,41 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/datas/education_dummy_data.dart';
+import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
 
-class LessonDetailsPage extends StatefulWidget {
-  const LessonDetailsPage({super.key, this.lessonId});
+class EducationDetailsPage extends StatefulWidget {
+  const EducationDetailsPage({Key? key, this.lessonId}) : super(key: key);
   final String? lessonId;
+
   @override
-  State<LessonDetailsPage> createState() => _LessonDetailsPageState();
+  State<EducationDetailsPage> createState() => _EducationDetailsPageState();
 }
 
-class _LessonDetailsPageState extends State<LessonDetailsPage> {
+class _EducationDetailsPageState extends State<EducationDetailsPage> {
+  final videoUrlNotifier = ValueNotifier<String>(dummyEducations[0].videoList[0].link);
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
     double deviceWidth = MediaQuery.of(context).size.width;
     Brightness brightness = Theme.of(context).brightness;
+
     return Scaffold(
       appBar: CustomAppBarWidget(brightness: brightness),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Image(
-                      image: AssetImage(dummyEducations[0].image),
-                      fit: BoxFit.fill,
-                    ),
-                  )),
+                width: deviceWidth * 0.24,
+                height: deviceHeight * 0.12,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image(
+                    image: AssetImage(dummyEducations[0].image),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -61,7 +68,16 @@ class _LessonDetailsPageState extends State<LessonDetailsPage> {
             ],
           ),
           Padding(padding: paddingSmall),
-          CustomVideoPlayer(height: deviceHeight * 0.25, width: deviceWidth * 1),
+          ValueListenableBuilder<String>(
+            valueListenable: videoUrlNotifier,
+            builder: (context, value, child) {
+              return CustomVideoPlayer(
+                videoUrlNotifier: videoUrlNotifier,
+                height: deviceHeight * 0.25,
+                width: deviceWidth * 1,
+              );
+            },
+          ),
           Padding(padding: paddingSmall),
           Expanded(
             child: DefaultTabController(
@@ -92,8 +108,14 @@ class _LessonDetailsPageState extends State<LessonDetailsPage> {
                           scrollDirection: Axis.vertical,
                           itemCount: dummyEducations[0].videoList.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                              child: EducationListTile(video: dummyEducations[0].videoList[index]),
+                            return GestureDetector(
+                              onTap: () {
+                                videoUrlNotifier.value = dummyEducations[0].videoList[index].link;
+                                print(dummyEducations[0].videoList[index].link);
+                              },
+                              child: Card(
+                                child: EducationListTile(video: dummyEducations[0].videoList[index]),
+                              ),
                             );
                           },
                         ),
