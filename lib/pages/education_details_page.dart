@@ -51,12 +51,12 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
                   Row(
                     children: [
                       SizedBox(
-                        width: 210,
+                        width: deviceWidth * 0.5,
                         child: LinearProgressIndicator(
                           color: Colors.greenAccent,
                           backgroundColor: Colors.grey,
                           value: dummyEducations[0].progress / 100,
-                          minHeight: 20,
+                          minHeight: deviceHeight * 0.02,
                         ),
                       ),
                       Padding(padding: paddingHSmall),
@@ -111,7 +111,6 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
                             return GestureDetector(
                               onTap: () {
                                 videoUrlNotifier.value = dummyEducations[0].videoList[index].link;
-                                print(dummyEducations[0].videoList[index].link);
                               },
                               child: Card(
                                 child: EducationListTile(video: dummyEducations[0].videoList[index]),
