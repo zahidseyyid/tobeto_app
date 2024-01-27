@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/models/education_model.dart';
+import 'package:flutter_application_1/pages/education_details_page.dart';
 import 'package:flutter_application_1/pages/evaluation_page.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
@@ -69,7 +71,7 @@ class MyDrawer extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => const ProfileEditPage()));
+                        context, MaterialPageRoute(builder: (context) => const EducationDetailsPage()));
                   },
                   child: const Text('Katalog'),
                 ),
