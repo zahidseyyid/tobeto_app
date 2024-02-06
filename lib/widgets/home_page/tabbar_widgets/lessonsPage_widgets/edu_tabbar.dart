@@ -29,7 +29,7 @@ class EduTabbarWidget extends StatelessWidget {
             ],
           ),
           //const yapma
-          AutoScaleTabBarView(
+          const AutoScaleTabBarView(
             children: <Widget>[
               LessonItemWidget(),
               LessonItemWidget(),

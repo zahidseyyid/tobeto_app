@@ -27,12 +27,10 @@ class _MyStatefulWidgetState extends State<LoginPage> {
 
   Future<void> signInWithEmail(String email, password) async {
     try {
-      await firebaseAuthInstance.signInWithEmailAndPassword(
-          email: email, password: password);
+      await firebaseAuthInstance.signInWithEmailAndPassword(email: email, password: password);
 
       // ignore: use_build_context_synchronously
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
 
       if (kDebugMode) {
         print(firebaseAuthInstance.currentUser!.uid);
@@ -52,24 +50,20 @@ class _MyStatefulWidgetState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(backgorundImage), fit: BoxFit.fill),
+          image: DecorationImage(image: AssetImage(backgorundImage), fit: BoxFit.fill),
         ),
         child: Center(
           // İçeriği ortalamak için Center ekliyoruz
           child: Padding(
             padding: const EdgeInsets.all(30.0),
-            child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
+            child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
               return Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
-                  mainAxisSize: MainAxisSize
-                      .min, // Column'un boyutunu içeriğe göre ayarlar
-                  mainAxisAlignment:
-                      MainAxisAlignment.center, // Dikey olarak ortalar
+                  mainAxisSize: MainAxisSize.min, // Column'un boyutunu içeriğe göre ayarlar
+                  mainAxisAlignment: MainAxisAlignment.center, // Dikey olarak ortalar
 
                   children: <Widget>[
                     Container(
@@ -80,13 +74,11 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.only(left: 25, right: 25, top: 15),
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                           prefixIcon: const Icon(Icons.person),
                           labelText: 'Kullanıcı Kodu',
                         ),
@@ -94,20 +86,16 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                     ),
                     Container(
                       //padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      padding:
-                          const EdgeInsets.only(left: 25, right: 25, top: 15),
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: TextField(
                         obscureText: _isVisible,
                         controller: passwordController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                           prefixIcon: const Icon(Icons.lock),
                           labelText: 'Parola',
                           suffixIcon: IconButton(
-                            icon: Icon(_isVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility),
+                            icon: Icon(_isVisible ? Icons.visibility_off : Icons.visibility),
                             onPressed: () => setState(() {
                               _isVisible = !_isVisible;
                             }),
@@ -116,23 +104,18 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.only(left: 25, right: 25, top: 15),
+                      padding: const EdgeInsets.only(left: 25, right: 25, top: 15),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(context)
-                                .colorScheme
-                                .secondary, // Buton rengini tema rengi olarak ayarla
-                            minimumSize: Size(screenWidth * 0.8,
-                                50), // Buton boyutunu ekran genişliğine göre ayarla
+                            backgroundColor:
+                                Theme.of(context).colorScheme.secondary, // Buton rengini tema rengi olarak ayarla
+                            minimumSize: Size(screenWidth * 0.8, 50), // Buton boyutunu ekran genişliğine göre ayarla
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             )),
-                        child: const Text('Giriş Yap',
-                            style: TextStyle(color: Colors.white)),
+                        child: const Text('Giriş Yap', style: TextStyle(color: Colors.white)),
                         onPressed: () {
-                          signInWithEmail(
-                              nameController.text, passwordController.text);
+                          signInWithEmail(nameController.text, passwordController.text);
                         },
                       ),
                     ),
@@ -140,9 +123,7 @@ class _MyStatefulWidgetState extends State<LoginPage> {
                     GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignInPage()));
+                              context, MaterialPageRoute(builder: (context) => const SignInPage()));
                         },
                         child: const Text("Kayıt Ol")),
                     const Divider(

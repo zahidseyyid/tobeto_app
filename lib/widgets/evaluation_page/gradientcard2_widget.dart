@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_application_1/widgets/home_page/startbutton_widget.dart';
 
 class GradientCardWidget2 extends StatelessWidget {

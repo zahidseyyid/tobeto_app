@@ -5,16 +5,8 @@ import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPa
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
-List<String> categoryItems = [
-  "Tüm Eğitimler",
-  "Ücretli Eğitimler",
-  "Ücretsiz Eğitimler"
-];
-List<String> educationItems = [
-  "Tüm eğitimler",
-  "Dijital Gelişim",
-  "Profesyonel Gelişim"
-];
+List<String> categoryItems = ["Tüm Eğitimler", "Ücretli Eğitimler", "Ücretsiz Eğitimler"];
+List<String> educationItems = ["Tüm eğitimler", "Dijital Gelişim", "Profesyonel Gelişim"];
 List<String> levelItems = ["Tüm Seviyeler", "Başlangıç", "Orta", "İleri"];
 List<String> subjectItems = [
   "Tüm Konular",
@@ -71,7 +63,7 @@ void catalogFilterWidget(
         //Filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
         create: (context) => StateData(),
         child: AlertDialog(
-          contentPadding: EdgeInsets.only(top: 10, bottom: 20),
+          contentPadding: const EdgeInsets.only(top: 10, bottom: 20),
           content: Container(
             padding: paddingHMedium,
             child: Column(

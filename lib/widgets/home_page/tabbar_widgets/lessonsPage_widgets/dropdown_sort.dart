@@ -3,12 +3,7 @@ import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPa
 import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
-  const DropdownSortWidget(
-      {super.key,
-      required this.dropdownItems,
-      this.hint,
-      this.dropdownValue,
-      this.size});
+  const DropdownSortWidget({super.key, required this.dropdownItems, this.hint, this.dropdownValue, this.size});
   final String? dropdownValue;
   final List<String> dropdownItems;
   final String? hint;
@@ -79,8 +74,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                   "I",
                   textScaleFactor: 2,
                   //textScaler: TextScaler.linear(2),
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.w200),
+                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w200),
                 ),
                 const Icon(
                   Icons.keyboard_arrow_down,

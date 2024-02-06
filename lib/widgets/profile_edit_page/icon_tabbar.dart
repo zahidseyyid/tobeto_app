@@ -12,8 +12,7 @@ class IconTabBarWidget extends StatefulWidget {
   State<IconTabBarWidget> createState() => _IconTabBarWidgetState();
 }
 
-class _IconTabBarWidgetState extends State<IconTabBarWidget>
-    with SingleTickerProviderStateMixin {
+class _IconTabBarWidgetState extends State<IconTabBarWidget> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -44,7 +43,7 @@ class _IconTabBarWidgetState extends State<IconTabBarWidget>
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: [
+            children: const [
               ProfileEdit(),
               ExperienceEdit(),
               EducationEdit(),
