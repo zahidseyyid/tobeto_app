@@ -45,6 +45,7 @@ dependencies:
   video_player: ^2.8.2
   flick_video_player: ^0.7.0
   visibility_detector: ^0.4.0+2
+  flutter_bloc: ^8.1.3
 
 dev_dependencies:
   flutter_test:

@@ -65,7 +65,7 @@ void catalogFilterWidget(
       Size screenSize = MediaQuery.of(context).size;
       double deviceWidth = screenSize.width;
       double deviceHeight = screenSize.height;
-      double dropdownSize = deviceWidth / 1.4;
+      double dropdownSize = deviceWidth / 1.55;
 
       return ChangeNotifierProvider<StateData>(
         //Filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
