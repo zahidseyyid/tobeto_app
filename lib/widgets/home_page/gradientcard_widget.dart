@@ -92,14 +92,13 @@ class GradientCardWidget extends StatelessWidget {
                   ),
                 ),
               if (showArrowIcon)
-                Text(
+                const Text(
                   ">>>",
                   style: TextStyle(fontSize: 26, color: Colors.white),
                 ),
               if (includeStartButton)
                 Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+                  padding: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
                   child: StartButtonWidget(
                     onPressed: onPressed,
                     backgroundColor: const Color(0xFF9933FF),

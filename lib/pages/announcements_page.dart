@@ -73,6 +73,7 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
                 hint: "Sıralama",
                 dropdownItems: dropdownSortItems,
               ),
+              // ignore: prefer_const_constructors
               AnnouncementItemWidget(), //const yapma
               const FooterWidget()
             ],

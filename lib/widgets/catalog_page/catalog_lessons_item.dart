@@ -2,11 +2,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/datas/lesson_dummy_data.dart';
 import 'package:flutter_application_1/pages/education_details_page.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/lesson_item_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
-import 'package:provider/provider.dart';
 
 final firebaseFireStore = FirebaseFirestore.instance;
 
@@ -19,34 +15,29 @@ class CatalogLessonsItem extends StatefulWidget {
 
 class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
   void getLessons() async {
-    FirebaseFirestore.instance
-        .collection('lessons')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
+    FirebaseFirestore.instance.collection('lessons').get().then((QuerySnapshot querySnapshot) {
+      for (var doc in querySnapshot.docs) {
         print('Lesson title: ${doc['title']}');
         print('Lesson image: ${doc['img']}');
         print('Lesson category: ${doc['category']}');
         print('Lesson duration: ${doc['duration']}');
         //print(doc);
-      });
+      }
     }).catchError((error) {
       print('Failed to get lessons: $error');
     });
   }
 
-  Future<List<Map<String, dynamic>>> _getLessonsByCategory(
-      String category) async {
+  Future<List<Map<String, dynamic>>> _getLessonsByCategory(String category) async {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('lessons')
           .where('category', isEqualTo: category)
-          .orderBy(FieldPath.documentId,
-              descending: true) //ilk eklediğim verinin en üstte gözükmesi için
+          .orderBy(FieldPath.documentId, descending: true) //ilk eklediğim verinin en üstte gözükmesi için
           .get();
 
       List<Map<String, dynamic>> lessons = [];
-      querySnapshot.docs.forEach((doc) {
+      for (var doc in querySnapshot.docs) {
         lessons.add({
           'title': doc['title'],
           'img': doc['img'],
@@ -54,7 +45,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
           'duration': doc['duration'],
           'teacher': doc['teacher'],
         });
-      });
+      }
       return lessons;
     } catch (error) {
       print('Failed to get lessons: $error');
@@ -79,7 +70,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
         future: _getLessonsByCategory("katalog"),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text("Failed to fetch data: ${snapshot.error}");
           } else {
@@ -96,10 +87,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                       onTap: () {
                         // Tıklanılan dersin detay sayfasına yönlendirilmesi
                         Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const EducationDetailsPage()));
+                            context, MaterialPageRoute(builder: (context) => const EducationDetailsPage()));
                       },
                       child: Container(
                         height: deviceHeight * 0.3,
@@ -108,8 +96,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                           border: Border.all(color: Colors.white70),
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage(
-                                snapshot.data![index]['img'] ?? ""),
+                            image: NetworkImage(snapshot.data![index]['img'] ?? ""),
                           ),
                         ),
                         child: Stack(
@@ -130,8 +117,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
                                 child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: purple.withOpacity(0.7),
@@ -139,12 +125,10 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(12),
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
                                               Icon(
                                                 Icons.person_outline_sharp,
@@ -152,9 +136,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                               ),
                                               Padding(padding: paddingHSmall),
                                               Text(
-                                                snapshot.data![index]
-                                                        ['teacher'] ??
-                                                    "",
+                                                snapshot.data![index]['teacher'] ?? "",
                                                 style: TextStyle(
                                                   fontSize: 13,
                                                   color: color,
@@ -168,9 +150,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                               ),
                                               Padding(padding: paddingHSmall),
                                               Text(
-                                                snapshot.data![index]
-                                                        ['duration'] ??
-                                                    "",
+                                                snapshot.data![index]['duration'] ?? "",
                                                 style: TextStyle(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
@@ -203,7 +183,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                 },
               );
             }
-            return Text("No lessons found.");
+            return const Text("No lessons found.");
           }
         });
   }

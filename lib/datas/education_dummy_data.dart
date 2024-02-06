@@ -18,6 +18,7 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
+    fetchCategory: "Ogrenci",
     videoCount: 3,
     videoList: List.generate(
       3,
@@ -45,6 +46,7 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
+    fetchCategory: "Katalog",
     videoCount: 3,
     videoList: List.generate(
       3,
@@ -68,6 +70,7 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 1),
     estimatedTime: const Duration(days: 1),
     category: "Category",
+    fetchCategory: "Ogrenci",
     videoCount: 3,
     videoList: List.generate(
       3,
@@ -95,6 +98,7 @@ List<Education> dummyEducations = [
     spentTime: const Duration(days: 0),
     estimatedTime: const Duration(days: 1),
     category: "Category",
+    fetchCategory: "Katalog",
     videoCount: 3,
     videoList: List.generate(
       3,
