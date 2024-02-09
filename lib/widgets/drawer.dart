@@ -52,32 +52,47 @@ class MyDrawer extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()));
                   },
                   child: const Text('Anasayfa'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const EvaluationPage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EvaluationPage()));
                   },
                   child: const Text('Değerlendirmeler'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfilePage()));
                   },
                   child: const Text('Profilim'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (context) => const EducationDetailsPage()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CatalogPage()));
                   },
                   child: const Text('Katalog'),
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const CatalogPage()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const EducationDetailsPage()));
                   },
                   child: const Text('Takvim'),
                 ),
@@ -87,7 +102,8 @@ class MyDrawer extends StatelessWidget {
           const Divider(),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomePage()));
             },
             child: const Row(
               children: [Text("Tobeto"), Icon(Icons.home_outlined)],
@@ -114,7 +130,9 @@ class MyDrawer extends StatelessWidget {
                         onTap: () {
                           signOut();
                           Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()));
                         },
                         child: const Icon(Icons.exit_to_app)),
                   ],
