@@ -1,3 +1,9 @@
 abstract class LessonEvent {}
 
-class GetLessons extends LessonEvent {}
+class FetchCategoryLessons extends LessonEvent {}
+
+class FilterCategoryLessons extends LessonEvent {
+  final String teacher;
+
+  FilterCategoryLessons({required this.teacher});
+}

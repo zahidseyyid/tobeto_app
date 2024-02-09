@@ -1,17 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_bloc.dart';
+import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/theme/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  final lessonRepo = LessonRepository();
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<LessonBloc>(
+        create: (context) => LessonBloc(lessonRepository: lessonRepo),
+      )
+    ],
+    child: const MyApp(),
+  ));
 }
 
 final firebaseAuthInstance = FirebaseAuth.instance;
