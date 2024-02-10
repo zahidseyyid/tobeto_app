@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_event.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_state.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/education_details_page.dart';
@@ -27,7 +27,9 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
   @override
   void initState() {
     super.initState();
-    context.read<LessonBloc>().add(FetchCategoryLessons());
+    context
+        .read<LessonBloc>()
+        .add(FetchCategoryLessons(fetchCategory: "Katalog"));
   }
 
   @override
@@ -38,7 +40,9 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
 
     return BlocBuilder<LessonBloc, LessonState>(builder: (context, state) {
       if (state is LessonInitial) {
-        context.read<LessonBloc>().add(FetchCategoryLessons());
+        context
+            .read<LessonBloc>()
+            .add(FetchCategoryLessons(fetchCategory: "Katalog"));
         return const Center(
           child: Text("İstek atılıyor.."),
         );

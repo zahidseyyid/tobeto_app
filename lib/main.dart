@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_bloc.dart';
+import 'package:flutter_application_1/api/blocs/announcement/announcement_bloc.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
 import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
@@ -15,10 +17,15 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   final lessonRepo = LessonRepository();
+  final announcementRepository = AnnouncementRepository();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<LessonBloc>(
         create: (context) => LessonBloc(lessonRepository: lessonRepo),
+      ),
+      BlocProvider<AnnouncementBloc>(
+        create: (context) =>
+            AnnouncementBloc(announcementRepository: announcementRepository),
       )
     ],
     child: const MyApp(),

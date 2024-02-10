@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson_bloc/lesson_event.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
@@ -144,10 +144,9 @@ void catalogFilterWidget(
                     ),
                     CustomButton(
                         onPressed: () {
-                          if (sortData == "") {
-                            context
-                                .read<LessonBloc>()
-                                .add(FetchCategoryLessons());
+                          if (sortData == "" || sortData == "Tüm Eğitmenler") {
+                            context.read<LessonBloc>().add(
+                                FetchCategoryLessons(fetchCategory: "Katalog"));
                           } else {
                             context
                                 .read<LessonBloc>()

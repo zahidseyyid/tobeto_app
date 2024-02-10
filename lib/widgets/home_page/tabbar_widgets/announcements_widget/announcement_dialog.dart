@@ -26,6 +26,7 @@ void announcementDialogWidget(
                   Flexible(
                     child: Text(
                       dialogTitle,
+                      softWrap: true,
                       maxLines: 3,
                       style: const TextStyle(
                         fontSize: 18,
