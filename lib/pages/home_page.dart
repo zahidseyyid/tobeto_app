@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
@@ -15,6 +18,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Dummy data yükleyiciyi tetiklemek için kullanılan kodlar
+    // FirebaseFirestore firestore = FirebaseFirestore.instance;
+    // for (var edu in dummyEducationsList) {
+    //   firestore.collection('education').doc(edu.id).set(edu.toMap());
+    // }
     Brightness brightness = Theme.of(context).brightness;
     return ChangeNotifierProvider<StateData>(
       //Bildirim güncellenmesi için ChangeNotifierProvider ile sarmalladım

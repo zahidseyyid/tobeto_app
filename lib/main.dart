@@ -2,12 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/announcement/announcement_bloc.dart';
+import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
+import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
+import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
 import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
+import 'package:flutter_application_1/api/repositories/auth_repository.dart';
 import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
-import 'package:flutter_application_1/pages/login.dart';
+import 'package:flutter_application_1/pages/sign_up_page.dart';
+import 'package:flutter_application_1/pages/splash_page.dart';
 import 'package:flutter_application_1/theme/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,6 +23,7 @@ void main() async {
   );
   final lessonRepo = LessonRepository();
   final announcementRepository = AnnouncementRepository();
+  final authRepository = AuthRepository();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<LessonBloc>(
@@ -26,7 +32,8 @@ void main() async {
       BlocProvider<AnnouncementBloc>(
         create: (context) =>
             AnnouncementBloc(announcementRepository: announcementRepository),
-      )
+      ),
+      BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepository)),
     ],
     child: const MyApp(),
   ));
@@ -43,25 +50,22 @@ class MyApp extends StatelessWidget {
       title: 'Tobeto',
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
-      home: FutureBuilder(
-        // Kullanıcının giriş yapılıp yapmadığını kontrol et
-        future: firebaseAuthInstance.authStateChanges().first,
-        builder: (context, AsyncSnapshot<User?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            // Eğer giriş durumu kontrol ediliyorsa, bekleme durumunu göster
-            return const CircularProgressIndicator();
-          } else {
-            // Eğer giriş kontrolü tamamlandıysa, kullanıcının durumuna göre sayfa belirle
-            if (snapshot.hasData) {
-              // Kullanıcı giriş yapmışsa
-              return const HomePage();
-            } else {
-              // Kullanıcı giriş yapmamışsa
-              return const LoginPage();
-            }
-          }
-        },
-      ),
+      home: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+        if (state is AuthInitial) {
+          context.read<AuthBloc>().add(AuthAppStarted());
+          return Container();
+        } else if (state is AuthLoading) {
+          return const SplashPage();
+        } else if (state is AuthError) {
+          return const SignUpPage();
+        } else if (state is Unauthenticated) {
+          return const SignUpPage();
+        } else if (state is Authenticated) {
+          return const HomePage();
+        } else {
+          return Container();
+        }
+      }),
     );
   }
 }

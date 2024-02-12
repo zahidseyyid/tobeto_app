@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/pages/profile_edit_page.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/profile_page/about_me.dart';
@@ -35,7 +36,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton.outlined(
-                          onPressed: () => {}, icon: const Icon(Icons.edit)),
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ProfileEditPage()))
+                              },
+                          icon: const Icon(Icons.edit)),
                       IconButton.outlined(
                         onPressed: () => {},
                         icon: const Icon(Icons.share_outlined),
