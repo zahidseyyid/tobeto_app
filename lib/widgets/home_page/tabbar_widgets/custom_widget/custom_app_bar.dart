@@ -6,9 +6,11 @@ class CustomAppBarWidget extends StatelessWidget
   const CustomAppBarWidget({
     super.key,
     required this.brightness,
+    this.leading,
   });
 
   final Brightness brightness;
+  final Widget? leading;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -16,6 +18,7 @@ class CustomAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: leading,
       title: Image.asset(getLogo(brightness), width: 125),
       shape: const RoundedRectangleBorder(
         side: BorderSide(

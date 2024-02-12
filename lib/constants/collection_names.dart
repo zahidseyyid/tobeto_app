@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Collections {
   //users
   static const String USERS = "users";

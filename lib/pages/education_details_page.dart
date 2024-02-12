@@ -6,7 +6,6 @@ import 'package:flutter_application_1/widgets/education_details_page/education_a
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
 
 class EducationDetailsPage extends StatefulWidget {
   const EducationDetailsPage({Key? key, this.lessonId}) : super(key: key);
@@ -17,7 +16,8 @@ class EducationDetailsPage extends StatefulWidget {
 }
 
 class _EducationDetailsPageState extends State<EducationDetailsPage> {
-  final videoUrlNotifier = ValueNotifier<String>(dummyEducations[0].videoList[0].link);
+  final videoUrlNotifier =
+      ValueNotifier<String>(dummyEducations[0].videoList[0].link);
   int selectedVideoIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,8 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(dummyEducations[0].title, style: Theme.of(context).textTheme.titleMedium),
+                  Text(dummyEducations[0].title,
+                      style: Theme.of(context).textTheme.titleMedium),
                   Padding(padding: paddingMedium),
                   Row(
                     children: [
@@ -61,7 +62,8 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
                         ),
                       ),
                       Padding(padding: paddingHSmall),
-                      Text("${dummyEducations[0].progress}%", style: Theme.of(context).textTheme.titleLarge),
+                      Text("${dummyEducations[0].progress}%",
+                          style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
                 ],
@@ -113,17 +115,22 @@ class _EducationDetailsPageState extends State<EducationDetailsPage> {
                             itemBuilder: (BuildContext context, int index) {
                               return GestureDetector(
                                 onTap: () {
-                                  videoUrlNotifier.value = dummyEducations[0].videoList[index].link;
+                                  videoUrlNotifier.value =
+                                      dummyEducations[0].videoList[index].link;
                                   setState(() {
-                                    selectedVideoIndex = index; // Seçili video indeksini güncelleyin
+                                    selectedVideoIndex =
+                                        index; // Seçili video indeksini güncelleyin
                                   });
                                 },
                                 child: Card(
                                   elevation: 3,
                                   color: selectedVideoIndex == index
                                       ? const Color.fromARGB(255, 202, 198, 198)
-                                      : Colors.white, // Seçili öğe mavi olarak belirlenir
-                                  child: EducationListTile(video: dummyEducations[0].videoList[index]),
+                                      : Colors
+                                          .white, // Seçili öğe mavi olarak belirlenir
+                                  child: EducationListTile(
+                                      video:
+                                          dummyEducations[0].videoList[index]),
                                 ),
                               );
                             },
