@@ -1,9 +1,11 @@
+import 'package:flutter_application_1/models/user_model.dart';
+
 abstract class UserEvent {}
 
 class UserUpdateEvent extends UserEvent {
-  final String userId;
+  final UserProfile userProfile;
 
-  UserUpdateEvent({required this.userId});
+  UserUpdateEvent({required this.userProfile});
 }
 
 class UserFetchEvent extends UserEvent {

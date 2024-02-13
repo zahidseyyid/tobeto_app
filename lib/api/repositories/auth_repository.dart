@@ -30,14 +30,4 @@ class AuthRepository {
     final user = _auth.currentUser;
     return user?.uid; // Kullanıcı kimlik bilgisini döndür
   }
-
-  String? returnUid() {
-    final user = _auth.currentUser;
-    return user?.uid;
-  }
-
-  String? returnName() {
-    final user = _auth.currentUser;
-    return user?.displayName;
-  }
 }

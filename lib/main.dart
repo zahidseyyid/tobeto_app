@@ -6,6 +6,7 @@ import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
 import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
 import 'package:flutter_application_1/api/repositories/auth_repository.dart';
 import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
@@ -36,7 +37,11 @@ void main() async {
             AnnouncementBloc(announcementRepository: announcementRepository),
       ),
       BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(authRepository, userRepository)),
+        create: (context) => AuthBloc(authRepository, userRepository),
+      ),
+      BlocProvider(
+        create: (context) => UserBloc(userRepository),
+      ),
     ],
     child: const MyApp(),
   ));

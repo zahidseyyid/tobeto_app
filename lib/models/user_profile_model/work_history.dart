@@ -3,8 +3,8 @@ class WorkHistory {
   String position;
   String sector;
   String city;
-  DateTime startDate;
-  DateTime? endDate;
+  String startDate;
+  String endDate;
   String description;
 
   WorkHistory({
@@ -13,7 +13,7 @@ class WorkHistory {
     required this.sector,
     required this.city,
     required this.startDate,
-    this.endDate,
+    required this.endDate,
     required this.description,
   });
 
@@ -23,8 +23,8 @@ class WorkHistory {
       position: json['position'],
       sector: json['sector'],
       city: json['city'],
-      startDate: DateTime.parse(json['startDate'] ?? ''),
-      endDate: DateTime.parse(json['endDate'] ?? ''),
+      startDate: json['startDate'],
+      endDate: json['endDate'],
       description: json['description'],
     );
   }
@@ -35,8 +35,8 @@ class WorkHistory {
       'position': position,
       'sector': sector,
       'city': city,
-      'startDate': startDate.toString(),
-      'endDate': endDate?.toString(),
+      'startDate': startDate,
+      'endDate': endDate,
       'description': description,
     };
   }
