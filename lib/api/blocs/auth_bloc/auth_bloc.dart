@@ -3,12 +3,14 @@ import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
 
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
 import 'package:flutter_application_1/api/repositories/auth_repository.dart';
+import 'package:flutter_application_1/api/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
+  final UserRepository _userRepository;
 
-  AuthBloc(this._authRepository) : super(AuthInitial()) {
+  AuthBloc(this._authRepository, this._userRepository) : super(AuthInitial()) {
     on<AuthAppStarted>(_onAppStarted);
     on<AuthSignUp>(_onSignUpUser);
     on<AuthSignIn>(_onSignInUser);
@@ -47,7 +49,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onSignInUser(AuthSignIn event, Emitter<AuthState> emit) async {
     try {
       User? user = await _authRepository.createUserWithEmail(
-          event.eMail, event.password);
+          event.eMail, event.password, event.nameSurname);
+      await _userRepository.createUser(
+        event.eMail,
+        _authRepository.returnUid()!,
+        _authRepository.returnName()!,
+      );
       emit(Authenticated(user!.uid.toString()));
     } catch (e) {
       emit(AuthError("${e}Giriş Başarısız"));

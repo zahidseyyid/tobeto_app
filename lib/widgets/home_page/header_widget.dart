@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatefulWidget {
@@ -11,49 +9,7 @@ class HeaderWidget extends StatefulWidget {
 }
 
 class _HeaderWidgetState extends State<HeaderWidget> {
-  final FirebaseAuth firebaseAuthInstance = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String retrievedData = "";
-  Future<void> fetchData() async {
-    try {
-      // "users" koleksiyonundaki belirli bir belgeyi al
-      DocumentSnapshot documentSnapshot = await _firestore
-          .collection('users')
-          .doc(firebaseAuthInstance.currentUser!.uid)
-          .get();
-
-      // Belge var mı kontrolü
-      if (documentSnapshot.exists) {
-        // Belge içindeki veriyi al
-        Map<dynamic, dynamic> data =
-            documentSnapshot.data() as Map<String, dynamic>;
-        String name = data['name'];
-        String surname = data['surname'];
-        // String email = data['email'];
-        // int birthdate = data['birthdate'];
-
-        // Alınan veriyi kullan
-        setState(() {
-          retrievedData = "$name $surname";
-        });
-      } else {
-        setState(() {
-          retrievedData = "Belge bulunamadı.";
-        });
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print("Firestore'dan veri çekerken hata oluştu: $e");
-      }
-    }
-  }
-
   @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,17 +31,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         fontSize: 32,
                         color: Colors.purple)),
                 const TextSpan(
-                    text: "'ya hoş geldin ",
+                    text: "'ya hoş geldin\n",
                     style: TextStyle(
                       fontSize: 24,
                     )),
                 TextSpan(
-                    text: retrievedData, style: const TextStyle(fontSize: 24)),
+                    text: FirebaseAuth.instance.currentUser!.displayName!,
+                    style: const TextStyle(fontSize: 24)),
               ],
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 40),
+            padding: EdgeInsets.only(top: 25),
             child: Text(
               "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!",
               textAlign: TextAlign.center,

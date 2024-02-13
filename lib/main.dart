@@ -9,6 +9,7 @@ import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
 import 'package:flutter_application_1/api/repositories/auth_repository.dart';
 import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
+import 'package:flutter_application_1/api/repositories/user_repository.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/sign_up_page.dart';
@@ -24,6 +25,7 @@ void main() async {
   final lessonRepo = LessonRepository();
   final announcementRepository = AnnouncementRepository();
   final authRepository = AuthRepository();
+  final userRepository = UserRepository();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<LessonBloc>(
@@ -33,7 +35,8 @@ void main() async {
         create: (context) =>
             AnnouncementBloc(announcementRepository: announcementRepository),
       ),
-      BlocProvider<AuthBloc>(create: (context) => AuthBloc(authRepository)),
+      BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(authRepository, userRepository)),
     ],
     child: const MyApp(),
   ));
