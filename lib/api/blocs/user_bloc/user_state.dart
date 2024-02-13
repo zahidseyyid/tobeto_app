@@ -1,0 +1,26 @@
+import 'package:flutter_application_1/models/user_model.dart';
+
+abstract class UserState {}
+
+// Başlangıç
+class UserInitialState extends UserState {}
+
+// User bilgileri güncelleme
+class UserUpdateState extends UserState {}
+
+// User bilgilerinin yüklenme durumu
+class UserFetchLoadingState extends UserState {}
+
+// User bilgilerinin çekilmesi sırasındaki hata
+class UserFetchErrorState extends UserState {
+  final String errorMessage;
+
+  UserFetchErrorState({required this.errorMessage});
+}
+
+// User bilgilerinin çekildiği aşama
+class UserFetchedState extends UserState {
+  final UserProfile? user;
+
+  UserFetchedState(this.user);
+}

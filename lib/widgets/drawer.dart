@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/profile.dart';
-import 'package:flutter_application_1/pages/sign_in_page.dart';
 import 'package:flutter_application_1/pages/sign_up_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -124,20 +124,34 @@ class MyDrawer extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor:
-                            Theme.of(context).colorScheme.secondary,
-                        child: const Icon(Icons.person_3_outlined),
+                      Expanded(
+                        flex: 0,
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
+                          child: const Icon(Icons.person_3_outlined),
+                        ),
                       ),
                       //SizedBox(width: deviceWidth / 20),
-                      const Text("UserName"),
+                      Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              FirebaseAuth.instance.currentUser!.displayName!,
+                              maxLines: 1,
+                            ),
+                          )),
                       // SizedBox(width: deviceWidth / 16),
-                      GestureDetector(
-                          onTap: () {
-                            context.read<AuthBloc>().add(AuthLogout());
-                          },
-                          child: const Icon(Icons.exit_to_app)),
+                      Expanded(
+                        flex: 0,
+                        child: GestureDetector(
+                            onTap: () {
+                              context.read<AuthBloc>().add(AuthLogout());
+                            },
+                            child: const Icon(Icons.exit_to_app)),
+                      ),
                     ],
                   ),
                 ),

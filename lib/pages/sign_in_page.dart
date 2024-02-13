@@ -18,8 +18,9 @@ class SignInPage extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<SignInPage> {
   late String logoAsset;
-  TextEditingController nameController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameSurnameController = TextEditingController();
 
   @override
   void initState() {
@@ -71,10 +72,18 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                               left: 25, right: 25, top: 15),
                           child: SignTextField(
                             isPassword: false,
-                            controller: nameController,
-                            labelText: "E-posta adresi",
+                            controller: nameSurnameController,
+                            labelText: "Ad Soyad",
                             icon: const Icon(Icons.person),
                           )),
+                      Container(
+                          padding: const EdgeInsets.only(
+                              left: 25, right: 25, top: 15),
+                          child: SignTextField(
+                              isPassword: false,
+                              controller: mailController,
+                              labelText: "E-posta adresi",
+                              icon: const Icon(Icons.lock))),
                       Container(
                           padding: const EdgeInsets.only(
                               left: 25, right: 25, top: 15),
@@ -100,8 +109,10 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                               style: TextStyle(color: Colors.white)),
                           onPressed: () {
                             context.read<AuthBloc>().add(AuthSignIn(
-                                eMail: nameController.text,
-                                password: passwordController.text));
+                                  eMail: mailController.text,
+                                  password: passwordController.text,
+                                  nameSurname: nameSurnameController.text,
+                                ));
                           },
                         ),
                       ),

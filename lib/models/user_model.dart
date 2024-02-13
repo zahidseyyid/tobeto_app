@@ -3,11 +3,10 @@ import 'package:flutter_application_1/models/user_profile_model/social_media_acc
 import 'package:flutter_application_1/models/user_profile_model/work_history.dart';
 
 class UserProfile {
-  String? idNo;
+  String idNo;
   String? profilePictureUrl;
-  String name;
-  String surname;
-  String? email;
+  String nameSurname;
+  String email;
   String? phone;
   DateTime? birthDate;
   String? country;
@@ -20,11 +19,10 @@ class UserProfile {
   List<SocialMedia>? socialMedia;
 
   UserProfile({
-    this.idNo,
+    required this.idNo,
     this.profilePictureUrl,
-    required this.name,
-    required this.surname,
-    this.email,
+    required this.nameSurname,
+    required this.email,
     this.phone,
     this.birthDate,
     this.country,
@@ -40,9 +38,8 @@ class UserProfile {
   factory UserProfile.fromFirestore(Map<String, dynamic> json) {
     return UserProfile(
       idNo: json['idNo'],
-      profilePictureUrl: json['profilePictureUrl'],
-      name: json['name'],
-      surname: json['surname'],
+      profilePictureUrl: json['profilePictureUrl'] ?? "",
+      nameSurname: json['nameSurname'],
       email: json['email'],
       phone: json['phone'],
       birthDate:
@@ -67,21 +64,20 @@ class UserProfile {
   Map<String, dynamic> toFirestore() {
     return {
       'idNo': idNo,
-      'profilePictureUrl': profilePictureUrl,
-      'name': name,
-      'surname': surname,
+      'profilePictureUrl': profilePictureUrl ?? "",
+      'nameSurname': nameSurname,
       'email': email,
-      'phone': phone,
-      'birthDate': birthDate?.toString(),
-      'country': country,
-      'city': city,
-      'district': district,
-      'address': address,
-      'about': about,
+      'phone': phone ?? "",
+      'birthDate': birthDate?.toString() ?? "",
+      'country': country ?? "",
+      'city': city ?? "",
+      'district': district ?? "",
+      'address': address ?? "",
+      'about': about ?? "",
       'educationHistory':
-          educationHistory?.map((e) => e.toFirestore()).toList(),
-      'workHistory': workHistory?.map((e) => e.toFirestore()).toList(),
-      'socialMedia': socialMedia?.map((e) => e.toFirestore()).toList(),
+          educationHistory?.map((e) => e.toFirestore()).toList() ?? {},
+      'workHistory': workHistory?.map((e) => e.toFirestore()).toList() ?? {},
+      'socialMedia': socialMedia?.map((e) => e.toFirestore()).toList() ?? {},
     };
   }
 }

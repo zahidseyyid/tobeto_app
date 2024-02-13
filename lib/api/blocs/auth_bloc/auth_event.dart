@@ -14,8 +14,10 @@ class AuthSignUp extends AuthEvent {
 class AuthSignIn extends AuthEvent {
   String eMail;
   String password;
+  String nameSurname;
 
-  AuthSignIn({required this.eMail, required this.password});
+  AuthSignIn(
+      {required this.eMail, required this.password, required this.nameSurname});
 }
 
 // Çıkış

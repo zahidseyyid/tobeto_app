@@ -25,6 +25,7 @@ class EducationHistory {
 
   Map<String, dynamic> toFirestore() {
     return {
+      'educationStatus': educationStatus,
       'schoolName': schoolName,
       'department': department,
       'startDate': startDate.toString(),

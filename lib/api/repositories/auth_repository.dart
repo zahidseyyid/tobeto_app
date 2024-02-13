@@ -9,9 +9,11 @@ class AuthRepository {
     return userCredential.user;
   }
 
-  Future<User?> createUserWithEmail(String email, password) async {
+  Future<User?> createUserWithEmail(String email, password, name) async {
     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
+    // ignore: deprecated_member_use
+    await userCredential.user!.updateProfile(displayName: name);
     return userCredential.user;
   }
 
@@ -27,5 +29,15 @@ class AuthRepository {
   Future<String?> getUserId() async {
     final user = _auth.currentUser;
     return user?.uid; // Kullanıcı kimlik bilgisini döndür
+  }
+
+  String? returnUid() {
+    final user = _auth.currentUser;
+    return user?.uid;
+  }
+
+  String? returnName() {
+    final user = _auth.currentUser;
+    return user?.displayName;
   }
 }
