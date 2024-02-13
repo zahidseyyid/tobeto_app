@@ -52,10 +52,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           event.eMail, event.password, event.nameSurname);
       await _userRepository.createUser(
         event.eMail,
-        _authRepository.returnUid()!,
-        _authRepository.returnName()!,
+        user!.uid,
+        event.nameSurname,
       );
-      emit(Authenticated(user!.uid.toString()));
+      emit(Authenticated(user.uid.toString()));
     } catch (e) {
       emit(AuthError("${e}Giriş Başarısız"));
     }

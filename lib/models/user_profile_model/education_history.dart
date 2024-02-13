@@ -2,8 +2,8 @@ class EducationHistory {
   String educationStatus;
   String schoolName;
   String department;
-  DateTime startDate;
-  DateTime endDate;
+  String startDate;
+  String endDate;
 
   EducationHistory({
     required this.educationStatus,
@@ -18,8 +18,8 @@ class EducationHistory {
       educationStatus: json['educationStatus'],
       schoolName: json['schoolName'],
       department: json['department'],
-      startDate: DateTime.parse(json['startDate'] ?? ''),
-      endDate: DateTime.parse(json['endDate'] ?? ''),
+      startDate: json['startDate'],
+      endDate: json['endDate'],
     );
   }
 
@@ -28,8 +28,8 @@ class EducationHistory {
       'educationStatus': educationStatus,
       'schoolName': schoolName,
       'department': department,
-      'startDate': startDate.toString(),
-      'endDate': endDate.toString(),
+      'startDate': startDate,
+      'endDate': endDate,
     };
   }
 }

@@ -1,17 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_event.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
+import 'package:flutter_application_1/api/repositories/user_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+// UserProfile userProfile2 = UserProfile(idNo: "", nameSurname: "", email: "");
 
 class HeaderWidget extends StatefulWidget {
-  const HeaderWidget({super.key});
+  final String name;
+  const HeaderWidget({super.key, required this.name});
 
   @override
   State<HeaderWidget> createState() => _HeaderWidgetState();
 }
 
+// Future<String> mainmain() async {
+//   String uid = "ZzcuO4ud6U6BtxHrYhRy";
+//   UserRepository userRepository = UserRepository();
+//   UserProfile userProfile = await userRepository.fetchUser(uid);
+//   userProfile2 = userProfile;
+//   return userProfile.nameSurname;
+// }
+
 class _HeaderWidgetState extends State<HeaderWidget> {
   @override
-  @override
   Widget build(BuildContext context) {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    UserRepository userRepository = UserRepository();
+    //mainmain();
     return Container(
       margin: const EdgeInsets.only(top: 30, bottom: 10),
       height: 180,
@@ -36,7 +54,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                       fontSize: 24,
                     )),
                 TextSpan(
-                    text: FirebaseAuth.instance.currentUser!.displayName!,
+                    text: widget.name,
+                    // userProfile2.nameSurname +
+                    // userProfile2.educationHistory![0].department +
+                    // userProfile2.socialMedia![1].username +
+                    // userProfile2.idNo +
+                    // userProfile2.phone!,
                     style: const TextStyle(fontSize: 24)),
               ],
             ),

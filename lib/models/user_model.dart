@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/models/user_profile_model/education_history.dart';
 import 'package:flutter_application_1/models/user_profile_model/social_media_account.dart';
 import 'package:flutter_application_1/models/user_profile_model/work_history.dart';
@@ -8,7 +9,7 @@ class UserProfile {
   String nameSurname;
   String email;
   String? phone;
-  DateTime? birthDate;
+  String? birthDate;
   String? country;
   String? city;
   String? district;
@@ -35,28 +36,32 @@ class UserProfile {
     this.socialMedia,
   });
 
-  factory UserProfile.fromFirestore(Map<String, dynamic> json) {
+  factory UserProfile.fromFirestore(DocumentSnapshot document) {
+    Map<String, dynamic>? json = document.data() as Map<String, dynamic>?;
+
+    json ??= {};
+
     return UserProfile(
       idNo: json['idNo'],
-      profilePictureUrl: json['profilePictureUrl'] ?? "",
+      profilePictureUrl: json['profilePictureUrl'],
       nameSurname: json['nameSurname'],
       email: json['email'],
       phone: json['phone'],
-      birthDate:
-          json['birthDate'] != null ? DateTime.parse(json['birthDate']) : null,
+      birthDate: json['birthDate'],
       country: json['country'],
       city: json['city'],
       district: json['district'],
       address: json['address'],
       about: json['about'],
-      educationHistory: (json['educationHistory'] as List?)
-          ?.map((e) => EducationHistory.fromFirestore(e))
+      educationHistory: (json['educationHistory'] as List<dynamic>?)
+          ?.map(
+              (e) => EducationHistory.fromFirestore(e as Map<String, dynamic>))
           .toList(),
-      workHistory: (json['workHistory'] as List?)
-          ?.map((e) => WorkHistory.fromFirestore(e))
+      workHistory: (json['workHistory'] as List<dynamic>?)
+          ?.map((e) => WorkHistory.fromFirestore(e as Map<String, dynamic>))
           .toList(),
-      socialMedia: (json['socialMedia'] as List?)
-          ?.map((e) => SocialMedia.fromFirestore(e))
+      socialMedia: (json['socialMedia'] as List<dynamic>?)
+          ?.map((e) => SocialMedia.fromFirestore(e as Map<String, dynamic>))
           .toList(),
     );
   }
