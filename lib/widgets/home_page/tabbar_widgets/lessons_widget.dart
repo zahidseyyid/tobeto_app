@@ -1,110 +1,155 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/datas/lesson_dummy_data.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
+import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class LessonsWidget extends StatelessWidget {
+class LessonsWidget extends StatefulWidget {
   const LessonsWidget({super.key});
+
+  @override
+  State<LessonsWidget> createState() => _LessonsWidgetState();
+}
+
+class _LessonsWidgetState extends State<LessonsWidget> {
+  List<String> lessonList = ["#12ec5", "#64806", "#90c6a", "#a743c", "#abdb0"];
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: Container(
-        width: deviceWidth,
-        color: Theme.of(context).colorScheme.background,
-        child: ListView.builder(
-          itemCount: 4, // 3 ders + daha fazla göster butonunu için
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            if (index == 3) {
-              return IconButton(
-                //Daha fazla göster butonu
-                icon: const Icon(Icons.chevron_right_sharp),
-                iconSize: 35,
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LessonsPage(),
-                    ),
-                  );
-                },
-              );
-            } else {
-              return Padding(
-                padding: const EdgeInsets.all(5),
-                child: Container(
-                  width: deviceWidth * 0.8,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.background,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 5.0,
-                        offset: Offset(
-                          3.0,
-                          3.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.all(5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
+
+    return BlocBuilder<LessonBloc, LessonState>(
+      builder: (context, state) {
+        if (state is LessonInitial) {
+          context
+              .read<LessonBloc>()
+              .add(FetchUserLessons(userLessonList: lessonList));
+          return const Center(
+            child: Text("İstek atılıyor.."),
+          );
+        }
+
+        if (state is LessonLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (state is LessonError) {
+          return const Center(
+            child: Text("İstek hatalı.."),
+          );
+        }
+        if (state is LessonLoaded) {
+          if (state.educationList.isNotEmpty) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Container(
+                width: deviceWidth,
+                color: Theme.of(context).colorScheme.background,
+                child: ListView.builder(
+                  itemCount: 4, // 3 ders + daha fazla göster butonunu için
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    if (index == 3) {
+                      return IconButton(
+                        //Daha fazla göster butonu
+                        icon: const Icon(Icons.chevron_right_sharp),
+                        iconSize: 35,
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LessonsPage(),
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return Padding(
+                        padding: const EdgeInsets.all(5),
                         child: Container(
+                          width: deviceWidth * 0.8,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  lessonsData[index].img.toString()),
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                            ),
+                            color: Theme.of(context).colorScheme.background,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 5.0,
+                                offset: Offset(
+                                  3.0,
+                                  3.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(state
+                                          .educationList[index].image
+                                          .toString()),
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                state.educationList[index].title.toString(),
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    DateFormat('dd-MM-yyyy kk:mm')
+                                        .format(state
+                                            .educationList[index].startDate)
+                                        .toString(),
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.chevron_right_sharp),
+                                    onPressed: () {
+                                      //Dersin detayı sayfasına gidecek
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        lessonsData[index].title.toString(),
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            DateFormat('dd-MM-yyyy kk:mm')
-                                .format(lessonsData[index].date!)
-                                .toString(),
-                            style: const TextStyle(
-                              fontSize: 12,
-                            ),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.chevron_right_sharp),
-                            onPressed: () {
-                              //Dersin detayı sayfasına gidecek
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                      );
+                    }
+                  },
                 ),
-              );
-            }
-          },
-        ),
-      ),
+              ),
+            );
+          } else {
+            return const Text("No lessons found.");
+          }
+        }
+        return const Text("No lessons found.");
+      },
     );
   }
 }

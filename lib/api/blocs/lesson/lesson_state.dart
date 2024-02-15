@@ -12,4 +12,8 @@ class LessonLoaded extends LessonState {
   LessonLoaded({required this.educationList});
 }
 
-class LessonError extends LessonState {}
+class LessonError extends LessonState {
+  final String errorMessage;
+
+  LessonError({required this.errorMessage});
+}
