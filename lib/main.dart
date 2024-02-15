@@ -5,6 +5,7 @@ import 'package:flutter_application_1/api/blocs/announcement/announcement_bloc.d
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_bloc.dart';
 import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
@@ -23,18 +24,20 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  final lessonRepo = LessonRepository();
+  final lessonRepository = LessonRepository();
   final announcementRepository = AnnouncementRepository();
   final authRepository = AuthRepository();
   final userRepository = UserRepository();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<LessonBloc>(
-        create: (context) => LessonBloc(lessonRepository: lessonRepo),
+        create: (context) => LessonBloc(lessonRepository),
+      ),
+      BlocProvider(
+        create: (context) => CatalogLessonBloc(lessonRepository),
       ),
       BlocProvider<AnnouncementBloc>(
-        create: (context) =>
-            AnnouncementBloc(announcementRepository: announcementRepository),
+        create: (context) => AnnouncementBloc(announcementRepository),
       ),
       BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(authRepository, userRepository),

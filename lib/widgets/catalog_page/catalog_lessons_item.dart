@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_bloc.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_event.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/education_details_page.dart';
@@ -27,9 +27,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<LessonBloc>()
-        .add(FetchCategoryLessons(fetchCategory: "Katalog"));
+    context.read<CatalogLessonBloc>().add(ResetFetchLessons());
   }
 
   @override
@@ -38,31 +36,31 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
     Color color = Theme.of(context).colorScheme.background;
     Color purple = const Color(0xFF9933FF);
 
-    return BlocBuilder<LessonBloc, LessonState>(builder: (context, state) {
-      if (state is LessonInitial) {
-        context
-            .read<LessonBloc>()
-            .add(FetchCategoryLessons(fetchCategory: "Katalog"));
+    return BlocBuilder<CatalogLessonBloc, CatalogLessonState>(
+        builder: (context, state) {
+      if (state is CatalogLessonInitial) {
+        context.read<CatalogLessonBloc>().add(FetchCategoryLessons());
+
         return const Center(
           child: Text("İstek atılıyor.."),
         );
       }
 
-      if (state is LessonLoading) {
+      if (state is CatalogLessonInitial) {
         return const Center(
           child: CircularProgressIndicator(),
         );
       }
 
-      if (state is LessonError) {
+      if (state is CatalogLessonError) {
         return const Center(
           child: Text("İstek hatalı.."),
         );
       }
-      if (state is LessonLoaded) {
+      if (state is CatalogLessonLoaded) {
         //Textfielda yazılan ile filtreleme kısmı
         var categoryLessons = filterLessons(
-          state.educationList,
+          state.catalogLessonList,
           Provider.of<StateData>(context, listen: true).pattern,
         );
         return ListView.builder(

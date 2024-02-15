@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_bloc.dart';
+import 'package:flutter_application_1/api/blocs/catalog/catalog_event.dart';
+
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
@@ -13,7 +15,7 @@ List<String> categoryItems = [
   "Ücretsiz Eğitimler"
 ];
 List<String> educationItems = [
-  "Tüm eğitimler",
+  "Tüm Eğitimler",
   "Dijital Gelişim",
   "Profesyonel Gelişim"
 ];
@@ -144,12 +146,18 @@ void catalogFilterWidget(
                     ),
                     CustomButton(
                         onPressed: () {
-                          if (sortData == "" || sortData == "Tüm Eğitmenler") {
-                            context.read<LessonBloc>().add(
-                                FetchCategoryLessons(fetchCategory: "Katalog"));
+                          if (sortData == "" ||
+                              sortData == "Tüm Eğitmenler" ||
+                              sortData == "Tüm Eğitimler" ||
+                              sortData == "Tüm Seviyeler" ||
+                              sortData == "Tüm Konular" ||
+                              sortData == "Tüm Diller") {
+                            context
+                                .read<CatalogLessonBloc>()
+                                .add(FetchCategoryLessons());
                           } else {
                             context
-                                .read<LessonBloc>()
+                                .read<CatalogLessonBloc>()
                                 .add(FilterCategoryLessons(teacher: sortData));
                           }
                           Navigator.of(context).pop();

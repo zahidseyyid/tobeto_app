@@ -5,28 +5,25 @@ import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LessonBloc extends Bloc<LessonEvent, LessonState> {
-  final LessonRepository lessonRepository;
-  LessonBloc({required this.lessonRepository}) : super(LessonInitial()) {
-    on<FetchCategoryLessons>(_onFetchCategoryLessons);
-    on<FilterCategoryLessons>(_onFilterCatalogLesson);
+  final LessonRepository _lessonRepository;
+  LessonBloc(this._lessonRepository) : super(LessonInitial()) {
+    on<FetchUserLessons>(_onFetchUserLessons);
+    on<ResetFetchLessons>(_onReset);
   }
-  void _onFetchCategoryLessons(
-      FetchCategoryLessons event, Emitter<LessonState> emit) async {
+
+  void _onFetchUserLessons(
+      FetchUserLessons event, Emitter<LessonState> emit) async {
     emit(LessonLoading());
     try {
-      final lessonList =
-          await lessonRepository.getLessonsByCategory(event.fetchCategory);
-      emit(LessonLoaded(educationList: lessonList));
+      final userLessonList =
+          await _lessonRepository.getLessons(event.userLessonList);
+      emit(LessonLoaded(educationList: userLessonList));
     } catch (e) {
-      emit(LessonError());
+      emit(LessonError(errorMessage: e.toString()));
     }
   }
 
-  void _onFilterCatalogLesson(
-      FilterCategoryLessons event, Emitter<LessonState> emit) async {
-    emit(LessonLoading());
-    final filteredList =
-        await lessonRepository.filterLessonsByTeacher(event.teacher);
-    emit(LessonLoaded(educationList: filteredList));
+  void _onReset(ResetFetchLessons event, Emitter<LessonState> emit) async {
+    emit(LessonInitial());
   }
 }
