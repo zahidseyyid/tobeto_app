@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/datas/announcements_dummy_data.dart';
 
 class StateData extends ChangeNotifier {
   late String pattern = "";
   late String sort = "";
-  int unReadAnnouncement =
-      announcementsData.where((element) => !(element.isRead)).toList().length;
+  int unReadAnnouncement = 0;
 
   void searchData(String newPattern) {
     pattern = newPattern.toLowerCase();

@@ -4,8 +4,8 @@ import 'package:flutter_application_1/api/repositories/announcement_repository.d
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
-  final AnnouncementRepository announcementRepository;
-  AnnouncementBloc({required this.announcementRepository})
+  final AnnouncementRepository _announcementRepository;
+  AnnouncementBloc(this._announcementRepository)
       : super(AnnouncementInitial()) {
     on<FetchAnnouncements>(_onFetchAnnouncements);
   }
@@ -14,7 +14,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
       FetchAnnouncements event, Emitter<AnnouncementState> emit) async {
     emit(AnnouncementLoading());
     try {
-      final announcementList = await announcementRepository.getAnnouncements();
+      final announcementList = await _announcementRepository.getAnnouncements();
       emit(AnnouncementLoaded(announcementList: announcementList));
     } catch (e) {
       emit(AnnouncementError());
