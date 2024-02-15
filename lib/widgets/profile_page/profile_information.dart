@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/constant_text.dart';
+import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_profile_sizedbox.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileInformationWidget extends StatefulWidget {
   const ProfileInformationWidget({super.key});
@@ -16,6 +19,14 @@ class ProfileInformationWidget extends StatefulWidget {
 class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
   @override
   Widget build(BuildContext context) {
+    UserProfile userProfile;
+    final userBlocState = context.watch<UserBloc>().state;
+
+    if (userBlocState is UserFetchedState) {
+      userProfile = userBlocState.user!;
+    } else {
+      userProfile = UserProfile(idNo: "", nameSurname: "", email: "");
+    }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -34,11 +45,12 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
                   Radius.circular(10),
                 ),
               ),
-              child: const Column(
+              child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    child: CustomCircleAvatar(),
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: CustomCircleAvatar(
+                        image: userProfile.profilePictureUrl ?? ""),
                   ),
                 ],
               ),
@@ -48,28 +60,28 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
               deviceWidth: deviceWidth,
               icon: Icons.person_2_outlined,
               title: "Ad Soyad",
-              infoText: "$userName $userSurname",
+              infoText: userProfile.nameSurname,
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
               icon: Icons.calendar_month_outlined,
               title: "Doğum Tarihi",
-              infoText: userBirthday,
+              infoText: userProfile.birthDate ?? "",
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
               icon: Icons.email_outlined,
               title: "E-posta Adresi",
-              infoText: userEmail,
+              infoText: userProfile.email,
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
               icon: Icons.phone_outlined,
               title: "Telefon Numarası",
-              infoText: userPhone,
+              infoText: userProfile.phone ?? "",
             ),
             Padding(padding: paddingMedium),
           ],

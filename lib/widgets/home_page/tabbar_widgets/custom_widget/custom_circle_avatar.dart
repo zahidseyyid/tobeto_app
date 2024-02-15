@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
+  final String image;
   const CustomCircleAvatar({
     super.key,
+    required this.image,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
+    return CircleAvatar(
       radius: 50,
-      backgroundImage: AssetImage(profileImageDefault),
+      backgroundImage: NetworkImage(image),
       backgroundColor: Colors.transparent,
     );
   }

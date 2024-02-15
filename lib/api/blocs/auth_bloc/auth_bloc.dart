@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // Kullanıcı oturum durumunu kontrol et
       final isLoggedIn = await _authRepository.isLoggedIn();
       if (isLoggedIn) {
-        final userId = await _authRepository.getUserId();
+        final userId = _authRepository.getUserId();
         emit(Authenticated(userId));
       } else {
         emit(Unauthenticated());

@@ -26,8 +26,15 @@ class AuthRepository {
     return user != null;
   }
 
-  Future<String?> getUserId() async {
+  String? getUserId() {
     final user = _auth.currentUser;
     return user?.uid; // Kullanıcı kimlik bilgisini döndür
   }
 }
+
+// future daki async kaldır
+
+  // Future<String?> getUserId() async {
+  //   final user = _auth.currentUser;
+  //   return user?.uid; // Kullanıcı kimlik bilgisini döndür
+  // }
