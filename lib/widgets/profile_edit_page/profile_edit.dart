@@ -61,7 +61,7 @@ class _ProfileEditState extends State<ProfileEdit> {
             Center(
               child: Stack(
                 children: [
-                  const CustomCircleAvatar(),
+                  const CustomCircleAvatar(image: ""),
                   Positioned(
                     top: deviceWidth / 4.5,
                     left: deviceWidth / 4.5,

@@ -26,7 +26,8 @@ class _SplashPageState extends State<SplashPage> {
               width: deviceWidth / 1.80,
             ),
             SizedBox(height: deviceHeight / 5),
-            const CircularProgressIndicator(),
+            CircularProgressIndicator(
+                color: Theme.of(context).colorScheme.secondary),
           ],
         ),
       ),
