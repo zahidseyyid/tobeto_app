@@ -5,12 +5,14 @@ import 'package:flutter_application_1/api/blocs/announcement/announcement_state.
 import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_dialog.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AnnouncementsWidget extends StatelessWidget {
-  const AnnouncementsWidget({super.key});
+  final List<Map<String, dynamic>> userAnnouncementList;
+  const AnnouncementsWidget({super.key, required this.userAnnouncementList});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,8 @@ class AnnouncementsWidget extends StatelessWidget {
       child: BlocBuilder<AnnouncementBloc, AnnouncementState>(
         builder: (context, state) {
           if (state is AnnouncementInitial) {
-            context.read<AnnouncementBloc>().add(FetchAnnouncements());
+            context.read<AnnouncementBloc>().add(
+                FetchAnnouncements(userAnnouncementList: userAnnouncementList));
             return const Center(
               child: Text("İstek atılıyor.."),
             );
@@ -41,11 +44,14 @@ class AnnouncementsWidget extends StatelessWidget {
           }
           if (state is AnnouncementLoaded) {
             if (state.announcementList.isNotEmpty) {
+              final itemCounter = state.announcementList.length < 2
+                  ? state.announcementList.length
+                  : 2;
               return ListView.builder(
-                  itemCount: 3,
+                  itemCount: itemCounter + 1,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    if (index == 2) {
+                    if (index == itemCounter) {
                       return IconButton(
                         //Daha fazla göster butonu
                         icon: const Icon(Icons.chevron_right_sharp),
@@ -198,7 +204,9 @@ class AnnouncementsWidget extends StatelessWidget {
                     }
                   });
             } else {
-              return const Text("No announcement found.");
+              return const SurveysWidget(
+                text: "Atanmış herhangi bir duyurunuz bulunmamaktadır",
+              );
             }
           }
           return const Text("No announcement found.");

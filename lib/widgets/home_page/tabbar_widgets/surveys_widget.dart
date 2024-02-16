@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 
 class SurveysWidget extends StatelessWidget {
-  const SurveysWidget({super.key});
+  final String text;
+  const SurveysWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SurveysWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10, bottom: 10),
               child: Text(
-                "Atanmış herhangi bir anketiniz bulunmamaktadır",
+                text,
                 style: TextStyle(
                     fontSize: 14,
                     letterSpacing: 1,

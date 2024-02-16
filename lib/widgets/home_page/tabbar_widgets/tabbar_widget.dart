@@ -18,6 +18,16 @@ class TabBarWidget extends StatefulWidget {
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
+  final List<Map<String, dynamic>> userAnnouncementList = [
+    {
+      'id': "ojo4GDkL8svkNgzxt9Xw",
+      'unRead': false,
+    },
+    {
+      'id': "uc7zmS1Z5peDKv5lUIOo",
+      'unRead': false,
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -28,7 +38,8 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
       builder: (context, state) {
         if (state is AnnouncementInitial) {
-          context.read<AnnouncementBloc>().add(FetchAnnouncements());
+          context.read<AnnouncementBloc>().add(
+              FetchAnnouncements(userAnnouncementList: userAnnouncementList));
           return const Center(
             child: Text("İstek atılıyor.."),
           );
@@ -151,8 +162,11 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                               ],
                             ),
                             const LessonsWidget(),
-                            const AnnouncementsWidget(),
-                            const SurveysWidget(),
+                            AnnouncementsWidget(
+                                userAnnouncementList: userAnnouncementList),
+                            const SurveysWidget(
+                                text:
+                                    "Atanmış herhangi bir anketiniz bulunmamaktadır"),
                           ],
                         ),
                       ),
