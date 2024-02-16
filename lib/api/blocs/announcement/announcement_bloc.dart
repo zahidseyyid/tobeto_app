@@ -14,7 +14,8 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
       FetchAnnouncements event, Emitter<AnnouncementState> emit) async {
     emit(AnnouncementLoading());
     try {
-      final announcementList = await _announcementRepository.getAnnouncements();
+      final announcementList = await _announcementRepository
+          .getAnnouncements(event.userAnnouncementList);
       emit(AnnouncementLoaded(announcementList: announcementList));
     } catch (e) {
       emit(AnnouncementError());

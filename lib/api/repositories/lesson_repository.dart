@@ -45,6 +45,9 @@ class LessonRepository {
 
   Future<List<Education>> getLessons(List<String> userLessonList) async {
     try {
+      if (userLessonList.isEmpty) {
+        return []; // Boş liste olduğunda exception kısmına düşmemesi için
+      }
       final querySnapshot = await _firebaseFirestore
           .collection(Collections.EDUCATION)
           .where(FieldPath.documentId, whereIn: userLessonList)

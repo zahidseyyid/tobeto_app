@@ -3,6 +3,7 @@ import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
@@ -14,6 +15,7 @@ class LessonsWidget extends StatefulWidget {
 }
 
 class _LessonsWidgetState extends State<LessonsWidget> {
+  //List<String> lessonList = [];
   List<String> lessonList = ["#12ec5", "#64806", "#90c6a", "#a743c", "#abdb0"];
 
   @override
@@ -44,16 +46,19 @@ class _LessonsWidgetState extends State<LessonsWidget> {
         }
         if (state is LessonLoaded) {
           if (state.educationList.isNotEmpty) {
+            final itemCounter =
+                state.educationList.length < 3 ? state.educationList.length : 3;
             return Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Container(
                 width: deviceWidth,
                 color: Theme.of(context).colorScheme.background,
                 child: ListView.builder(
-                  itemCount: 4, // 3 ders + daha fazla göster butonunu için
+                  itemCount: itemCounter +
+                      1, // 3 ders + daha fazla göster butonunu için
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    if (index == 3) {
+                    if (index == itemCounter) {
                       return IconButton(
                         //Daha fazla göster butonu
                         icon: const Icon(Icons.chevron_right_sharp),
@@ -145,7 +150,8 @@ class _LessonsWidgetState extends State<LessonsWidget> {
               ),
             );
           } else {
-            return const Text("No lessons found.");
+            return const SurveysWidget(
+                text: "Atanmış herhangi bir dersiniz bulunmamaktadır");
           }
         }
         return const Text("No lessons found.");
