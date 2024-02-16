@@ -18,17 +18,13 @@ class WorkExperienceWidget extends StatefulWidget {
 class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
-      userProfile = userBlocState.user!;
-    } else {
-      userProfile =
-          UserProfile(idNo: "idNo", nameSurname: "nameSurname", email: "email");
+      userProfile = userBlocState.user;
     }
-    // print(userProfile.about);
-    List<WorkHistory> userProfileWork = userProfile.workHistory!;
+    List<WorkHistory>? userProfileWork = userProfile?.workHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -52,25 +48,28 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
               Padding(padding: paddingSmall),
               SizedBox(
                 height: deviceHeight / 2.4,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: userProfileWork.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: paddingHSmall,
-                      child: WorkHistoryCard(
-                        workStartDate: userProfileWork[index].startDate,
-                        workEndDate: userProfileWork[index].endDate,
-                        workCompanyName: userProfileWork[index].company,
-                        workPosition: userProfileWork[index].position,
-                        workSector: userProfileWork[index].sector,
-                        workCity: userProfileWork[index].city,
-                        workDescription: userProfileWork[index].description,
+                child: userProfileWork == null
+                    ? const Center(child: Text("Deneyim Bilgisi yok"))
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: userProfileWork.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: paddingHSmall,
+                            child: WorkHistoryCard(
+                              workStartDate: userProfileWork[index].startDate,
+                              workEndDate: userProfileWork[index].endDate,
+                              workCompanyName: userProfileWork[index].company,
+                              workPosition: userProfileWork[index].position,
+                              workSector: userProfileWork[index].sector,
+                              workCity: userProfileWork[index].city,
+                              workDescription:
+                                  userProfileWork[index].description,
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
               //const WorkHistoryCard(),
               Padding(padding: paddingSmall),

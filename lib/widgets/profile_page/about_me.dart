@@ -19,13 +19,11 @@ class AboutMeWidget extends StatefulWidget {
 class _AboutMeWidgetState extends State<AboutMeWidget> {
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
-      userProfile = userBlocState.user!;
-    } else {
-      userProfile = UserProfile(idNo: "", nameSurname: "", email: "");
+      userProfile = userBlocState.user;
     }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
@@ -48,13 +46,15 @@ class _AboutMeWidgetState extends State<AboutMeWidget> {
                 thickness: 2,
               ),
               Padding(padding: paddingSmall),
-              Text(
-                userProfile.about ?? "",
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              userProfile?.about == null
+                  ? const Text("Hakkımda bilgisi yok")
+                  : Text(
+                      userProfile?.about ?? "",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
             ],
           ),
         ),

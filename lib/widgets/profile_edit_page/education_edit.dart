@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_event.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/models/user_model.dart';
+import 'package:flutter_application_1/models/user_profile_model/education_history.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_elevated_button.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_text_formfield_profile.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EducationEdit extends StatefulWidget {
   const EducationEdit({super.key});
@@ -11,6 +17,14 @@ class EducationEdit extends StatefulWidget {
 }
 
 class _EducationEditState extends State<EducationEdit> {
+  void controlleClear() {
+    educationStatusController.clear();
+    schoolNameController.clear();
+    departmentController.clear();
+    startDateController.clear();
+    endDateController.clear();
+  }
+
   EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController educationStatusController = TextEditingController();
   TextEditingController schoolNameController = TextEditingController();
@@ -42,6 +56,13 @@ class _EducationEditState extends State<EducationEdit> {
 
   @override
   Widget build(BuildContext context) {
+    UserProfile userProfile;
+    final userBlocState = context.watch<UserBloc>().state;
+    if (userBlocState is UserFetchedState) {
+      userProfile = userBlocState.user!;
+    } else {
+      userProfile = UserProfile(uid: "", nameSurname: "", email: "");
+    }
     return Scaffold(
       body: Center(
         child: ListView(
@@ -72,7 +93,24 @@ class _EducationEditState extends State<EducationEdit> {
                 controller: endDateController,
                 hintText: "Bitiş Tarihi Giriniz"),
             Padding(padding: paddingMedium),
-            CustomElevatedButton(text: "Kaydet", onPressed: () => {}),
+            CustomElevatedButton(
+                text: "Kaydet",
+                onPressed: () {
+                  userProfile.educationHistory ??
+                      (userProfile.educationHistory = []);
+                  userProfile.educationHistory!.add(EducationHistory(
+                    educationStatus: educationStatusController.text,
+                    schoolName: schoolNameController.text,
+                    department: departmentController.text,
+                    startDate: startDateController.text,
+                    endDate: endDateController.text,
+                  ));
+                  context.read<UserBloc>().add(UserUpdateEvent(
+                        userId: userProfile.uid,
+                        userProfile: userProfile,
+                      ));
+                  controlleClear();
+                }),
           ],
         ),
       ),

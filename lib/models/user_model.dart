@@ -4,10 +4,11 @@ import 'package:flutter_application_1/models/user_profile_model/social_media_acc
 import 'package:flutter_application_1/models/user_profile_model/work_history.dart';
 
 class UserProfile {
-  String idNo;
+  String uid;
   String? profilePictureUrl;
   String nameSurname;
   String email;
+  String? idNo;
   String? phone;
   String? birthDate;
   String? country;
@@ -20,10 +21,11 @@ class UserProfile {
   List<SocialMedia>? socialMedia;
 
   UserProfile({
-    required this.idNo,
+    required this.uid,
     this.profilePictureUrl,
     required this.nameSurname,
     required this.email,
+    this.idNo,
     this.phone,
     this.birthDate,
     this.country,
@@ -42,10 +44,11 @@ class UserProfile {
     json ??= {};
 
     return UserProfile(
-      idNo: json['idNo'],
+      uid: json['uid'],
       profilePictureUrl: json['profilePictureUrl'],
       nameSurname: json['nameSurname'],
       email: json['email'],
+      idNo: json['idNo'],
       phone: json['phone'],
       birthDate: json['birthDate'],
       country: json['country'],
@@ -68,10 +71,11 @@ class UserProfile {
 
   Map<String, dynamic> toFirestore() {
     return {
-      'idNo': idNo,
+      'uid': uid,
       'profilePictureUrl': profilePictureUrl ?? "",
       'nameSurname': nameSurname,
       'email': email,
+      'idNo': idNo ?? "",
       'phone': phone ?? "",
       'birthDate': birthDate?.toString() ?? "",
       'country': country ?? "",

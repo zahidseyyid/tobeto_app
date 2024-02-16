@@ -7,7 +7,7 @@ class UserRepository {
 
   Future<void> createUser(String email, String uid, String nameSurname) async {
     UserProfile userProfile =
-        UserProfile(idNo: uid, email: email, nameSurname: nameSurname);
+        UserProfile(uid: uid, email: email, nameSurname: nameSurname);
     await collectionReference.doc(uid).set(userProfile.toFirestore());
   }
 
