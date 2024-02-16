@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
@@ -25,7 +27,7 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
     if (userBlocState is UserFetchedState) {
       userProfile = userBlocState.user!;
     } else {
-      userProfile = UserProfile(idNo: "", nameSurname: "", email: "");
+      userProfile = UserProfile(uid: "", nameSurname: "", email: "");
     }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
@@ -37,7 +39,7 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
         child: Column(
           children: [
             Container(
-              height: deviceHeight / 7,
+              height: deviceHeight / 4.6,
               width: deviceWidth / 1.1,
               decoration: const BoxDecoration(
                 color: Colors.deepPurple,
@@ -50,7 +52,9 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: CustomCircleAvatar(
-                        image: userProfile.profilePictureUrl ?? ""),
+                      userPhotoUrl: userProfile.profilePictureUrl!,
+                      pickedImage: File(""),
+                    ),
                   ),
                 ],
               ),

@@ -31,17 +31,14 @@ void onFacebookIconClick(String username) async {
 class _SocialMediaWidgetState extends State<SocialMediaWidget> {
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
-      userProfile = userBlocState.user!;
-    } else {
-      userProfile =
-          UserProfile(idNo: "idNo", nameSurname: "nameSurname", email: "email");
+      userProfile = userBlocState.user;
     }
     // print(userProfile.about);
-    List<SocialMedia> userProfileSocialMedia = userProfile.socialMedia!;
+    List<SocialMedia>? userProfileSocialMedia = userProfile?.socialMedia;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -65,18 +62,21 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
               Padding(padding: paddingSmall),
               SizedBox(
                 height: deviceHeight / 6,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: userProfileSocialMedia.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: paddingHSmall,
-                      child: SocialMediaItem(
-                          username: userProfileSocialMedia[index].username),
-                    );
-                  },
-                ),
+                child: userProfileSocialMedia == null
+                    ? const Center(child: Text("Sosyal medya bilgsi yok"))
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: userProfileSocialMedia.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: paddingHSmall,
+                            child: SocialMediaItem(
+                                username:
+                                    userProfileSocialMedia[index].username),
+                          );
+                        },
+                      ),
               ),
             ],
           ),

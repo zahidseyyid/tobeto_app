@@ -134,12 +134,13 @@ class MyDrawer extends StatelessWidget {
                         ),
                       ),
                       //SizedBox(width: deviceWidth / 20),
-                      Expanded(
+                      const Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              FirebaseAuth.instance.currentUser!.displayName!,
+                              //FirebaseAuth.instance.currentUser!.displayName!,
+                              "sdasd",
                               maxLines: 1,
                             ),
                           )),

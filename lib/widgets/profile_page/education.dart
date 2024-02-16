@@ -18,17 +18,14 @@ class EducationWidget extends StatefulWidget {
 class _EducationWidgetState extends State<EducationWidget> {
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
-      userProfile = userBlocState.user!;
-      print(userProfile);
-    } else {
-      userProfile = UserProfile(idNo: "", nameSurname: "", email: "");
+      userProfile = userBlocState.user;
     }
-
-    List<EducationHistory> userProfileEducation = userProfile.educationHistory!;
+    List<EducationHistory>? userProfileEducation =
+        userProfile?.educationHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -52,28 +49,31 @@ class _EducationWidgetState extends State<EducationWidget> {
               Padding(padding: paddingSmall),
               SizedBox(
                 height: deviceHeight / 3,
-                child: ListView.builder(
-                  shrinkWrap: true, // Gerekli olabilir
-                  scrollDirection: Axis.horizontal,
-                  itemCount: userProfile.educationHistory!.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: paddingHSmall,
-                      child: EducationCard(
-                        deviceWidth: deviceWidth,
-                        educationStartDate:
-                            userProfileEducation[index].startDate,
-                        educationEndDate: userProfileEducation[index].endDate,
-                        educationSchoolName:
-                            userProfileEducation[index].schoolName,
-                        educationDepartment:
-                            userProfileEducation[index].department,
-                        educationStatus:
-                            userProfileEducation[index].educationStatus,
+                child: userProfileEducation == null
+                    ? const Center(child: Text("Ders bilgisi yok"))
+                    : ListView.builder(
+                        shrinkWrap: true, // Gerekli olabilir
+                        scrollDirection: Axis.horizontal,
+                        itemCount: userProfileEducation.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: paddingHSmall,
+                            child: EducationCard(
+                              deviceWidth: deviceWidth,
+                              educationStartDate:
+                                  userProfileEducation[index].startDate,
+                              educationEndDate:
+                                  userProfileEducation[index].endDate,
+                              educationSchoolName:
+                                  userProfileEducation[index].schoolName,
+                              educationDepartment:
+                                  userProfileEducation[index].department,
+                              educationStatus:
+                                  userProfileEducation[index].educationStatus,
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
 
               //EducationCard(deviceWidth: deviceWidth),

@@ -33,6 +33,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Uygulama, fotoğraf kütüphanesine erişmek için bu izni kullanmak istiyor.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Uygulama, kamera kullanımı için bu izni kullanmak istiyor.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
