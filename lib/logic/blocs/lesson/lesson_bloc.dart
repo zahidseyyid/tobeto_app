@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
-import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
+import 'package:flutter_application_1/logic/repositories/lesson_repository.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 

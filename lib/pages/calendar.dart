@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_event.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_state.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';

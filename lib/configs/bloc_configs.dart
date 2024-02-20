@@ -1,12 +1,12 @@
-import 'package:flutter_application_1/api/blocs/announcement/announcement_bloc.dart';
-import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
-import 'package:flutter_application_1/api/blocs/catalog/catalog_bloc.dart';
-import 'package:flutter_application_1/api/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
-import 'package:flutter_application_1/api/repositories/announcement_repository.dart';
-import 'package:flutter_application_1/api/repositories/auth_repository.dart';
-import 'package:flutter_application_1/api/repositories/lesson_repository.dart';
-import 'package:flutter_application_1/api/repositories/user_repository.dart';
+import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/logic/repositories/announcement_repository.dart';
+import 'package:flutter_application_1/logic/repositories/auth_repository.dart';
+import 'package:flutter_application_1/logic/repositories/lesson_repository.dart';
+import 'package:flutter_application_1/logic/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final _authRepository = AuthRepository();

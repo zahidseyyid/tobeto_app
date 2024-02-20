@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/announcement/announcement_bloc.dart';
-import 'package:flutter_application_1/api/blocs/announcement/announcement_state.dart';
+import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
 import 'package:flutter_application_1/models/announcements_model.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_dialog.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';

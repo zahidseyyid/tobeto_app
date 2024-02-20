@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/catalog/catalog_bloc.dart';
-import 'package:flutter_application_1/api/blocs/catalog/catalog_event.dart';
-import 'package:flutter_application_1/api/blocs/catalog/catalog_state.dart';
+import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/catalog/catalog_event.dart';
+import 'package:flutter_application_1/logic/blocs/catalog/catalog_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/lesson_details_page.dart';
