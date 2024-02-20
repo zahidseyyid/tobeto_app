@@ -17,7 +17,6 @@ class SocialMediaEdit extends StatefulWidget {
 }
 
 class _SocialMediaEditState extends State<SocialMediaEdit> {
-  EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController socialMediaController = TextEditingController();
   String? value;
 
@@ -36,7 +35,7 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 1.2,
       child: Padding(
-        padding: horizontalF,
+        padding: paddingHMedium,
         child: CustomTextFormField(
           labelText: labelText,
           controller: controller,
@@ -50,12 +49,10 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
 
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
     if (userBlocState is UserFetchedState) {
       userProfile = userBlocState.user!;
-    } else {
-      userProfile = UserProfile(uid: "", nameSurname: "", email: "");
     }
 
     List<DropdownMenuItem<String>> dropdownItems = [
@@ -95,9 +92,8 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
             CustomElevatedButton(
               text: "Kaydet",
               onPressed: () {
-                userProfile.socialMedia ?? (userProfile.socialMedia = []);
                 if (value != null) {
-                  userProfile.socialMedia!.add(
+                  userProfile?.socialMedia!.add(
                     SocialMedia(
                       platform: value!,
                       username: socialMediaController.text,
@@ -111,7 +107,7 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                   );
                 }
                 context.read<UserBloc>().add(UserUpdateEvent(
-                    userId: userProfile.uid, userProfile: userProfile));
+                    userId: userProfile!.uid, userProfile: userProfile));
                 controlleClear();
               },
             ),

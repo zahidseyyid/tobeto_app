@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/pages/calendar.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
@@ -30,8 +31,6 @@ class CustomRouter {
         return MaterialPageRoute(builder: (_) => const EvoluationPage());
       case homeRoute:
         return MaterialPageRoute(builder: (_) => const HomePage());
-      case lessonDetailRoute:
-        return MaterialPageRoute(builder: (_) => const LessonDetailPage());
       case lessonRoute:
         return MaterialPageRoute(builder: (_) => const LessonsPage());
       case profileEditRoute:

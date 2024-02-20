@@ -32,6 +32,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
 
   @override
   Widget build(BuildContext context) {
+    Education lessonIndex;
     double deviceHeight = MediaQuery.of(context).size.height;
     Color color = Theme.of(context).colorScheme.background;
     Color purple = const Color(0xFF9933FF);
@@ -77,7 +78,8 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LessonDetailPage()));
+                          builder: (context) => LessonDetailPage(
+                              education: categoryLessons[index])));
                 },
                 child: Container(
                   height: deviceHeight * 0.3,

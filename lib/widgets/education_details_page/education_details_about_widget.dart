@@ -24,7 +24,8 @@ class EducationDetailsAboutWidget extends StatelessWidget {
             )),
         Expanded(
           flex: 9,
-          child: Text(description, style: Theme.of(context).textTheme.titleSmall),
+          child:
+              Text(description, style: Theme.of(context).textTheme.titleSmall),
         ),
       ],
     );

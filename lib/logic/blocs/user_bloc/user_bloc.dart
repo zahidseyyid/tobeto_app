@@ -25,12 +25,19 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   void _onUserUpdateEvent(
       UserUpdateEvent event, Emitter<UserState> emit) async {
+    print("girdi");
     emit(UserFetchLoadingState());
+    print("loading state emit edildi");
     try {
+      print("try içi");
       await _userRepository.updateUser(event.userProfile, event.userId);
+      print("updateUser çağrıldı");
       emit(UserInitialState());
+      print("UserInitialState emit edildi");
     } catch (e) {
+      print(e);
       emit(UserUpdateErrorState(updateErrorMessage: e.toString()));
+      print("UserUpdateErrorState emit edildi");
     }
   }
 

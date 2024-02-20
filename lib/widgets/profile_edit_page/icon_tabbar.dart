@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/profile_edit_page/education_edit.dart';
 import 'package:flutter_application_1/widgets/profile_edit_page/experience_edit.dart';
 import 'package:flutter_application_1/widgets/profile_edit_page/profile_edit.dart';
@@ -12,7 +13,8 @@ class IconTabBarWidget extends StatefulWidget {
   State<IconTabBarWidget> createState() => _IconTabBarWidgetState();
 }
 
-class _IconTabBarWidgetState extends State<IconTabBarWidget> with SingleTickerProviderStateMixin {
+class _IconTabBarWidgetState extends State<IconTabBarWidget>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -32,11 +34,21 @@ class _IconTabBarWidgetState extends State<IconTabBarWidget> with SingleTickerPr
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           tabs: const [
-            Tab(icon: Icon(Icons.work_outline_outlined), text: 'Profil'),
-            Tab(icon: Icon(Icons.card_travel_outlined), text: 'Deneyim'),
-            Tab(icon: Icon(Icons.menu_book_outlined), text: 'Eğitim'),
-            Tab(icon: Icon(Icons.facebook_outlined), text: 'Sosyal Medya'),
-            Tab(icon: Icon(Icons.settings_outlined), text: 'Ayarlar'),
+            Tab(
+                icon: ProfileEditPageConstants.workIcon,
+                text: ProfileEditPageConstants.profile),
+            Tab(
+                icon: ProfileEditPageConstants.cardTravelIcon,
+                text: ProfileEditPageConstants.experience),
+            Tab(
+                icon: ProfileEditPageConstants.menuBookIcon,
+                text: ProfileEditPageConstants.education),
+            Tab(
+                icon: ProfileEditPageConstants.facebookIcon,
+                text: ProfileEditPageConstants.socialMedia),
+            Tab(
+                icon: ProfileEditPageConstants.settingsIcon,
+                text: ProfileEditPageConstants.settings),
           ],
           controller: _tabController,
         ),

@@ -16,6 +16,8 @@ class UserProfile {
   String? district;
   String? address;
   String? about;
+  List<String>? userLessons;
+  List<String>? userAnnouncements;
   List<EducationHistory>? educationHistory;
   List<WorkHistory>? workHistory;
   List<SocialMedia>? socialMedia;
@@ -33,6 +35,8 @@ class UserProfile {
     this.district,
     this.address,
     this.about,
+    this.userLessons,
+    this.userAnnouncements,
     this.educationHistory,
     this.workHistory,
     this.socialMedia,
@@ -56,6 +60,9 @@ class UserProfile {
       district: json['district'],
       address: json['address'],
       about: json['about'],
+      userLessons: (json['userLessons'] as List<dynamic>?)?.cast<String>(),
+      userAnnouncements:
+          (json['userAnnouncements'] as List<dynamic>?)?.cast<String>(),
       educationHistory: (json['educationHistory'] as List<dynamic>?)
           ?.map(
               (e) => EducationHistory.fromFirestore(e as Map<String, dynamic>))
@@ -83,15 +90,16 @@ class UserProfile {
       'district': district ?? "",
       'address': address ?? "",
       'about': about ?? "",
-      'educationHistory': educationHistory == null
-          ? educationHistory?.map((e) => e.toFirestore()).toList()
-          : {},
-      'workHistory': workHistory == null
-          ? workHistory?.map((e) => e.toFirestore()).toList()
-          : {},
-      'socialMedia': socialMedia == null
-          ? socialMedia?.map((e) => e.toFirestore()).toList()
-          : {},
+      'userLessons': userLessons ?? [],
+      'userAnnouncements': userAnnouncements ?? [],
+      'educationHistory': educationHistory
+              ?.map((education) => education.toFirestore())
+              .toList() ??
+          [],
+      'workHistory':
+          workHistory?.map((work) => work.toFirestore()).toList() ?? [],
+      'socialMedia':
+          socialMedia?.map((social) => social.toFirestore()).toList() ?? [],
     };
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/datas/education_dummy_data.dart';
+import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
@@ -8,17 +8,25 @@ import 'package:flutter_application_1/widgets/education_details_page/video_playe
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 
 class LessonDetailPage extends StatefulWidget {
-  const LessonDetailPage({Key? key, this.lessonId}) : super(key: key);
-  final String? lessonId;
+  final Education education;
+
+  const LessonDetailPage({Key? key, required this.education}) : super(key: key);
 
   @override
   State<LessonDetailPage> createState() => _LessonDetailPageState();
 }
 
 class _LessonDetailPageState extends State<LessonDetailPage> {
-  final videoUrlNotifier =
-      ValueNotifier<String>(dummyEducations[0].videoList[0].link);
+  late final ValueNotifier<String> videoUrlNotifier;
   int selectedVideoIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    videoUrlNotifier =
+        ValueNotifier<String>(widget.education.videoList[0].link);
+  }
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -39,7 +47,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Image(
-                    image: AssetImage(dummyEducations[0].image),
+                    image: NetworkImage(widget.education.image),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -47,8 +55,15 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(dummyEducations[0].title,
-                      style: Theme.of(context).textTheme.titleMedium),
+                  SizedBox(
+                    width: deviceWidth * 0.7,
+                    height: deviceWidth * 0.12,
+                    child: Text(
+                      widget.education.title,
+                      style: Theme.of(context).textTheme.titleMedium,
+                      maxLines: null,
+                    ),
+                  ),
                   Padding(padding: paddingMedium),
                   Row(
                     children: [
@@ -57,12 +72,12 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                         child: LinearProgressIndicator(
                           color: Colors.greenAccent,
                           backgroundColor: Colors.grey,
-                          value: dummyEducations[0].progress / 100,
+                          value: widget.education.progress / 100,
                           minHeight: deviceHeight * 0.02,
                         ),
                       ),
                       Padding(padding: paddingHSmall),
-                      Text("${dummyEducations[0].progress}%",
+                      Text("${widget.education.progress}%",
                           style: Theme.of(context).textTheme.titleLarge),
                     ],
                   ),
@@ -111,12 +126,12 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                           padding: paddingMedium,
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
-                            itemCount: dummyEducations[0].videoList.length,
+                            itemCount: widget.education.videoList.length,
                             itemBuilder: (BuildContext context, int index) {
                               return GestureDetector(
                                 onTap: () {
                                   videoUrlNotifier.value =
-                                      dummyEducations[0].videoList[index].link;
+                                      widget.education.videoList[index].link;
                                   setState(() {
                                     selectedVideoIndex =
                                         index; // Seçili video indeksini güncelleyin
@@ -129,14 +144,15 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                                       : Colors
                                           .white, // Seçili öğe mavi olarak belirlenir
                                   child: EducationListTile(
-                                      video:
-                                          dummyEducations[0].videoList[index]),
+                                      video: widget.education.videoList[index]),
                                 ),
                               );
                             },
                           ),
                         ),
-                        const EducationAbout(),
+                        EducationAbout(
+                          education: widget.education,
+                        ),
                       ],
                     ),
                   ),
