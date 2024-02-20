@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/models/user_profile_model/work_history.dart';

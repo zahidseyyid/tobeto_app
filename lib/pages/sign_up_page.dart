@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
-import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
-import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_event.dart';
+import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_event.dart';
+import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';

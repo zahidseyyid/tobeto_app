@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/api/blocs/user_bloc/user_event.dart';
-import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
-import 'package:flutter_application_1/api/repositories/user_repository.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
+import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
+import 'package:flutter_application_1/logic/repositories/user_repository.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
