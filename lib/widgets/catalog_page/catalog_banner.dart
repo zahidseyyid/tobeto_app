@@ -26,7 +26,7 @@ class CatalogBanner extends StatelessWidget {
           ),
           child: ClipRRect(
             child: Image.asset(
-              edubanner,
+              PageImageConstants.edubanner,
               width: deviceWidth,
               height: deviceHeight / 3.5,
               fit: BoxFit.cover,
@@ -37,7 +37,7 @@ class CatalogBanner extends StatelessWidget {
           top: deviceHeight / 25,
           left: 10,
           right: 10,
-          child: Container(
+          child: SizedBox(
             width: deviceWidth,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

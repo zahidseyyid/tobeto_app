@@ -16,7 +16,7 @@ class EduBannerWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              edubanner,
+              PageImageConstants.edubanner,
               width: deviceWidth,
               height: deviceHeight / 4.5,
               fit: BoxFit.cover,

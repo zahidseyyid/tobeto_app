@@ -14,3 +14,5 @@ class UserFetchEvent extends UserEvent {
 
   UserFetchEvent({required this.userId});
 }
+
+class UserDeleteEvent extends UserEvent {}

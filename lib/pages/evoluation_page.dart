@@ -6,8 +6,8 @@ import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 
-class EvaluationPage extends StatelessWidget {
-  const EvaluationPage({super.key});
+class EvoluationPage extends StatelessWidget {
+  const EvoluationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,8 @@ class EvaluationPage extends StatelessWidget {
               children: [
                 GradientCardWidget(
                   title: "Tobeto İşte Başarı Modeli",
-                  subtitle: "80 soru ile yetkinliklerini ölç,     önerilen eğitimleri tamamla,        rozetini kazan.",
+                  subtitle:
+                      "80 soru ile yetkinliklerini ölç,     önerilen eğitimleri tamamla,        rozetini kazan.",
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
@@ -61,7 +62,8 @@ class EvaluationPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 GradientCardWidget(
                   title: "Yazılımda Başarı Testi",
-                  subtitle: "Çoktan seçmeli sorular                                  ile teknik bilgini test et.",
+                  subtitle:
+                      "Çoktan seçmeli sorular                                  ile teknik bilgini test et.",
                   gradient: const LinearGradient(
                     begin: Alignment.bottomLeft,
                     end: Alignment.topRight,
@@ -157,10 +159,12 @@ class EvaluationPage extends StatelessWidget {
                   height: 20,
                 ),
                 GradientCardWidget(
-                  title: "Huawei Talent Interview                 Teknik Bilgi Sınavı*",
+                  title:
+                      "Huawei Talent Interview                 Teknik Bilgi Sınavı*",
                   subtitle:
                       "Sertifika alabilmen için, eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.\n4400+ soru | 30+ programlama dili, 4 zorluk seviyesi",
-                  subtitle2: "*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.",
+                  subtitle2:
+                      "*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.",
                   gradient: const LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,

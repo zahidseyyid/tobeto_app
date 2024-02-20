@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
+  final double radius;
   final File pickedImage;
   final String userPhotoUrl;
   final String defaultPhotoUrl =
@@ -11,12 +12,13 @@ class CustomCircleAvatar extends StatelessWidget {
     Key? key, // key parametresini burada düzelttik
     required this.pickedImage,
     required this.userPhotoUrl,
+    required this.radius,
   }) : super(key: key); // super(key: key) ifadesini ekledik
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 80,
+      radius: radius,
       backgroundImage:
           getImageProvider(pickedImage, userPhotoUrl, defaultPhotoUrl),
       backgroundColor: Colors.transparent,

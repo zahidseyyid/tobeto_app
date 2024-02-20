@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
@@ -23,19 +26,34 @@ class ProfileEdit extends StatefulWidget {
 
 class _ProfileEditState extends State<ProfileEdit> {
   File profilePictureUrl = File("");
+  String profilePictureUrlString = "";
 
-  Future<void> pickImage() async {
+  Future<void> pickImage(String url) async {
     final picker = ImagePicker();
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedImage != null) {
       setState(() {
         profilePictureUrl = File(pickedImage.path);
+        uploadImage(url);
       });
     } else {
       if (kDebugMode) {
         print("Resim seçilmedi");
       }
+    }
+  }
+
+  Future<void> uploadImage(String uid) async {
+    try {
+      FirebaseStorage storage = FirebaseStorage.instance;
+      Reference ref = storage.ref().child('profilePhoto/$uid/image.png');
+      UploadTask uploadTask = ref.putFile(profilePictureUrl);
+      await uploadTask;
+      profilePictureUrlString = await ref.getDownloadURL();
+      print('Image uploaded to Firebase Storage successfully.');
+    } catch (e) {
+      print('Error uploading image to Firebase Storage: $e');
     }
   }
 
@@ -95,8 +113,8 @@ class _ProfileEditState extends State<ProfileEdit> {
     } else {
       userProfile = UserProfile(uid: "", nameSurname: "", email: "");
     }
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    final double deviceWidth = mediaQueryData.size.width;
+    //final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    //final double deviceWidth = mediaQueryData.size.width;
     return Scaffold(
       body: Center(
         child: ListView(
@@ -109,6 +127,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CustomCircleAvatar(
+                    radius: 80,
                     pickedImage: profilePictureUrl,
                     userPhotoUrl: userProfile.profilePictureUrl ?? "",
                   ),
@@ -119,7 +138,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     child: const Text("Fotoğrafı Değiştir",
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {
-                      pickImage();
+                      pickImage(userProfile.uid);
                     },
                   ),
                 ],
@@ -230,7 +249,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                           district: districtController.text,
                           address: addressController.text,
                           about: aboutController.text,
-                          profilePictureUrl: userProfile.profilePictureUrl,
+                          profilePictureUrl: profilePictureUrlString == ""
+                              ? userProfile.profilePictureUrl
+                              : profilePictureUrlString,
                           educationHistory: userProfile.educationHistory,
                           workHistory: userProfile.workHistory,
                           socialMedia: userProfile.socialMedia,

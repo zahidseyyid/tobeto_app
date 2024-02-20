@@ -40,7 +40,9 @@ class _VisibilityWidgetState extends State<VisibilityWidget> {
               color: Theme.of(context).colorScheme.background,
             ),
             child: Image.asset(
-              _isVisible ? visibilityOn : visibilityOff,
+              _isVisible
+                  ? PageImageConstants.visibilityOn
+                  : PageImageConstants.visibilityOff,
               scale: 25,
             ),
           ),

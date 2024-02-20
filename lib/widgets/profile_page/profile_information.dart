@@ -31,7 +31,6 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
     }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
-    double deviceHeight = queryData.size.height;
     return SizedBox(
       child: CustomCardWidget(
         //height: deviceHeight / 2.4,
@@ -39,7 +38,6 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
         child: Column(
           children: [
             Container(
-              height: deviceHeight / 4.6,
               width: deviceWidth / 1.1,
               decoration: const BoxDecoration(
                 color: Colors.deepPurple,
@@ -51,10 +49,13 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: CustomCircleAvatar(
-                      userPhotoUrl: userProfile.profilePictureUrl!,
-                      pickedImage: File(""),
-                    ),
+                    child: userProfile.profilePictureUrl == null
+                        ? const Text("Fotoğraf yükle")
+                        : CustomCircleAvatar(
+                            radius: 80,
+                            userPhotoUrl: userProfile.profilePictureUrl!,
+                            pickedImage: File(""),
+                          ),
                   ),
                 ],
               ),
