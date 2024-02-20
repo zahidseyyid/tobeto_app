@@ -5,7 +5,7 @@ import 'package:flutter_application_1/api/blocs/catalog/catalog_event.dart';
 import 'package:flutter_application_1/api/blocs/catalog/catalog_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/pages/education_details_page.dart';
+import 'package:flutter_application_1/pages/lesson_details_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -77,7 +77,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const EducationDetailsPage()));
+                          builder: (context) => const LessonDetailPage()));
                 },
                 child: Container(
                   height: deviceHeight * 0.3,

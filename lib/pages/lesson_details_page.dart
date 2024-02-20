@@ -7,15 +7,15 @@ import 'package:flutter_application_1/widgets/education_details_page/education_l
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 
-class EducationDetailsPage extends StatefulWidget {
-  const EducationDetailsPage({Key? key, this.lessonId}) : super(key: key);
+class LessonDetailPage extends StatefulWidget {
+  const LessonDetailPage({Key? key, this.lessonId}) : super(key: key);
   final String? lessonId;
 
   @override
-  State<EducationDetailsPage> createState() => _EducationDetailsPageState();
+  State<LessonDetailPage> createState() => _LessonDetailPageState();
 }
 
-class _EducationDetailsPageState extends State<EducationDetailsPage> {
+class _LessonDetailPageState extends State<LessonDetailPage> {
   final videoUrlNotifier =
       ValueNotifier<String>(dummyEducations[0].videoList[0].link);
   int selectedVideoIndex = 0;

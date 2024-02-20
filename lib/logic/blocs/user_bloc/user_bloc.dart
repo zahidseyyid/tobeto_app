@@ -10,15 +10,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc(this._userRepository) : super(UserInitialState()) {
     on<UserUpdateEvent>(_onUserUpdateEvent);
     on<UserFetchEvent>(_onUserFetchEvent);
+    on<UserDeleteEvent>(_onUserDeleteEvent);
   }
 
   void _onUserFetchEvent(UserFetchEvent event, Emitter<UserState> emit) async {
     emit(UserFetchLoadingState());
-    try {
-      UserProfile userProfile = await _userRepository.fetchUser(event.userId);
-      emit(UserFetchedState(userProfile));
-    } catch (e) {
-      emit(UserFetchErrorState(errorMessage: e.toString()));
+    final fetchedUser = await _userRepository.fetchUser(event.userId);
+    if (fetchedUser is UserProfile) {
+      emit(UserFetchedState(fetchedUser));
+    } else {
+      emit(UserFetchErrorState(errorMessage: fetchedUser.toString()));
     }
   }
 
@@ -31,5 +32,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     } catch (e) {
       emit(UserUpdateErrorState(updateErrorMessage: e.toString()));
     }
+  }
+
+  void _onUserDeleteEvent(UserDeleteEvent event, Emitter<UserState> emit) {
+    emit(UserInitialState());
   }
 }

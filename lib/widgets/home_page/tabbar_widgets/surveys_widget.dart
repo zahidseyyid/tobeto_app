@@ -19,7 +19,8 @@ class SurveysWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(surveyImage, height: deviceHeight / 6),
+            Image.asset(PageImageConstants.surveyImage,
+                height: deviceHeight / 6),
             Padding(
               padding: const EdgeInsets.only(left: 10, bottom: 10),
               child: Text(

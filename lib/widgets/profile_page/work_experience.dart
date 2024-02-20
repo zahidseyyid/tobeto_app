@@ -47,7 +47,7 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
               ),
               Padding(padding: paddingSmall),
               SizedBox(
-                height: deviceHeight / 2.4,
+                height: deviceHeight / 2,
                 child: userProfileWork == null
                     ? const Center(child: Text("Deneyim Bilgisi yok"))
                     : ListView.builder(

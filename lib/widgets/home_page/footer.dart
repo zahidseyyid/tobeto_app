@@ -23,7 +23,8 @@ class FooterWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       Image(
-                          image: const AssetImage(loginHeaderImage),
+                          image: const AssetImage(
+                              PageImageConstants.loginHeaderImage),
                           width: deviceWidth / 3.5),
                       SizedBox(width: deviceWidth / 5),
                       CustomButton(

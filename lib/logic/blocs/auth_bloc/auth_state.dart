@@ -18,7 +18,7 @@ class Unauthenticated extends AuthState {}
 
 // Hatalı Giriş
 class AuthError extends AuthState {
-  final String message;
+  final String errorMessage;
 
-  AuthError(this.message);
+  AuthError({required this.errorMessage});
 }

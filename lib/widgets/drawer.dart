@@ -1,15 +1,18 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
+import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/pages/calendar.dart';
-import 'package:flutter_application_1/pages/evaluation_page.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
+import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/pages/catalog_page.dart';
-import 'package:flutter_application_1/pages/home_page.dart';
-import 'package:flutter_application_1/pages/profile.dart';
-import 'package:flutter_application_1/pages/sign_up_page.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -19,17 +22,26 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
     var logoAsset = getLogo(brightness);
-    //final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    //final double deviceHeight = mediaQueryData.size.height;
-    //final double deviceWidth = mediaQueryData.size.width;
-    return Drawer(
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is Unauthenticated) {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const SignUpPage()));
-          }
-        },
+    UserProfile? userProfile;
+    final userState = context.watch<UserBloc>().state;
+    if (userState is UserInitialState) {
+    } else if (userState is UserFetchedState) {
+      userProfile = userState.user!;
+    }
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthError) {
+          print("AuthError : MyDrawer");
+          ToastHelper.showErrorToast(state.errorMessage);
+          Navigator.pushReplacementNamed(context, "/sign_in");
+        } else if (state is Authenticated) {
+          print("Authenticated : MyDrawer");
+        } else if (state is Unauthenticated) {
+          print("Unauthenticated : MyDrawer");
+          Navigator.pushReplacementNamed(context, "/sign_in");
+        }
+      },
+      child: Drawer(
         child: ListView(
           children: [
             DrawerHeader(
@@ -57,60 +69,36 @@ class MyDrawer extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                      Navigator.pushReplacementNamed(context, "/home");
                     },
-                    child: const Text('Anasayfa'),
+                    child: const Text(DrawerConstants.homePage),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const EvaluationPage()));
+                      Navigator.pushReplacementNamed(
+                          context, "/evoluationRoute");
                     },
-                    child: const Text('Değerlendirmeler'),
+                    child: const Text(DrawerConstants.evaluationPage),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ProfilePage()));
+                      Navigator.pushReplacementNamed(context, "/profile");
                     },
-                    child: const Text('Profilim'),
+                    child: const Text(DrawerConstants.profilePage),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CatalogPage()));
+                      Navigator.pushReplacementNamed(context, "/catalog");
                     },
-                    child: const Text('Katalog'),
+                    child: const Text(DrawerConstants.catalogPage),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Calendar()));
+                      Navigator.pushReplacementNamed(context, "/calendar");
                     },
-                    child: const Text('Takvim'),
+                    child: const Text(DrawerConstants.calendarPage),
                   ),
                 ],
-              ),
-            ),
-            const Divider(),
-            TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
-              },
-              child: const Row(
-                children: [Text("Tobeto"), Icon(Icons.home_outlined)],
               ),
             ),
             const Divider(),
@@ -124,21 +112,24 @@ class MyDrawer extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 0,
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
-                          child: const Icon(Icons.person_3_outlined),
-                        ),
+                        child: (userProfile == null ||
+                                userProfile.profilePictureUrl == null)
+                            ? const Icon(Icons.person)
+                            : CustomCircleAvatar(
+                                radius: 20,
+                                pickedImage: File(""),
+                                userPhotoUrl:
+                                    userProfile.profilePictureUrl ?? ""),
                       ),
                       //SizedBox(width: deviceWidth / 20),
-                      const Expanded(
+                      Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              //FirebaseAuth.instance.currentUser!.displayName!,
-                              "sdasd",
+                              (userProfile == null)
+                                  ? DrawerConstants.error
+                                  : userProfile.nameSurname,
                               maxLines: 1,
                             ),
                           )),
@@ -159,7 +150,7 @@ class MyDrawer extends StatelessWidget {
             const Divider(),
             const Padding(
               padding: EdgeInsets.all(10.0),
-              child: Text('© 2022 Tobeto'),
+              child: Text(DrawerConstants.tobetoCopyright),
             ),
           ],
         ),

@@ -1,0 +1,13 @@
+const String annonuncementRoute = "/annonuncement";
+const String authControlRoute = '/auth_control';
+const String calendarRoute = '/calendar';
+const String catalogRoute = '/catalog';
+const String evoluationRoute = "/evoluation";
+const String homeRoute = '/home';
+const String lessonDetailRoute = "/lesson_detail";
+const String lessonRoute = "/lesson";
+const String profileEditRoute = '/profile_edit';
+const String profileRoute = '/profile';
+const String signInRoute = '/sign_in';
+const String signUpRoute = '/sign_up';
+const String splashRoute = '/splash';

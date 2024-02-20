@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/api/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/constant_text.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/models/user_profile_model/education_history.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
@@ -48,7 +47,7 @@ class _EducationWidgetState extends State<EducationWidget> {
               ),
               Padding(padding: paddingSmall),
               SizedBox(
-                height: deviceHeight / 3,
+                height: deviceHeight / 2.5,
                 child: userProfileEducation == null
                     ? const Center(child: Text("Ders bilgisi yok"))
                     : ListView.builder(

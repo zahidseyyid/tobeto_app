@@ -1,34 +1,50 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
+// ignore_for_file: avoid_print
 
-class SplashPage extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
+import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
+import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  late String logoAsset;
-  @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
-    logoAsset = getLogo(brightness);
+    final logoAsset = getLogo(brightness);
     double deviceHeight = MediaQuery.of(context).size.height;
     double deviceWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              logoAsset,
-              width: deviceWidth / 1.80,
-            ),
-            SizedBox(height: deviceHeight / 5),
-            CircularProgressIndicator(
-                color: Theme.of(context).colorScheme.secondary),
-          ],
+
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthError) {
+          print("AuthError : SplashWidgetPage");
+          Navigator.pushReplacementNamed(context, "/sign_in");
+        } else if (state is Unauthenticated) {
+          print("Unauthenticated : SplashWidgetPage");
+          Navigator.pushReplacementNamed(context, "/sign_in");
+        } else if (state is Authenticated) {
+          print("Authenticated : SplashWidgetPage");
+          Navigator.pushReplacementNamed(context, "/home");
+        } else {
+          print("else : SplashWidgetPage");
+        }
+      },
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                logoAsset,
+                width: deviceWidth / 1.80,
+              ),
+              SizedBox(height: deviceHeight / 5),
+              const CustomCircularProgress()
+            ],
+          ),
         ),
       ),
     );

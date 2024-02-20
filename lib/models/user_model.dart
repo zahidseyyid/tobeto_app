@@ -83,10 +83,15 @@ class UserProfile {
       'district': district ?? "",
       'address': address ?? "",
       'about': about ?? "",
-      'educationHistory':
-          educationHistory?.map((e) => e.toFirestore()).toList() ?? {},
-      'workHistory': workHistory?.map((e) => e.toFirestore()).toList() ?? {},
-      'socialMedia': socialMedia?.map((e) => e.toFirestore()).toList() ?? {},
+      'educationHistory': educationHistory == null
+          ? educationHistory?.map((e) => e.toFirestore()).toList()
+          : {},
+      'workHistory': workHistory == null
+          ? workHistory?.map((e) => e.toFirestore()).toList()
+          : {},
+      'socialMedia': socialMedia == null
+          ? socialMedia?.map((e) => e.toFirestore()).toList()
+          : {},
     };
   }
 }

@@ -31,3 +31,5 @@ class UserFetchedState extends UserState {
 
   UserFetchedState(this.user);
 }
+
+class UserDeletedState extends UserState {}
