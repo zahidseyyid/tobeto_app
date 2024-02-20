@@ -30,8 +30,9 @@ class UserRepository {
 
   Future<void> updateUser(UserProfile userProfile, String uid) async {
     try {
-      collectionReference.doc(uid).update(userProfile.toFirestore());
+      await collectionReference.doc(uid).update(userProfile.toFirestore());
     } catch (e) {
+      print("${e}Hata kodu burada");
       String errorMessage = FirestoreExceptionHelper.handleException(e);
       throw Exception(errorMessage);
     }

@@ -24,6 +24,7 @@ class ProfileEditPage extends StatelessWidget {
     if (userState is UserFetchedState) {
     } else if (userState is UserFetchLoadingState) {
     } else if (userState is UserFetchErrorState) {
+      print(userState.errorMessage);
     } else if (userState is UserInitialState) {
       context.read<UserBloc>().add(UserFetchEvent(userId: userId));
     }
