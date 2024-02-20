@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_event.dart';
 import 'package:flutter_application_1/api/blocs/auth_bloc/auth_state.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/pages/education_details_page.dart';
+import 'package:flutter_application_1/pages/calendar.dart';
 import 'package:flutter_application_1/pages/evaluation_page.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
@@ -97,8 +96,7 @@ class MyDrawer extends StatelessWidget {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const EducationDetailsPage()));
+                              builder: (context) => const Calendar()));
                     },
                     child: const Text('Takvim'),
                   ),
