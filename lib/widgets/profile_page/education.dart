@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
@@ -21,10 +23,15 @@ class _EducationWidgetState extends State<EducationWidget> {
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
+      print("fetched : EducationWidget");
       userProfile = userBlocState.user;
+    } else {
+      print("else : EducationWidget");
     }
-    List<EducationHistory>? userProfileEducation =
-        userProfile?.educationHistory;
+    if (userProfile == null) {
+      return const Center(child: Text("Kullanıcı bilgisi bulunamadı"));
+    }
+    List<EducationHistory>? userProfileEducation = userProfile.educationHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -46,35 +53,24 @@ class _EducationWidgetState extends State<EducationWidget> {
                 thickness: 2,
               ),
               Padding(padding: paddingSmall),
-              SizedBox(
-                height: deviceHeight / 2.5,
-                child: userProfileEducation == null
-                    ? const Center(child: Text("Ders bilgisi yok"))
-                    : ListView.builder(
-                        shrinkWrap: true, // Gerekli olabilir
-                        scrollDirection: Axis.horizontal,
-                        itemCount: userProfileEducation.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: paddingHSmall,
-                            child: EducationCard(
-                              deviceWidth: deviceWidth,
-                              educationStartDate:
-                                  userProfileEducation[index].startDate,
-                              educationEndDate:
-                                  userProfileEducation[index].endDate,
-                              educationSchoolName:
-                                  userProfileEducation[index].schoolName,
-                              educationDepartment:
-                                  userProfileEducation[index].department,
-                              educationStatus:
-                                  userProfileEducation[index].educationStatus,
-                            ),
-                          );
-                        },
-                      ),
-              ),
-
+              userProfileEducation!.isEmpty
+                  ? const Center(child: Text("Okul Bilgisi Eklenmedi"))
+                  : SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          children: userProfileEducation.map((education) {
+                        return Padding(
+                          padding: paddingHSmall,
+                          child: EducationCard(
+                            educationStartDate: education.startDate,
+                            educationEndDate: education.endDate,
+                            educationSchoolName: education.schoolName,
+                            educationDepartment: education.department,
+                            educationStatus: education.educationStatus,
+                          ),
+                        );
+                      }).toList()),
+                    ),
               //EducationCard(deviceWidth: deviceWidth),
               Padding(padding: paddingSmall),
             ],
@@ -85,6 +81,8 @@ class _EducationWidgetState extends State<EducationWidget> {
   }
 }
 
+// TODO: Widgetları ayıracağım.
+
 class EducationCard extends StatelessWidget {
   final String educationStartDate;
   final String educationEndDate;
@@ -93,15 +91,12 @@ class EducationCard extends StatelessWidget {
   final String educationStatus;
   const EducationCard({
     super.key,
-    required this.deviceWidth,
     required this.educationStartDate,
     required this.educationEndDate,
     required this.educationSchoolName,
     required this.educationDepartment,
     required this.educationStatus,
   });
-
-  final double deviceWidth;
 
   @override
   Widget build(BuildContext context) {
