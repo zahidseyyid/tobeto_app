@@ -21,13 +21,11 @@ class ProfileInformationWidget extends StatefulWidget {
 class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
   @override
   Widget build(BuildContext context) {
-    UserProfile userProfile;
+    UserProfile? userProfile;
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
       userProfile = userBlocState.user!;
-    } else {
-      userProfile = UserProfile(uid: "", nameSurname: "", email: "");
     }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
@@ -49,7 +47,7 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: userProfile.profilePictureUrl == null
+                    child: userProfile!.profilePictureUrl == null
                         ? const Text("Fotoğraf yükle")
                         : CustomCircleAvatar(
                             radius: 80,

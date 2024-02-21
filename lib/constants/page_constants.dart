@@ -42,4 +42,5 @@ class ProfileEditPageConstants {
   static const Icon menuBookIcon = Icon(Icons.menu_book_outlined);
   static const Icon facebookIcon = Icon(Icons.facebook_outlined);
   static const Icon settingsIcon = Icon(Icons.settings_outlined);
+  static const Icon exitToAppIcon = Icon(Icons.exit_to_app_outlined);
 }
