@@ -75,7 +75,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
               child: GestureDetector(
                 onTap: () {
                   // Tıklanılan dersin detay sayfasına yönlendirilmesi
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => LessonDetailPage(

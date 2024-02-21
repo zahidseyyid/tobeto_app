@@ -75,8 +75,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, "/evoluationRoute");
+                      Navigator.pushReplacementNamed(context, "/evoluation");
                     },
                     child: const Text(DrawerConstants.evaluationPage),
                   ),
@@ -140,7 +139,7 @@ class MyDrawer extends StatelessWidget {
                             onTap: () {
                               context.read<AuthBloc>().add(AuthLogout());
                             },
-                            child: const Icon(Icons.exit_to_app)),
+                            child: ProfileEditPageConstants.exitToAppIcon),
                       ),
                     ],
                   ),

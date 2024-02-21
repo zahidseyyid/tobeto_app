@@ -35,7 +35,6 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
 
     return Scaffold(
       appBar: CustomAppBarWidget(brightness: brightness),
-      drawer: const MyDrawer(),
       body: Column(
         children: [
           Row(
