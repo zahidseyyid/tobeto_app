@@ -19,7 +19,9 @@ class SplashPage extends StatelessWidget {
 
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is AuthError) {
+        if (state is AuthInitial || state is AuthLoading) {
+          print("AuthInitial : SplashWidgetPage");
+        } else if (state is AuthError) {
           print("AuthError : SplashWidgetPage");
           Navigator.pushReplacementNamed(context, "/sign_in");
         } else if (state is Unauthenticated) {

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
@@ -9,7 +11,7 @@ import 'package:flutter_application_1/widgets/profile_page/education.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WorkExperienceWidget extends StatefulWidget {
-  const WorkExperienceWidget({super.key});
+  const WorkExperienceWidget({Key? key}) : super(key: key);
 
   @override
   State<WorkExperienceWidget> createState() => _WorkExperienceWidgetState();
@@ -22,9 +24,15 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
+      print("fetched : WorkExperienceWidget");
       userProfile = userBlocState.user;
+    } else {
+      print("else : WorkExperienceWidget");
     }
-    List<WorkHistory>? userProfileWork = userProfile?.workHistory;
+    if (userProfile == null) {
+      return const Center(child: Text("Kullanıcı bilgisi bulunamadı"));
+    }
+    List<WorkHistory>? userProfileWork = userProfile.workHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     double deviceHeight = queryData.size.height;
@@ -46,32 +54,26 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
                 thickness: 2,
               ),
               Padding(padding: paddingSmall),
-              SizedBox(
-                height: deviceHeight / 2,
-                child: userProfileWork == null
-                    ? const Center(child: Text("Deneyim Bilgisi yok"))
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: userProfileWork.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: paddingHSmall,
-                            child: WorkHistoryCard(
-                              workStartDate: userProfileWork[index].startDate,
-                              workEndDate: userProfileWork[index].endDate,
-                              workCompanyName: userProfileWork[index].company,
-                              workPosition: userProfileWork[index].position,
-                              workSector: userProfileWork[index].sector,
-                              workCity: userProfileWork[index].city,
-                              workDescription:
-                                  userProfileWork[index].description,
-                            ),
-                          );
-                        },
-                      ),
-              ),
-              //const WorkHistoryCard(),
+              userProfileWork!.isEmpty
+                  ? const Center(child: Text("Deneyim Bilgisi Eklenmedi"))
+                  : SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          children: userProfileWork.map((work) {
+                        return Padding(
+                          padding: paddingHSmall,
+                          child: WorkHistoryCard(
+                            workStartDate: work.startDate,
+                            workEndDate: work.endDate,
+                            workCompanyName: work.company,
+                            workPosition: work.position,
+                            workSector: work.sector,
+                            workCity: work.city,
+                            workDescription: work.description,
+                          ),
+                        );
+                      }).toList()),
+                    ),
               Padding(padding: paddingSmall),
             ],
           ),

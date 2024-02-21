@@ -27,6 +27,11 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
     if (userBlocState is UserFetchedState) {
       userProfile = userBlocState.user!;
     }
+    if (userProfile == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
     return SizedBox(
@@ -47,7 +52,7 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: userProfile!.profilePictureUrl == null
+                    child: userProfile.profilePictureUrl == null
                         ? const Text("Fotoğraf yükle")
                         : CustomCircleAvatar(
                             radius: 80,
