@@ -52,6 +52,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   syncfusion_flutter_calendar: ^21.1.41
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:

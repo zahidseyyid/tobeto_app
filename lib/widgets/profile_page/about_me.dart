@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -27,18 +28,16 @@ class _AboutMeWidgetState extends State<AboutMeWidget> {
     }
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
-    double deviceHeight = queryData.size.height;
     return SizedBox(
       child: CustomCardWidget(
         width: deviceWidth / 1.1,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth / 20, vertical: deviceHeight / 80),
+          padding: paddingBig + paddingHBig,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTitle(
-                title: "Hakkımda",
+                title: AboutMeConstants.aboutMeTitle,
               ),
               Padding(padding: paddingSmall),
               const Divider(
@@ -47,14 +46,9 @@ class _AboutMeWidgetState extends State<AboutMeWidget> {
               ),
               Padding(padding: paddingSmall),
               userProfile?.about == null
-                  ? const Text("Hakkımda bilgisi yok")
-                  : Text(
-                      userProfile?.about ?? "",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                  ? const Text(AboutMeConstants.aboutMeNotFound)
+                  : Text(userProfile?.about ?? "",
+                      style: AboutMeConstants.textStyle),
             ],
           ),
         ),

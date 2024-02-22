@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
@@ -73,43 +74,49 @@ class _ExperienceEditState extends State<ExperienceEdit> {
         children: [
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Kurum Adı*",
-              controller: companyController,
-              hintText: "Kurum Adı Giriniz"),
+            labelText: ExperienceConstants.company,
+            controller: companyController,
+            hintText: ExperienceConstants.companyHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Pozisyon*",
-              controller: positionController,
-              hintText: "Pozisyon Giriniz"),
+            labelText: ExperienceConstants.position,
+            controller: positionController,
+            hintText: ExperienceConstants.positionHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Sektör*",
-              controller: sectorController,
-              hintText: "Sektör Giriniz"),
+            labelText: ExperienceConstants.sector,
+            controller: sectorController,
+            hintText: ExperienceConstants.sectorHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Şehir*",
-              controller: companyCityController,
-              hintText: "Şehir Giriniz"),
+            labelText: ExperienceConstants.city,
+            controller: companyCityController,
+            hintText: ExperienceConstants.cityHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Başlangıç Tarihi*",
-              controller: startDateController,
-              hintText: "Başlangıç Tarihi Giriniz"),
+            labelText: ExperienceConstants.startDate,
+            controller: startDateController,
+            hintText: ExperienceConstants.startDateHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Bitiş Tarihi*",
-              controller: endDateController,
-              hintText: "Bitiş Tarihi Giriniz"),
+            labelText: ExperienceConstants.endDate,
+            controller: endDateController,
+            hintText: ExperienceConstants.endDateHint,
+          ),
           Padding(padding: paddingMedium),
           buildUserInfoFormField(
-              labelText: "Açıklama*",
+              labelText: ExperienceConstants.description,
               controller: descriptionController,
-              hintText: "Açıklama Giriniz",
+              hintText: ExperienceConstants.descriptionHint,
               maxLines: 5),
           Padding(padding: paddingMedium),
           CustomElevatedButton(
-              text: "Kaydet",
+              text: ExperienceConstants.saveButton,
               onPressed: () {
                 userProfile.workHistory ?? (userProfile.workHistory = []);
                 userProfile.workHistory!.add(

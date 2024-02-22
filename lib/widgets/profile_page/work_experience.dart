@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -30,23 +31,21 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
       print("else : WorkExperienceWidget");
     }
     if (userProfile == null) {
-      return const Center(child: Text("Kullanıcı bilgisi bulunamadı"));
+      return const Center(child: Text(WorkExperienceConstants.defaultError));
     }
     List<WorkHistory>? userProfileWork = userProfile.workHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
-    double deviceHeight = queryData.size.height;
     return SizedBox(
       child: CustomCardWidget(
         width: deviceWidth / 1.1,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth / 20, vertical: deviceHeight / 80),
+          padding: paddingBig + paddingHBig,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTitle(
-                title: "Deneyim Bilgileri",
+                title: WorkExperienceConstants.workPageTitle,
               ),
               Padding(padding: paddingSmall),
               const Divider(
@@ -55,7 +54,9 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
               ),
               Padding(padding: paddingSmall),
               userProfileWork!.isEmpty
-                  ? const Center(child: Text("Deneyim Bilgisi Eklenmedi"))
+                  ? const Center(
+                      child:
+                          Text(WorkExperienceConstants.workExperienceNotFound))
                   : SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -118,7 +119,7 @@ class WorkHistoryCard extends StatelessWidget {
             ],
             color: Theme.of(context).colorScheme.onError,
             shape: BoxShape.rectangle),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: paddingBig + paddingHBig,
         //width: deviceWidth / 1.8,
         child: Stack(
           children: [
@@ -127,73 +128,49 @@ class WorkHistoryCard extends StatelessWidget {
               children: [
                 Padding(padding: paddingBig),
                 Row(mainAxisSize: MainAxisSize.min, children: [
-                  const Icon(Icons.calendar_month_outlined),
-                  const Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                  WorkExperienceConstants.calendarIcon,
+                  Padding(padding: paddingMedium),
                   Text("$workStartDate - $workEndDate"),
                 ]),
                 Padding(padding: paddingSmall),
                 const Text(
-                  "Kurum Adı",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF828282)),
+                  WorkExperienceConstants.workCompanyName,
+                  style: WorkExperienceConstants.textStyleGrey,
                 ),
                 Padding(padding: paddingSmall),
                 Text(
                   workCompanyName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: WorkExperienceConstants.textStyle,
                 ),
                 Padding(padding: paddingSmall),
                 const Text(
-                  "Pozisyon",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF828282)),
+                  WorkExperienceConstants.workPosition,
+                  style: WorkExperienceConstants.textStyleGrey,
                 ),
                 Padding(padding: paddingSmall),
                 Text(
                   workPosition,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: WorkExperienceConstants.textStyle,
                 ),
                 Padding(padding: paddingSmall),
                 const Text(
-                  "Sektör",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF828282)),
+                  WorkExperienceConstants.workSector,
+                  style: WorkExperienceConstants.textStyleGrey,
                 ),
                 Padding(padding: paddingSmall),
                 Text(
                   workSector,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: WorkExperienceConstants.textStyle,
                 ),
                 Padding(padding: paddingSmall),
                 const Text(
-                  "Şehir",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF828282)),
+                  WorkExperienceConstants.workCity,
+                  style: WorkExperienceConstants.textStyleGrey,
                 ),
                 Padding(padding: paddingSmall),
                 Text(
                   workCity,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: WorkExperienceConstants.textStyle,
                 ),
               ],
             ),
@@ -206,21 +183,22 @@ class WorkHistoryCard extends StatelessWidget {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const Text("Deneyim Açıklaması"),
+                        title: const Text(WorkExperienceConstants.workExplain),
                         content: Text(workDescription),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: const Text("Kapat"),
+                            child:
+                                const Text(WorkExperienceConstants.dialogClose),
                           ),
                         ],
                       );
                     },
                   );
                 },
-                icon: const Icon(Icons.info_outlined),
+                icon: WorkExperienceConstants.workInfoIcon,
               ),
             ),
           ],

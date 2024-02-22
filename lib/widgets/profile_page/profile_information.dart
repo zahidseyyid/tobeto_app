@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -51,9 +52,9 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    padding: paddingMedium,
                     child: userProfile.profilePictureUrl == null
-                        ? const Text("Fotoğraf yükle")
+                        ? const Text(ProfileInformationConstants.emptyPhoto)
                         : CustomCircleAvatar(
                             radius: 80,
                             userPhotoUrl: userProfile.profilePictureUrl!,
@@ -66,29 +67,29 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
             Padding(padding: paddingMedium),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
-              icon: Icons.person_2_outlined,
-              title: "Ad Soyad",
+              icon: ProfileInformationConstants.personIcon,
+              title: ProfileInformationConstants.nameSurname,
               infoText: userProfile.nameSurname,
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
-              icon: Icons.calendar_month_outlined,
-              title: "Doğum Tarihi",
+              icon: ProfileInformationConstants.calendarIcon,
+              title: ProfileInformationConstants.birthDate,
               infoText: userProfile.birthDate ?? "",
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
-              icon: Icons.email_outlined,
-              title: "E-posta Adresi",
+              icon: ProfileInformationConstants.emailIcon,
+              title: ProfileInformationConstants.email,
               infoText: userProfile.email,
             ),
             Padding(padding: paddingSmall),
             CustomProfileSizedBox(
               deviceWidth: deviceWidth,
               icon: Icons.phone_outlined,
-              title: "Telefon Numarası",
+              title: ProfileInformationConstants.phone,
               infoText: userProfile.phone ?? "",
             ),
             Padding(padding: paddingMedium),

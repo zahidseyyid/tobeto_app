@@ -11,6 +11,7 @@ class EducationListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Text ve iconlar constant olmalı
     Icon icon;
     Color iconColor;
 

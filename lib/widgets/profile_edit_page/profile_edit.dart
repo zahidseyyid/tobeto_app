@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileEdit extends StatefulWidget {
+  //TODO: Text ve iconlar constant olmalı
   const ProfileEdit({Key? key}) : super(key: key);
 
   @override
@@ -135,7 +137,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.secondary,
                     ),
-                    child: const Text("Fotoğrafı Değiştir",
+                    child: const Text(ProfileEditConstants.photoUpload,
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       pickImage(userProfile.uid);
@@ -148,93 +150,93 @@ class _ProfileEditState extends State<ProfileEdit> {
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Adınız Soyadınız*",
+              labelText: ProfileEditConstants.nameSurname,
               controller: nameSurnameController,
-              hintText: "Adınızı ve Soyadınızı giriniz",
+              hintText: ProfileEditConstants.nameSurnameHint,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Telefon Numaranız*",
+              labelText: ProfileEditConstants.phone,
               controller: phoneController,
-              hintText: "Telefon numaranızı giriniz",
+              hintText: ProfileEditConstants.phoneHint,
               keyboardType: TextInputType.phone,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Doğum Tarihiniz*",
+              labelText: ProfileEditConstants.birthDate,
               controller: birthDateController,
-              hintText: "Doğum tarihinizi giriniz(23/07/1996)",
+              hintText: ProfileEditConstants.birthDateHint,
               keyboardType: TextInputType.datetime,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "TC Kimlik Numaranız*",
+              labelText: ProfileEditConstants.identityNumber,
               controller: idNoController,
-              hintText: "TC kimlik numaranızı giriniz",
+              hintText: ProfileEditConstants.identityNumberHint,
               keyboardType: TextInputType.number,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "E-posta Adresiniz*",
+              labelText: ProfileEditConstants.email,
               controller: emailController,
-              hintText: "E-posta adresinizi giriniz",
+              hintText: ProfileEditConstants.emailHint,
               keyboardType: TextInputType.emailAddress,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Ülke*",
+              labelText: ProfileEditConstants.country,
               controller: countryController,
-              hintText: "Ülkenizi giriniz",
+              hintText: ProfileEditConstants.country,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Şehir*",
+              labelText: ProfileEditConstants.city,
               controller: cityController,
-              hintText: "Şehrinizi giriniz",
+              hintText: ProfileEditConstants.cityHint,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "İlçe*",
+              labelText: ProfileEditConstants.district,
               controller: districtController,
-              hintText: "İlçenizi giriniz",
+              hintText: ProfileEditConstants.districtHint,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Adres*",
+              labelText: ProfileEditConstants.address,
               controller: addressController,
-              hintText: "Adresinizi giriniz",
+              hintText: ProfileEditConstants.addressHint,
               maxLines: 4,
             ),
             Padding(
               padding: paddingMedium,
             ),
             buildUserInfoFormField(
-              labelText: "Hakkınızda*",
+              labelText: ProfileEditConstants.aboutMe,
               controller: aboutController,
-              hintText: "Hakkınızda bilgi giriniz",
+              hintText: ProfileEditConstants.aboutMeHint,
               maxLines: 4,
             ),
             Padding(
               padding: paddingMedium,
             ),
             CustomElevatedButton(
-                text: "Kaydet",
+                text: ProfileEditConstants.saveButton,
                 onPressed: () {
                   context.read<UserBloc>().add(UserUpdateEvent(
                         userProfile: UserProfile(

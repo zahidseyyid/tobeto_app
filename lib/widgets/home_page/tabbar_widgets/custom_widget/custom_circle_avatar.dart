@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   final double radius;
   final File pickedImage;
   final String userPhotoUrl;
