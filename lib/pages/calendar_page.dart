@@ -9,23 +9,17 @@ import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+class CalendarPage extends StatefulWidget {
+  const CalendarPage({super.key, required this.lessonList});
+  final List<String> lessonList;
 
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<CalendarPage> createState() => _CalendarPageState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
-    List<String> lessonList = [
-      "#12ec5",
-      "#64806",
-      "#90c6a",
-      "#a743c",
-      "#abdb0"
-    ];
     Brightness brightness = Theme.of(context).brightness;
 
     return BlocBuilder<LessonBloc, LessonState>(
@@ -33,7 +27,7 @@ class _CalendarState extends State<Calendar> {
         if (state is LessonInitial) {
           context
               .read<LessonBloc>()
-              .add(FetchUserLessons(userLessonList: lessonList));
+              .add(FetchUserLessons(userLessonList: widget.lessonList));
           return const Center(
             child: Text("İstek atılıyor.."),
           );

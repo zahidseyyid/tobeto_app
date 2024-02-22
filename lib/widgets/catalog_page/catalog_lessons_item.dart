@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_event.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_state.dart';
@@ -32,7 +33,6 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
 
   @override
   Widget build(BuildContext context) {
-    Education lessonIndex;
     double deviceHeight = MediaQuery.of(context).size.height;
     Color color = Theme.of(context).colorScheme.background;
     Color purple = const Color(0xFF9933FF);
@@ -93,15 +93,10 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                   ),
                   child: Stack(
                     children: [
-                      Positioned(
-                        top: 20,
-                        right: 20,
-                        child: Icon(
-                          Icons.play_circle,
-                          size: 40,
-                          color: purple,
-                        ),
-                      ),
+                      const Positioned(
+                          top: 20,
+                          right: 20,
+                          child: CatalogConstants.videoPlayIcon),
                       Positioned(
                         bottom: 0,
                         left: 0,
@@ -176,7 +171,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
           },
         );
       }
-      return const Text("No lessons found.");
+      return const Text(LessonConstants.lessonsNotFound);
     });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_item_widget.dart';
@@ -18,18 +19,6 @@ class AnnouncementsPage extends StatefulWidget {
 }
 
 class _AnnouncementsPageState extends State<AnnouncementsPage> {
-  //bool _isVisible = true;
-  List<String> dropdownTypeItems = [
-    "Duyuru",
-    "Haber",
-  ];
-  List<String> dropdownCorporationItems = [
-    "İstanbul Kodluyor",
-  ];
-  List<String> dropdownSortItems = [
-    "Tarihe göre (Y-E)",
-    "Tarihe göre (E-Y)",
-  ];
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
@@ -49,33 +38,34 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
           ),
         ),
         drawer: const MyDrawer(),
-        body: SingleChildScrollView(
+        body: const SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const EduBannerWidget(title: "Duyurularım"),
-              const Row(
+              EduBannerWidget(title: AnnouncementConstants.announcements),
+              Row(
                 children: [
-                  Expanded(child: SearchWidget(hintText: "Arama")),
+                  Expanded(
+                      child: SearchWidget(hintText: LessonConstants.search)),
                   VisibilityWidget(),
                   SizedBox(width: 15),
                 ],
               ),
               DropdownSortWidget(
-                hint: "Tür",
-                dropdownItems: dropdownTypeItems,
+                hint: AnnouncementConstants.type,
+                dropdownItems: AnnouncementConstants.dropdownTypeItems,
               ),
               DropdownSortWidget(
-                hint: "Organizasyon",
-                dropdownItems: dropdownCorporationItems,
+                hint: AnnouncementConstants.organization,
+                dropdownItems: AnnouncementConstants.dropdownCorporationItems,
               ),
               DropdownSortWidget(
-                hint: "Sıralama",
-                dropdownItems: dropdownSortItems,
+                hint: AnnouncementConstants.alignment,
+                dropdownItems: AnnouncementConstants.dropdownSortItems,
               ),
               // ignore: prefer_const_constructors
               AnnouncementItemWidget(), //const yapma
-              const FooterWidget()
+              FooterWidget()
             ],
           ),
         ),

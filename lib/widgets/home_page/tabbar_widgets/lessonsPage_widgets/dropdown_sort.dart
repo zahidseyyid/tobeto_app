@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
-  const DropdownSortWidget({super.key, required this.dropdownItems, this.hint, this.dropdownValue, this.size});
+  const DropdownSortWidget(
+      {super.key,
+      required this.dropdownItems,
+      this.hint,
+      this.dropdownValue,
+      this.size});
   final String? dropdownValue;
   final List<String> dropdownItems;
   final String? hint;
@@ -24,7 +30,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
     super.initState();
     dropdownValue = widget.dropdownValue;
     dropdownItems = widget.dropdownItems;
-    hintText = widget.hint ?? "Seçiniz..";
+    hintText = widget.hint ?? LessonConstants.choose;
   }
 
   @override
@@ -60,21 +66,17 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
             icon: Row(
               children: [
                 GestureDetector(
-                  onTap: () {
-                    dropdownValue = null;
-                    sort("");
-                  },
-                  child: const Icon(
-                    Icons.close,
-                    size: 25,
-                    color: Colors.grey,
-                  ),
-                ),
+                    onTap: () {
+                      dropdownValue = null;
+                      sort("");
+                    },
+                    child: LessonConstants.closeIcon),
                 const Text(
                   "I",
                   textScaleFactor: 2,
                   //textScaler: TextScaler.linear(2),
-                  style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w200),
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.w200),
                 ),
                 const Icon(
                   Icons.keyboard_arrow_down,

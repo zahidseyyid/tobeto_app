@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
@@ -20,15 +21,6 @@ class _LessonsPageState extends State<LessonsPage> {
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
-    List<String> dropdownSortItems = [
-      "Adına göre (A-Z)",
-      "Adına göre (Z-A)",
-      "Tarihe göre (Y-E)",
-      "Tarihe göre (E-Y)"
-    ];
-    List<String> dropdownCorporationItems = [
-      "İstanbul Kodluyor",
-    ];
     return ChangeNotifierProvider<StateData>(
       //Arama ve filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
       create: (context) => StateData(),
@@ -48,15 +40,15 @@ class _LessonsPageState extends State<LessonsPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const EduBannerWidget(title: "Eğitimlerim"),
-              const SearchWidget(hintText: "Arama"),
+              const EduBannerWidget(title: LessonConstants.lessons),
+              const SearchWidget(hintText: LessonConstants.search),
               DropdownSortWidget(
-                hint: "Kurum Seçiniz..",
-                dropdownItems: dropdownCorporationItems,
+                hint: LessonConstants.corporationChoose,
+                dropdownItems: LessonConstants.dropdownCorporationItems,
               ),
               DropdownSortWidget(
-                dropdownValue: dropdownSortItems.first,
-                dropdownItems: dropdownSortItems,
+                dropdownValue: LessonConstants.dropdownSortItems.first,
+                dropdownItems: LessonConstants.dropdownSortItems,
               ),
               const EduTabbarWidget(),
               const FooterWidget()
