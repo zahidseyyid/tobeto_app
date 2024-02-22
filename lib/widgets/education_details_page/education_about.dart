@@ -17,12 +17,13 @@ class _EducationAboutState extends State<EducationAbout> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          padding: paddingHMedium + paddingMedium,
           child: ListView.builder(
             itemCount: 8, // Öğe sayısı
             padding: paddingMedium,
             itemBuilder: (context, index) {
               switch (index) {
+                // Metinler ve ikonlar constant
                 case 0:
                   return EducationDetailsAboutWidget(
                     title: "Başlangıç:",

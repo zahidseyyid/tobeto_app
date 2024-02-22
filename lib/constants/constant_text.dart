@@ -10,4 +10,4 @@ const point = "96";
 
 // Login Page Constants
 
-
+// TODO: Kaldırılacak. Page constantlarına taşınacak.

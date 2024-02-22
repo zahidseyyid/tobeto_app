@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_text.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_dialog.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_item.dart';
+import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_dialog.dart';
+import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_item.dart';
 
 class ExamsWidget extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   const ExamsWidget({super.key});
 
   @override
@@ -28,8 +29,8 @@ class ExamsWidget extends StatelessWidget {
             description: "Herkes için Kodlama - 1D",
             time: "45 Dakika",
             onTap: () {
-              examDialogWidget(context, dialogTitle, dialogText, "45 Dakika",
-                  25, "Çoktan Seçmeli");
+              examDialogWidget(context, dialogTitle, dialogText, true,
+                  "45 Dakika", 25, "Çoktan Seçmeli");
             },
           ),
         ],

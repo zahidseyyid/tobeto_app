@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class TabBarWidget extends StatefulWidget {
+  //TODO: Text ve iconlar constant olmalı
   const TabBarWidget(
       {super.key,
       required this.lessonList,
@@ -64,6 +65,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
               children: [
                 Center(
                   child: SizedBox(
+                    //TODO: image constant olmalı
                     width: deviceWidth * 0.6,
                     child: Image.asset("lib/assets/istanbulkodluyor.png"),
                   ),

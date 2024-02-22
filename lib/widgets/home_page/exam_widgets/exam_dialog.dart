@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_result_dialog.dart';
+import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
 void examDialogWidget(
+    //TODO: Text ve iconlar constant olmalı
     BuildContext context,
     String dialogTitle,
     String dialogText,
-    String examTime,
-    int numberOfQuestions,
-    String questionType) {
+    bool isExam,
+    String? examTime,
+    int? numberOfQuestions,
+    String? questionType) {
   showDialog(
+    //TODO : Diaglo custom widget haline getirilecek. Diğer ekranlarda kullanılabilecek.
     context: context,
     builder: (BuildContext context) {
       Size screenSize = MediaQuery.of(context).size;
@@ -45,16 +48,18 @@ void examDialogWidget(
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Text(dialogText),
-              const SizedBox(height: 70),
-              Text('Sınav Süresi: $examTime',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text('Soru Sayısı: $numberOfQuestions',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              Text('Soru Tipi: $questionType',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 40),
+              Column(
+                children: [
+                  Text(dialogText),
+                  const SizedBox(height: 70),
+                  Text('Sınav Süresi: $examTime',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Soru Sayısı: $numberOfQuestions',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Soru Tipi: $questionType',
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
               Align(
                   alignment: Alignment.center,
                   child: CustomButton(

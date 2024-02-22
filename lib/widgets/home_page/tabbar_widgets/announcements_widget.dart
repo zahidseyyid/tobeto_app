@@ -3,7 +3,6 @@ import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
-import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_dialog.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
@@ -140,6 +139,7 @@ class AnnouncementsWidget extends StatelessWidget {
                                           Row(
                                             children: [
                                               Icon(
+                                                  //TODO: Text ve iconlar constant olmalı
                                                   Icons.calendar_month_outlined,
                                                   color: Theme.of(context)
                                                       .colorScheme

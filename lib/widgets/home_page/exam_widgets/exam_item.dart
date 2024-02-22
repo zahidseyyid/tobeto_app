@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ExamItem extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   final String quizTitle;
   final String description;
   final String time;

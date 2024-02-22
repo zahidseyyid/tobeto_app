@@ -21,4 +21,6 @@ class AuthSignUp extends AuthEvent {
 }
 
 // Çıkış
-class AuthLogout extends AuthEvent {}
+class AuthLogout extends AuthEvent {
+  //TODO: Silme eventi eklenebilir belki
+}

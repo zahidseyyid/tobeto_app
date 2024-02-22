@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
@@ -33,12 +35,14 @@ class ProfileEditPage extends StatelessWidget {
         appBar: CustomAppBarWidget(
             brightness: brightness,
             leading: IconButton(
+              // TODO: IconButton constants dan alınacak
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             )),
         body: const Padding(
+          // TODO: Padding constants dan alınacak
           padding: EdgeInsets.symmetric(vertical: 10.0),
           child: IconTabBarWidget(),
         ));

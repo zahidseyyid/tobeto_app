@@ -3,12 +3,12 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
 class FooterWidget extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   const FooterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    final double deviceHeight = mediaQueryData.size.height;
     final double deviceWidth = mediaQueryData.size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
@@ -21,19 +21,17 @@ class FooterWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Image(
                           image: const AssetImage(
                               PageImageConstants.loginHeaderImage),
                           width: deviceWidth / 3.5),
-                      SizedBox(width: deviceWidth / 5),
                       CustomButton(
                         onPressed: () {},
                         buttonText: "Bize Ulaşın",
                         buttonColor: Colors.white,
                         buttonTextColor: Colors.black,
-                        width: deviceWidth / 2.80,
-                        height: deviceHeight / 25,
                       ),
                     ],
                   ),

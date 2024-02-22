@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_event.dart';
-
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
@@ -71,7 +69,7 @@ void catalogFilterWidget(
       double deviceHeight = screenSize.height;
       double dropdownSize = deviceWidth / 1.55;
       String sortData;
-
+//TODO: text constansts dan alınacak
       return ChangeNotifierProvider<StateData>(
         //Filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
         create: (context) => StateData(),

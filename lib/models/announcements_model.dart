@@ -17,6 +17,7 @@ class AnnouncementModel {
       required this.date});
 
   Map<String, dynamic> toMap() {
+    // TODO : Kullanılmayanlar kaldırılacak
     final result = <String, dynamic>{};
 
     result.addAll({'id': id});

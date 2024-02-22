@@ -7,6 +7,7 @@ import 'package:flutter_application_1/logic/blocs/catalog/catalog_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/lesson_details_page.dart';
+import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
     context.read<CatalogLessonBloc>().add(ResetFetchLessons());
   }
 
+// TODO: Search barında kayma var
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -42,12 +44,10 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
       if (state is CatalogLessonInitial) {
         context.read<CatalogLessonBloc>().add(FetchCategoryLessons());
 
-        return const Center(
-          child: Text("İstek atılıyor.."),
-        );
+        return const Center(child: CustomCircularProgress());
       }
 
-      if (state is CatalogLessonInitial) {
+      if (state is CatalogLessonLoading) {
         return const Center(
           child: CircularProgressIndicator(),
         );
@@ -71,6 +71,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
           padding: const EdgeInsets.all(10),
           itemBuilder: (context, index) {
             return Padding(
+              // TODO: Paddinglerin hepsi constant olmalı
               padding: const EdgeInsets.only(top: 15),
               child: GestureDetector(
                 onTap: () {

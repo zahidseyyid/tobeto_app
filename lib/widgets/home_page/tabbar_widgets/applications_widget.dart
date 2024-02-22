@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ApplicationsWidget extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   const ApplicationsWidget({Key? key}) : super(key: key);
 
   @override

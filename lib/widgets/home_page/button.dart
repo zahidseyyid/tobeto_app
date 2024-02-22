@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
+  //TODO: Renk temadan çekilecek
   final VoidCallback onPressed;
   final String buttonText;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final Color buttonColor;
   final Color buttonTextColor;
-  const CustomButton({Key? key, required this.onPressed , required this.buttonText , required this.buttonColor, required this.width, required this.height, required this.buttonTextColor})
+  const CustomButton(
+      {Key? key,
+      required this.onPressed,
+      required this.buttonText,
+      required this.buttonColor,
+      this.width,
+      this.height,
+      required this.buttonTextColor})
       : super(key: key);
 
   @override
@@ -19,7 +27,7 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width, //150
-      height: widget.height,  //35
+      height: widget.height, //35
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(

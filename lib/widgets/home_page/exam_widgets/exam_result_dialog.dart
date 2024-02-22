@@ -4,6 +4,7 @@ import 'package:flutter_application_1/widgets/home_page/button.dart';
 
 void examResultDialogWidget(
     BuildContext context, String dialogTitle, String dialogText) {
+  //TODO: Text ve iconlar constant olmalı
   showDialog(
     context: context,
     builder: (BuildContext context) {

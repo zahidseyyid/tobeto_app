@@ -17,6 +17,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  //TODO : icon constantdan alınacak
   @override
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
@@ -25,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Padding(
+          // TODO: Padding constants dan alınacak
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Center(
             child: Column(

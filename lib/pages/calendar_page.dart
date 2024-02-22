@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalendarPage extends StatefulWidget {
+  // TODO: Error kodları constants olarak alınacak
   const CalendarPage({super.key, required this.lessonList});
   final List<String> lessonList;
 
@@ -73,6 +74,7 @@ class _CalendarPageState extends State<CalendarPage> {
 }
 
 List<Appointment> getAppointments(List<Education> educationList) {
+  //TODO: Colorlar constants olarak alınacak
   List<Color?> colors = [
     Colors.deepPurple[200],
     Colors.deepPurple[300],

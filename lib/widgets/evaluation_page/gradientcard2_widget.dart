@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/startbutton_widget.dart';
 
 class GradientCardWidget2 extends StatelessWidget {
+  // Komple constant kontrolü
   final String buttonText;
 
   final VoidCallback onPressed;
@@ -14,8 +15,6 @@ class GradientCardWidget2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
-    double deviceWidth = mediaQuery.size.width;
     return Padding(
       padding: const EdgeInsets.only(
         left: 10,
@@ -63,16 +62,14 @@ class GradientCardWidget2 extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
-                child: Container(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: StartButtonWidget(
-                    onPressed: onPressed,
-                    backgroundColor: Colors.white,
-                    textColor: Colors.black,
-                  ),
+                flex: 4,
+                child: StartButtonWidget(
+                  onPressed: onPressed,
+                  backgroundColor: Colors.white,
+                  textColor: Colors.black,
                 ),
               ),
+              const Expanded(flex: 1, child: Spacer())
             ],
           ),
         ),

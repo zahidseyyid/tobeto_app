@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/logic/repositories/user_repository.dart';
@@ -24,7 +26,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   void _onUserUpdateEvent(
-      UserUpdateEvent event, Emitter<UserState> emit) async {
+      //TODO : Kodu açıkla ve yorum satırlarını ekle
+      UserUpdateEvent event,
+      Emitter<UserState> emit) async {
     print("girdi");
     emit(UserFetchLoadingState());
     print("loading state emit edildi");
