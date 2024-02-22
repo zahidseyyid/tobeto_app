@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
@@ -54,15 +55,11 @@ class AnnouncementsWidget extends StatelessWidget {
                     if (index == itemCounter) {
                       return IconButton(
                         //Daha fazla göster butonu
-                        icon: const Icon(Icons.chevron_right_sharp),
+                        icon: LessonConstants.rightArrowIcon,
                         iconSize: 35,
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AnnouncementsPage(),
-                            ),
-                          );
+                          Navigator.pushReplacementNamed(
+                              context, "/annonuncement");
                         },
                       );
                     } else {
@@ -104,14 +101,16 @@ class AnnouncementsWidget extends StatelessWidget {
                                               (state.announcementList[index]
                                                           .isAnnouncement ==
                                                       true)
-                                                  ? "Duyuru"
-                                                  : "Haber",
+                                                  ? AnnouncementConstants
+                                                      .announcement
+                                                  : AnnouncementConstants.news,
                                               style: const TextStyle(
                                                   fontSize: 14,
                                                   color: Color(0xFF076B34),
                                                   fontWeight: FontWeight.bold)),
                                           const Text(
-                                            "İstanbul Kodluyor",
+                                            AnnouncementConstants
+                                                .istanbulCodingText,
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 color: Color(0xFF076B34),
@@ -164,7 +163,7 @@ class AnnouncementsWidget extends StatelessWidget {
                                           ),
                                           InkWell(
                                             child: Text(
-                                              "Devamını oku",
+                                              AnnouncementConstants.readMore,
                                               style: TextStyle(
                                                   fontSize: 15,
                                                   color: Theme.of(context)
@@ -205,11 +204,11 @@ class AnnouncementsWidget extends StatelessWidget {
                   });
             } else {
               return const SurveysWidget(
-                text: "Atanmış herhangi bir duyurunuz bulunmamaktadır",
+                text: AnnouncementConstants.announcementNotFound,
               );
             }
           }
-          return const Text("No announcement found.");
+          return const Text(AnnouncementConstants.announcementNotFound);
         },
       ),
     );

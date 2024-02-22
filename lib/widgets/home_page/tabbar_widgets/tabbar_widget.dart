@@ -11,23 +11,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class TabBarWidget extends StatefulWidget {
-  const TabBarWidget({super.key});
+  const TabBarWidget(
+      {super.key,
+      required this.lessonList,
+      required this.userAnnouncementList});
+  final List<String> lessonList;
+  final List<Map<String, dynamic>> userAnnouncementList;
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
-  final List<Map<String, dynamic>> userAnnouncementList = [
-    {
-      'id': "ojo4GDkL8svkNgzxt9Xw",
-      'unRead': false,
-    },
-    {
-      'id': "uc7zmS1Z5peDKv5lUIOo",
-      'unRead': false,
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -38,8 +33,8 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
       builder: (context, state) {
         if (state is AnnouncementInitial) {
-          context.read<AnnouncementBloc>().add(
-              FetchAnnouncements(userAnnouncementList: userAnnouncementList));
+          context.read<AnnouncementBloc>().add(FetchAnnouncements(
+              userAnnouncementList: widget.userAnnouncementList));
           return const Center(
             child: Text("İstek atılıyor.."),
           );
@@ -161,9 +156,12 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                                 ApplicationsWidget(),
                               ],
                             ),
-                            const LessonsWidget(),
+                            LessonsWidget(
+                              lessonList: widget.lessonList,
+                            ),
                             AnnouncementsWidget(
-                                userAnnouncementList: userAnnouncementList),
+                                userAnnouncementList:
+                                    widget.userAnnouncementList),
                             const SurveysWidget(
                                 text:
                                     "Atanmış herhangi bir anketiniz bulunmamaktadır"),

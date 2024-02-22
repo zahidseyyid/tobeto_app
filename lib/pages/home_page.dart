@@ -20,12 +20,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage(
+      {super.key,
+      required this.userAnnouncementList,
+      required this.lessonList});
+  final List<Map<String, dynamic>> userAnnouncementList;
+  final List<String> lessonList;
 
   @override
   Widget build(BuildContext context) {
     final String userId;
     final userState = context.read<AuthBloc>().state;
+
     if (userState is Authenticated) {
       userId = userState.userId!;
     } else {
@@ -64,7 +70,9 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     HeaderWidget(name: state.user!.nameSurname),
-                    const TabBarWidget(),
+                    TabBarWidget(
+                        userAnnouncementList: userAnnouncementList,
+                        lessonList: lessonList),
                     const ExamsWidget(),
                     GradientCardWidget(
                       title: "Profilini oluştur",

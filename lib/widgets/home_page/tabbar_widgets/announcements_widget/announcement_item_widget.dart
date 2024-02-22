@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
 import 'package:flutter_application_1/models/announcements_model.dart';
@@ -18,10 +19,10 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
   late List<AnnouncementModel> filtering;
   void sortAnnouncements(List<AnnouncementModel> list, String sortData) {
     switch (sortData) {
-      case "Duyuru":
+      case AnnouncementConstants.announcement:
         filtering = list.where((element) => element.isAnnouncement).toList();
         break;
-      case "Haber":
+      case AnnouncementConstants.news:
         filtering = list.where((element) => !(element.isAnnouncement)).toList();
         break;
       case "Invisible": //Okunanlar görünmeyecek
@@ -99,14 +100,14 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                             children: [
                               Text(
                                   filtering[index].isAnnouncement
-                                      ? "Duyuru"
-                                      : "Haber",
+                                      ? AnnouncementConstants.announcement
+                                      : AnnouncementConstants.news,
                                   style: const TextStyle(
                                       fontSize: 14,
                                       color: Color(0xFF076B34),
                                       fontWeight: FontWeight.bold)),
                               const Text(
-                                "İstanbul Kodluyor",
+                                AnnouncementConstants.istanbulCodingText,
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Color(0xFF076B34),
@@ -150,7 +151,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                               ),
                               InkWell(
                                 child: Text(
-                                  "Devamını oku",
+                                  AnnouncementConstants.readMore,
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Theme.of(context)
@@ -184,7 +185,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
             );
           });
     } else {
-      return const Text("No announcement found.");
+      return const Text(AnnouncementConstants.announcementNotFound);
     }
   }
 }

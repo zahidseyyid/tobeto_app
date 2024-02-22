@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
+import 'package:flutter_application_1/pages/lesson_details_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class LessonsWidget extends StatefulWidget {
-  const LessonsWidget({super.key});
+  const LessonsWidget({super.key, required this.lessonList});
+  final List<String> lessonList;
 
   @override
   State<LessonsWidget> createState() => _LessonsWidgetState();
 }
 
 class _LessonsWidgetState extends State<LessonsWidget> {
-  //List<String> lessonList = [];
-  List<String> lessonList = ["#12ec5", "#64806", "#90c6a", "#a743c", "#abdb0"];
-
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -27,7 +27,7 @@ class _LessonsWidgetState extends State<LessonsWidget> {
         if (state is LessonInitial) {
           context
               .read<LessonBloc>()
-              .add(FetchUserLessons(userLessonList: lessonList));
+              .add(FetchUserLessons(userLessonList: widget.lessonList));
           return const Center(
             child: Text("İstek atılıyor.."),
           );
@@ -61,9 +61,10 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                     if (index == itemCounter) {
                       return IconButton(
                         //Daha fazla göster butonu
-                        icon: const Icon(Icons.chevron_right_sharp),
+                        icon: LessonConstants.rightArrowIcon,
                         iconSize: 35,
                         onPressed: () {
+                          Navigator.pushReplacementNamed(context, "/lesson");
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -133,9 +134,17 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                                     ),
                                   ),
                                   IconButton(
-                                    icon: const Icon(Icons.chevron_right_sharp),
+                                    icon: LessonConstants.rightArrowIcon,
                                     onPressed: () {
                                       //Dersin detayı sayfasına gidecek
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LessonDetailPage(
+                                                      education:
+                                                          state.educationList[
+                                                              index])));
                                     },
                                   ),
                                 ],
@@ -150,11 +159,10 @@ class _LessonsWidgetState extends State<LessonsWidget> {
               ),
             );
           } else {
-            return const SurveysWidget(
-                text: "Atanmış herhangi bir dersiniz bulunmamaktadır");
+            return const SurveysWidget(text: LessonConstants.lessonsNotFound);
           }
         }
-        return const Text("No lessons found.");
+        return const Text(LessonConstants.lessonsNotFound);
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
@@ -26,11 +27,7 @@ class SearchWidget extends StatelessWidget {
         child: TextField(
           decoration: InputDecoration(
             hintText: hintText,
-            suffixIcon: const Icon(
-              Icons.search,
-              size: 40,
-              color: Colors.grey,
-            ),
+            suffixIcon: LessonConstants.searchIcon,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
               borderSide: const BorderSide(color: Colors.grey),

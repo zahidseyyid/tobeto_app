@@ -49,10 +49,9 @@ dependencies:
   image_picker: ^1.0.7
   firebase_storage: ^11.6.6
   fluttertoast: ^8.2.4
-  syncfusion_localizations: ^24.2.6
   flutter_localizations:
     sdk: flutter
-  syncfusion_flutter_calendar: ^24.2.0
+  syncfusion_flutter_calendar: ^21.1.41
 
 dev_dependencies:
   flutter_test:

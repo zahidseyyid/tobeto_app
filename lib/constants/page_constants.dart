@@ -44,3 +44,59 @@ class ProfileEditPageConstants {
   static const Icon settingsIcon = Icon(Icons.settings_outlined);
   static const Icon exitToAppIcon = Icon(Icons.exit_to_app_outlined);
 }
+
+class LessonConstants {
+  static const String lessons = "Eğitimlerim";
+  static const String search = "Arama";
+  static const String corporationChoose = "Kurum Seçiniz..";
+  static const String choose = "Seçiniz..";
+  static final List<String> dropdownSortItems = [
+    "Adına göre (A-Z)",
+    "Adına göre (Z-A)",
+    "Tarihe göre (Y-E)",
+    "Tarihe göre (E-Y)"
+  ];
+  static final List<String> dropdownCorporationItems = ["İstanbul Kodluyor"];
+  static const String allLessons = "Tüm Eğitimlerim";
+  static const String continuingLessons = "Devam Ettiklerim";
+  static const String completedLessons = "Tamamladıklarım";
+  static const String lessonsNotFound = "Ders bulunamadı.";
+  //icons
+  static const Icon rightArrowIcon = Icon(Icons.chevron_right_sharp);
+  static const Icon closeIcon = Icon(Icons.close, size: 25, color: Colors.grey);
+  static const Icon downArrowIcon =
+      Icon(Icons.keyboard_arrow_down, color: Colors.grey);
+  static const Icon searchIcon =
+      Icon(Icons.search, size: 40, color: Colors.grey);
+}
+
+class CatalogConstants {
+  static const String filter = "Filtrele";
+
+  static const Icon videoPlayIcon =
+      Icon(Icons.play_circle, size: 40, color: Color(0xFF9933FF));
+}
+
+class AnnouncementConstants {
+  static const String announcements = "Duyurularım";
+  static const String type = "Tür";
+  static const String organization = "Organizasyon";
+  static const String alignment = "Sıralama";
+  static const List<String> dropdownTypeItems = [
+    "Duyuru",
+    "Haber",
+  ];
+  static const List<String> dropdownCorporationItems = [
+    "İstanbul Kodluyor",
+  ];
+  static const List<String> dropdownSortItems = [
+    "Tarihe göre (Y-E)",
+    "Tarihe göre (E-Y)",
+  ];
+
+  static const String announcement = "Duyuru";
+  static const String news = "Haber";
+  static const String istanbulCodingText = "İstanbul Kodluyor";
+  static const String readMore = "Devamını oku";
+  static const String announcementNotFound = "Duyuru Bulunamadı.";
+}
