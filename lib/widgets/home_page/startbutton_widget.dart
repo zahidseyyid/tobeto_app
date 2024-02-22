@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StartButtonWidget extends StatefulWidget {
+  // TODO: Custombutton a çevir
   final VoidCallback onPressed;
   final Color backgroundColor;
   final Color textColor;
@@ -21,7 +22,6 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.buttonWidth,
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(

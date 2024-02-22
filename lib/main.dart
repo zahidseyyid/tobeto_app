@@ -9,6 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
+  //TODO: Lib içindeki assets klasörü taşınacak
+  //TODO: Appbar custom widget oluşturulacak
+  //TODO: Theme ve colorlar düzenlenecek
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

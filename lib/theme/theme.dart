@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
+  // TODO: Düzenlenecek
   static final ThemeData lightMode = ThemeData(
       brightness: Brightness.light,
       colorScheme: const ColorScheme.light(

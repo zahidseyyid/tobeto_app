@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 void announcementDialogWidget(
+  //TODO: Text ve iconlar constant olmalı
   BuildContext context,
   String dialogTitle,
   String dialogText,

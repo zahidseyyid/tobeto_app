@@ -4,6 +4,7 @@ import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPa
 import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
+  //TODO: Text ve iconlar constant olmalı
   const DropdownSortWidget(
       {super.key,
       required this.dropdownItems,
@@ -73,6 +74,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                     child: LessonConstants.closeIcon),
                 const Text(
                   "I",
+                  // ignore: deprecated_member_use
                   textScaleFactor: 2,
                   //textScaler: TextScaler.linear(2),
                   style: TextStyle(

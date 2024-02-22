@@ -4,7 +4,12 @@ import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({Key? key, required this.width, required this.height, required this.videoUrlNotifier})
+  // Renkler ve ikonlar constant olmalı
+  const CustomVideoPlayer(
+      {Key? key,
+      required this.width,
+      required this.height,
+      required this.videoUrlNotifier})
       : super(key: key);
   final double width;
   final double height;

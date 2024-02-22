@@ -60,6 +60,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
           ),
           child: Center(
             child: Padding(
+              // TODO: Padding constants dan alınacak
               padding: const EdgeInsets.all(30.0),
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
@@ -136,6 +137,8 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () {
+                            // TODO: Boyutlandırma hatası var. Düzeltilecek.
+                            // TODO: Giriş ve kayıt için loading animasyonu eklenecek.
                             Navigator.pushReplacementNamed(context, "/sign_in");
                           },
                           child:

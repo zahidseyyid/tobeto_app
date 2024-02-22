@@ -9,7 +9,7 @@ import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/pages/sign_in_page.dart';
 import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/exams_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/exam_widgets/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
@@ -37,11 +37,6 @@ class HomePage extends StatelessWidget {
     } else {
       return const SignInPage();
     }
-    // Dummy data yükleyiciyi tetiklemek için kullanılan kodlar
-    // FirebaseFirestore firestore = FirebaseFirestore.instance;
-    // for (var edu in dummyEducationsList) {
-    //   firestore.collection('education').doc(edu.id).set(edu.toMap());
-    // }
     Brightness brightness = Theme.of(context).brightness;
     return ChangeNotifierProvider<StateData>(
       //Bildirim güncellenmesi için ChangeNotifierProvider ile sarmalladım
@@ -71,10 +66,16 @@ class HomePage extends StatelessWidget {
                   children: <Widget>[
                     HeaderWidget(name: state.user!.nameSurname),
                     TabBarWidget(
+                        // TODO: Başvurularım kısmında card da boyutlandırma hatası var.
+                        // TODO: Duyurular kısmında card da boyutlandırma hatası var.
+                        // TODO: Anketteki card da boyutlandırma hatası var.
                         userAnnouncementList: userAnnouncementList,
                         lessonList: lessonList),
                     const ExamsWidget(),
+                    // TODO : Sınav cardı düzeltilecek
+                    // TODO : Dialog ekranı düzeltilecek
                     GradientCardWidget(
+                      // TODO : Kodlar revize edilecek.
                       title: "Profilini oluştur",
                       gradient: const LinearGradient(
                         begin: Alignment.bottomLeft,
@@ -86,6 +87,7 @@ class HomePage extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
+                    // TODO : Düzeltilecek ve boyutlandırma hatası var.
                     GradientCardWidget(
                         title: 'Kendini değerlendir',
                         gradient: const LinearGradient(

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';

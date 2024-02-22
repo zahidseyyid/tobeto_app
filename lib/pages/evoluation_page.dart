@@ -7,6 +7,7 @@ import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 
 class EvoluationPage extends StatelessWidget {
+  // TODO: Constantslar eklenecek
   const EvoluationPage({super.key});
 
   @override
@@ -153,7 +154,6 @@ class EvoluationPage extends StatelessWidget {
                   ),
                   onPressed: () {},
                   includeStartButton: false,
-                  cardHeight: size / 3,
                 ),
                 const SizedBox(
                   height: 20,
@@ -175,7 +175,6 @@ class EvoluationPage extends StatelessWidget {
                   ),
                   onPressed: () {},
                   includeStartButton: false,
-                  cardHeight: size / 2.5,
                 ),
                 const FooterWidget(),
               ],

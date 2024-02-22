@@ -89,7 +89,7 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
 class SocialMediaItem extends StatelessWidget {
   final String username;
   const SocialMediaItem({super.key, required this.username});
-
+//TODO: Platforma göre icon
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

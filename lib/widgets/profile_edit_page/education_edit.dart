@@ -10,6 +10,7 @@ import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_wi
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EducationEdit extends StatefulWidget {
+  //TODO: Text ve iconlar constant olmalı
   const EducationEdit({super.key});
 
   @override

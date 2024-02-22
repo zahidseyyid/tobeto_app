@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
 import 'package:flutter_application_1/pages/evoluation_page.dart';
-import 'package:flutter_application_1/pages/lesson_details_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_edit_page.dart';
@@ -25,6 +23,8 @@ class CustomRouter {
       "#a743c",
       "#abdb0"
     ];
+    // TODO: List string olacak
+    // TODO: User ders ve duyuruları alacak
     List<Map<String, dynamic>> userAnnouncementList = [
       {
         'id': "ojo4GDkL8svkNgzxt9Xw",
@@ -71,6 +71,7 @@ class CustomRouter {
           builder: (_) => Scaffold(
             appBar: AppBar(),
             body: const Center(
+              //TODO : 404 page
               child: Text('Ters giden birşeyler oldu'),
             ),
           ),

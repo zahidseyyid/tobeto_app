@@ -8,6 +8,7 @@ class CatalogBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO : metinler constants dan alınacak
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     TextStyle textStyle = TextStyle(

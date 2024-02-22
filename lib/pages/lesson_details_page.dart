@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
@@ -110,6 +109,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                     labelStyle: const TextStyle(fontSize: 20),
                     tabAlignment: TabAlignment.start,
                     tabs: List.generate(2, (index) {
+                      // TODO: Constans alınacak
                       if (index == 0) {
                         return const Tab(text: "İçerik");
                       } else if (index == 1) {
@@ -137,6 +137,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                                   });
                                 },
                                 child: Card(
+                                  // TODO: Renkler alınacak
                                   elevation: 3,
                                   color: selectedVideoIndex == index
                                       ? const Color.fromARGB(255, 202, 198, 198)

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // UserProfile userProfile2 = UserProfile(idNo: "", nameSurname: "", email: "");
 
 class HeaderWidget extends StatefulWidget {
+  //TODO: Text ve iconlar constant olmalı
   final String name;
   const HeaderWidget({super.key, required this.name});
 

@@ -7,6 +7,7 @@ class FetchAnnouncements extends AnnouncementEvent {
 }
 
 class UpdateAnnouncement extends AnnouncementEvent {
+  //TODO: Kaldırılacak.
   final String id;
 
   UpdateAnnouncement({required this.id});

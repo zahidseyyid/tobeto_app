@@ -9,6 +9,7 @@ class AnnouncementRepository {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   Future<List<AnnouncementModel>> getAnnouncements(
+      // TODO : Yorum satırları eklenecek
       List<Map<String, dynamic>> userAnnouncementList) async {
     List<AnnouncementModel> announcements = [];
     try {

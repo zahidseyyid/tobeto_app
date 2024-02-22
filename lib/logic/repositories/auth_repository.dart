@@ -16,6 +16,7 @@ class AuthRepository {
   }
 
   Future<Object?> createUserWithEmail(String email, password, name) async {
+    // TODO : Yorum satırları eklenecek
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);

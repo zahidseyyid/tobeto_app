@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/startbutton_widget.dart';
 
 class GradientCardWidget extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
+  //TODO: Revize
   final String title;
   final String? subtitle;
   final String? subtitle2;
@@ -98,7 +100,8 @@ class GradientCardWidget extends StatelessWidget {
                 ),
               if (includeStartButton)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10, left: 15, right: 15),
+                  padding:
+                      const EdgeInsets.only(bottom: 10, left: 15, right: 15),
                   child: StartButtonWidget(
                     onPressed: onPressed,
                     backgroundColor: const Color(0xFF9933FF),

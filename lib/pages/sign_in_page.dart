@@ -69,6 +69,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
+                        // TODO: Padding constants dan alınacak
                         padding: const EdgeInsets.only(top: 15),
                         child: Image.asset(
                           logoAsset,
@@ -136,6 +137,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           children: [
                             TextButton(
                               onPressed: () {
+                                // TODO: Boyutlandırma hatası var. Düzeltilecek.
                                 // TODO: Add functionality for forgot password
                                 // TODO: Şifre sıfırlama işlemi yapılacak.
                                 print("object");
