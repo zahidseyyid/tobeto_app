@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SigninPageConstants {
   static const String eMailLabelText = "E-posta Adresi";
@@ -99,4 +100,150 @@ class AnnouncementConstants {
   static const String istanbulCodingText = "İstanbul Kodluyor";
   static const String readMore = "Devamını oku";
   static const String announcementNotFound = "Duyuru Bulunamadı.";
+}
+
+class WorkExperienceConstants {
+  static const String defaultError = "Kullanıcı bilgileri alınamadı.";
+  static const String workPageTitle = "Deneyim Bilgileri";
+  static const String workExperienceNotFound = "İş Deneyimi Bulunamadı.";
+  static const String workCompanyName = "Kurum Adı";
+  static const String workPosition = "Pozisyon";
+  static const String workSector = "Sektör";
+  static const String workCity = "Şehir";
+  static const String workExplain = "Deneyim Açıklaması";
+  static const String dialogClose = "Kapat";
+
+  static const Icon workInfoIcon = Icon(Icons.info_outlined);
+  static const Icon calendarIcon = Icon(Icons.calendar_month_outlined);
+
+  static const textStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const textStyleGrey = TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF828282));
+}
+
+class SocialMediaConstants {
+  static const String socialMediaTitle = "Sosyal Medya Bilgileri";
+  static const String socialMediaNotFound = "Sosyal medya bilgsi yok";
+
+  static const Icon facebookIcon = Icon(
+    FontAwesomeIcons.facebook,
+    size: 50.0,
+  );
+
+  static const Icon twitterIcon = Icon(
+    FontAwesomeIcons.twitter,
+    size: 50.0,
+  );
+
+  static const Icon instagramIcon = Icon(
+    FontAwesomeIcons.instagram,
+    size: 50.0,
+  );
+}
+
+class ProfileInformationConstants {
+  static const String emptyPhoto = "Fotoğraf yükle";
+  static const String nameSurname = "Ad Soyad";
+  static const String birthDate = "Doğum Tarihi";
+  static const String email = "E-posta Adresi";
+  static const String phone = "Telefon Numarası";
+
+  static const IconData personIcon = Icons.person_outlined;
+  static const IconData calendarIcon = Icons.calendar_month_outlined;
+  static const IconData emailIcon = Icons.email_outlined;
+  static const IconData phoneIcon = Icons.phone_outlined;
+}
+
+class EducationPageConstants {
+  static const String educationPageTitle = "Eğitim Bilgileri";
+  static const String userNotFound = "Kullanıcı bilgileri alınamadı.";
+  static const String educationNotFound = "Eğitim Bilgisi Bulunamadı.";
+  static const String educationSchoolName = "Okul Adı";
+  static const String educationDepartment = "Bölüm";
+  static const String educationStatus = "Eğitim Durumu";
+
+  static const Icon calendarIcon = Icon(Icons.calendar_month_outlined);
+
+  static const textStyleGrey = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Color(0xFF828282),
+  );
+
+  static const textStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+}
+
+class AboutMeConstants {
+  static const String aboutMeTitle = "Hakkımda";
+  static const String aboutMeNotFound = "Hakkımda bilgisi yok";
+
+  static const textStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+}
+
+class SocialMediaEditConstants {
+  static const String dropdownFacebook = "Facebook";
+  static const String dropdownTwitter = "Twitter";
+  static const String dropdownInstagram = "Instagram";
+  static const String dropdownHint = "Sosyal Medya Türü";
+  static const String textfieldTitle = "Sosyal Medya*";
+  static const String textfieldHint = "Sosyal medya hesabı giriniz";
+  static const String saveButton = "Kaydet";
+  static const String error = "Lütfen sosyal medya türü seçiniz.";
+}
+
+class SettingsPageConstants {
+  static const String deleteAccount = "Üyeliği Sil";
+}
+
+class ExperienceConstants {
+  static const String company = "Kurum Adı";
+  static const String companyHint = "Kurum Adı Giriniz";
+  static const String position = "Pozisyon";
+  static const String positionHint = "Pozisyon Giriniz";
+  static const String sector = "Sektör";
+  static const String sectorHint = "Sektör Giriniz";
+  static const String city = "Şehir";
+  static const String cityHint = "Şehir Giriniz";
+  static const String startDate = "Başlangıç Tarihi";
+  static const String startDateHint = "Başlangıç Tarihi Giriniz";
+  static const String endDate = "Bitiş Tarihi";
+  static const String endDateHint = "Bitiş Tarihi Giriniz";
+  static const String description = "Açıklama";
+  static const String descriptionHint = "Açıklama Giriniz";
+  static const String saveButton = "Kaydet";
+}
+
+class ProfileEditConstants {
+  static const String photoUpload = "Fotoğrafı Değiştir";
+  static const String nameSurname = "Adınız Soyadınız*";
+  static const String nameSurnameHint = "Adınız Soyadınızı Giriniz";
+  static const String phone = "Telefon Numaranız*";
+  static const String phoneHint = "Telefon Numaranızı Giriniz";
+  static const String birthDate = "Doğum Tarihiniz*";
+  static const String birthDateHint = "Doğum tarihinizi giriniz(23/07/1996)";
+  static const String identityNumber = "Kimlik Numaranız*";
+  static const String identityNumberHint = "Kimlik Numaranızı Giriniz";
+  static const String email = "E-posta Adresiniz*";
+  static const String emailHint = "E-posta Adresinizi Giriniz";
+  static const String country = "Ülkeniz*";
+  static const String countryHint = "Ülkenizi Giriniz";
+  static const String city = "Şehriniz*";
+  static const String cityHint = "Şehrinizi Giriniz";
+  static const String district = "İlçeniz*";
+  static const String districtHint = "İlçenizi Giriniz";
+  static const String address = "Adresiniz*";
+  static const String addressHint = "Adresinizi Giriniz";
+  static const String aboutMe = "Hakkınızda";
+  static const String aboutMeHint = "Hakkınızda Metnini Giriniz";
+  static const String saveButton = "Kaydet";
 }

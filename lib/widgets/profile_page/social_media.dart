@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -16,9 +17,9 @@ class SocialMediaWidget extends StatefulWidget {
   State<SocialMediaWidget> createState() => _SocialMediaWidgetState();
 }
 
-void onFacebookIconClick(String username) async {
+void onSocialIconClick(String username, platform) async {
   // ignore: deprecated_member_use
-  String newUrl = "https://www.instagram.com/$username";
+  String newUrl = "https://www.$platform.com/$username";
   // ignore: deprecated_member_use
   if (await canLaunch(newUrl)) {
     // ignore: deprecated_member_use
@@ -37,22 +38,19 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
     if (userBlocState is UserFetchedState) {
       userProfile = userBlocState.user;
     }
-    // print(userProfile.about);
     List<SocialMedia>? userProfileSocialMedia = userProfile?.socialMedia;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
-    double deviceHeight = queryData.size.height;
     return SizedBox(
       child: CustomCardWidget(
         width: deviceWidth / 1.1,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth / 20, vertical: deviceHeight / 80),
+          padding: paddingBig + paddingHBig,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTitle(
-                title: "Sosyal Medya Bilgileri",
+                title: SocialMediaConstants.socialMediaTitle,
               ),
               Padding(padding: paddingSmall),
               const Divider(
@@ -60,24 +58,23 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
                 thickness: 2,
               ),
               Padding(padding: paddingSmall),
-              SizedBox(
-                height: deviceHeight / 6,
-                child: userProfileSocialMedia == null
-                    ? const Center(child: Text("Sosyal medya bilgsi yok"))
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: userProfileSocialMedia.length,
-                        itemBuilder: (context, index) {
+              userProfileSocialMedia == null
+                  ? const Center(
+                      child: Text(SocialMediaConstants.socialMediaNotFound))
+                  : SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: userProfileSocialMedia.map((socialMedia) {
                           return Padding(
                             padding: paddingHSmall,
                             child: SocialMediaItem(
-                                username:
-                                    userProfileSocialMedia[index].username),
+                              username: socialMedia.username,
+                              platform: socialMedia.platform,
+                            ),
                           );
-                        },
+                        }).toList(),
                       ),
-              ),
+                    ),
             ],
           ),
         ),
@@ -88,17 +85,24 @@ class _SocialMediaWidgetState extends State<SocialMediaWidget> {
 
 class SocialMediaItem extends StatelessWidget {
   final String username;
-  const SocialMediaItem({super.key, required this.username});
-//TODO: Platforma göre icon
+  final String platform;
+  const SocialMediaItem(
+      {super.key, required this.username, required this.platform});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onFacebookIconClick(username),
-      child: const Icon(
-        Icons.facebook,
-        color: Colors.blue,
-        size: 100.0,
-      ),
-    );
+    if (platform == "Twitter") {
+      return GestureDetector(
+          onTap: () => onSocialIconClick(username, platform),
+          child: SocialMediaConstants.twitterIcon);
+    } else if (platform == "Facebook") {
+      return GestureDetector(
+          onTap: () => onSocialIconClick(username, platform),
+          child: SocialMediaConstants.facebookIcon);
+    } else {
+      return GestureDetector(
+        onTap: () => onSocialIconClick(username, platform),
+        child: SocialMediaConstants.instagramIcon,
+      );
+    }
   }
 }

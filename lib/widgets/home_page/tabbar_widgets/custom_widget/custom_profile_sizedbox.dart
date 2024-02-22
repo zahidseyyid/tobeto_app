@@ -16,6 +16,7 @@ class CustomProfileSizedBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: Text ve iconlar constant olmalı
     return SizedBox(
       width: deviceWidth / 1.2,
       child: Row(

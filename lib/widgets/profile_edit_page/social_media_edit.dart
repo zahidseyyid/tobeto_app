@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
@@ -56,10 +57,15 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
     }
 
     List<DropdownMenuItem<String>> dropdownItems = [
-      const DropdownMenuItem(value: "Facebook", child: Text("Facebook")),
-      const DropdownMenuItem(value: "Twitter", child: Text("Twitter")),
-      const DropdownMenuItem(value: "Instagram", child: Text("Instagram")),
-      const DropdownMenuItem(value: "LinkedIn", child: Text("LinkedIn")),
+      const DropdownMenuItem(
+          value: SocialMediaEditConstants.dropdownFacebook,
+          child: Text(SocialMediaEditConstants.dropdownFacebook)),
+      const DropdownMenuItem(
+          value: SocialMediaEditConstants.dropdownTwitter,
+          child: Text(SocialMediaEditConstants.dropdownTwitter)),
+      const DropdownMenuItem(
+          value: SocialMediaEditConstants.dropdownInstagram,
+          child: Text(SocialMediaEditConstants.dropdownInstagram)),
     ];
 
     return Scaffold(
@@ -79,18 +85,18 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                     value = selectedValue;
                   });
                 },
-                hint: const Text("Sosyal Medya Türü "),
+                hint: const Text(SocialMediaEditConstants.dropdownHint),
               ),
             ),
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-              labelText: "Sosyal Medya*",
+              labelText: SocialMediaEditConstants.textfieldTitle,
               controller: socialMediaController,
-              hintText: "Sosyal Medya Giriniz",
+              hintText: SocialMediaEditConstants.textfieldHint,
             ),
             Padding(padding: paddingMedium),
             CustomElevatedButton(
-              text: "Kaydet",
+              text: SocialMediaEditConstants.saveButton,
               onPressed: () {
                 if (value != null) {
                   userProfile?.socialMedia!.add(
@@ -102,7 +108,7 @@ class _SocialMediaEditState extends State<SocialMediaEdit> {
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text("Lütfen sosyal medya türü seçiniz."),
+                      content: Text(SocialMediaEditConstants.error),
                     ),
                   );
                 }

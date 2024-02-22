@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -29,23 +30,21 @@ class _EducationWidgetState extends State<EducationWidget> {
       print("else : EducationWidget");
     }
     if (userProfile == null) {
-      return const Center(child: Text("Kullanıcı bilgisi bulunamadı"));
+      return const Center(child: Text(EducationPageConstants.userNotFound));
     }
     List<EducationHistory>? userProfileEducation = userProfile.educationHistory;
     MediaQueryData queryData = MediaQuery.of(context);
     double deviceWidth = queryData.size.width;
-    double deviceHeight = queryData.size.height;
     return SizedBox(
       child: CustomCardWidget(
         width: deviceWidth / 1.1,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth / 20, vertical: deviceHeight / 80),
+          padding: paddingBig + paddingHBig,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTitle(
-                title: "Eğitim Bilgileri",
+                title: EducationPageConstants.educationPageTitle,
               ),
               Padding(padding: paddingSmall),
               const Divider(
@@ -54,7 +53,8 @@ class _EducationWidgetState extends State<EducationWidget> {
               ),
               Padding(padding: paddingSmall),
               userProfileEducation!.isEmpty
-                  ? const Center(child: Text("Okul Bilgisi Eklenmedi"))
+                  ? const Center(
+                      child: Text(EducationPageConstants.educationNotFound))
                   : SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -114,64 +114,46 @@ class EducationCard extends StatelessWidget {
             ],
             color: Theme.of(context).colorScheme.onError,
             shape: BoxShape.rectangle),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: paddingMedium + paddingHMedium,
         //width: deviceWidth / 1.8,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(padding: paddingSmall),
             Row(mainAxisSize: MainAxisSize.min, children: [
-              const Icon(Icons.calendar_month_outlined),
-              const Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+              EducationPageConstants.calendarIcon,
+              Padding(padding: paddingSmall),
               Text("$educationStartDate - $educationEndDate"),
             ]),
             Padding(padding: paddingSmall),
             const Text(
-              "Okul Adı",
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF828282)),
+              EducationPageConstants.educationSchoolName,
+              style: EducationPageConstants.textStyleGrey,
             ),
             Padding(padding: paddingSmall),
             Text(
               educationSchoolName,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: EducationPageConstants.textStyle,
             ),
             Padding(padding: paddingSmall),
             const Text(
-              "Bölüm",
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF828282)),
+              EducationPageConstants.educationDepartment,
+              style: EducationPageConstants.textStyleGrey,
             ),
             Padding(padding: paddingSmall),
             Text(
               educationDepartment,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: EducationPageConstants.textStyle,
             ),
             Padding(padding: paddingSmall),
             const Text(
-              "Eğitim Seviyesi",
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFF828282)),
+              EducationPageConstants.educationStatus,
+              style: EducationPageConstants.textStyleGrey,
             ),
             Padding(padding: paddingSmall),
             Text(
               educationStatus,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: EducationPageConstants.textStyle,
             ),
             Padding(padding: paddingSmall),
           ],

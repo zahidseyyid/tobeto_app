@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class CustomSizedCardWidget extends StatelessWidget {
+  //TODO: Text ve iconlar constant olmalı
   final double? height;
   final double width;
   final Widget? child;

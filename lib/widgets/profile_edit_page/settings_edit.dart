@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_elevated_button.dart';
 
 class SettingsEdit extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SettingsEditState extends State<SettingsEdit> {
         children: [
           Padding(padding: paddingSmall),
           CustomElevatedButton(
-              text: "Üyeliği Sonlandır",
+              text: SettingsPageConstants.deleteAccount,
               onPressed: () {},
               buttonColor: Colors.red),
         ],
