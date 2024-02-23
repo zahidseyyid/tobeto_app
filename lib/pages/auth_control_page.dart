@@ -16,7 +16,6 @@ class AuthControlPage extends StatefulWidget {
 }
 
 class _AuthControlPageState extends State<AuthControlPage> {
-  late String logoAsset;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
