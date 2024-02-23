@@ -8,6 +8,7 @@ import 'package:flutter_application_1/widgets/catalog_page/catalog_lessons_item.
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
@@ -23,14 +24,7 @@ class CatalogPage extends StatelessWidget {
     return ChangeNotifierProvider<StateData>(
       create: (context) => StateData(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Image.asset(getLogo(brightness), width: 125),
-          shape: const RoundedRectangleBorder(
-            side: BorderSide(
-              width: 0.5,
-            ),
-          ),
-        ),
+        appBar: CustomAppBarWidget(brightness: brightness),
         drawer: const MyDrawer(),
         body: SingleChildScrollView(
           child: Column(

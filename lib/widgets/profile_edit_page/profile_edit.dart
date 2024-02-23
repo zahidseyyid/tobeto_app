@@ -19,7 +19,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileEdit extends StatefulWidget {
-  //TODO: Text ve iconlar constant olmalı
   const ProfileEdit({Key? key}) : super(key: key);
 
   @override
@@ -69,7 +68,6 @@ class _ProfileEditState extends State<ProfileEdit> {
   TextEditingController districtController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
-  EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
 
   Widget buildUserInfoFormField({
     required String labelText,
@@ -79,9 +77,8 @@ class _ProfileEditState extends State<ProfileEdit> {
     int? maxLines,
   }) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width / 1.2,
       child: Padding(
-        padding: horizontalF,
+        padding: paddingHMedium,
         child: CustomTextFormField(
           labelText: labelText,
           controller: controller,
