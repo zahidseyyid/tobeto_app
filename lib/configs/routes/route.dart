@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
-import 'package:flutter_application_1/pages/evoluation_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_edit_page.dart';
@@ -40,8 +39,6 @@ class CustomRouter {
             builder: (_) => CalendarPage(lessonList: lessonList));
       case catalogRoute:
         return MaterialPageRoute(builder: (_) => const CatalogPage());
-      case evoluationRoute:
-        return MaterialPageRoute(builder: (_) => const EvoluationPage());
       case homeRoute:
         return MaterialPageRoute(
             builder: (_) => HomePage(

@@ -322,3 +322,18 @@ class ProfileEditConstants {
   static const String aboutMeHint = "Hakkınızda Metnini Giriniz";
   static const String saveButton = "Kaydet";
 }
+
+class ProfilePageConstants {
+  static const Icon editIcon = Icon(Icons.edit);
+  static const Icon shareIcon = Icon(Icons.share);
+}
+
+class LessonDetailsConstants {
+  static const String content = "İçerik";
+  static const String about = "Hakkında";
+}
+
+class EvaluationConstants {
+  static const String pageTitle =
+      "Yetkinliklerini ücretsiz ölç, bilgilerini test et.";
+}

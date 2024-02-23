@@ -10,6 +10,7 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
+import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/sign_in_sign_up_page/textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,10 +45,11 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
         if (state is AuthError) {
           print("AuthError : SignUpPage");
           ToastHelper.showErrorToast(state.errorMessage);
-        }
-        if (state is Authenticated) {
+        } else if (state is Authenticated) {
           print("Authenticated : SignUpPage");
           Navigator.pushReplacementNamed(context, "/home");
+        } else if (state is AuthLoading) {
+          print("AuthLoading : SignUpPage");
         }
       },
       child: Scaffold(
@@ -60,8 +62,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
           ),
           child: Center(
             child: Padding(
-              // TODO: Padding constants dan alınacak
-              padding: const EdgeInsets.all(30.0),
+              padding: paddingAllSuperBig,
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
                   return Card(
@@ -73,15 +74,14 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: paddingBig + paddingOnlyTopBig,
                           child: Image.asset(
                             logoAsset,
                             width: 200,
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                          padding: paddingHSuperBig + paddingOnlyTopBig,
                           child: SignTextField(
                             isPassword: false,
                             controller: nameSurnameController,
@@ -90,8 +90,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                          padding: paddingHSuperBig + paddingOnlyTopBig,
                           child: SignTextField(
                             isPassword: false,
                             controller: mailController,
@@ -100,8 +99,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                          padding: paddingHSuperBig + paddingOnlyTopBig,
                           child: SignTextField(
                             isPassword: true,
                             controller: passwordController,
@@ -110,8 +108,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                          padding: paddingHSuperBig + paddingOnlyTopSuperBig,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
@@ -137,7 +134,6 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () {
-                            // TODO: Boyutlandırma hatası var. Düzeltilecek.
                             // TODO: Giriş ve kayıt için loading animasyonu eklenecek.
                             Navigator.pushReplacementNamed(context, "/sign_in");
                           },

@@ -11,7 +11,6 @@ import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
-import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String userId;
-    final userState = context.read<AuthBloc>().state;
+    final userState = context.watch<AuthBloc>().state;
 
     if (userState is Authenticated) {
       userId = userState.userId!;
@@ -74,42 +73,6 @@ class HomePage extends StatelessWidget {
                     const ExamsWidget(),
                     // TODO : Sınav cardı düzeltilecek
                     // TODO : Dialog ekranı düzeltilecek
-                    GradientCardWidget(
-                      // TODO : Kodlar revize edilecek.
-                      title: "Profilini oluştur",
-                      gradient: const LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.topRight,
-                        colors: [
-                          Color(0xFFbda6fe),
-                          Color(0xFF1d0b8c),
-                        ],
-                      ),
-                      onPressed: () {},
-                    ),
-                    // TODO : Düzeltilecek ve boyutlandırma hatası var.
-                    GradientCardWidget(
-                        title: 'Kendini değerlendir',
-                        gradient: const LinearGradient(
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight,
-                          colors: [
-                            Color(0xFF0e0b93),
-                            Color(0xFF5eb6ca),
-                          ],
-                        ),
-                        onPressed: () {}),
-                    GradientCardWidget(
-                        title: 'Öğrenmeye başla',
-                        gradient: const LinearGradient(
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight,
-                          colors: [
-                            Color(0xFF3c0b8c),
-                            Color(0xFFe3a6fe),
-                          ],
-                        ),
-                        onPressed: () {}),
                     const FooterWidget(),
                   ],
                 ),
