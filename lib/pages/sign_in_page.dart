@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_event.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
+import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/sign_in_sign_up_page/textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,10 +44,12 @@ class _MyStatefulWidgetState extends State<SignInPage> {
         if (state is AuthError) {
           print("AuthError : SignInPage");
           ToastHelper.showErrorToast(state.errorMessage);
-        }
-        if (state is Authenticated) {
+        } else if (state is Authenticated) {
           print("Authenticated : SignInPage");
           Navigator.pushReplacementNamed(context, "/home");
+        } else if (state is AuthLoading) {
+          print("AuthLoading : SignInPage");
+          const CustomCircularProgress();
         }
       },
       child: Scaffold(
@@ -57,7 +61,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
           ),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: paddingAllSuperBig,
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 return Card(
@@ -69,16 +73,14 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        // TODO: Padding constants dan alınacak
-                        padding: const EdgeInsets.only(top: 15),
+                        padding: paddingBig + paddingOnlyTopBig,
                         child: Image.asset(
                           logoAsset,
                           width: 200,
                         ),
                       ),
                       Container(
-                          padding: const EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                          padding: paddingHSuperBig + paddingOnlyTopBig,
                           child: SignTextField(
                             isPassword: false,
                             controller: nameController,
@@ -86,8 +88,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                             icon: SigninPageConstants.mailIcon,
                           )),
                       Container(
-                        padding:
-                            const EdgeInsets.only(left: 25, right: 25, top: 15),
+                        padding: paddingHSuperBig + paddingOnlyTopMedium,
                         child: SignTextField(
                           isPassword: true,
                           controller: passwordController,
@@ -96,8 +97,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                         ),
                       ),
                       Container(
-                        padding:
-                            const EdgeInsets.only(left: 25, right: 25, top: 15),
+                        padding: paddingHSuperBig + paddingOnlyTopSuperBig,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Theme.of(context)
@@ -119,7 +119,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      Padding(padding: paddingSmall),
                       GestureDetector(
                           onTap: () {
                             Navigator.pushReplacementNamed(context, "/sign_up");
@@ -132,7 +132,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                         thickness: 1,
                       ),
                       Container(
-                        padding: const EdgeInsets.only(bottom: 5),
+                        padding: paddingOnlyBottomSmall,
                         child: Column(
                           children: [
                             TextButton(

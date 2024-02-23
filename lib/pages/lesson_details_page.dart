@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
@@ -55,7 +56,6 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                 children: [
                   SizedBox(
                     width: deviceWidth * 0.7,
-                    height: deviceWidth * 0.12,
                     child: Text(
                       widget.education.title,
                       style: Theme.of(context).textTheme.titleMedium,
@@ -109,11 +109,10 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                     labelStyle: const TextStyle(fontSize: 20),
                     tabAlignment: TabAlignment.start,
                     tabs: List.generate(2, (index) {
-                      // TODO: Constans alınacak
                       if (index == 0) {
-                        return const Tab(text: "İçerik");
+                        return const Tab(text: LessonDetailsConstants.content);
                       } else if (index == 1) {
-                        return const Tab(text: "Hakkında");
+                        return const Tab(text: LessonDetailsConstants.about);
                       }
                       return const Tab(text: "");
                     }),
