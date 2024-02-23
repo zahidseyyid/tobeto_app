@@ -12,4 +12,8 @@ class AnnouncementLoaded extends AnnouncementState {
   AnnouncementLoaded({required this.announcementList});
 }
 
-class AnnouncementError extends AnnouncementState {}
+class AnnouncementError extends AnnouncementState {
+  final String errorMessage;
+
+  AnnouncementError({required this.errorMessage});
+}

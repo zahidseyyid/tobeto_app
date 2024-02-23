@@ -1,34 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/constants/collection_names.dart';
 import 'package:flutter_application_1/models/announcements_model.dart';
+import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';
 
 class AnnouncementRepository {
-  final firebaseAuthInstance = FirebaseAuth.instance;
   late List<AnnouncementModel> educations;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   Future<List<AnnouncementModel>> getAnnouncements(
-      // TODO : Yorum satırları eklenecek
-      List<Map<String, dynamic>> userAnnouncementList) async {
+      List<String> userAnnouncementList) async {
     List<AnnouncementModel> announcements = [];
     try {
-      for (var item in userAnnouncementList) {
-        DocumentSnapshot<Map<String, dynamic>> snapshot =
-            await _firebaseFirestore
-                .collection(Collections.ANNOUNCEMENTS)
-                .doc(item['id'])
-                .get();
-
-        if (snapshot.exists) {
-          AnnouncementModel announcement =
-              AnnouncementModel.fromFirestore(snapshot);
-          announcements.add(announcement);
-        }
+      if (userAnnouncementList.isEmpty) {
+        return []; // Boş liste olduğunda exception kısmına düşmemesi için
       }
+      //firestore dan kullanıcının duyularını ilk eklenen duyuruya göre listele
+      final querySnapshot = await _firebaseFirestore
+          .collection(Collections.ANNOUNCEMENTS)
+          .where(FieldPath.documentId, whereIn: userAnnouncementList)
+          .get();
+      //Modele göre listeye aktardım
+      announcements = querySnapshot.docs.map((doc) {
+        return AnnouncementModel.fromFirestore(doc);
+      }).toList();
+
       return announcements;
     } catch (e) {
-      throw Exception('Failed to get announcements: $e');
+      String errorMessage = FirestoreExceptionHelper.handleException(e);
+      throw Exception(errorMessage);
     }
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 class ApplicationsWidget extends StatelessWidget {
-  //TODO: Text ve iconlar constant olmalı
   const ApplicationsWidget({Key? key}) : super(key: key);
 
   @override
@@ -9,7 +10,7 @@ class ApplicationsWidget extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 10, bottom: 20),
+      padding: paddingHBig + paddingSuperBig,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -29,58 +30,51 @@ class ApplicationsWidget extends StatelessWidget {
                   border: Border(
                       left: BorderSide(color: Color(0xFF076B34), width: 10)),
                 ),
-                padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                padding: paddingMedium + paddingHSmall,
                 alignment: Alignment.centerLeft,
-                child: const Column(
-                  children: [
-                    Row(
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    child: const Column(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text("İstanbul Kodluyor",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold)),
-                            Text("Bilgilendirme",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold))
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(AnnouncementConstants.istanbulCodingText,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
+                                Text(ApplicationConstants.information,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold))
+                              ],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            ApplicationConstants.checkIcon,
+                            Expanded(
+                              child: Text(
+                                  ApplicationConstants.applicationFormText),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            ApplicationConstants.checkIcon,
+                            Expanded(
+                              child: Text(
+                                  ApplicationConstants.applicationDocumentText),
+                            ),
                           ],
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.check,
-                            color: Color(0xFF076B34),
-                          ),
-                          Expanded(
-                            child: Text(
-                                "İstanbul Kodluyor Başvuru Formu onaylandı"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.check,
-                            color: Color(0xFF076B34),
-                          ),
-                          Expanded(
-                            child: Text(
-                                "İstanbul Kodluyor Belge Yükleme Formu onaylandı."),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
               Positioned(
@@ -98,7 +92,7 @@ class ApplicationsWidget extends StatelessWidget {
                   ),
                   child: const Center(
                     child: Text(
-                      "Kabul Edildi",
+                      ApplicationConstants.accepted,
                       style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),

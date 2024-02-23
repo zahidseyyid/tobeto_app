@@ -4,7 +4,7 @@ import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/pages/lesson_details_page.dart';
-import 'package:flutter_application_1/pages/lessons_page.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -29,22 +29,15 @@ class _LessonsWidgetState extends State<LessonsWidget> {
               .read<LessonBloc>()
               .add(FetchUserLessons(userLessonList: widget.lessonList));
           return const Center(
-            child: Text("İstek atılıyor.."),
+            child: CircularProgressIndicator(),
           );
-        }
-
-        if (state is LessonLoading) {
+        } else if (state is LessonLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        }
-
-        if (state is LessonError) {
-          return const Center(
-            child: Text("İstek hatalı.."),
-          );
-        }
-        if (state is LessonLoaded) {
+        } else if (state is LessonError) {
+          ToastHelper.showErrorToast(state.errorMessage);
+        } else if (state is LessonLoaded) {
           if (state.educationList.isNotEmpty) {
             final itemCounter =
                 state.educationList.length < 3 ? state.educationList.length : 3;
@@ -65,12 +58,6 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                         iconSize: 35,
                         onPressed: () {
                           Navigator.pushReplacementNamed(context, "/lesson");
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LessonsPage(),
-                            ),
-                          );
                         },
                       );
                     } else {

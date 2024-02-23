@@ -73,7 +73,74 @@ class LessonConstants {
 
 class CatalogConstants {
   static const String filter = "Filtrele";
+  static const String learn = "Öğrenmeye";
+  static const String start = "başla !";
+  static const String searchLesson = "Eğitim Arayın...";
+  static const List<String> categoryItems = [
+    "Tüm Eğitimler",
+    "Ücretli Eğitimler",
+    "Ücretsiz Eğitimler"
+  ];
+  static const List<String> educationItems = [
+    "Tüm Eğitimler",
+    "Dijital Gelişim",
+    "Profesyonel Gelişim"
+  ];
+  static const List<String> levelItems = [
+    "Tüm Seviyeler",
+    "Başlangıç",
+    "Orta",
+    "İleri"
+  ];
+  static const List<String> subjectItems = [
+    "Tüm Konular",
+    "C#",
+    "Çeşitlilik ve Kapsayıcılık",
+    "Başarı ve Sonuç Odaklılık",
+    "Takım Bilinci",
+    "Etkili İletişim ve İlişki Yönetimi",
+    "Karar Verme",
+    "Profesyonellik"
+  ];
+  static const List<String> softwareLangItems = [
+    "Tüm Diller",
+    "ASPNET",
+    "Bootstrap",
+    "SASS",
+    "JavaScript",
+    "JQuery",
+    "SQL",
+    "AJAX",
+    "HTML",
+    "CSS",
+    "React",
+    "Flutter"
+  ];
+  static const List<String> teacherItems = [
+    "Tüm Eğitmenler",
+    "Veli Bahçeci",
+    "Halit Enes Kalaycı",
+    "Gürkan İlişen",
+    "Engin Demiroğ",
+    "Kader Yavuz"
+  ];
+  static const List<String> situationItems = [
+    "Tüm Eğitimler",
+    "Alınan Tüm Eğitimler",
+    "Henüz Başlanmamış Eğitimler",
+    "Tamamlanan Eğitimler",
+    "Devam Eden Eğitimler"
+  ];
+  static const String category = "Kategori";
+  static const String education = "Eğitim";
+  static const String level = "Seviye";
+  static const String subject = "Konu";
+  static const String softwareLanguage = "Yazılım Dili";
+  static const String teacher = "Eğitmen";
+  static const String situation = "Durum";
 
+  static const IconData accessTime = Icons.access_time;
+  static const IconData person = Icons.person_outline_sharp;
   static const Icon videoPlayIcon =
       Icon(Icons.play_circle, size: 40, color: Color(0xFF9933FF));
 }
@@ -83,23 +150,31 @@ class AnnouncementConstants {
   static const String type = "Tür";
   static const String organization = "Organizasyon";
   static const String alignment = "Sıralama";
-  static const List<String> dropdownTypeItems = [
-    "Duyuru",
-    "Haber",
-  ];
-  static const List<String> dropdownCorporationItems = [
-    "İstanbul Kodluyor",
-  ];
+  static const List<String> dropdownTypeItems = ["Duyuru", "Haber"];
+  static const List<String> dropdownCorporationItems = ["İstanbul Kodluyor"];
   static const List<String> dropdownSortItems = [
     "Tarihe göre (Y-E)",
-    "Tarihe göre (E-Y)",
+    "Tarihe göre (E-Y)"
   ];
-
+  static const String visible = "Visible";
+  static const String invisible = "Invisible";
   static const String announcement = "Duyuru";
   static const String news = "Haber";
   static const String istanbulCodingText = "İstanbul Kodluyor";
   static const String readMore = "Devamını oku";
   static const String announcementNotFound = "Duyuru Bulunamadı.";
+
+  static const IconData calendarIcon = Icons.calendar_month_outlined;
+}
+
+class ApplicationConstants {
+  static const String information = "Bilgilendirme";
+  static const String applicationFormText =
+      "İstanbul Kodluyor Başvuru Formu onaylandı";
+  static const String applicationDocumentText =
+      "İstanbul Kodluyor Belge Yükleme Formu onaylandı.";
+  static const String accepted = "Kabul Edildi";
+  static const Icon checkIcon = Icon(Icons.check, color: Color(0xFF076B34));
 }
 
 class WorkExperienceConstants {

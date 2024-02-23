@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget/announcement_dialog.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
@@ -11,7 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AnnouncementsWidget extends StatelessWidget {
-  final List<Map<String, dynamic>> userAnnouncementList;
+  final List<String> userAnnouncementList;
   const AnnouncementsWidget({super.key, required this.userAnnouncementList});
 
   @override
@@ -27,22 +29,15 @@ class AnnouncementsWidget extends StatelessWidget {
             context.read<AnnouncementBloc>().add(
                 FetchAnnouncements(userAnnouncementList: userAnnouncementList));
             return const Center(
-              child: Text("İstek atılıyor.."),
+              child: CircularProgressIndicator(),
             );
-          }
-
-          if (state is AnnouncementLoading) {
+          } else if (state is AnnouncementLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }
-
-          if (state is AnnouncementError) {
-            return const Center(
-              child: Text("İstek hatalı.."),
-            );
-          }
-          if (state is AnnouncementLoaded) {
+          } else if (state is AnnouncementError) {
+            ToastHelper.showErrorToast(state.errorMessage);
+          } else if (state is AnnouncementLoaded) {
             if (state.announcementList.isNotEmpty) {
               final itemCounter = state.announcementList.length < 2
                   ? state.announcementList.length
@@ -63,8 +58,7 @@ class AnnouncementsWidget extends StatelessWidget {
                       );
                     } else {
                       return Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, left: 10, bottom: 20),
+                        padding: paddingSuperBig + paddingHSmall,
                         child: Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
@@ -87,7 +81,7 @@ class AnnouncementsWidget extends StatelessWidget {
                                             color: Color(0xFF076B34),
                                             width: 10)),
                                   ),
-                                  padding: const EdgeInsets.all(20),
+                                  padding: paddingAllSuperBig,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -118,8 +112,7 @@ class AnnouncementsWidget extends StatelessWidget {
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 20, bottom: 10),
+                                        padding: paddingMedium,
                                         child: SizedBox(
                                           child: Text(
                                               state.announcementList[index]
@@ -139,8 +132,8 @@ class AnnouncementsWidget extends StatelessWidget {
                                           Row(
                                             children: [
                                               Icon(
-                                                  //TODO: Text ve iconlar constant olmalı
-                                                  Icons.calendar_month_outlined,
+                                                  AnnouncementConstants
+                                                      .calendarIcon,
                                                   color: Theme.of(context)
                                                       .colorScheme
                                                       .primary

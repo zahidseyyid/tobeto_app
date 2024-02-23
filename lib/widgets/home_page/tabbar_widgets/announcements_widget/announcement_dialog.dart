@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 void announcementDialogWidget(
-  //TODO: Text ve iconlar constant olmalı
   BuildContext context,
   String dialogTitle,
   String dialogText,
@@ -16,7 +17,7 @@ void announcementDialogWidget(
         content: Container(
           width: screenSize.width,
           height: screenSize.height, // Ekranın genişliği kadar
-          padding: const EdgeInsets.all(16.0),
+          padding: paddingAllBig,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +37,7 @@ void announcementDialogWidget(
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: LessonConstants.closeIcon,
                     onPressed: () {
                       Navigator.of(context).pop(); // Popup'ı kapat
                     },

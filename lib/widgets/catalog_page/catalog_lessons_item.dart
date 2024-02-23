@@ -7,6 +7,7 @@ import 'package:flutter_application_1/logic/blocs/catalog/catalog_state.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/lesson_details_page.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,6 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
     context.read<CatalogLessonBloc>().add(ResetFetchLessons());
   }
 
-// TODO: Search barında kayma var
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -45,20 +45,13 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
         context.read<CatalogLessonBloc>().add(FetchCategoryLessons());
 
         return const Center(child: CustomCircularProgress());
-      }
-
-      if (state is CatalogLessonLoading) {
+      } else if (state is CatalogLessonLoading) {
         return const Center(
           child: CircularProgressIndicator(),
         );
-      }
-
-      if (state is CatalogLessonError) {
-        return const Center(
-          child: Text("İstek hatalı.."),
-        );
-      }
-      if (state is CatalogLessonLoaded) {
+      } else if (state is CatalogLessonError) {
+        ToastHelper.showErrorToast(state.errorMessage);
+      } else if (state is CatalogLessonLoaded) {
         //Textfielda yazılan ile filtreleme kısmı
         var categoryLessons = filterLessons(
           state.catalogLessonList,
@@ -68,11 +61,10 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
           itemCount: categoryLessons.length,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(10),
+          padding: paddingAllMedium,
           itemBuilder: (context, index) {
             return Padding(
-              // TODO: Paddinglerin hepsi constant olmalı
-              padding: const EdgeInsets.only(top: 15),
+              padding: paddingMedium,
               child: GestureDetector(
                 onTap: () {
                   // Tıklanılan dersin detay sayfasına yönlendirilmesi
@@ -111,7 +103,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                 color: purple.withOpacity(0.7),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(12),
+                                padding: paddingAllMedium,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -120,7 +112,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(
-                                          Icons.person_outline_sharp,
+                                          CatalogConstants.person,
                                           color: color,
                                         ),
                                         Padding(padding: paddingHSmall),
@@ -134,7 +126,7 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
                                         ),
                                         Padding(padding: paddingHSmall),
                                         Icon(
-                                          Icons.access_time,
+                                          CatalogConstants.accessTime,
                                           color: color,
                                         ),
                                         Padding(padding: paddingHSmall),
