@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/search_widget.dart';
 
 class CatalogBanner extends StatelessWidget {
@@ -8,7 +9,6 @@ class CatalogBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO : metinler constants dan alınacak
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     TextStyle textStyle = TextStyle(
@@ -35,7 +35,7 @@ class CatalogBanner extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: deviceHeight / 25,
+          top: deviceHeight / 35,
           left: 10,
           right: 10,
           child: SizedBox(
@@ -44,15 +44,15 @@ class CatalogBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Öğrenmeye",
+                  CatalogConstants.learn,
                   style: textStyle,
                 ),
                 Text(
-                  "başla !",
+                  CatalogConstants.start,
                   style: textStyle,
                 ),
                 Padding(padding: paddingSmall),
-                const SearchWidget(hintText: "Eğitim Arayın..."),
+                const SearchWidget(hintText: CatalogConstants.searchLesson),
               ],
             ),
           ),

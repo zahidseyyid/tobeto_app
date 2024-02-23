@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/catalog/catalog_event.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
@@ -6,57 +7,6 @@ import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
-
-List<String> categoryItems = [
-  "Tüm Eğitimler",
-  "Ücretli Eğitimler",
-  "Ücretsiz Eğitimler"
-];
-List<String> educationItems = [
-  "Tüm Eğitimler",
-  "Dijital Gelişim",
-  "Profesyonel Gelişim"
-];
-List<String> levelItems = ["Tüm Seviyeler", "Başlangıç", "Orta", "İleri"];
-List<String> subjectItems = [
-  "Tüm Konular",
-  "C#",
-  "Çeşitlilik ve Kapsayıcılık",
-  "Başarı ve Sonuç Odaklılık",
-  "Takım Bilinci",
-  "Etkili İletişim ve İlişki Yönetimi",
-  "Karar Verme",
-  "Profesyonellik"
-];
-List<String> softwareLangItems = [
-  "Tüm Diller",
-  "ASPNET",
-  "Bootstrap",
-  "SASS",
-  "JavaScript",
-  "JQuery",
-  "SQL",
-  "AJAX",
-  "HTML",
-  "CSS",
-  "React",
-  "Flutter"
-];
-List<String> teacherItems = [
-  "Tüm Eğitmenler",
-  "Veli Bahçeci",
-  "Halit Enes Kalaycı",
-  "Gürkan İlişen",
-  "Engin Demiroğ",
-  "Kader Yavuz"
-];
-List<String> situationItems = [
-  "Tüm Eğitimler",
-  "Alınan Tüm Eğitimler",
-  "Henüz Başlanmamış Eğitimler",
-  "Tamamlanan Eğitimler",
-  "Devam Eden Eğitimler"
-];
 
 void catalogFilterWidget(
   BuildContext context,
@@ -69,7 +19,6 @@ void catalogFilterWidget(
       double deviceHeight = screenSize.height;
       double dropdownSize = deviceWidth / 1.55;
       String sortData;
-//TODO: text constansts dan alınacak
       return ChangeNotifierProvider<StateData>(
         //Filtreleme işlemleri için ChangeNotifierProvider ile sarmalladım
         create: (context) => StateData(),
@@ -77,7 +26,7 @@ void catalogFilterWidget(
           builder: (context) {
             sortData = Provider.of<StateData>(context, listen: true).sort;
             return AlertDialog(
-              contentPadding: const EdgeInsets.only(top: 10, bottom: 20),
+              contentPadding: paddingSmall,
               content: Container(
                 padding: paddingHMedium,
                 child: Column(
@@ -88,7 +37,7 @@ void catalogFilterWidget(
                       children: [
                         const Flexible(
                           child: Text(
-                            "Filtreleme",
+                            CatalogConstants.filter,
                             maxLines: 3,
                             style: TextStyle(
                               fontSize: 18,
@@ -97,7 +46,7 @@ void catalogFilterWidget(
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.close),
+                          icon: LessonConstants.closeIcon,
                           onPressed: () {
                             Navigator.of(context).pop(); // Popup'ı kapat
                           },
@@ -105,39 +54,39 @@ void catalogFilterWidget(
                       ],
                     ),
                     DropdownSortWidget(
-                      dropdownItems: categoryItems,
+                      dropdownItems: CatalogConstants.categoryItems,
                       size: dropdownSize,
-                      hint: "Kategori",
+                      hint: CatalogConstants.category,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: educationItems,
+                      dropdownItems: CatalogConstants.educationItems,
                       size: dropdownSize,
-                      hint: "Eğitim",
+                      hint: CatalogConstants.education,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: levelItems,
+                      dropdownItems: CatalogConstants.levelItems,
                       size: dropdownSize,
-                      hint: "Seviye",
+                      hint: CatalogConstants.level,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: subjectItems,
+                      dropdownItems: CatalogConstants.subjectItems,
                       size: dropdownSize,
-                      hint: "Konu",
+                      hint: CatalogConstants.subject,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: softwareLangItems,
+                      dropdownItems: CatalogConstants.softwareLangItems,
                       size: dropdownSize,
-                      hint: "Yazılım Dili",
+                      hint: CatalogConstants.softwareLanguage,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: teacherItems,
+                      dropdownItems: CatalogConstants.teacherItems,
                       size: dropdownSize,
-                      hint: "Eğitmen",
+                      hint: CatalogConstants.teacher,
                     ),
                     DropdownSortWidget(
-                      dropdownItems: situationItems,
+                      dropdownItems: CatalogConstants.situationItems,
                       size: dropdownSize,
-                      hint: "Durum ",
+                      hint: CatalogConstants.situation,
                     ),
                     const SizedBox(
                       height: 10,
@@ -145,11 +94,12 @@ void catalogFilterWidget(
                     CustomButton(
                         onPressed: () {
                           if (sortData == "" ||
-                              sortData == "Tüm Eğitmenler" ||
-                              sortData == "Tüm Eğitimler" ||
-                              sortData == "Tüm Seviyeler" ||
-                              sortData == "Tüm Konular" ||
-                              sortData == "Tüm Diller") {
+                              sortData == CatalogConstants.teacherItems[0] ||
+                              sortData == CatalogConstants.educationItems[0] ||
+                              sortData == CatalogConstants.levelItems[0] ||
+                              sortData == CatalogConstants.subjectItems[0] ||
+                              sortData ==
+                                  CatalogConstants.softwareLangItems[0]) {
                             context
                                 .read<CatalogLessonBloc>()
                                 .add(FetchCategoryLessons());
@@ -160,7 +110,7 @@ void catalogFilterWidget(
                           }
                           Navigator.of(context).pop();
                         },
-                        buttonText: "Filtrele",
+                        buttonText: CatalogConstants.filter,
                         buttonColor: const Color(0xFF9933FF),
                         width: deviceWidth / 3,
                         height: deviceHeight / 22,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,9 @@ class _VisibilityWidgetState extends State<VisibilityWidget> {
     return InkWell(
       onTap: () => setState(() {
         _isVisible = !_isVisible;
-        sort(_isVisible ? "Visible" : "Invisible");
+        sort(_isVisible
+            ? AnnouncementConstants.visible
+            : AnnouncementConstants.invisible);
       }),
       child: Container(
         decoration: BoxDecoration(

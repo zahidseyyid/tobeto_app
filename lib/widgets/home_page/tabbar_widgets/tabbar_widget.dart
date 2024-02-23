@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
@@ -17,7 +18,7 @@ class TabBarWidget extends StatefulWidget {
       required this.lessonList,
       required this.userAnnouncementList});
   final List<String> lessonList;
-  final List<Map<String, dynamic>> userAnnouncementList;
+  final List<String> userAnnouncementList;
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
@@ -65,9 +66,8 @@ class _TabBarWidgetState extends State<TabBarWidget> {
               children: [
                 Center(
                   child: SizedBox(
-                    //TODO: image constant olmalı
                     width: deviceWidth * 0.6,
-                    child: Image.asset("lib/assets/istanbulkodluyor.png"),
+                    child: Image.asset(PageImageConstants.istanbulCoding),
                   ),
                 ),
                 const Padding(

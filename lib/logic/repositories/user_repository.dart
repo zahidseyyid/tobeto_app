@@ -5,6 +5,7 @@ import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';
 
 class UserRepository {
+  //TODO: users collection_names ten alınabilir
   final CollectionReference collectionReference =
       FirebaseFirestore.instance.collection("users");
 

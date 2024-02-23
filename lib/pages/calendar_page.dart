@@ -5,12 +5,12 @@ import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/models/education_model.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalendarPage extends StatefulWidget {
-  // TODO: Error kodları constants olarak alınacak
   const CalendarPage({super.key, required this.lessonList});
   final List<String> lessonList;
 
@@ -30,22 +30,15 @@ class _CalendarPageState extends State<CalendarPage> {
               .read<LessonBloc>()
               .add(FetchUserLessons(userLessonList: widget.lessonList));
           return const Center(
-            child: Text("İstek atılıyor.."),
+            child: CircularProgressIndicator(),
           );
-        }
-
-        if (state is LessonLoading) {
+        } else if (state is LessonLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        }
-
-        if (state is LessonError) {
-          return const Center(
-            child: Text("İstek hatalı.."),
-          );
-        }
-        if (state is LessonLoaded) {
+        } else if (state is LessonError) {
+          ToastHelper.showErrorToast(state.errorMessage);
+        } else if (state is LessonLoaded) {
           return Scaffold(
             appBar: AppBar(
               title: Image.asset(getLogo(brightness), width: 125),

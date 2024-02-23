@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
       {super.key,
       required this.userAnnouncementList,
       required this.lessonList});
-  final List<Map<String, dynamic>> userAnnouncementList;
+  final List<String> userAnnouncementList;
   final List<String> lessonList;
 
   @override

@@ -11,6 +11,7 @@ class PageImageConstants {
   static const String profileImageDefault = "lib/assets/profile_background.png";
   static const String visibilityOn = "lib/assets/visibility_on.png";
   static const String visibilityOff = "lib/assets/visibility_off.png";
+  static const String istanbulCoding = "lib/assets/istanbulkodluyor.png";
 }
 
 String getLogo(Brightness brightness) {

@@ -4,7 +4,6 @@ import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPa
 import 'package:provider/provider.dart';
 
 class DropdownSortWidget extends StatefulWidget {
-  //TODO: Text ve iconlar constant olmalı
   const DropdownSortWidget(
       {super.key,
       required this.dropdownItems,
@@ -80,10 +79,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                   style: TextStyle(
                       color: Colors.grey, fontWeight: FontWeight.w200),
                 ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.grey,
-                ),
+                LessonConstants.downArrowIcon
               ],
             ),
             iconSize: 30,

@@ -23,17 +23,12 @@ class CustomRouter {
       "#a743c",
       "#abdb0"
     ];
-    // TODO: List string olacak
+
     // TODO: User ders ve duyuruları alacak
-    List<Map<String, dynamic>> userAnnouncementList = [
-      {
-        'id': "ojo4GDkL8svkNgzxt9Xw",
-        'unRead': false,
-      },
-      {
-        'id': "uc7zmS1Z5peDKv5lUIOo",
-        'unRead': false,
-      },
+
+    List<String> userAnnouncementList = [
+      "ojo4GDkL8svkNgzxt9Xw",
+      "uc7zmS1Z5peDKv5lUIOo",
     ];
     switch (settings.name) {
       case annonuncementRoute:

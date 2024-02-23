@@ -18,7 +18,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
           .getAnnouncements(event.userAnnouncementList);
       emit(AnnouncementLoaded(announcementList: announcementList));
     } catch (e) {
-      emit(AnnouncementError());
+      emit(AnnouncementError(errorMessage: e.toString()));
     }
   }
 }
