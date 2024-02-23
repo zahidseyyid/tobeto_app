@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,7 @@ class SearchWidget extends StatelessWidget {
     //Textfield a yazılan patterni onChange kısmında çağırarak global state i değiştirdim
     Function search = Provider.of<StateData>(context).searchData;
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: paddingAllMedium,
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -38,7 +39,7 @@ class SearchWidget extends StatelessWidget {
             ),
             filled: true,
             fillColor: Theme.of(context).colorScheme.background,
-            contentPadding: const EdgeInsets.all(15.0),
+            contentPadding: paddingAllBig,
           ),
           onChanged: (value) {
             // arama sorgusu ile ilgili işlemler

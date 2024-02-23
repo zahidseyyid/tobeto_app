@@ -28,14 +28,14 @@ class LessonRepository {
   }
 
   Future<List<Education>> filterLessonsByTeacher(String teacher) async {
-    //Kategorisi katalog olan dersleri öğretmene göre filtrele
+    // Kategorisi katalog olan dersleri öğretmene göre filtrele
     try {
       final querySnapshot = await _firebaseFirestore
           .collection(Collections.EDUCATION)
           .where(Collections.FETCH_CATEGORY, isEqualTo: "Katalog")
           .where(Collections.TEACHER, isEqualTo: teacher)
           .orderBy(FieldPath.documentId,
-              descending: true) //ilk eklenen verinin en üstte gözükmesi için
+              descending: true) // İlk eklenen verinin en üstte gözükmesi için
           .get();
       filteredByTeacherEducations = querySnapshot.docs.map((doc) {
         return Education.fromFirestore(doc);
@@ -49,7 +49,7 @@ class LessonRepository {
   }
 
   Future<List<Education>> getLessons(List<String> userLessonList) async {
-    //öğrenciye atanmış olan derslerin id sine göre listele
+    // Öğrenciye atanmış olan derslerin id sine göre listele
     try {
       if (userLessonList.isEmpty) {
         return []; // Boş liste olduğunda exception kısmına düşmemesi için

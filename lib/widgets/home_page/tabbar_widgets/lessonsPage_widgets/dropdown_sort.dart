@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,7 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
     Function sort = Provider.of<StateData>(context).sortData;
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+      margin: paddingHMedium + paddingOnlyBottomMedium,
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -98,8 +99,8 @@ class _DropdownWidgetState extends State<DropdownSortWidget> {
                 value: value,
                 child: Container(
                   width: size! * 0.72,
-                  margin: const EdgeInsets.only(left: 15),
-                  padding: const EdgeInsets.all(10),
+                  margin: paddingOnlyLeftBig,
+                  padding: paddingAllMedium,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                   ),

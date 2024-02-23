@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
@@ -34,10 +35,10 @@ class LessonItemWidget extends StatelessWidget {
           itemCount: filtering.length,
           shrinkWrap: true, //liste boyutuna göre ayarla
           physics: const NeverScrollableScrollPhysics(), //scroll olmaması için
-          padding: const EdgeInsets.all(10),
+          padding: paddingAllMedium,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.all(5),
+              padding: paddingAllSmall,
               child: Container(
                 height: deviceHeight * .27,
                 decoration: BoxDecoration(
@@ -54,7 +55,7 @@ class LessonItemWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(5),
+                padding: paddingAllSmall,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

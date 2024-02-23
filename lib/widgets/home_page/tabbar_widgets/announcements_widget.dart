@@ -138,7 +138,9 @@ class AnnouncementsWidget extends StatelessWidget {
                                                       .colorScheme
                                                       .primary
                                                       .withOpacity(0.5)),
-                                              const SizedBox(width: 5),
+                                              Padding(
+                                                  padding:
+                                                      paddingOnlyRightSmall),
                                               Text(
                                                   DateFormat('dd-MM-yyyy')
                                                       .format(state
@@ -197,7 +199,7 @@ class AnnouncementsWidget extends StatelessWidget {
                   });
             } else {
               return const SurveysWidget(
-                text: AnnouncementConstants.announcementNotFound,
+                AnnouncementConstants.announcementNotFound,
               );
             }
           }

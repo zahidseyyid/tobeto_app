@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class EduBannerWidget extends StatelessWidget {
   const EduBannerWidget({super.key, required this.title});
@@ -10,7 +11,7 @@ class EduBannerWidget extends StatelessWidget {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: paddingAllMedium,
       child: Stack(
         children: [
           ClipRRect(

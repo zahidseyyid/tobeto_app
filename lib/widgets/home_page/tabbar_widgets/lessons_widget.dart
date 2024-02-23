@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
@@ -42,7 +43,7 @@ class _LessonsWidgetState extends State<LessonsWidget> {
             final itemCounter =
                 state.educationList.length < 3 ? state.educationList.length : 3;
             return Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: paddingOnlyLeftMedium,
               child: Container(
                 width: deviceWidth,
                 color: Theme.of(context).colorScheme.background,
@@ -79,7 +80,7 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                               ),
                             ],
                           ),
-                          padding: const EdgeInsets.all(5),
+                          padding: paddingAllSmall,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -99,7 +100,9 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 5),
+                              Padding(
+                                padding: paddingOnlyBottomSmall,
+                              ),
                               Text(
                                 state.educationList[index].title.toString(),
                                 style: const TextStyle(
@@ -112,14 +115,13 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    DateFormat('dd-MM-yyyy kk:mm')
-                                        .format(state
-                                            .educationList[index].startDate)
-                                        .toString(),
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                  ),
+                                      DateFormat('dd-MM-yyyy kk:mm')
+                                          .format(state
+                                              .educationList[index].startDate)
+                                          .toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium),
                                   IconButton(
                                     icon: LessonConstants.rightArrowIcon,
                                     onPressed: () {
@@ -146,7 +148,7 @@ class _LessonsWidgetState extends State<LessonsWidget> {
               ),
             );
           } else {
-            return const SurveysWidget(text: LessonConstants.lessonsNotFound);
+            return const SurveysWidget(LessonConstants.lessonsNotFound);
           }
         }
         return const Text(LessonConstants.lessonsNotFound);

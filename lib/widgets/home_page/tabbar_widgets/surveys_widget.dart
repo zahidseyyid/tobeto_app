@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class SurveysWidget extends StatelessWidget {
   final String text;
-  const SurveysWidget({super.key, required this.text});
+  const SurveysWidget(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    double deviceHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+      padding: paddingHSuperBig + paddingSmall,
       child: Container(
         width: deviceWidth,
         decoration: BoxDecoration(
@@ -19,10 +19,12 @@ class SurveysWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(PageImageConstants.surveyImage,
-                height: deviceHeight / 6),
+            Image.asset(
+              PageImageConstants.surveyImage,
+              scale: 4,
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, bottom: 10),
+              padding: paddingMedium,
               child: Text(
                 text,
                 style: TextStyle(

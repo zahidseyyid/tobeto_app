@@ -11,6 +11,7 @@ class CatalogLessonBloc extends Bloc<CatalogLessonEvent, CatalogLessonState> {
     on<FilterCategoryLessons>(_onFilterCatalogLesson);
     on<ResetFetchLessons>(_onReset);
   }
+  // Kategorisi katalog olan dersleri getir
   void _onFetchCategoryLessons(
       FetchCategoryLessons event, Emitter<CatalogLessonState> emit) async {
     emit(CatalogLessonLoading());
@@ -22,6 +23,7 @@ class CatalogLessonBloc extends Bloc<CatalogLessonEvent, CatalogLessonState> {
     }
   }
 
+// Katalog derslerini öğretmene göre filtrele
   void _onFilterCatalogLesson(
       FilterCategoryLessons event, Emitter<CatalogLessonState> emit) async {
     emit(CatalogLessonLoading());
@@ -34,6 +36,7 @@ class CatalogLessonBloc extends Bloc<CatalogLessonEvent, CatalogLessonState> {
     }
   }
 
+// Filtrelendikten sonra stateti initial durumuna getirip katalog derslerinin tamamını listelemek için
   void _onReset(
       ResetFetchLessons event, Emitter<CatalogLessonState> emit) async {
     emit(CatalogLessonInitial());

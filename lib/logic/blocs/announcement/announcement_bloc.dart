@@ -10,6 +10,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     on<FetchAnnouncements>(_onFetchAnnouncements);
   }
 
+// Kullanıcının duyurularını getir
   void _onFetchAnnouncements(
       FetchAnnouncements event, Emitter<AnnouncementState> emit) async {
     emit(AnnouncementLoading());
