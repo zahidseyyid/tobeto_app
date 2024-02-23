@@ -35,7 +35,7 @@ class CatalogBanner extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: deviceHeight / 35,
+          top: 15,
           left: 10,
           right: 10,
           child: SizedBox(

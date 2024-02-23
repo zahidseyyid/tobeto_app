@@ -44,7 +44,9 @@ void announcementDialogWidget(
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              Padding(
+                padding: paddingMedium,
+              ),
               Text(dialogText),
             ],
           ),

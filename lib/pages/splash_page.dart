@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatelessWidget {

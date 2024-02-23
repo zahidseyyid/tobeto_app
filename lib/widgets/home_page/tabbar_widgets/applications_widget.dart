@@ -32,48 +32,46 @@ class ApplicationsWidget extends StatelessWidget {
                 ),
                 padding: paddingMedium + paddingHSmall,
                 alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    child: const Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(AnnouncementConstants.istanbulCodingText,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                                Text(ApplicationConstants.information,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold))
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            ApplicationConstants.checkIcon,
-                            Expanded(
-                              child: Text(
-                                  ApplicationConstants.applicationFormText),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            ApplicationConstants.checkIcon,
-                            Expanded(
-                              child: Text(
-                                  ApplicationConstants.applicationDocumentText),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                child: const Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(AnnouncementConstants.istanbulCodingText,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
+                              Text(ApplicationConstants.information,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ApplicationConstants.checkIcon,
+                          Expanded(
+                            child:
+                                Text(ApplicationConstants.applicationFormText),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ApplicationConstants.checkIcon,
+                          Expanded(
+                            child: Text(
+                                ApplicationConstants.applicationDocumentText),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),

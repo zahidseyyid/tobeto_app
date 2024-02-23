@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
@@ -67,10 +68,10 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
           itemCount: filtering.length,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(10),
+          padding: paddingAllMedium,
           itemBuilder: (context, index) {
             return Card(
-              margin: const EdgeInsets.only(bottom: 20),
+              margin: paddingOnlyBottomSuperBig,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
@@ -91,7 +92,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                             left: BorderSide(
                                 color: Color(0xFF076B34), width: 10)),
                       ),
-                      padding: const EdgeInsets.all(20),
+                      padding: paddingAllSuperBig,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -116,7 +117,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20, bottom: 10),
+                            padding: paddingMedium,
                             child: SizedBox(
                               child: Text(filtering[index].title,
                                   style: TextStyle(

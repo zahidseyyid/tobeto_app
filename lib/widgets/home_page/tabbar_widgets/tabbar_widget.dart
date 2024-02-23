@@ -3,8 +3,10 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/applications_widget.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
@@ -38,20 +40,15 @@ class _TabBarWidgetState extends State<TabBarWidget> {
           context.read<AnnouncementBloc>().add(FetchAnnouncements(
               userAnnouncementList: widget.userAnnouncementList));
           return const Center(
-            child: Text("İstek atılıyor.."),
+            child: CustomCircularProgress(),
           );
-        }
-        if (state is AnnouncementLoading) {
+        } else if (state is AnnouncementLoading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CustomCircularProgress(),
           );
-        }
-        if (state is AnnouncementError) {
-          return const Center(
-            child: Text("İstek hatalı.."),
-          );
-        }
-        if (state is AnnouncementLoaded) {
+        } else if (state is AnnouncementError) {
+          ToastHelper.showErrorToast(state.errorMessage);
+        } else if (state is AnnouncementLoaded) {
           unReadAnnouncement = state.announcementList
               .where((element) => !(element.isRead))
               .toList()
@@ -165,8 +162,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                                 userAnnouncementList:
                                     widget.userAnnouncementList),
                             const SurveysWidget(
-                                text:
-                                    "Atanmış herhangi bir anketiniz bulunmamaktadır"),
+                                "Atanmış herhangi bir anketiniz bulunmamaktadır"),
                           ],
                         ),
                       ),

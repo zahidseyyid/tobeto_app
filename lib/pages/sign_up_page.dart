@@ -10,7 +10,6 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/sign_in_sign_up_page/textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

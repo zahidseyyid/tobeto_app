@@ -10,7 +10,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
     on<FetchUserLessons>(_onFetchUserLessons);
     on<ResetFetchLessons>(_onReset);
   }
-
+// Kullanıcı derslerini listele
   void _onFetchUserLessons(
       FetchUserLessons event, Emitter<LessonState> emit) async {
     emit(LessonLoading());
@@ -23,6 +23,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
     }
   }
 
+// State'i resetle yani initial değerine getir
   void _onReset(ResetFetchLessons event, Emitter<LessonState> emit) async {
     emit(LessonInitial());
   }

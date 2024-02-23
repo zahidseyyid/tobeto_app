@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
@@ -28,34 +29,34 @@ class _AnnouncementsPageState extends State<AnnouncementsPage> {
       child: Scaffold(
         appBar: CustomAppBarWidget(brightness: brightness),
         drawer: const MyDrawer(),
-        body: const SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              EduBannerWidget(title: AnnouncementConstants.announcements),
+              const EduBannerWidget(title: AnnouncementConstants.announcements),
               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                       child: SearchWidget(hintText: LessonConstants.search)),
-                  VisibilityWidget(),
-                  SizedBox(width: 15),
+                  const VisibilityWidget(),
+                  Padding(padding: paddingOnlyRightBig),
                 ],
               ),
-              DropdownSortWidget(
+              const DropdownSortWidget(
                 hint: AnnouncementConstants.type,
                 dropdownItems: AnnouncementConstants.dropdownTypeItems,
               ),
-              DropdownSortWidget(
+              const DropdownSortWidget(
                 hint: AnnouncementConstants.organization,
                 dropdownItems: AnnouncementConstants.dropdownCorporationItems,
               ),
-              DropdownSortWidget(
+              const DropdownSortWidget(
                 hint: AnnouncementConstants.alignment,
                 dropdownItems: AnnouncementConstants.dropdownSortItems,
               ),
               // ignore: prefer_const_constructors
               AnnouncementItemWidget(), //const yapma
-              FooterWidget()
+              const FooterWidget()
             ],
           ),
         ),

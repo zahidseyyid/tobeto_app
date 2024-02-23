@@ -7,12 +7,12 @@ import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
 import 'package:flutter_application_1/pages/sign_in_page.dart';
-import 'package:flutter_application_1/widgets/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exams_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/footer.dart';
 import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/tabbar_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,9 +65,7 @@ class HomePage extends StatelessWidget {
                   children: <Widget>[
                     HeaderWidget(name: state.user!.nameSurname),
                     TabBarWidget(
-                        // TODO: Başvurularım kısmında card da boyutlandırma hatası var.
                         // TODO: Duyurular kısmında card da boyutlandırma hatası var.
-                        // TODO: Anketteki card da boyutlandırma hatası var.
                         userAnnouncementList: userAnnouncementList,
                         lessonList: lessonList),
                     const ExamsWidget(),

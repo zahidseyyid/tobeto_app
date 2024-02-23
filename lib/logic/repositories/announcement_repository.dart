@@ -14,12 +14,12 @@ class AnnouncementRepository {
       if (userAnnouncementList.isEmpty) {
         return []; // Boş liste olduğunda exception kısmına düşmemesi için
       }
-      //firestore dan kullanıcının duyularını ilk eklenen duyuruya göre listele
+      // Firestore dan kullanıcının duyularını ilk eklenen duyuruya göre listele
       final querySnapshot = await _firebaseFirestore
           .collection(Collections.ANNOUNCEMENTS)
           .where(FieldPath.documentId, whereIn: userAnnouncementList)
           .get();
-      //Modele göre listeye aktardım
+      // Modele göre listeye aktar
       announcements = querySnapshot.docs.map((doc) {
         return AnnouncementModel.fromFirestore(doc);
       }).toList();
