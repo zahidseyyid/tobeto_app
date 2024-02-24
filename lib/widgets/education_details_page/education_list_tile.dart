@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 
 class EducationListTile extends StatelessWidget {
@@ -11,25 +12,26 @@ class EducationListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Text ve iconlar constant olmalı
     Icon icon;
     Color iconColor;
 
     // Video durumuna göre ikon ve rengini belirle
-    if (video.status == "Completed") {
-      icon = const Icon(Icons.check_circle);
+    if (video.status == EducationListTileConstants.completed) {
+      icon = EducationListTileConstants.checkCircleIcon;
       iconColor = Colors.green;
-    } else if (video.status == "In Progress") {
-      icon = const Icon(Icons.access_time_filled_sharp);
+    } else if (video.status == EducationListTileConstants.inProgress) {
+      icon = EducationListTileConstants.accessTimeFilledIcon;
       iconColor = Colors.yellow.shade700;
     } else {
-      icon = const Icon(Icons.play_arrow); // Video başlamadı veya yarım kaldı
+      icon = EducationListTileConstants
+          .playArrowIcon; // Video başlamadı veya yarım kaldı
       iconColor = Colors.grey; // Kırmızı renkte hata ikonu
     }
 
     return ListTile(
       title: Text(video.videoTitle),
-      subtitle: Text("${video.duration.inMinutes} dk"),
+      subtitle: Text(
+          "${video.duration.inMinutes} ${EducationListTileConstants.duration}"),
       trailing: icon,
       iconColor: iconColor,
     );

@@ -21,6 +21,12 @@ class AuthSignUp extends AuthEvent {
 }
 
 // Çıkış
-class AuthLogout extends AuthEvent {
-  //TODO: Silme eventi eklenebilir belki
+class AuthLogout extends AuthEvent {}
+
+class AuthPasswordReset extends AuthEvent {
+  String eMail;
+
+  AuthPasswordReset({required this.eMail});
 }
+
+class AuthDeleteUser extends AuthEvent {}

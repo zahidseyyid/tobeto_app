@@ -81,8 +81,6 @@ class _EducationWidgetState extends State<EducationWidget> {
   }
 }
 
-// TODO: Widgetları ayıracağım.
-
 class EducationCard extends StatelessWidget {
   final String educationStartDate;
   final String educationEndDate;

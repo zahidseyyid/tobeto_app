@@ -19,6 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignIn>(_onSignInUser);
     on<AuthSignUp>(_onSignUpUser);
     on<AuthLogout>(_onUserLogout);
+    on<AuthPasswordReset>(_onPasswordReset);
+    on<AuthDeleteUser>(_onDeleteUser);
   }
 
   // Uygulama açıldığında splash ekranda auth sorgusu yapılır
@@ -81,6 +83,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(Unauthenticated());
     } catch (e) {
       emit(AuthError(errorMessage: "${e}Giriş Başarısız"));
+    }
+  }
+
+  // Şifre sıfırlama
+  void _onPasswordReset(
+      AuthPasswordReset event, Emitter<AuthState> emit) async {
+    try {
+      await _authRepository.resetPassword(event.eMail);
+      emit(Unauthenticated());
+    } catch (e) {
+      emit(AuthError(errorMessage: e.toString()));
+    }
+  }
+
+  // Kullanıcı silme
+  void _onDeleteUser(AuthDeleteUser event, Emitter<AuthState> emit) async {
+    try {
+      await _authRepository.deleteUser();
+      emit(Unauthenticated());
+    } catch (e) {
+      emit(AuthError(errorMessage: e.toString()));
     }
   }
 }
