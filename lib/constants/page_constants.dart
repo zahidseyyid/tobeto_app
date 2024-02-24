@@ -337,3 +337,29 @@ class EvaluationConstants {
   static const String pageTitle =
       "Yetkinliklerini ücretsiz ölç, bilgilerini test et.";
 }
+
+class EducationListTileConstants {
+  static const String completed = "Completed";
+  static const String inProgress = "In Progress";
+  static const String duration = " dk";
+  static const Icon checkCircleIcon = Icon(Icons.check_circle);
+  static const Icon accessTimeFilledIcon = Icon(Icons.access_time_filled_sharp);
+  static const Icon playArrowIcon = Icon(Icons.play_arrow);
+}
+
+class HeaderConstants {
+  static const String tobeto = "TOBETO";
+  static const String welcome = "'ya hoş geldin\n";
+  static const String newGenerationLearningExperience =
+      "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!";
+}
+
+class FooterConstants {
+  static const String contactUs = "Bize Ulaşın";
+  static const String tobeto = "© 2022 Tobeto";
+}
+
+class CustpmCircleAvatarConstants {
+  static const String defaultPhotoUrl =
+      "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+}

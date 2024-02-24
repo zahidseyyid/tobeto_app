@@ -46,7 +46,9 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
 
         return const Center(child: CustomCircularProgress());
       } else if (state is CatalogLessonLoading) {
-        return const Center(child: CustomCircularProgress());
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
       } else if (state is CatalogLessonError) {
         ToastHelper.showErrorToast(state.errorMessage);
       } else if (state is CatalogLessonLoaded) {

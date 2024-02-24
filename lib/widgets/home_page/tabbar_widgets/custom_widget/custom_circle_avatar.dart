@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
-  //TODO: Text ve iconlar constant olmalı
   final double radius;
   final File pickedImage;
   final String userPhotoUrl;
-  final String defaultPhotoUrl =
-      "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+  final String defaultPhotoUrl = CustpmCircleAvatarConstants.defaultPhotoUrl;
   const CustomCircleAvatar({
     Key? key, // key parametresini burada düzelttik
     required this.pickedImage,

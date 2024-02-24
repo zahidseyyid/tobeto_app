@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
 class FooterWidget extends StatelessWidget {
-  //TODO: Text ve iconlar constant olmalı
   const FooterWidget({super.key});
 
   @override
@@ -11,10 +12,10 @@ class FooterWidget extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final double deviceWidth = mediaQueryData.size.width;
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: paddingOnlyTopSuperBig,
       child: Container(
         color: const Color(0xFF9933FF),
-        padding: const EdgeInsets.all(30),
+        padding: paddingAllBig * 1.5,
         child: Column(
           children: [
             Row(
@@ -29,7 +30,7 @@ class FooterWidget extends StatelessWidget {
                           width: deviceWidth / 3.5),
                       CustomButton(
                         onPressed: () {},
-                        buttonText: "Bize Ulaşın",
+                        buttonText: FooterConstants.contactUs,
                         buttonColor: Colors.white,
                         buttonTextColor: Colors.black,
                       ),
@@ -38,10 +39,10 @@ class FooterWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: Text(
-                '© 2022 Tobeto',
+            Padding(
+              padding: paddingBig,
+              child: const Text(
+                FooterConstants.tobeto,
                 style: TextStyle(
                   fontSize: 12,
                   color: Color.fromARGB(255, 255, 255, 255),

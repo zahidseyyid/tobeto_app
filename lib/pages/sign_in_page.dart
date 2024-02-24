@@ -137,10 +137,16 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           children: [
                             TextButton(
                               onPressed: () {
-                                // TODO: Boyutlandırma hatası var. Düzeltilecek.
-                                // TODO: Add functionality for forgot password
-                                // TODO: Şifre sıfırlama işlemi yapılacak.
-                                print("object");
+                                if (nameController.text.isNotEmpty) {
+                                  context.read<AuthBloc>().add(
+                                      AuthPasswordReset(
+                                          eMail: nameController.text));
+                                  ToastHelper.showSuccesToast(
+                                      "Şifre sıfırlama maili gönderildi. Lütfen e-mailinizi kontrol ediniz.");
+                                } else {
+                                  ToastHelper.showErrorToast(
+                                      "Lütfen e-mail adresinizi giriniz");
+                                }
                               },
                               child: const Text(
                                 SigninPageConstants.passwordRequestText,

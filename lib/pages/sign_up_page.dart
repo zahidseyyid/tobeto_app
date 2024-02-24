@@ -133,7 +133,7 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () {
-                            // TODO: Giriş ve kayıt için loading animasyonu eklenecek.
+                            // TODO: Giriş ve kayıt için loading animasyonu eklenecek. En son yapılacak.
                             Navigator.pushReplacementNamed(context, "/sign_in");
                           },
                           child:

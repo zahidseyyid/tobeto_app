@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/announcements_page.dart';
 import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
+import 'package:flutter_application_1/pages/page_404.dart';
 import 'package:flutter_application_1/pages/profile.dart';
 import 'package:flutter_application_1/pages/profile_edit_page.dart';
 import 'package:flutter_application_1/pages/splash_page.dart';
@@ -60,13 +61,7 @@ class CustomRouter {
 
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            appBar: AppBar(),
-            body: const Center(
-              //TODO : 404 page
-              child: Text('Ters giden birşeyler oldu'),
-            ),
-          ),
+          builder: (_) => const Page404(),
         );
     }
   }
