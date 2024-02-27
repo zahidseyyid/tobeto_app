@@ -4,12 +4,12 @@ import 'package:flutter_application_1/configs/bloc_configs.dart';
 import 'package:flutter_application_1/configs/routes/route.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/pages/auth_control_page.dart';
+import 'package:flutter_application_1/test/discussion_list_test.dart';
 import 'package:flutter_application_1/theme/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-  //TODO: Lib içindeki assets klasörü taşınacak
   //TODO: Theme ve colorlar düzenlenecek
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -22,6 +22,8 @@ void main() async {
       lessonBlocProvider,
       catalogLessonBlocProvider,
       announcementBlocProvider,
+      chatBlocProvider,
+      discussionBlocProvider,
     ],
     child: const TobetoApp(),
   ));
@@ -48,6 +50,9 @@ class TobetoApp extends StatelessWidget {
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
       home: const AuthControlPage(),
+      //home: const ChatScreen(
+      //   uid: 'GxZSDQBthDDAAeWSEE6T', discussionId: '18ttw0iz7QYe2SHdVsOT'),
+      //home: const DiscussionListTest(),
       onGenerateRoute: CustomRouter.generateRoute,
     );
   }

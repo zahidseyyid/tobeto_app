@@ -361,5 +361,15 @@ class FooterConstants {
 
 class CustpmCircleAvatarConstants {
   static const String defaultPhotoUrl =
-      "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+      "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+}
+
+class ChatBotConstants {
+  static const String chatBotTitle = "TobetoAI";
+  static const String studentTitle = "Öğrenci";
+  static const String message = "prompt";
+  static const String response = "response";
+  static const String timestamp = "timestamp";
+  static const String defaultPhotoUrl =
+      "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 }
