@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
-import 'package:flutter_application_1/logic/blocs/user_bloc/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
-import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
+import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/profile_edit_page/icon_tabbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

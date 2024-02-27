@@ -2,16 +2,16 @@
 import 'package:flutter/material.dart';
 
 class PageImageConstants {
-  static const String backgorundImage = "lib/assets/background.png";
-  static const String loginHeaderImage = "lib/assets/tobetoDarkModeLogo.png";
+  static const String backgorundImage = "assets/png/background.png";
+  static const String loginHeaderImage = "assets/png/tobetoDarkModeLogo.png";
   static const String loginHeaderImageDark =
-      "lib/assets/tobetoLightModeLogo.png";
-  static const String surveyImage = "lib/assets/surveys.png";
-  static const String edubanner = "lib/assets/eduBanner.png";
-  static const String profileImageDefault = "lib/assets/profile_background.png";
-  static const String visibilityOn = "lib/assets/visibility_on.png";
-  static const String visibilityOff = "lib/assets/visibility_off.png";
-  static const String istanbulCoding = "lib/assets/istanbulkodluyor.png";
+      "assets/png/tobetoLightModeLogo.png";
+  static const String surveyImage = "assets/png/surveys.png";
+  static const String edubanner = "assets/png/eduBanner.png";
+  static const String profileImageDefault = "assets/png/profile_background.png";
+  static const String visibilityOn = "assets/png/visibility_on.png";
+  static const String visibilityOff = "assets/png/visibility_off.png";
+  static const String istanbulCoding = "assets/png/istanbulkodluyor.png";
 }
 
 String getLogo(Brightness brightness) {

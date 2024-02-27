@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_event.dart';
-import 'package:flutter_application_1/logic/blocs/auth_bloc/auth_state.dart';
+import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/auth/auth_event.dart';
+import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/pages/splash_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter_application_1/logic/blocs/user_bloc/user_event.dart';
-import 'package:flutter_application_1/logic/blocs/user_bloc/user_state.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
 import 'package:flutter_application_1/logic/repositories/user_repository.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 
