@@ -49,10 +49,10 @@ class TobetoApp extends StatelessWidget {
       title: 'Tobeto',
       theme: AppTheme.lightMode,
       darkTheme: AppTheme.darkMode,
-      home: const AuthControlPage(),
+      //home: const AuthControlPage(),
       //home: const ChatScreen(
       //   uid: 'GxZSDQBthDDAAeWSEE6T', discussionId: '18ttw0iz7QYe2SHdVsOT'),
-      //home: const DiscussionListTest(),
+      home: const DiscussionListTest(),
       onGenerateRoute: CustomRouter.generateRoute,
     );
   }

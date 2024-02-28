@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatBotMessageModel {
-  final String? prompt;
-  final String? response;
-  //final String time;
+  String? prompt;
+  String? response;
 
-  ChatBotMessageModel({
-    this.prompt,
-    this.response,
-    //required this.time,
-  });
+  ChatBotMessageModel({this.prompt, this.response});
+
+  void updateResponse(String newResponse) {
+    response = newResponse;
+  }
 
   factory ChatBotMessageModel.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;

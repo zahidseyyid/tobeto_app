@@ -48,7 +48,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     if (state is ChatFetchedState) {
       ChatFetchedState fetchedState = state as ChatFetchedState;
 
-      // Önceki mesajları güncellemeden önce yeni mesajı ekle
       List<ChatBotMessageModel> updatedMessages =
           List.from(fetchedState.chatMessages);
 
@@ -58,7 +57,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       String response = await _chatRepository.listenToSpecificDocument(
           event.uid, event.discussionId, messageId);
 
-      updatedMessages.insert(0, ChatBotMessageModel(response: response));
+      // Mevcut mesajın response'unu güncelle
+      if (updatedMessages.isNotEmpty) {
+        updatedMessages[0].updateResponse(response);
+      }
 
       emit(ChatFetchedState(chatMessages: updatedMessages));
     }

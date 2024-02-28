@@ -4,6 +4,7 @@ import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
 import 'package:flutter_application_1/test/chat_bot_test.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatBotBlocTest extends StatefulWidget {
@@ -56,15 +57,13 @@ class _ChatBotBlocTestState extends State<ChatBotBlocTest> {
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          state.chatMessages[index].prompt == null
-                              ? Container()
-                              : ChatCard(
-                                  message: state.chatMessages[index].prompt!,
-                                  name: "Öğrenci",
-                                  time: "12:00",
-                                ),
+                          ChatCard(
+                            message: state.chatMessages[index].prompt!,
+                            name: "Öğrenci",
+                            time: "12:00",
+                          ),
                           state.chatMessages[index].response == null
-                              ? Container()
+                              ? const CustomCircularProgress()
                               : ChatCard(
                                   message: state.chatMessages[index].response!,
                                   name: "TobetoAI",
