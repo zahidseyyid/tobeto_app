@@ -6,3 +6,5 @@ class DiscussionFetchEvent extends DiscussionEvent {
 
   DiscussionFetchEvent(this.uid);
 }
+
+class DiscussionResetEvent extends DiscussionEvent {}

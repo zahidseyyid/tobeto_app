@@ -11,7 +11,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<ChatResetEvent>(_chatreset);
     on<ChatAddMessageEvent>(_onChatAddMessageEvent);
     on<ChatFetchResponseEvent>(_onChatFetchResponseEvent);
-    // on<ChatAddFirstMessageEvent>(_onChatAddFirstMessageEvent);
+    on<ChatAddFirstMessageEvent>(_onChatFirstMessage);
+    on<ChatEmptyDiscussionEvent>(_onChatEmptyDiscussion);
   }
 
   void _onChatFetchEvent(ChatFetchEvent event, Emitter<ChatState> emit) async {
@@ -40,6 +41,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       updatedMessages.insert(0, ChatBotMessageModel(prompt: event.message));
 
       emit(ChatFetchedState(chatMessages: updatedMessages));
+    } else if (state is ChatFirstMessageAddedState) {
+      List<ChatBotMessageModel> newMessages = [];
+      newMessages.add(ChatBotMessageModel(prompt: event.message));
+      emit(ChatFetchedState(chatMessages: newMessages));
     }
   }
 
@@ -51,11 +56,14 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       List<ChatBotMessageModel> updatedMessages =
           List.from(fetchedState.chatMessages);
 
-      String messageId = await _chatRepository.sendMessage(
+      List<String> idList = await _chatRepository.sendMessage(
           event.uid, event.discussionId, event.message);
 
+      String messageId = idList[0];
+      String discussionId = idList[1];
+
       String response = await _chatRepository.listenToSpecificDocument(
-          event.uid, event.discussionId, messageId);
+          event.uid, discussionId, messageId);
 
       // Mevcut mesajın response'unu güncelle
       if (updatedMessages.isNotEmpty) {
@@ -64,5 +72,15 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
       emit(ChatFetchedState(chatMessages: updatedMessages));
     }
+  }
+
+  void _onChatFirstMessage(
+      ChatAddFirstMessageEvent event, Emitter<ChatState> emit) {
+    emit(ChatFirstMessageAddedState());
+  }
+
+  void _onChatEmptyDiscussion(
+      ChatEmptyDiscussionEvent event, Emitter<ChatState> emit) {
+    emit(ChatEmptyDiscussion());
   }
 }

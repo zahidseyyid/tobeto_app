@@ -7,15 +7,10 @@ abstract class ChatState {}
 // Chat initial state
 class ChatInitialState extends ChatState {}
 
-// Chat message added state
-class ChatMessageAddedState extends ChatState {}
-
 // Chat first message added state
-class ChatFirstMessageAddedState extends ChatState {
-  final ChatBotMessageModel message;
+class ChatFirstMessageAddedState extends ChatState {}
 
-  ChatFirstMessageAddedState({required this.message});
-}
+class ChatEmptyDiscussion extends ChatState {}
 
 // Chat fetched state
 class ChatFetchedState extends ChatState {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class DiscussionModel {
   final String id;
@@ -10,10 +11,12 @@ class DiscussionModel {
 
   factory DiscussionModel.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    Timestamp timestamp = data['startTime'];
+    String formattedDate = DateFormat('dd-MM-yyyy').format(timestamp.toDate());
     return DiscussionModel(
       id: doc.id,
-      title: data['title'] ?? '',
-      startTime: data['startTime'] ?? '',
+      title: data['firstMessage'] ?? '',
+      startTime: formattedDate,
     );
   }
 

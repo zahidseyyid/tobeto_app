@@ -13,28 +13,25 @@ class ChatFetchEvent extends ChatEvent {
 // Chat add message event
 class ChatAddMessageEvent extends ChatEvent {
   final String uid;
-  final String discussionId;
+  final String? discussionId;
   final String message;
 
   ChatAddMessageEvent(
-      {required this.message, required this.uid, required this.discussionId});
+      {required this.message, required this.uid, this.discussionId});
 }
 
 class ChatFetchResponseEvent extends ChatEvent {
   final String uid;
-  final String discussionId;
+  final String? discussionId;
   final String message;
 
   ChatFetchResponseEvent(
-      {required this.uid, required this.discussionId, required this.message});
+      {required this.uid, this.discussionId, required this.message});
 }
 
 // Chat add first message event
-class ChatAddFirstMessageEvent extends ChatEvent {
-  final String uid;
-  final String message;
+class ChatAddFirstMessageEvent extends ChatEvent {}
 
-  ChatAddFirstMessageEvent({required this.uid, required this.message});
-}
+class ChatEmptyDiscussionEvent extends ChatEvent {}
 
 class ChatResetEvent extends ChatEvent {}
