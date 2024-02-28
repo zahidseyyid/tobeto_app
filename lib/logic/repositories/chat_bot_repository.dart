@@ -12,6 +12,7 @@ class ChatRepository {
         .collection('chatbot')
         .doc(uid)
         .collection('discussions')
+        .orderBy('startTime', descending: true)
         .get();
 
     List<DiscussionModel> discussions = snapshot.docs.map((doc) {
@@ -39,51 +40,23 @@ class ChatRepository {
     return messages;
   }
 
-  Future<void> sendFirstMessage(String uid, String message) async {
-    // Yeni bir discussion ID oluştur
-    String discussionId = _firestore
+  Future<String> createDiscussion(String uid) async {
+    String discussionID = _firestore
         .collection('chatbot')
         .doc(uid)
         .collection('discussions')
         .doc()
         .id;
-
-    // Yeni bir message ID oluştur
-    String messageId = _firestore
-        .collection('chatbot')
-        .doc(uid)
-        .collection('discussions')
-        .doc(discussionId)
-        .collection('messages')
-        .doc()
-        .id;
-
-    // İlk mesajı gönder
-    await _firestore
-        .collection('chatbot')
-        .doc(uid)
-        .collection('discussions')
-        .doc(discussionId)
-        .collection('messages')
-        .doc(messageId)
-        .set({'prompt': message});
-
-    // Discussion belgesine başlangıç zamanını, discussion ID'sini ve ilk mesaj ID'sini ekle
-    await _firestore
-        .collection('chatbot')
-        .doc(uid)
-        .collection('discussions')
-        .doc(discussionId)
-        .set({
-      'startTime': DateTime.now(),
-      'firstMessageId': messageId, // İlk mesajın ID'sini kaydet
-      // Discussion ID'sini de kaydet
-      'discussionId': discussionId,
-    });
+    return discussionID;
   }
 
-  Future<String> sendMessage(
-      String uid, String discussionId, String message) async {
+  Future<List<String>> sendMessage(
+      String uid, String? discussionId, String message) async {
+    bool isDiscussionExist = true;
+    if (discussionId == null) {
+      discussionId = await createDiscussion(uid);
+      isDiscussionExist = false;
+    }
     String messageId = _firestore
         .collection('chatbot')
         .doc(uid)
@@ -102,7 +75,20 @@ class ChatRepository {
         .doc(messageId)
         .set({'prompt': message});
 
-    return messageId;
+    if (!isDiscussionExist) {
+      await _firestore
+          .collection('chatbot')
+          .doc(uid)
+          .collection('discussions')
+          .doc(discussionId)
+          .set({
+        'startTime': DateTime.now(),
+        'firstMessage': message,
+        'discussionId': discussionId,
+      });
+    }
+    List<String> idList = [messageId, discussionId];
+    return idList;
   }
 
   Future<String> listenToSpecificDocument(

@@ -7,6 +7,7 @@ class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {
   final ChatRepository _chatRepository;
   DiscussionBloc(this._chatRepository) : super(DiscussionInitialState()) {
     on<DiscussionFetchEvent>(_onDiscussionFetchEvent);
+    on<DiscussionResetEvent>(_discussionReset);
   }
 
   void _onDiscussionFetchEvent(
@@ -18,5 +19,10 @@ class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {
     } else {
       emit(DiscussionFetchErrorState(errorMessage: 'No discussions found'));
     }
+  }
+
+  void _discussionReset(
+      DiscussionResetEvent event, Emitter<DiscussionState> emit) {
+    emit(DiscussionInitialState());
   }
 }
