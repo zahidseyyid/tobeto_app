@@ -8,3 +8,10 @@ class DiscussionFetchEvent extends DiscussionEvent {
 }
 
 class DiscussionResetEvent extends DiscussionEvent {}
+
+class DiscussionDeleteEvent extends DiscussionEvent {
+  final String uid;
+  final String discussionId;
+
+  DiscussionDeleteEvent({required this.uid, required this.discussionId});
+}

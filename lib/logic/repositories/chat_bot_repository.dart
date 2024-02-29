@@ -118,4 +118,26 @@ class ChatRepository {
 
     return completer.future;
   }
+
+  Future<void> deleteDiscussion(String uid, String discussionId) async {
+    await _firestore
+        .collection('chatbot')
+        .doc(uid)
+        .collection('discussions')
+        .doc(discussionId)
+        .delete();
+
+    await _firestore
+        .collection('chatbot')
+        .doc(uid)
+        .collection('discussions')
+        .doc(discussionId)
+        .collection('messages')
+        .get()
+        .then((snapshot) {
+      for (DocumentSnapshot ds in snapshot.docs) {
+        ds.reference.delete();
+      }
+    });
+  }
 }

@@ -15,8 +15,11 @@ class UserRepository {
           UserProfile(uid: uid, email: email, nameSurname: nameSurname);
       await collectionReference.doc(uid).set(userProfile.toFirestore());
     } catch (e) {
-      String errorMessage = FirestoreExceptionHelper.handleException(e);
-      throw Exception(errorMessage);
+      if (e is FirebaseException) {
+        String errorMessage = FirestoreExceptionHelper.handleException(e.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(e);
     }
   }
 
@@ -26,8 +29,11 @@ class UserRepository {
       final userProfile = UserProfile.fromFirestore(userProfileDb);
       return userProfile;
     } catch (e) {
-      String errorMessage = FirestoreExceptionHelper.handleException(e);
-      return errorMessage;
+      if (e is FirebaseException) {
+        String errorMessage = FirestoreExceptionHelper.handleException(e.code);
+        return errorMessage;
+      }
+      return e;
     }
   }
 
@@ -35,9 +41,11 @@ class UserRepository {
     try {
       await collectionReference.doc(uid).update(userProfile.toFirestore());
     } catch (e) {
-      print("${e}Hata kodu burada");
-      String errorMessage = FirestoreExceptionHelper.handleException(e);
-      throw Exception(errorMessage);
+      if (e is FirebaseException) {
+        String errorMessage = FirestoreExceptionHelper.handleException(e.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(e);
     }
   }
 }

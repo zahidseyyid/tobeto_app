@@ -1,12 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
 import 'package:flutter_application_1/models/chat_bot_model.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_chat_card.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
@@ -154,11 +156,21 @@ class ChatHistoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String photo;
+    String name;
+    final userState = context.watch<UserBloc>().state;
+    if (userState is UserFetchedState) {
+      photo = userState.user!.profilePictureUrl!;
+      name = userState.user!.nameSurname;
+    } else {
+      photo = CustomCircleAvatarConstants.defaultPhotoUrl;
+      name = "Öğrenci";
+    }
     return Column(
       children: [
         Container(
           height: MediaQuery.of(context).size.height * 0.75,
-          color: Colors.grey[200],
+          color: Theme.of(context).colorScheme.background,
           child: chatMessages == null
               ? Container()
               : ListView.builder(
@@ -168,12 +180,17 @@ class ChatHistoryWidget extends StatelessWidget {
                     return Column(
                       children: [
                         ChatCard(
+                          photo: photo == ""
+                              ? CustomCircleAvatarConstants.defaultPhotoUrl
+                              : photo,
                           message: chatMessages![index].prompt!,
-                          name: "Öğrenci",
+                          name: name,
                         ),
                         chatMessages![index].response == null
                             ? const CustomCircularProgress()
                             : ChatCard(
+                                photo:
+                                    CustomCircleAvatarConstants.defaultPhotoUrl,
                                 message: chatMessages![index].response!,
                                 name: "TobetoAI",
                               ),
@@ -203,7 +220,7 @@ class ChatTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
       child: Padding(
         padding: paddingAllMedium,
         child: Row(

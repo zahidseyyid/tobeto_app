@@ -25,9 +25,13 @@ class AnnouncementRepository {
       }).toList();
 
       return announcements;
-    } catch (e) {
-      String errorMessage = FirestoreExceptionHelper.handleException(e);
-      throw Exception(errorMessage);
+    } catch (error) {
+      if (error is FirebaseException) {
+        String errorMessage =
+            FirestoreExceptionHelper.handleException(error.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(error);
     }
   }
 }

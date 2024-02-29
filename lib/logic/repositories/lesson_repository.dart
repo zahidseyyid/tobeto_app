@@ -22,8 +22,12 @@ class LessonRepository {
       }).toList();
       return educations;
     } catch (error) {
-      String errorMessage = FirestoreExceptionHelper.handleException(error);
-      throw Exception(errorMessage);
+      if (error is FirebaseException) {
+        String errorMessage =
+            FirestoreExceptionHelper.handleException(error.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(error);
     }
   }
 
@@ -43,8 +47,12 @@ class LessonRepository {
 
       return filteredByTeacherEducations;
     } catch (error) {
-      String errorMessage = FirestoreExceptionHelper.handleException(error);
-      throw Exception(errorMessage);
+      if (error is FirebaseException) {
+        String errorMessage =
+            FirestoreExceptionHelper.handleException(error.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(error);
     }
   }
 
@@ -63,8 +71,12 @@ class LessonRepository {
       }).toList();
       return userLessons;
     } catch (error) {
-      String errorMessage = FirestoreExceptionHelper.handleException(error);
-      throw Exception(errorMessage);
+      if (error is FirebaseException) {
+        String errorMessage =
+            FirestoreExceptionHelper.handleException(error.code);
+        throw Exception(errorMessage);
+      }
+      throw Exception(error);
     }
   }
 }
