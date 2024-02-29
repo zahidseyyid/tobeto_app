@@ -1,7 +1,7 @@
 class FirestoreExceptionHelper {
-  static String handleException(dynamic e) {
+  static String handleException(String eCode) {
     String errorMessage;
-    switch (e.code) {
+    switch (eCode) {
       case 'aborted':
         errorMessage =
             'İşlem iptal edildi, genellikle işlem iptalleri gibi bir eş zamanlılık sorunu nedeniyle.';

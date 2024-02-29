@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 
-import '../../../../constants/page_constants.dart';
-
 class ChatCard extends StatelessWidget {
   final String name;
   final String message;
+  final String photo;
   const ChatCard({
     super.key,
     required this.name,
     required this.message,
+    required this.photo,
   });
 
   @override
@@ -22,6 +22,8 @@ class ChatCard extends StatelessWidget {
         child: Column(
           children: [
             Card(
+              color:
+                  name == "TobetoAI" ? Colors.purpleAccent : Colors.deepPurple,
               elevation: 1,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -32,14 +34,15 @@ class ChatCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Image(
-                            image: NetworkImage(
-                                CustomCircleAvatarConstants.defaultPhotoUrl),
-                            width: 30,
-                            height: 30),
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(photo),
+                          radius: 20,
+                        ),
                         Text(name,
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color:
+                                    Theme.of(context).colorScheme.background)),
                       ],
                     ),
                     const SizedBox(height: 5),
@@ -47,6 +50,8 @@ class ChatCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         message,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.background),
                       ),
                     ),
                   ],

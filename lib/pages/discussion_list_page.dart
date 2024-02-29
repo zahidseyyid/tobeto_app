@@ -27,6 +27,12 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
   }
 
   @override
+  void initState() {
+    context.read<DiscussionBloc>().add(DiscussionResetEvent());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -57,17 +63,35 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
                                 subtitle: Text(state
                                     .discussionList[index].startTime
                                     .toString()),
-                                leading: const Icon(Icons.message),
+                                leading: Icon(
+                                  Icons.message,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     IconButton(
-                                      icon: const Icon(Icons.delete),
-                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color:
+                                            Theme.of(context).colorScheme.error,
+                                      ),
+                                      onPressed: () {
+                                        context.read<DiscussionBloc>().add(
+                                            DiscussionDeleteEvent(
+                                                uid: widget.uid,
+                                                discussionId: state
+                                                    .discussionList[index].id));
+                                      },
                                     ),
                                     IconButton(
-                                      icon: const Icon(
-                                          FontAwesomeIcons.arrowRight),
+                                      icon: Icon(
+                                        FontAwesomeIcons.arrowRight,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -122,6 +146,12 @@ class NewDiscussionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
         onPressed: () {
           Navigator.push(
               context,
@@ -133,6 +163,11 @@ class NewDiscussionButton extends StatelessWidget {
             }
           });
         },
-        child: const Text('Yeni Bir Sohbet Oluştur'));
+        child: Text(
+          'Yeni Bir Sohbet Oluştur',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.background,
+          ),
+        ));
   }
 }

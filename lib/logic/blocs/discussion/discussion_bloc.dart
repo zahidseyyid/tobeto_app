@@ -8,6 +8,7 @@ class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {
   DiscussionBloc(this._chatRepository) : super(DiscussionInitialState()) {
     on<DiscussionFetchEvent>(_onDiscussionFetchEvent);
     on<DiscussionResetEvent>(_discussionReset);
+    on<DiscussionDeleteEvent>(_discussionDelete);
   }
 
   void _onDiscussionFetchEvent(
@@ -24,6 +25,13 @@ class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {
 
   void _discussionReset(
       DiscussionResetEvent event, Emitter<DiscussionState> emit) {
+    emit(DiscussionInitialState());
+  }
+
+  void _discussionDelete(
+      DiscussionDeleteEvent event, Emitter<DiscussionState> emit) async {
+    emit(DiscussionFetchLoadingState());
+    await _chatRepository.deleteDiscussion(event.uid, event.discussionId);
     emit(DiscussionInitialState());
   }
 }
