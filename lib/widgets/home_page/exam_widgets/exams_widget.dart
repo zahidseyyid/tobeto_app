@@ -16,8 +16,8 @@ class ExamsWidget extends StatelessWidget {
           context, correctAnswer, wrongAnswer, emptyAnswer, point);
     }
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+    return SizedBox(
+      //margin: const EdgeInsets.only(bottom: 20),
       width: 500,
       height: 320,
       child: Column(
