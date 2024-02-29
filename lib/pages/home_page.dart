@@ -7,6 +7,7 @@ import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
 import 'package:flutter_application_1/pages/sign_in_page.dart';
+import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exams_widget.dart';
@@ -71,6 +72,34 @@ class HomePage extends StatelessWidget {
                     const ExamsWidget(),
                     // TODO : Sınav cardı düzeltilecek
                     // TODO : Dialog ekranı düzeltilecek
+                    GradientCardWidget(
+                      title: 'Profilini oluştur',
+                      startColor: const Color(0xFFbda6fe),
+                      endColor: const Color(0xFF1d0b8c),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "/profile");
+                      },
+                      includeStartButton: true,
+                    ),
+                    GradientCardWidget(
+                      title: 'Kendini Değerlendir',
+                      startColor: const Color(0xFF5eb6ca),
+                      endColor: const Color(0xFF0e0b93),
+                      includeStartButton: true,
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "/evoluation");
+                      },
+                    ),
+                    GradientCardWidget(
+                      title: 'Öğrenmeye başla',
+                      startColor: const Color(0xFFe3a6fe),
+                      endColor: const Color(0xFF3c0b8c),
+                      includeStartButton: true,
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "/catalog");
+                      },
+                    ),
+
                     const FooterWidget(),
                   ],
                 ),
