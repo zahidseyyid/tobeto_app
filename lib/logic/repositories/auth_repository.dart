@@ -15,8 +15,11 @@ class AuthRepository {
       await userCredential.user!.updateProfile(displayName: name);
       return userCredential.user;
     } catch (e) {
-      String errorMessage = AuthSignUpException.handleException(e);
-      return errorMessage;
+      if (e is FirebaseAuthException) {
+        String errorMessage = AuthSignUpException.handleException(e.code);
+        return errorMessage;
+      }
+      return e;
     }
   }
 
@@ -29,8 +32,12 @@ class AuthRepository {
           email: email, password: password);
       return userCredential.user;
     } catch (e) {
-      String errorMessage = AuthSignInException.handleException(e);
-      return errorMessage;
+      if (e is FirebaseAuthException) {
+        print(e.code);
+        String errorMessage = AuthSignInException.handleException(e.code);
+        return errorMessage;
+      }
+      return e;
     }
   }
 
