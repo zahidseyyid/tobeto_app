@@ -75,6 +75,12 @@ class MyDrawer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
+                      Navigator.pushReplacementNamed(context, "/evoluation");
+                    },
+                    child: const Text(DrawerConstants.evaluationPage),
+                  ),
+                  TextButton(
+                    onPressed: () {
                       Navigator.pushReplacementNamed(context, "/profile");
                     },
                     child: const Text(DrawerConstants.profilePage),

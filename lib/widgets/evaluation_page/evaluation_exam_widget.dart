@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/widgets/home_page/startbutton_widget.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
-class GradientCardWidget2 extends StatelessWidget {
-  // Komple constant kontrolü
+class EvaluationExamWidget extends StatelessWidget {
   final String buttonText;
-
   final VoidCallback onPressed;
 
-  const GradientCardWidget2({
+  const EvaluationExamWidget({
     Key? key,
     required this.buttonText,
     required this.onPressed,
@@ -15,18 +15,16 @@ class GradientCardWidget2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 10,
-        right: 10,
-      ),
+      padding: paddingHMedium,
       child: Card(
-        elevation: 4,
+        elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(35),
         ),
         child: Container(
-          height: 60,
+          height: screenHeight / 14,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(35),
             gradient: const LinearGradient(
@@ -42,34 +40,26 @@ class GradientCardWidget2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
+                icon: EvaluationConstants.menuIcon,
                 onPressed: () {},
               ),
               Expanded(
-                flex: 6,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                  ),
-                  child: Text(
-                    buttonText,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                child: Text(
+                  buttonText,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: Colors.white),
                 ),
               ),
               Expanded(
-                flex: 4,
-                child: StartButtonWidget(
-                  onPressed: onPressed,
-                  backgroundColor: Colors.white,
-                  textColor: Colors.black,
+                child: Container(
+                  padding: paddingOnlyRightBig,
+                  child: StartButtonWidget(
+                    onPressed: onPressed,
+                  ),
                 ),
               ),
-              const Expanded(flex: 1, child: Spacer())
             ],
           ),
         ),

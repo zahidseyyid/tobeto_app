@@ -24,7 +24,7 @@ class SurveysWidget extends StatelessWidget {
               scale: 4,
             ),
             Padding(
-              padding: paddingMedium,
+              padding: paddingHMedium,
               child: Text(
                 text,
                 style: TextStyle(
