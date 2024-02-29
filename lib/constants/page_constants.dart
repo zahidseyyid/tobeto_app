@@ -359,7 +359,7 @@ class FooterConstants {
   static const String tobeto = "© 2022 Tobeto";
 }
 
-class CustpmCircleAvatarConstants {
+class CustomCircleAvatarConstants {
   static const String defaultPhotoUrl =
       "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 }

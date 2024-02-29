@@ -7,7 +7,7 @@ class CustomCircleAvatar extends StatelessWidget {
   final double radius;
   final File pickedImage;
   final String userPhotoUrl;
-  final String defaultPhotoUrl = CustpmCircleAvatarConstants.defaultPhotoUrl;
+  final String defaultPhotoUrl = CustomCircleAvatarConstants.defaultPhotoUrl;
   const CustomCircleAvatar({
     Key? key, // key parametresini burada düzelttik
     required this.pickedImage,
