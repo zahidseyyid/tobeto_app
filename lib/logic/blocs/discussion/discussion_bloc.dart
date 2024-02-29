@@ -17,7 +17,8 @@ class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {
     if (discussionList.isNotEmpty) {
       emit(DiscussionFetchedState(discussionList: discussionList));
     } else {
-      emit(DiscussionFetchErrorState(errorMessage: 'No discussions found'));
+      emit(DiscussionFetchErrorState(
+          errorMessage: 'Konuşma geçmişi bulunamadı'));
     }
   }
 

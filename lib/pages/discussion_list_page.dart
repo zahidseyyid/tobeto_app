@@ -3,21 +3,22 @@ import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_event.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_state.dart';
-import 'package:flutter_application_1/test/chat_bot_bloc_test.dart';
+import 'package:flutter_application_1/pages/chat_bot_message_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class DiscussionListTest extends StatefulWidget {
-  const DiscussionListTest({super.key});
+class DiscussionListPage extends StatefulWidget {
+  final String uid;
+  const DiscussionListPage({super.key, required this.uid});
 
   @override
-  State<DiscussionListTest> createState() => _DiscussionListTestState();
+  State<DiscussionListPage> createState() => _DiscussionListPageState();
 }
 
-class _DiscussionListTestState extends State<DiscussionListTest> {
+class _DiscussionListPageState extends State<DiscussionListPage> {
   @override
-  void didUpdateWidget(DiscussionListTest oldWidget) {
+  void didUpdateWidget(DiscussionListPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     // Eğer geri dönüş değeri true ise, DiscussionBloc'a DiscussionResetEvent gönder
     if (ModalRoute.of(context)?.settings.arguments == true) {
@@ -29,35 +30,19 @@ class _DiscussionListTestState extends State<DiscussionListTest> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Discussion List Test'),
+          title: const Text('Sohbet Listesi'),
         ),
         body: BlocBuilder<DiscussionBloc, DiscussionState>(
           builder: (context, state) {
             if (state is DiscussionInitialState) {
-              print("girdi DiscussionInitialState");
               context
                   .read<DiscussionBloc>()
-                  .add(DiscussionFetchEvent('GxZSDQBthDDAAeWSEE6T'));
+                  .add(DiscussionFetchEvent(widget.uid));
               return Container();
             } else if (state is DiscussionFetchedState) {
               return Column(
                 children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ChatBotBlocTest(
-                                        uid: "GxZSDQBthDDAAeWSEE6T")))
-                            .then((value) {
-                          if (value == true) {
-                            context
-                                .read<DiscussionBloc>()
-                                .add(DiscussionResetEvent());
-                          }
-                        });
-                      },
-                      child: const Text('Yeni Bir Sohbet Oluştur')),
+                  NewDiscussionButton(widget: widget),
                   const Divider(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.75,
@@ -88,9 +73,8 @@ class _DiscussionListTestState extends State<DiscussionListTest> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    ChatBotBlocTest(
-                                                        uid:
-                                                            'GxZSDQBthDDAAeWSEE6T',
+                                                    ChatBotMessagePage(
+                                                        uid: widget.uid,
                                                         discussionId: state
                                                             .discussionList[
                                                                 index]
@@ -109,10 +93,46 @@ class _DiscussionListTestState extends State<DiscussionListTest> {
             } else if (state is DiscussionFetchLoadingState) {
               return const Center(child: CustomCircularProgress());
             } else if (state is DiscussionFetchErrorState) {
-              return Text(state.errorMessage);
+              return Center(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(state.errorMessage),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  NewDiscussionButton(widget: widget),
+                ],
+              ));
             }
             return const Text("Hata");
           },
         ));
+  }
+}
+
+class NewDiscussionButton extends StatelessWidget {
+  const NewDiscussionButton({
+    super.key,
+    required this.widget,
+  });
+
+  final DiscussionListPage widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ChatBotMessagePage(uid: widget.uid))).then((value) {
+            if (value == true) {
+              context.read<DiscussionBloc>().add(DiscussionResetEvent());
+            }
+          });
+        },
+        child: const Text('Yeni Bir Sohbet Oluştur'));
   }
 }

@@ -56,6 +56,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       List<ChatBotMessageModel> updatedMessages =
           List.from(fetchedState.chatMessages);
 
+      print("onChatFetchResponseEvent${event.discussionId}");
+      print("onChatFetchResponseEvent${event.uid}");
+      print("onChatFetchResponseEvent${event.message}");
+
       List<String> idList = await _chatRepository.sendMessage(
           event.uid, event.discussionId, event.message);
 

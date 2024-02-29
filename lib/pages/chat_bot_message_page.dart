@@ -6,25 +6,25 @@ import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
 import 'package:flutter_application_1/models/chat_bot_model.dart';
-import 'package:flutter_application_1/test/chat_bot_test.dart';
+import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_chat_card.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
-class ChatBotBlocTest extends StatefulWidget {
+class ChatBotMessagePage extends StatefulWidget {
   final String uid;
   String? discussionId;
-  ChatBotBlocTest({
+  ChatBotMessagePage({
     super.key,
     required this.uid,
     this.discussionId,
   });
 
   @override
-  State<ChatBotBlocTest> createState() => _ChatBotBlocTestState();
+  State<ChatBotMessagePage> createState() => _ChatBotMessagePageState();
 }
 
-class _ChatBotBlocTestState extends State<ChatBotBlocTest> {
+class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
   final TextEditingController _messageController = TextEditingController();
 
   @override
@@ -61,7 +61,7 @@ class _ChatBotBlocTestState extends State<ChatBotBlocTest> {
           } else if (state is ChatFetchLoadingState) {
             print("ChatFetchLoadingState");
             return const Center(
-              child: CircularProgressIndicator(),
+              child: Center(child: CustomCircularProgress()),
             );
           } else if (state is ChatFetchedState) {
             print("ChatFetchedState");
@@ -73,10 +73,12 @@ class _ChatBotBlocTestState extends State<ChatBotBlocTest> {
                 context.read<ChatBloc>().add(ChatAddMessageEvent(
                       message: _messageController.text,
                       uid: widget.uid,
+                      discussionId: widget.discussionId,
                     ));
                 context.read<ChatBloc>().add(ChatFetchResponseEvent(
                       uid: widget.uid,
                       message: _messageController.text,
+                      discussionId: widget.discussionId,
                     ));
                 _messageController.clear();
               },
@@ -114,13 +116,13 @@ class _ChatBotBlocTestState extends State<ChatBotBlocTest> {
                             uid: widget.uid,
                             message: _messageController.text,
                           ));
+                      // TODO: Mesaj oluşturulduğunda widget.discussionId güncellenmeli
+
                       _messageController.clear();
                     }),
               ],
             );
-          } else if (state is ChatFirstMessageAddedState) {
-            print("ChatFirstMessageAddedState");
-          }
+          } else if (state is ChatFirstMessageAddedState) {}
           return const Center(child: Text("de"));
         },
       ),
@@ -140,7 +142,7 @@ class ChatHistoryWidget extends StatelessWidget {
   }) : _messageController = messageController;
 
   final TextEditingController _messageController;
-  final ChatBotBlocTest widget;
+  final ChatBotMessagePage widget;
 
   @override
   Widget build(BuildContext context) {
@@ -160,14 +162,12 @@ class ChatHistoryWidget extends StatelessWidget {
                         ChatCard(
                           message: chatMessages![index].prompt!,
                           name: "Öğrenci",
-                          time: "12:00",
                         ),
                         chatMessages![index].response == null
                             ? const CustomCircularProgress()
                             : ChatCard(
                                 message: chatMessages![index].response!,
                                 name: "TobetoAI",
-                                time: "12:01",
                               ),
                       ],
                     );
@@ -218,4 +218,5 @@ class ChatTextField extends StatelessWidget {
       ),
     );
   }
+  //TODO: Sunum sonrası refactor edilecek.
 }
