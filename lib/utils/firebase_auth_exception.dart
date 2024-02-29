@@ -1,7 +1,7 @@
 class AuthSignUpException {
-  static String handleException(e) {
+  static String handleException(String e) {
     String errorMessage;
-    switch (e.code) {
+    switch (e) {
       case 'email-already-in-use':
         errorMessage = 'Bu email adresi zaten kullanımda.';
         break;
@@ -23,9 +23,9 @@ class AuthSignUpException {
 }
 
 class AuthSignInException {
-  static String handleException(e) {
+  static String handleException(String e) {
     String errorMessage;
-    switch (e.code) {
+    switch (e) {
       case 'invalid-email':
         errorMessage = 'Geçersiz email adresi.';
         break;

@@ -24,12 +24,12 @@ class SignInPage extends StatefulWidget {
 class _MyStatefulWidgetState extends State<SignInPage> {
   late String logoAsset;
 
-  TextEditingController nameController = TextEditingController();
+  TextEditingController eMailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   void dispose() {
-    nameController.dispose();
+    eMailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -83,7 +83,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           padding: paddingHSuperBig + paddingOnlyTopBig,
                           child: SignTextField(
                             isPassword: false,
-                            controller: nameController,
+                            controller: eMailController,
                             labelText: SigninPageConstants.eMailLabelText,
                             icon: SigninPageConstants.mailIcon,
                           )),
@@ -114,7 +114,7 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           onPressed: () {
                             context.read<UserBloc>().add(UserDeleteEvent());
                             context.read<AuthBloc>().add(AuthSignIn(
-                                eMail: nameController.text,
+                                eMail: eMailController.text,
                                 password: passwordController.text));
                           },
                         ),
@@ -137,10 +137,10 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                           children: [
                             TextButton(
                               onPressed: () {
-                                if (nameController.text.isNotEmpty) {
+                                if (eMailController.text.isNotEmpty) {
                                   context.read<AuthBloc>().add(
                                       AuthPasswordReset(
-                                          eMail: nameController.text));
+                                          eMail: eMailController.text));
                                   ToastHelper.showSuccesToast(
                                       "Şifre sıfırlama maili gönderildi. Lütfen e-mailinizi kontrol ediniz.");
                                 } else {
