@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_text.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
-void examResultDialogWidget(
-    BuildContext context, String dialogTitle, String dialogText) {
+void examResultDialogWidget(BuildContext context, String correctAnswer,
+    String wrongAnswer, String emptyAnswer, String point) {
   //TODO: Text ve iconlar constant olmalı
   showDialog(
     context: context,

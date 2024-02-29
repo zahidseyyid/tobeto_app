@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
 void examDialogWidget(
-    //TODO: Text ve iconlar constant olmalı
-    BuildContext context,
-    String dialogTitle,
-    String dialogText,
-    bool isExam,
-    String? examTime,
-    int? numberOfQuestions,
-    String? questionType) {
+  //TODO: Text ve iconlar constant olmalı
+  BuildContext context,
+  String dialogTitle,
+  String dialogText,
+  bool isExam,
+  String? examTime,
+  int? numberOfQuestions,
+  String? questionType,
+  String buttonText,
+  Function() onPressed,
+) {
   showDialog(
     //TODO : Diaglo custom widget haline getirilecek. Diğer ekranlarda kullanılabilecek.
     context: context,
@@ -58,17 +60,14 @@ void examDialogWidget(
                       style: const TextStyle(fontWeight: FontWeight.bold)),
                   Text('Soru Tipi: $questionType',
                       style: const TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 20),
                 ],
               ),
               Align(
                   alignment: Alignment.center,
                   child: CustomButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        examResultDialogWidget(
-                            context, dialogTitle, dialogText);
-                      },
-                      buttonText: "Raporu Görüntüle",
+                      onPressed: onPressed,
+                      buttonText: buttonText,
                       buttonColor: const Color(0xFF9933FF),
                       buttonTextColor: Colors.white,
                       width: 200,

@@ -336,6 +336,34 @@ class LessonDetailsConstants {
 class EvaluationConstants {
   static const String pageTitle =
       "Yetkinliklerini ücretsiz ölç, bilgilerini test et.";
+  static const String successModelText = "Tobeto İşte Başarı Modeli";
+  static const String successModelSubtitle =
+      "80 soru ile yetkinliklerini ölç,\nönerilen eğitimleri tamamla,\nrozetini kazan.";
+  static const String successTestTitle = "Yazılımda Başarı Testi";
+  static const String successTestSubtitle =
+      "Çoktan seçmeli sorular\nile teknik bilgini test et.\n\n>>>\n";
+
+  static const String subscriptionExclusive = "Aboneliğe özel";
+  static const String evaluation = " değerlendirme";
+  static const String forTools = "araçları için";
+  static const String pageTitle2 = "Kazanım Odaklı Testler";
+  static const String subtitle =
+      "Dijital gelişim kategorisindeki eğitimlere başlamadan\nönce konuyla ilgili bilgin ölçülür ve seviyene göre yönlendirilirsin.\n";
+  static const String huawieTitle =
+      "Huawei Talent Interview\nTeknik Bilgi Sınavı*";
+  static const String huawieSubtitle =
+      "Sertifika alabilmen için, eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.\n\n4400+ soru | 30+ \nprogramlama dili\n4 zorluk seviyesi";
+  static const String huawieSubtitle2 =
+      "*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.";
+  static const String start = "Başla";
+  static const String viewReport = "Raporu Görüntüle";
+  static const String dialogTitleFrontEnd = "Front End";
+  static const String dialogTitleFullStack = "Full Stack";
+  static const String dialogTitleBackEnd = "Back End";
+  static const String dialogTitleMSQLServer = "Microsoft SQL Server";
+  static const String dialogTitleMasaustuProgramlama = "Masaüstü Programlama";
+
+  static const Icon menuIcon = Icon(Icons.menu, color: Colors.white);
 }
 
 class EducationListTileConstants {
@@ -372,4 +400,9 @@ class ChatBotConstants {
   static const String timestamp = "timestamp";
   static const String defaultPhotoUrl =
       "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+}
+
+class ExamConstants {
+  static const String title =
+      "\nBu sınav 25 sorudan oluşmakta olup sınav süresi 30 dakikadır.\n\nSınav çoktan seçmeli test şeklinde olup sınavı yarıda bıraktığınız taktirde çözdüğünüz kısım kadarıyla değerlendirileceksiniz.";
 }
