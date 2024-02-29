@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
@@ -36,9 +38,11 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
 
   @override
   Widget build(BuildContext context) {
+    Brightness brightness = Theme.of(context).brightness;
+    var logoAsset = getLogo(brightness);
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Chat Bot Bloc Test'),
+          title: const Text('TobetoAI Sohbet'),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -95,12 +99,16 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.75,
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Center(child: FlutterLogo(size: 100)),
-                      SizedBox(height: 20),
-                      Text("İlk mesajınızı yazın"),
+                      Center(
+                          child: Image(
+                        image: AssetImage(logoAsset),
+                        width: 200,
+                      )),
+                      const SizedBox(height: 20),
+                      const Text("İlk mesajınızı yazın"),
                     ],
                   ),
                 ),
