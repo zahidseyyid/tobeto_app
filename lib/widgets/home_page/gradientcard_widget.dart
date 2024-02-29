@@ -31,7 +31,7 @@ class GradientCardWidget extends StatelessWidget {
       bottomRight: Radius.circular(30),
     );
     return Padding(
-      padding: paddingHMedium,
+      padding: paddingAllSmall,
       child: Card(
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: borderRadius),

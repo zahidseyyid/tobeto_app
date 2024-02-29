@@ -25,6 +25,7 @@ class _ExamPageState extends State<ExamPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     List<ExamModel> questions =
         exam.where((question) => question.category == widget.category).toList();
 
@@ -114,14 +115,14 @@ class _ExamPageState extends State<ExamPage> {
                     buttonText: 'Bitti',
                     buttonColor: const Color(0xFF9333FF),
                     buttonTextColor: Colors.white,
-                    width: 200,
+                    width: screenWidth / 2,
                   )
                 : CustomButton(
                     onPressed: goToNextQuestion,
                     buttonText: 'Diğer Soru',
                     buttonColor: const Color(0xFF9333FF),
                     buttonTextColor: Colors.white,
-                    width: 200,
+                    width: screenWidth / 2,
                   ),
           ],
         ),
