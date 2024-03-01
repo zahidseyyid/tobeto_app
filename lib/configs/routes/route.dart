@@ -25,12 +25,6 @@ class CustomRouter {
       "#abdb0"
     ];
 
-    // TODO: User ders ve duyuruları alacak
-
-    List<String> userAnnouncementList = [
-      "ojo4GDkL8svkNgzxt9Xw",
-      "uc7zmS1Z5peDKv5lUIOo",
-    ];
     switch (settings.name) {
       case annonuncementRoute:
         return MaterialPageRoute(builder: (_) => const AnnouncementsPage());
@@ -44,11 +38,7 @@ class CustomRouter {
       case evoluationRoute:
         return MaterialPageRoute(builder: (_) => const EvaluationPage());
       case homeRoute:
-        return MaterialPageRoute(
-            builder: (_) => HomePage(
-                  lessonList: lessonList,
-                  userAnnouncementList: userAnnouncementList,
-                ));
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case lessonRoute:
         return MaterialPageRoute(builder: (_) => const LessonsPage());
       case profileEditRoute:

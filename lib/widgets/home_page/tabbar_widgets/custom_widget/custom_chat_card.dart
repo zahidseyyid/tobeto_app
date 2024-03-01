@@ -22,8 +22,9 @@ class ChatCard extends StatelessWidget {
         child: Column(
           children: [
             Card(
-              color:
-                  name == "TobetoAI" ? Colors.purpleAccent : Colors.deepPurple,
+              color: name == "TobetoAI"
+                  ? Theme.of(context).colorScheme.background
+                  : Theme.of(context).colorScheme.secondary,
               elevation: 1,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -38,11 +39,15 @@ class ChatCard extends StatelessWidget {
                           backgroundImage: NetworkImage(photo),
                           radius: 20,
                         ),
+                        Padding(padding: paddingHSmall),
                         Text(name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color:
-                                    Theme.of(context).colorScheme.background)),
+                                color: name == "TobetoAI"
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .background)),
                       ],
                     ),
                     const SizedBox(height: 5),
@@ -51,7 +56,9 @@ class ChatCard extends StatelessWidget {
                       child: Text(
                         message,
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.background),
+                            color: name == "TobetoAI"
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(context).colorScheme.background),
                       ),
                     ),
                   ],

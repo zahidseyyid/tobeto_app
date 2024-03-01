@@ -207,16 +207,19 @@ class SocialMediaConstants {
   static const Icon facebookIcon = Icon(
     FontAwesomeIcons.facebook,
     size: 50.0,
+    color: Color(0xFF9933FF),
   );
 
   static const Icon twitterIcon = Icon(
     FontAwesomeIcons.twitter,
     size: 50.0,
+    color: Color(0xFF9933FF),
   );
 
   static const Icon instagramIcon = Icon(
     FontAwesomeIcons.instagram,
     size: 50.0,
+    color: Color(0xFF9933FF),
   );
 }
 

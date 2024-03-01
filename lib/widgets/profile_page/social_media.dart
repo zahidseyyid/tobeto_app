@@ -92,8 +92,9 @@ class SocialMediaItem extends StatelessWidget {
   Widget build(BuildContext context) {
     if (platform == "Twitter") {
       return GestureDetector(
-          onTap: () => onSocialIconClick(username, platform),
-          child: SocialMediaConstants.twitterIcon);
+        onTap: () => onSocialIconClick(username, platform),
+        child: SocialMediaConstants.twitterIcon,
+      );
     } else if (platform == "Facebook") {
       return GestureDetector(
           onTap: () => onSocialIconClick(username, platform),

@@ -109,11 +109,15 @@ class _ExamPageState extends State<ExamPage> {
                 ? CustomButton(
                     onPressed: () {
                       examResultDialogWidget(
-                          context,
-                          score.toString(),
-                          wrongAnswer.toString(),
-                          emptyAnswer.toString(),
-                          point.toString());
+                        context,
+                        score.toString(),
+                        wrongAnswer.toString(),
+                        emptyAnswer.toString(),
+                        point.toString(),
+                        () {
+                          Navigator.pushNamed(context, '/evoluation');
+                        },
+                      );
                     },
                     buttonText: 'Bitti',
                     buttonColor: const Color(0xFF9333FF),
