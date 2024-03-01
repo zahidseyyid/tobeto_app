@@ -14,7 +14,6 @@ class EvaluationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.height;
     Brightness brightness = Theme.of(context).brightness;
     void onClick(String category) {
       Navigator.pushReplacement(

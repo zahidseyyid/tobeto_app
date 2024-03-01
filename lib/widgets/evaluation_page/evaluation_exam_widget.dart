@@ -46,10 +46,8 @@ class EvaluationExamWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   buttonText,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.background),
                 ),
               ),
               Expanded(

@@ -3,6 +3,7 @@ import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/models/exam_model.dart';
 import 'package:flutter_application_1/data/questions.dart';
 import 'package:flutter_application_1/widgets/evaluation_page/answer_card.dart';
+import 'package:flutter_application_1/widgets/evaluation_page/timer_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
@@ -21,11 +22,12 @@ class _ExamPageState extends State<ExamPage> {
   int wrongAnswer = 0;
   int emptyAnswer = 0;
   int point = 0;
-  //son sorunun boş olma durumuna tekrar bir bak.
+  //TODO:son sorunun boş olma durumuna tekrar bir bak.
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
     List<ExamModel> questions =
         exam.where((question) => question.category == widget.category).toList();
 
@@ -65,6 +67,8 @@ class _ExamPageState extends State<ExamPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const TimerWidget(),
+
             Container(
               decoration: const BoxDecoration(
                   color: Color(0xFF9333FF),
@@ -73,9 +77,9 @@ class _ExamPageState extends State<ExamPage> {
                 padding: paddingAllBig,
                 child: Text(
                   question.question,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 21,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     fontWeight: FontWeight.w700,
                   ),
                   textAlign: TextAlign.center,
@@ -104,7 +108,6 @@ class _ExamPageState extends State<ExamPage> {
             isLastQuestion
                 ? CustomButton(
                     onPressed: () {
-                      //Navigator.pushReplacementNamed(context, "/evoluation");
                       examResultDialogWidget(
                           context,
                           score.toString(),
@@ -114,14 +117,14 @@ class _ExamPageState extends State<ExamPage> {
                     },
                     buttonText: 'Bitti',
                     buttonColor: const Color(0xFF9333FF),
-                    buttonTextColor: Colors.white,
+                    buttonTextColor: Theme.of(context).colorScheme.background,
                     width: screenWidth / 2,
                   )
                 : CustomButton(
                     onPressed: goToNextQuestion,
                     buttonText: 'Diğer Soru',
                     buttonColor: const Color(0xFF9333FF),
-                    buttonTextColor: Colors.white,
+                    buttonTextColor: Theme.of(context).colorScheme.background,
                     width: screenWidth / 2,
                   ),
           ],
