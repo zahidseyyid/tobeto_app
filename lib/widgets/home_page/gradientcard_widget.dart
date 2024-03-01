@@ -56,7 +56,8 @@ class GradientCardWidget extends StatelessWidget {
                 child: Text(title,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w800)),
+                        color: Theme.of(context).colorScheme.background,
+                        fontWeight: FontWeight.w800)),
               ),
               if (subtitle != null)
                 Padding(
@@ -64,10 +65,8 @@ class GradientCardWidget extends StatelessWidget {
                   child: Text(
                     subtitle!,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.background),
                   ),
                 ),
               if (subtitle2 != null)
@@ -75,10 +74,8 @@ class GradientCardWidget extends StatelessWidget {
                   padding: paddingOnlyBottomBig,
                   child: Text(subtitle2!,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: Colors.white)),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.background)),
                 ),
               if (includeStartButton)
                 Padding(

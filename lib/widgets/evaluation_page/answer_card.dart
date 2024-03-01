@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class AnswerCard extends StatelessWidget {
   const AnswerCard({
@@ -18,17 +19,16 @@ class AnswerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     bool isCorrectAnswer = currentIndex == correctAnswerIndex;
     bool isWrongAnswer = !isCorrectAnswer && isSelected;
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-      ),
+      padding: paddingMedium,
       child: selectedAnswerIndex != null
           // if one option is chosen
           ? Container(
-              height: 70,
-              padding: const EdgeInsets.all(16.0),
+              height: screenHeight / 13,
+              padding: paddingAllBig,
               decoration: BoxDecoration(
                 color: Colors.white10,
                 borderRadius: BorderRadius.circular(10),
@@ -45,12 +45,10 @@ class AnswerCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       question,
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  Padding(padding: paddingSmall),
                   isCorrectAnswer
                       ? buildCorrectIcon()
                       : isWrongAnswer
@@ -61,8 +59,8 @@ class AnswerCard extends StatelessWidget {
             )
           // If no option is selected
           : Container(
-              height: 70,
-              padding: const EdgeInsets.all(16.0),
+              height: screenHeight / 13,
+              padding: paddingAllBig,
               decoration: BoxDecoration(
                 color: Colors.white10,
                 borderRadius: BorderRadius.circular(10),
@@ -75,9 +73,7 @@ class AnswerCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       question,
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                 ],
