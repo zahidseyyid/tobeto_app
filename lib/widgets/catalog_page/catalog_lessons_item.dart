@@ -67,13 +67,11 @@ class _CatalogLessonsItemState extends State<CatalogLessonsItem> {
               padding: paddingMedium,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "/lesson_detail");
-                  // Tıklanılan dersin detay sayfasına yönlendirilmesi
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => LessonDetailPage(
-                  //             education: categoryLessons[index])));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LessonDetailPage(
+                              education: categoryLessons[index])));
                 },
                 child: Container(
                   height: deviceHeight * 0.3,
