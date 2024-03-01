@@ -25,54 +25,55 @@ void examDialogWidget(
           width: screenSize.width,
           height: screenSize.height, // Ekranın genişliği kadar
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Text(
-                      dialogTitle,
-                      maxLines: 3,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        dialogTitle,
+                        maxLines: 3,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Popup'ı kapat
-                    },
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(dialogText),
-                  const SizedBox(height: 70),
-                  Text('Sınav Süresi: $examTime',
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  Text('Soru Sayısı: $numberOfQuestions',
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  Text('Soru Tipi: $questionType',
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 20),
-                ],
-              ),
-              Align(
-                  alignment: Alignment.center,
-                  child: CustomButton(
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Popup'ı kapat
+                      },
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text(dialogText),
+                    const SizedBox(height: 70),
+                    Text('Sınav Süresi: $examTime',
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Soru Sayısı: $numberOfQuestions',
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Soru Tipi: $questionType',
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: CustomButton(
                       onPressed: onPressed,
                       buttonText: buttonText,
                       buttonColor: const Color(0xFF9933FF),
                       buttonTextColor: Colors.white,
-                      width: 200,
-                      height: 40)),
-            ],
+                    )),
+              ],
+            ),
           ),
         ),
       );

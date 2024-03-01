@@ -128,9 +128,8 @@ class EvaluationPage extends StatelessWidget {
                                           .copyWith(color: Colors.purple)),
                                   Text(
                                     EvaluationConstants.evaluation,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall,
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
                                   ),
                                 ],
                               ),

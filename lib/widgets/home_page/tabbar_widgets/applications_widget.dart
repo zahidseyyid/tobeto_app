@@ -25,7 +25,7 @@ class ApplicationsWidget extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: deviceWidth * 0.87,
+                width: deviceWidth * 0.92,
                 decoration: const BoxDecoration(
                   border: Border(
                       left: BorderSide(color: Color(0xFF076B34), width: 10)),

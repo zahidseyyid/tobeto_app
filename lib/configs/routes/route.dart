@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
-import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
 import 'package:flutter_application_1/pages/evaluation_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
@@ -17,22 +16,11 @@ import '../../pages/auth_control_page.dart';
 
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    List<String> lessonList = [
-      "#12ec5",
-      "#64806",
-      "#90c6a",
-      "#a743c",
-      "#abdb0"
-    ];
-
     switch (settings.name) {
       case annonuncementRoute:
         return MaterialPageRoute(builder: (_) => const AnnouncementsPage());
       case authControlRoute:
         return MaterialPageRoute(builder: (_) => const AuthControlPage());
-      case calendarRoute:
-        return MaterialPageRoute(
-            builder: (_) => CalendarPage(lessonList: lessonList));
       case catalogRoute:
         return MaterialPageRoute(builder: (_) => const CatalogPage());
       case evoluationRoute:
