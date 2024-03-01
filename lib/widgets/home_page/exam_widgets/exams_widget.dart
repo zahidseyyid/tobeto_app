@@ -13,7 +13,9 @@ class ExamsWidget extends StatelessWidget {
     void onClick() {
       Navigator.of(context).pop();
       examResultDialogWidget(
-          context, correctAnswer, wrongAnswer, emptyAnswer, point);
+          context, correctAnswer, wrongAnswer, emptyAnswer, point, () {
+        Navigator.of(context).pop();
+      });
     }
 
     return SizedBox(

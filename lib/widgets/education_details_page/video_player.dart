@@ -74,14 +74,15 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
             controls: FlickPortraitControls(
                 iconSize: 30,
                 progressBarSettings: FlickProgressBarSettings(
-                  playedColor: Colors.amber,
-                  handleColor: Colors.black,
-                  backgroundColor: Colors.green,
+                  playedColor: Theme.of(context).colorScheme.secondary,
+                  handleColor: Theme.of(context).colorScheme.secondary,
+                  backgroundColor: Colors.grey,
                   handleRadius: 10,
                   height: 10,
                   bufferedColor: Colors.transparent,
                 )),
-            iconThemeData: const IconThemeData(color: Colors.red),
+            iconThemeData:
+                IconThemeData(color: Theme.of(context).colorScheme.secondary),
           ),
           flickVideoWithControlsFullscreen: FlickVideoWithControls(
             controls: FlickPortraitControls(

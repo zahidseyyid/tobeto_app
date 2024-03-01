@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/education_model.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
 import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
+import 'package:flutter_application_1/widgets/evaluation_page/timer_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -44,75 +47,82 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: deviceWidth * 0.24,
-                height: deviceHeight * 0.12,
-                child: Padding(
-                  padding: paddingAllMedium,
-                  child: Image(
-                    image: NetworkImage(widget.education.image),
-                    fit: BoxFit.fill,
+              Expanded(
+                flex: 0,
+                child: SizedBox(
+                  width: deviceWidth * 0.24,
+                  height: deviceHeight * 0.12,
+                  child: Padding(
+                    padding: paddingAllMedium,
+                    child: Image(
+                      image: NetworkImage(widget.education.image),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: deviceWidth * 0.7,
-                    child: Text(
-                      widget.education.title,
-                      style: Theme.of(context).textTheme.titleMedium,
-                      maxLines: null,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: deviceWidth * 0.38,
-                        child: LinearProgressIndicator(
-                          color: Colors.greenAccent,
-                          backgroundColor: Colors.grey,
-                          value: widget.education.progress / 100,
-                          minHeight: deviceHeight * 0.02,
-                        ),
+              Expanded(
+                flex: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: deviceWidth * 0.7,
+                      child: Text(
+                        widget.education.title,
+                        style: Theme.of(context).textTheme.titleMedium,
+                        maxLines: null,
                       ),
-                      Padding(padding: paddingHSmall),
-                      Text("${widget.education.progress}%",
-                          style: Theme.of(context).textTheme.titleLarge),
-                      IconButton(
-                          color: Theme.of(context).colorScheme.secondary,
-                          onPressed: () {
-                            setState(() {
-                              isLiked = !isLiked;
-                              isLiked
-                                  ? ToastHelper.showSuccesToast(
-                                      "Ders Beğenildi")
-                                  : ToastHelper.showErrorToast(
-                                      "Beğeniden Çıkarıldı");
-                            });
-                          },
-                          icon: isLiked
-                              ? const Icon(FontAwesomeIcons.solidHeart)
-                              : const Icon(FontAwesomeIcons.heart)),
-                      IconButton(
-                          color: Theme.of(context).colorScheme.secondary,
-                          onPressed: () {
-                            setState(() {
-                              isFavorited = !isFavorited;
-                              isFavorited
-                                  ? ToastHelper.showSuccesToast(
-                                      "Favoriye Eklendi")
-                                  : ToastHelper.showErrorToast(
-                                      "Favorilerden Çıkarıldı");
-                            });
-                          },
-                          icon: isFavorited
-                              ? const Icon(FontAwesomeIcons.solidBookmark)
-                              : const Icon(FontAwesomeIcons.bookmark))
-                    ],
-                  ),
-                ],
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: deviceWidth * 0.38,
+                          child: LinearProgressIndicator(
+                            color: Theme.of(context).colorScheme.secondary,
+                            backgroundColor: Colors.grey,
+                            value: widget.education.progress / 100,
+                            minHeight: deviceHeight * 0.02,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        Padding(padding: paddingHSmall),
+                        Text("${widget.education.progress}%",
+                            style: Theme.of(context).textTheme.titleMedium),
+                        IconButton(
+                            color: Theme.of(context).colorScheme.secondary,
+                            onPressed: () {
+                              setState(() {
+                                isLiked = !isLiked;
+                                isLiked
+                                    ? ToastHelper.showSuccesToast(
+                                        "Ders Beğenildi")
+                                    : ToastHelper.showErrorToast(
+                                        "Beğeniden Çıkarıldı");
+                              });
+                            },
+                            icon: isLiked
+                                ? const Icon(FontAwesomeIcons.solidHeart)
+                                : const Icon(FontAwesomeIcons.heart)),
+                        IconButton(
+                            color: Theme.of(context).colorScheme.secondary,
+                            onPressed: () {
+                              setState(() {
+                                isFavorited = !isFavorited;
+                                isFavorited
+                                    ? ToastHelper.showSuccesToast(
+                                        "Favoriye Eklendi")
+                                    : ToastHelper.showErrorToast(
+                                        "Favorilerden Çıkarıldı");
+                              });
+                            },
+                            icon: isFavorited
+                                ? const Icon(FontAwesomeIcons.solidBookmark)
+                                : const Icon(FontAwesomeIcons.bookmark))
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -135,7 +145,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TabBar(
-                    indicatorColor: Theme.of(context).colorScheme.primary,
+                    indicatorColor: Theme.of(context).colorScheme.secondary,
                     labelColor: Theme.of(context).colorScheme.primary,
                     isScrollable: true,
                     labelPadding: paddingAllMedium,

@@ -79,6 +79,7 @@ class _EducationAboutState extends State<EducationAbout> {
           ),
         ),
       ),
+      //TODO: Burası ve chat sayfasının metinlerini constants yap
     );
   }
 }

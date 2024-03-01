@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
-void examResultDialogWidget(BuildContext context, String correctAnswer,
-    String wrongAnswer, String emptyAnswer, String point) {
+void examResultDialogWidget(
+    BuildContext context,
+    String correctAnswer,
+    String wrongAnswer,
+    String emptyAnswer,
+    String point,
+    void Function() onPressed) {
   //TODO: Text ve iconlar constant olmalı
   showDialog(
     context: context,
@@ -50,9 +55,7 @@ void examResultDialogWidget(BuildContext context, String correctAnswer,
               ),
               const SizedBox(height: 50),
               CustomButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: onPressed,
                   buttonText: "Kapat",
                   buttonColor: const Color(0xFF9933FF),
                   width: 100,

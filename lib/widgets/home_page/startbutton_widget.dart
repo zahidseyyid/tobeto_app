@@ -34,7 +34,9 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
         ),
         onPressed: () {
           if (isClicked == true) {
-            examResultDialogWidget(context, "1", "2", "0", "20");
+            examResultDialogWidget(context, "1", "2", "0", "20", () {
+              Navigator.of(context).pop();
+            });
           } else {
             widget.onPressed();
           }

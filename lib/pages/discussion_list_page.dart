@@ -58,55 +58,51 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
                         return Padding(
                           padding: paddingOnlyBottomMedium,
                           child: Card(
-                            child: ListTile(
-                                title: Text(state.discussionList[index].title),
-                                subtitle: Text(state
-                                    .discussionList[index].startTime
-                                    .toString()),
-                                leading: Icon(
-                                  Icons.message,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color:
-                                            Theme.of(context).colorScheme.error,
-                                      ),
-                                      onPressed: () {
-                                        context.read<DiscussionBloc>().add(
-                                            DiscussionDeleteEvent(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ChatBotMessagePage(
                                                 uid: widget.uid,
                                                 discussionId: state
-                                                    .discussionList[index].id));
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(
-                                        FontAwesomeIcons.arrowRight,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .secondary,
+                                                    .discussionList[index]
+                                                    .id)));
+                              },
+                              child: ListTile(
+                                  title:
+                                      Text(state.discussionList[index].title),
+                                  subtitle: Text(state
+                                      .discussionList[index].startTime
+                                      .toString()),
+                                  leading: Icon(
+                                    FontAwesomeIcons.message,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
+                                  trailing: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .error,
+                                        ),
+                                        onPressed: () {
+                                          context.read<DiscussionBloc>().add(
+                                              DiscussionDeleteEvent(
+                                                  uid: widget.uid,
+                                                  discussionId: state
+                                                      .discussionList[index]
+                                                      .id));
+                                        },
                                       ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ChatBotMessagePage(
-                                                        uid: widget.uid,
-                                                        discussionId: state
-                                                            .discussionList[
-                                                                index]
-                                                            .id)));
-                                      },
-                                    ),
-                                  ],
-                                )),
+                                    ],
+                                  )),
+                            ),
                           ),
                         );
                       },
