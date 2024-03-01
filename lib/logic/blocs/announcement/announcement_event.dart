@@ -5,3 +5,5 @@ class FetchAnnouncements extends AnnouncementEvent {
 
   FetchAnnouncements({required this.userAnnouncementList});
 }
+
+class AnnouncementReset extends AnnouncementEvent {}

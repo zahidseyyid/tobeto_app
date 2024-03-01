@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
 import 'package:flutter_application_1/logic/repositories/announcement_repository.dart';
@@ -8,6 +10,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   AnnouncementBloc(this._announcementRepository)
       : super(AnnouncementInitial()) {
     on<FetchAnnouncements>(_onFetchAnnouncements);
+    on<AnnouncementReset>(_onAnnouncementReset);
   }
 
 // Kullanıcının duyurularını getir
@@ -21,5 +24,10 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     } catch (e) {
       emit(AnnouncementError(errorMessage: e.toString()));
     }
+  }
+
+  void _onAnnouncementReset(
+      AnnouncementReset event, Emitter<AnnouncementState> emit) {
+    emit(AnnouncementInitial());
   }
 }

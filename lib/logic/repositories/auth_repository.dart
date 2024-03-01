@@ -33,7 +33,6 @@ class AuthRepository {
       return userCredential.user;
     } catch (e) {
       if (e is FirebaseAuthException) {
-        print(e.code);
         String errorMessage = AuthSignInException.handleException(e.code);
         return errorMessage;
       }

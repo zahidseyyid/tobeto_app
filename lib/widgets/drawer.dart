@@ -11,6 +11,7 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -93,7 +94,12 @@ class MyDrawer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/calendar");
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CalendarPage(
+                                    lessonList: userProfile!.userLessons!,
+                                  )));
                     },
                     child: const Text(DrawerConstants.calendarPage),
                   ),

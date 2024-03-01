@@ -44,6 +44,7 @@ class TobetoApp extends StatelessWidget {
         Locale('tr', 'TR'),
         Locale('en', 'US'),
       ],
+      debugShowCheckedModeBanner: false,
       locale: const Locale('tr', 'TR'), // Turkce olarak ayarla
       title: 'Tobeto',
       theme: AppTheme.lightMode,

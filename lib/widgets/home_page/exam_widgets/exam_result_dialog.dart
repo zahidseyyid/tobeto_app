@@ -58,8 +58,6 @@ void examResultDialogWidget(
                   onPressed: onPressed,
                   buttonText: "Kapat",
                   buttonColor: const Color(0xFF9933FF),
-                  width: 100,
-                  height: 40,
                   buttonTextColor: Colors.white)
             ],
           ),
@@ -72,7 +70,7 @@ void examResultDialogWidget(
 Widget _buildCard(String number, String text) {
   return SizedBox(
     width: 130,
-    height: 75,
+    height: 100,
     child: Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

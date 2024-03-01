@@ -3,6 +3,8 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
+import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/applications_widget.dart';
@@ -28,6 +30,13 @@ class TabBarWidget extends StatefulWidget {
 
 class _TabBarWidgetState extends State<TabBarWidget> {
   @override
+  void initState() {
+    context.read<AnnouncementBloc>().add(AnnouncementReset());
+    context.read<LessonBloc>().add(ResetFetchLessons());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -37,18 +46,22 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
       builder: (context, state) {
         if (state is AnnouncementInitial) {
+          print("AnnouncementInitial : TabBarWidget");
           context.read<AnnouncementBloc>().add(FetchAnnouncements(
               userAnnouncementList: widget.userAnnouncementList));
           return const Center(
             child: CustomCircularProgress(),
           );
         } else if (state is AnnouncementLoading) {
+          print("AnnouncementLoading : TabBarWidget");
           return const Center(
             child: CustomCircularProgress(),
           );
         } else if (state is AnnouncementError) {
+          print("AnnouncementError : TabBarWidget");
           ToastHelper.showErrorToast(state.errorMessage);
         } else if (state is AnnouncementLoaded) {
+          print("AnnouncementLoaded : TabBarWidget");
           unReadAnnouncement = state.announcementList
               .where((element) => !(element.isRead))
               .toList()
@@ -145,7 +158,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         }),
                       ),
                       SizedBox(
-                        height: deviceHeight * 0.24,
+                        height: deviceHeight * 0.27,
                         child: TabBarView(
                           children: [
                             ListView(
@@ -173,6 +186,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             ),
           );
         }
+        print("return");
         return const Text("No announcement found.");
       },
     );
