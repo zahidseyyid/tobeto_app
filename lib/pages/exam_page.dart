@@ -115,7 +115,8 @@ class _ExamPageState extends State<ExamPage> {
                         emptyAnswer.toString(),
                         point.toString(),
                         () {
-                          Navigator.pushNamed(context, '/evoluation');
+                          Navigator.of(context).pop();
+                          //Navigator.pushNamed(context, '/evoluation');
                         },
                       );
                     },
