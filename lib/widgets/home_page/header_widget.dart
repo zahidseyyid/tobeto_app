@@ -24,12 +24,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               text: "",
               style: DefaultTextStyle.of(context).style,
               children: <TextSpan>[
-                const TextSpan(
+                TextSpan(
                     text: HeaderConstants.tobeto,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 32,
-                        color: Colors.purple)),
+                        color: Theme.of(context).colorScheme.secondary)),
                 const TextSpan(
                     text: HeaderConstants.welcome,
                     style: TextStyle(
