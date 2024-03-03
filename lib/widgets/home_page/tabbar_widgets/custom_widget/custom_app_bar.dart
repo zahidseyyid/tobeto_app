@@ -34,12 +34,8 @@ class CustomAppBarWidget extends StatelessWidget
         if (userID != null)
           IconButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DiscussionListPage(
-                            uid: userID!,
-                          )));
+              Navigator.pushNamed(context, "/discussion_list",
+                  arguments: userID);
             },
             icon: const Icon(FontAwesomeIcons.message),
           ),

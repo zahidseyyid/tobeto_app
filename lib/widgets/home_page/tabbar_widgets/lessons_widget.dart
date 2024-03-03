@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/lesson_details_page.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class LessonsWidget extends StatefulWidget {
@@ -125,15 +126,10 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                                   IconButton(
                                     icon: LessonConstants.rightArrowIcon,
                                     onPressed: () {
-                                      //Dersin detayı sayfasına gidecek
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  LessonDetailPage(
-                                                      education:
-                                                          state.educationList[
-                                                              index])));
+                                      Navigator.pushNamed(
+                                          context, "/lesson_detail",
+                                          arguments:
+                                              state.educationList[index]);
                                     },
                                   ),
                                 ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/pages/exam_page.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/evaluation_page/evaluation_exam_widget.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_dialog.dart';
@@ -16,12 +15,7 @@ class EvaluationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Brightness brightness = Theme.of(context).brightness;
     void onClick(String category) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ExamPage(
-                    category: category,
-                  )));
+      Navigator.pushReplacementNamed(context, "/exam", arguments: category);
     }
 
     return Scaffold(

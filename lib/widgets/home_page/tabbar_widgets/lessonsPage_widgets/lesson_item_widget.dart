@@ -96,12 +96,8 @@ class LessonItemWidget extends StatelessWidget {
                         IconButton(
                           icon: LessonConstants.rightArrowIcon,
                           onPressed: () {
-                            //Dersin detayı sayfasına yönlendirilecek
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LessonDetailPage(
-                                        education: filtering[index])));
+                            Navigator.pushNamed(context, "/lesson_detail",
+                                arguments: filtering[index]);
                           },
                         ),
                       ],

@@ -60,15 +60,11 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
                           child: Card(
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChatBotMessagePage(
-                                                uid: widget.uid,
-                                                discussionId: state
-                                                    .discussionList[index]
-                                                    .id)));
+                                Navigator.pushNamed(
+                                    context, '/chat_bot', arguments: {
+                                  'uid': widget.uid,
+                                  'discussionId': state.discussionList[index].id
+                                });
                               },
                               child: ListTile(
                                   title:
@@ -149,11 +145,9 @@ class NewDiscussionButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      ChatBotMessagePage(uid: widget.uid))).then((value) {
+          Navigator.pushNamed(context, '/chat_bot', arguments: {
+            'uid': widget.uid,
+          }).then((value) {
             if (value == true) {
               context.read<DiscussionBloc>().add(DiscussionResetEvent());
             }

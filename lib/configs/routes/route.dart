@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/pages/announcements_page.dart';
+import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/pages/catalog_page.dart';
+import 'package:flutter_application_1/pages/discussion_list_page.dart';
 import 'package:flutter_application_1/pages/evaluation_page.dart';
 import 'package:flutter_application_1/pages/lessons_page.dart';
 import 'package:flutter_application_1/pages/page_404.dart';
@@ -9,13 +12,18 @@ import 'package:flutter_application_1/pages/profile_edit_page.dart';
 import 'package:flutter_application_1/pages/splash_page.dart';
 
 import '../../constants/route_constants.dart';
+import '../../pages/chat_bot_message_page.dart';
+import '../../pages/exam_page.dart';
 import '../../pages/home_page.dart';
+import '../../pages/lesson_details_page.dart';
 import '../../pages/sign_in_page.dart';
 import '../../pages/sign_up_page.dart';
 import '../../pages/auth_control_page.dart';
 
 class CustomRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    final args = settings.arguments;
+
     switch (settings.name) {
       case annonuncementRoute:
         return MaterialPageRoute(builder: (_) => const AnnouncementsPage());
@@ -23,12 +31,52 @@ class CustomRouter {
         return MaterialPageRoute(builder: (_) => const AuthControlPage());
       case catalogRoute:
         return MaterialPageRoute(builder: (_) => const CatalogPage());
+      case calendarRoute:
+        return MaterialPageRoute(
+            builder: (_) => CalendarPage(
+                  lessonList: args as List<String>,
+                ));
+      case chatBotRoute:
+        if (args is Map<String, dynamic>?) {
+          final String uid = args!['uid'] as String;
+          if (args['discussionId'] == null) {
+            return MaterialPageRoute(
+              builder: (_) => ChatBotMessagePage(
+                uid: uid,
+              ),
+            );
+          }
+          final String discussionId = args['discussionId'] as String;
+
+          return MaterialPageRoute(
+            builder: (_) => ChatBotMessagePage(
+              uid: uid,
+              discussionId: discussionId,
+            ),
+          );
+        }
+        return MaterialPageRoute(builder: (_) => const Page404());
+      case discussionListRoute:
+        return MaterialPageRoute(
+            builder: (_) => DiscussionListPage(
+                  uid: args as String,
+                ));
       case evoluationRoute:
         return MaterialPageRoute(builder: (_) => const EvaluationPage());
+      case examRoute:
+        return MaterialPageRoute(
+            builder: (_) => ExamPage(
+                  category: args as String,
+                ));
       case homeRoute:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case lessonRoute:
         return MaterialPageRoute(builder: (_) => const LessonsPage());
+      case lessonDetailRoute:
+        return MaterialPageRoute(
+            builder: (_) => LessonDetailPage(
+                  education: args as Education,
+                ));
       case profileEditRoute:
         return MaterialPageRoute(builder: (_) => const ProfileEditPage());
       case profileRoute:
