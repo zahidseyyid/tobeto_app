@@ -94,12 +94,8 @@ class MyDrawer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CalendarPage(
-                                    lessonList: userProfile!.userLessons!,
-                                  )));
+                      Navigator.pushReplacementNamed(context, "/calendar",
+                          arguments: userProfile!.userLessons!);
                     },
                     child: const Text(DrawerConstants.calendarPage),
                   ),
