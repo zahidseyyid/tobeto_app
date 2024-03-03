@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -29,7 +30,10 @@ class FooterWidget extends StatelessWidget {
                               PageImageConstants.loginHeaderImage),
                           width: deviceWidth / 3.5),
                       CustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          ToastHelper.showErrorToast(
+                              "Bu özellik şu anda kullanılamıyor");
+                        },
                         buttonText: FooterConstants.contactUs,
                         buttonColor: Colors.white,
                         buttonTextColor: Colors.black,

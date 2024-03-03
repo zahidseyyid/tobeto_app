@@ -21,7 +21,7 @@ class ExamsWidget extends StatelessWidget {
     return SizedBox(
       //margin: const EdgeInsets.only(bottom: 20),
       width: 500,
-      height: 320,
+      height: 340,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

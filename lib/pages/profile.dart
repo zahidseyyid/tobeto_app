@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
+import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_application_1/widgets/profile_page/about_me.dart';
@@ -39,7 +40,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               {Navigator.pushNamed(context, "/profile_edit")},
                           icon: ProfilePageConstants.editIcon),
                       IconButton.outlined(
-                        onPressed: () => {},
+                        onPressed: () => {
+                          ToastHelper.showErrorToast(
+                              "Bu özellik şu anda kullanılamıyor")
+                        },
                         icon: ProfilePageConstants.shareIcon,
                       ),
                     ],

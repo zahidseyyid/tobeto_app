@@ -45,7 +45,7 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: deviceWidth * 0.23,
+                width: deviceWidth * 0.22,
                 height: deviceHeight * 0.12,
                 child: Padding(
                   padding: paddingAllMedium,
