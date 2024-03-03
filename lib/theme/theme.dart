@@ -12,6 +12,7 @@ class AppTheme {
 
   static final ThemeData darkMode = ThemeData(
       brightness: Brightness.dark,
+      textTheme: const TextTheme(),
       colorScheme: const ColorScheme.dark(
         background: Colors.black,
         primary: Colors.white,

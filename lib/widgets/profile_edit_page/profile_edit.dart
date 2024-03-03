@@ -254,6 +254,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                           educationHistory: userProfile.educationHistory,
                           workHistory: userProfile.workHistory,
                           socialMedia: userProfile.socialMedia,
+                          userLessons: userProfile.userLessons,
+                          userAnnouncements: userProfile.userAnnouncements,
                         ),
                         userId: userProfile.uid,
                       ));

@@ -21,7 +21,7 @@ class ExamItem extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
         width: 190,
-        height: 220,
+        height: 250,
         child: GestureDetector(
           onTap: onTap,
           child: Container(
