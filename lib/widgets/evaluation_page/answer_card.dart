@@ -16,7 +16,7 @@ class AnswerCard extends StatelessWidget {
   final int? correctAnswerIndex;
   final int? selectedAnswerIndex;
   final int currentIndex;
-
+//TODO : renkler temadan alınacak
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

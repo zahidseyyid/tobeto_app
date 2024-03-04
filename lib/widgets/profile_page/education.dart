@@ -48,7 +48,7 @@ class _EducationWidgetState extends State<EducationWidget> {
               ),
               Padding(padding: paddingSmall),
               const Divider(
-                color: Color.fromRGBO(41, 33, 50, 0.4),
+                color: Color.fromRGBO(153, 51, 255, 0.4),
                 thickness: 2,
               ),
               Padding(padding: paddingSmall),

@@ -83,7 +83,8 @@ class GradientCardWidget extends StatelessWidget {
                   child: CustomButton(
                     buttonText: EvaluationConstants.start,
                     onPressed: onPressed ?? () {},
-                    buttonColor: const Color(0xFF9933FF),
+                    buttonTextColor: Theme.of(context).colorScheme.background,
+                    buttonColor: Theme.of(context).colorScheme.secondary,
                     width: sizeWidth / 3,
                   ),
                 ),

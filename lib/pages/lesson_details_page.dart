@@ -88,9 +88,9 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                               isLiked = !isLiked;
                               isLiked
                                   ? ToastHelper.showSuccesToast(
-                                      "Ders Beğenildi")
+                                      LessonDetailsConstants.lessonLiked)
                                   : ToastHelper.showErrorToast(
-                                      "Beğeniden Çıkarıldı");
+                                      LessonDetailsConstants.lessonDisliked);
                             });
                           },
                           icon: isLiked
@@ -103,9 +103,10 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                               isFavorited = !isFavorited;
                               isFavorited
                                   ? ToastHelper.showSuccesToast(
-                                      "Favoriye Eklendi")
+                                      LessonDetailsConstants.lessonAddFavorites)
                                   : ToastHelper.showErrorToast(
-                                      "Favorilerden Çıkarıldı");
+                                      LessonDetailsConstants
+                                          .lessonRemovedToFavorites);
                             });
                           },
                           icon: isFavorited
@@ -174,8 +175,9 @@ class _LessonDetailPageState extends State<LessonDetailPage> {
                                   elevation: 3,
                                   color: selectedVideoIndex == index
                                       ? const Color.fromARGB(255, 202, 198, 198)
-                                      : Colors
-                                          .white, // Seçili öğe mavi olarak belirlenir
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .background,
                                   child: EducationListTile(
                                       video: widget.education.videoList[index]),
                                 ),

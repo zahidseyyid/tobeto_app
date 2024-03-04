@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/exam_model.dart';
 import 'package:flutter_application_1/data/questions.dart';
 import 'package:flutter_application_1/widgets/evaluation_page/answer_card.dart';
@@ -68,11 +69,10 @@ class _ExamPageState extends State<ExamPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const TimerWidget(),
-
             Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xFF9333FF),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondary,
+                  borderRadius: const BorderRadius.all(Radius.circular(20))),
               child: Padding(
                 padding: paddingAllBig,
                 child: Text(
@@ -110,25 +110,25 @@ class _ExamPageState extends State<ExamPage> {
                     onPressed: () {
                       examResultDialogWidget(
                         context,
-                        score.toString(),
-                        wrongAnswer.toString(),
-                        emptyAnswer.toString(),
-                        point.toString(),
+                        score,
+                        wrongAnswer,
+                        emptyAnswer,
+                        point,
                         () {
                           Navigator.of(context).pop();
                           //Navigator.pushNamed(context, '/evoluation');
                         },
                       );
                     },
-                    buttonText: 'Bitti',
-                    buttonColor: const Color(0xFF9333FF),
+                    buttonText: ExamConstants.examFinish,
+                    buttonColor: Theme.of(context).colorScheme.secondary,
                     buttonTextColor: Theme.of(context).colorScheme.background,
                     width: screenWidth / 2,
                   )
                 : CustomButton(
                     onPressed: goToNextQuestion,
-                    buttonText: 'Diğer Soru',
-                    buttonColor: const Color(0xFF9333FF),
+                    buttonText: ExamConstants.nextQuestion,
+                    buttonColor: Theme.of(context).colorScheme.secondary,
                     buttonTextColor: Theme.of(context).colorScheme.background,
                     width: screenWidth / 2,
                   ),

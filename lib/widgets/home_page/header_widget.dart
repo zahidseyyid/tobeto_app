@@ -13,7 +13,6 @@ class HeaderWidget extends StatefulWidget {
 class _HeaderWidgetState extends State<HeaderWidget> {
   @override
   Widget build(BuildContext context) {
-    //mainmain();
     return Padding(
       padding: paddingOnlyTopSuperBig,
       child: Column(
@@ -22,7 +21,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             textAlign: TextAlign.center, // Yatayda ortalama ekleniyor
             text: TextSpan(
               text: "",
-              style: DefaultTextStyle.of(context).style,
+              style: Theme.of(context).textTheme.titleMedium,
               children: <TextSpan>[
                 TextSpan(
                     text: HeaderConstants.tobeto,
@@ -30,13 +29,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         fontWeight: FontWeight.bold,
                         fontSize: 32,
                         color: Theme.of(context).colorScheme.secondary)),
-                const TextSpan(
-                    text: HeaderConstants.welcome,
-                    style: TextStyle(
-                      fontSize: 24,
-                    )),
                 TextSpan(
-                    text: widget.name, style: const TextStyle(fontSize: 24)),
+                    text: HeaderConstants.welcome,
+                    style: Theme.of(context).textTheme.headlineSmall),
+                TextSpan(
+                    text: widget.name,
+                    style: Theme.of(context).textTheme.headlineSmall),
               ],
             ),
           ),

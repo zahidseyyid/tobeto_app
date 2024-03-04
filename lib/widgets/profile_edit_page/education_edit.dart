@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
@@ -25,7 +26,6 @@ class _EducationEditState extends State<EducationEdit> {
     endDateController.clear();
   }
 
-  EdgeInsets horizontalF = const EdgeInsets.symmetric(horizontal: 10.0);
   TextEditingController educationStatusController = TextEditingController();
   TextEditingController schoolNameController = TextEditingController();
   TextEditingController departmentController = TextEditingController();
@@ -42,7 +42,7 @@ class _EducationEditState extends State<EducationEdit> {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 1.2,
       child: Padding(
-        padding: horizontalF,
+        padding: paddingHMedium,
         child: CustomTextFormField(
           labelText: labelText,
           controller: controller,
@@ -69,32 +69,32 @@ class _EducationEditState extends State<EducationEdit> {
           children: [
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-                labelText: "Eğitim Durumu*",
+                labelText: ProfileEditConstants.education,
                 controller: educationStatusController,
-                hintText: "Eğitim Durumu Giriniz"),
+                hintText: ProfileEditConstants.educationHint),
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-                labelText: "Okul Adı*",
+                labelText: ProfileEditConstants.schoolName,
                 controller: schoolNameController,
-                hintText: "Okul Adı Giriniz"),
+                hintText: ProfileEditConstants.schoolNameHint),
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-                labelText: "Bölüm*",
+                labelText: ProfileEditConstants.department,
                 controller: departmentController,
-                hintText: "Bölüm Giriniz"),
+                hintText: ProfileEditConstants.departmentHint),
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-                labelText: "Başlangıç Tarihi*",
+                labelText: ProfileEditConstants.startDate,
                 controller: startDateController,
-                hintText: "Başlangıç Tarihi Giriniz"),
+                hintText: ProfileEditConstants.startDateHint),
             Padding(padding: paddingMedium),
             buildUserInfoFormField(
-                labelText: "Bitiş Tarihi*",
+                labelText: ProfileEditConstants.endDate,
                 controller: endDateController,
-                hintText: "Bitiş Tarihi Giriniz"),
+                hintText: ProfileEditConstants.endDateHint),
             Padding(padding: paddingMedium),
             CustomElevatedButton(
-                text: "Kaydet",
+                text: SocialMediaEditConstants.saveButton,
                 onPressed: () {
                   userProfile.educationHistory ??
                       (userProfile.educationHistory = []);

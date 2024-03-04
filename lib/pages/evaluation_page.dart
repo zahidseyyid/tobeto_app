@@ -66,10 +66,9 @@ class EvaluationPage extends StatelessWidget {
                         EvaluationConstants.dialogTitleFrontEnd,
                         ExamConstants.title,
                         true,
-                        "30 Dakika",
+                        30,
                         25,
-                        "Çoktan Seçmeli",
-                        "Başla",
+                        EvaluationConstants.start,
                         () => onClick(EvaluationConstants.dialogTitleFrontEnd));
                   },
                 ),
@@ -81,10 +80,9 @@ class EvaluationPage extends StatelessWidget {
                         EvaluationConstants.dialogTitleFullStack,
                         ExamConstants.title,
                         true,
-                        "30 Dakika",
+                        30,
                         25,
-                        "Çoktan Seçmeli",
-                        "Başla",
+                        EvaluationConstants.start,
                         () =>
                             onClick(EvaluationConstants.dialogTitleFullStack));
                   },
@@ -119,7 +117,10 @@ class EvaluationPage extends StatelessWidget {
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall!
-                                          .copyWith(color: Colors.purple)),
+                                          .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary)),
                                   Text(
                                     EvaluationConstants.evaluation,
                                     style:

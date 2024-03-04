@@ -54,6 +54,8 @@ class EvaluationExamWidget extends StatelessWidget {
                 child: Container(
                   padding: paddingOnlyRightBig,
                   child: StartButtonWidget(
+                    textColor: Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.background,
                     onPressed: onPressed,
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/widgets/education_details_page/education_details_about_widget.dart';
 
@@ -23,52 +24,52 @@ class _EducationAboutState extends State<EducationAbout> {
             padding: paddingMedium,
             itemBuilder: (context, index) {
               switch (index) {
-                // Metinler ve ikonlar constant
                 case 0:
                   return EducationDetailsAboutWidget(
-                    title: "Başlangıç:",
-                    icon: Icons.calendar_month,
+                    title: LessonDetailsConstants.startDate,
+                    icon: LessonDetailsConstants.calendarIcon,
                     description:
                         "${widget.education.startDate.day}/0${widget.education.startDate.weekday}/${widget.education.startDate.year}",
                   );
                 case 1:
                   return EducationDetailsAboutWidget(
-                    title: "Bitiş:",
-                    icon: Icons.calendar_month,
+                    title: LessonDetailsConstants.endDate,
+                    icon: LessonDetailsConstants.calendarIcon,
                     description:
                         "${widget.education.endDate.day}/0${widget.education.endDate.weekday}/${widget.education.endDate.year}",
                   );
                 case 2:
                   return EducationDetailsAboutWidget(
-                    title: "Geçirdiğin Süre:",
-                    icon: Icons.watch_later_outlined,
-                    description: "${widget.education.spentTime.inHours} saat"
-                        " ${widget.education.spentTime.inMinutes.remainder(60)} dakika",
+                    title: LessonDetailsConstants.spendTime,
+                    icon: LessonDetailsConstants.watchIcon,
+                    description:
+                        "${widget.education.spentTime.inHours} ${LessonDetailsConstants.hour}"
+                        " ${widget.education.spentTime.inMinutes.remainder(60)} ${LessonDetailsConstants.minute}",
                   );
                 case 3:
                   return EducationDetailsAboutWidget(
-                    title: "Tahmini Süre:",
-                    icon: Icons.watch_later_outlined,
+                    title: LessonDetailsConstants.estimatedTime,
+                    icon: LessonDetailsConstants.watchIcon,
                     description:
-                        "${widget.education.estimatedTime.inHours} saat"
-                        " ${widget.education.estimatedTime.inMinutes.remainder(60)} dakika",
+                        "${widget.education.estimatedTime.inHours} ${LessonDetailsConstants.hour}"
+                        " ${widget.education.estimatedTime.inMinutes.remainder(60)}${LessonDetailsConstants.minute}",
                   );
                 case 4:
                   return EducationDetailsAboutWidget(
-                    title: "Kategori:",
-                    icon: Icons.category,
+                    title: LessonDetailsConstants.category,
+                    icon: LessonDetailsConstants.categoryIcon,
                     description: widget.education.category,
                   );
                 case 5:
                   return EducationDetailsAboutWidget(
-                    title: "Eğitimci:",
-                    icon: Icons.person,
+                    title: LessonDetailsConstants.teacher,
+                    icon: LessonDetailsConstants.personIcon,
                     description: widget.education.teacher,
                   );
                 case 6:
                   return EducationDetailsAboutWidget(
-                    title: "Video Sayısı:",
-                    icon: Icons.language,
+                    title: LessonDetailsConstants.videoCount,
+                    icon: LessonDetailsConstants.languageIcon,
                     description: widget.education.videoCount.toString(),
                   );
                 default:
@@ -79,7 +80,6 @@ class _EducationAboutState extends State<EducationAbout> {
           ),
         ),
       ),
-      //TODO: Burası ve chat sayfasının metinlerini constants yap
     );
   }
 }

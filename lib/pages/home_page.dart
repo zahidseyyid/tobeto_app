@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
 import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
@@ -45,21 +46,16 @@ class HomePage extends StatelessWidget {
         body: BlocBuilder<UserBloc, UserState>(
           builder: (context, state) {
             if (state is UserInitialState) {
-              print("UserInitialState : HomePage");
               context.read<UserBloc>().add(UserFetchEvent(userId: userId));
               return const CircularProgressIndicator();
             } else if (state is UserFetchLoadingState) {
-              print("UserFetchLoadingState : HomePage");
               return const Center(child: CustomCircularProgress());
             } else if (state is UserFetchErrorState) {
-              print("UserFetchErrorState : HomePage");
               return Text(state.errorMessage);
             } else if (state is UserDeletedState) {
-              print("UserDeletedState : HomePage");
               return const SignInPage();
             } else if (state is UserFetchedState) {
               user = state.user!;
-              print("UserFetchedState : HomePage");
               return SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
@@ -68,10 +64,9 @@ class HomePage extends StatelessWidget {
                         userAnnouncementList: user.userAnnouncements!,
                         lessonList: user.userLessons!),
                     const ExamsWidget(),
-                    // TODO : Sınav cardı düzeltilecek
-                    // TODO : Dialog ekranı düzeltilecek
+                    // TODO: Renkler temadan alınacak
                     GradientCardWidget(
-                      title: 'Profilini oluştur',
+                      title: HomePageConstants.createProfile,
                       startColor: const Color(0xFFbda6fe),
                       endColor: const Color(0xFF1d0b8c),
                       onPressed: () {
@@ -80,7 +75,7 @@ class HomePage extends StatelessWidget {
                       includeStartButton: true,
                     ),
                     GradientCardWidget(
-                      title: 'Kendini Değerlendir',
+                      title: HomePageConstants.evaluateYourself,
                       startColor: const Color(0xFF5eb6ca),
                       endColor: const Color(0xFF0e0b93),
                       includeStartButton: true,
@@ -89,7 +84,7 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                     GradientCardWidget(
-                      title: 'Öğrenmeye başla',
+                      title: HomePageConstants.startLearning,
                       startColor: const Color(0xFFe3a6fe),
                       endColor: const Color(0xFF3c0b8c),
                       includeStartButton: true,

@@ -27,14 +27,15 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
     return SizedBox(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: widget.backgroundColor ?? Colors.white,
+          backgroundColor:
+              widget.backgroundColor ?? Theme.of(context).colorScheme.secondary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
         ),
         onPressed: () {
           if (isClicked == true) {
-            examResultDialogWidget(context, "1", "2", "0", "20", () {
+            examResultDialogWidget(context, 1, 2, 0, 20, () {
               Navigator.of(context).pop();
             });
           } else {
@@ -50,7 +51,7 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
               : EvaluationConstants.start,
           style: TextStyle(
             fontSize: 16,
-            color: widget.textColor ?? Colors.black,
+            color: widget.textColor ?? Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w800,
           ),
         ),

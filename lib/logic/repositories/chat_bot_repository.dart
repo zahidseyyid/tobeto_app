@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_1/constants/collection_names.dart';
 import 'package:flutter_application_1/models/chat_bot_model.dart';
 import 'package:flutter_application_1/models/discussion_model.dart';
 
@@ -9,10 +10,10 @@ class ChatRepository {
 
   Future<List<DiscussionModel>> getDiscussionModels(String uid) async {
     QuerySnapshot snapshot = await _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
-        .orderBy('startTime', descending: true)
+        .collection(Collections.DISCUSSIONS)
+        .orderBy(Collections.STARTTIME, descending: true)
         .get();
 
     List<DiscussionModel> discussions = snapshot.docs.map((doc) {
@@ -25,12 +26,12 @@ class ChatRepository {
   Future<List<ChatBotMessageModel>> getMessages(
       String uid, String discussionId) async {
     QuerySnapshot snapshot = await _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
-        .collection('messages')
-        .orderBy('createTime', descending: true)
+        .collection(Collections.MESSAGES)
+        .orderBy(Collections.CREATETIME, descending: true)
         .get();
 
     List<ChatBotMessageModel> messages = snapshot.docs.map((doc) {
@@ -42,9 +43,9 @@ class ChatRepository {
 
   Future<String> createDiscussion(String uid) async {
     String discussionID = _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc()
         .id;
     return discussionID;
@@ -58,28 +59,28 @@ class ChatRepository {
       isDiscussionExist = false;
     }
     String messageId = _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
-        .collection('messages')
+        .collection(Collections.MESSAGES)
         .doc()
         .id;
 
     await _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
-        .collection('messages')
+        .collection(Collections.MESSAGES)
         .doc(messageId)
         .set({'prompt': message});
 
     if (!isDiscussionExist) {
       await _firestore
-          .collection('chatbot')
+          .collection(Collections.CHATBOT)
           .doc(uid)
-          .collection('discussions')
+          .collection(Collections.DISCUSSIONS)
           .doc(discussionId)
           .set({
         'startTime': DateTime.now(),
@@ -98,11 +99,11 @@ class ChatRepository {
     StreamSubscription<DocumentSnapshot>? subscription;
 
     subscription = _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
-        .collection('messages')
+        .collection(Collections.MESSAGES)
         .doc(messageId)
         .snapshots()
         .listen((DocumentSnapshot snapshot) {
@@ -121,18 +122,18 @@ class ChatRepository {
 
   Future<void> deleteDiscussion(String uid, String discussionId) async {
     await _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
         .delete();
 
     await _firestore
-        .collection('chatbot')
+        .collection(Collections.CHATBOT)
         .doc(uid)
-        .collection('discussions')
+        .collection(Collections.DISCUSSIONS)
         .doc(discussionId)
-        .collection('messages')
+        .collection(Collections.MESSAGES)
         .get()
         .then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {

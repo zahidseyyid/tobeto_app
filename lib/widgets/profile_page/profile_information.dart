@@ -43,9 +43,9 @@ class _ProfileInformationWidgetState extends State<ProfileInformationWidget> {
           children: [
             Container(
               width: deviceWidth / 1.1,
-              decoration: const BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.all(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondary,
+                borderRadius: const BorderRadius.all(
                   Radius.circular(10),
                 ),
               ),

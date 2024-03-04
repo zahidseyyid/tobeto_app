@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/button.dart';
 
 void examDialogWidget(
-  //TODO: Text ve iconlar constant olmalı
   BuildContext context,
   String dialogTitle,
   String dialogText,
   bool isExam,
-  String? examTime,
+  int? examTime,
   int? numberOfQuestions,
-  String? questionType,
   String buttonText,
   Function() onPressed,
 ) {
   showDialog(
-    //TODO : Diaglo custom widget haline getirilecek. Diğer ekranlarda kullanılabilecek.
     context: context,
     builder: (BuildContext context) {
       Size screenSize = MediaQuery.of(context).size;
@@ -24,7 +23,7 @@ void examDialogWidget(
         content: Container(
           width: screenSize.width,
           height: screenSize.height, // Ekranın genişliği kadar
-          padding: const EdgeInsets.all(16.0),
+          padding: paddingAllBig,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -44,7 +43,7 @@ void examDialogWidget(
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.close),
+                      icon: LessonConstants.closeIcon,
                       onPressed: () {
                         Navigator.of(context).pop(); // Popup'ı kapat
                       },
@@ -55,13 +54,15 @@ void examDialogWidget(
                   children: [
                     Text(dialogText),
                     const SizedBox(height: 70),
-                    Text('Sınav Süresi: $examTime',
+                    Text(
+                        "${ExamConstants.examTime}$examTime ${ExamConstants.lessonMinute}",
                         style: const TextStyle(fontWeight: FontWeight.bold)),
-                    Text('Soru Sayısı: $numberOfQuestions',
+                    Text('${ExamConstants.questionItem}$numberOfQuestions',
                         style: const TextStyle(fontWeight: FontWeight.bold)),
-                    Text('Soru Tipi: $questionType',
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 20),
+                    const Text(
+                        '${ExamConstants.examType}${ExamConstants.multibleChoice}',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Padding(padding: paddingMedium)
                   ],
                 ),
                 Align(
@@ -69,8 +70,8 @@ void examDialogWidget(
                     child: CustomButton(
                       onPressed: onPressed,
                       buttonText: buttonText,
-                      buttonColor: const Color(0xFF9933FF),
-                      buttonTextColor: Colors.white,
+                      buttonColor: Theme.of(context).colorScheme.secondary,
+                      buttonTextColor: Theme.of(context).colorScheme.background,
                     )),
               ],
             ),

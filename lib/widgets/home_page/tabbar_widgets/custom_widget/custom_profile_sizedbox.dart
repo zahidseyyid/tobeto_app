@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class CustomProfileSizedBox extends StatelessWidget {
   const CustomProfileSizedBox({
@@ -38,8 +39,8 @@ class CustomProfileSizedBox extends StatelessWidget {
             ),
             child: Icon(icon, size: 30),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+          Padding(
+            padding: paddingHMedium,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

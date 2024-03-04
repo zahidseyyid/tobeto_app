@@ -111,7 +111,7 @@ void catalogFilterWidget(
                           Navigator.of(context).pop();
                         },
                         buttonText: CatalogConstants.filter,
-                        buttonColor: const Color(0xFF9933FF),
+                        buttonColor: Theme.of(context).colorScheme.secondary,
                         width: deviceWidth / 3,
                         height: deviceHeight / 22,
                         buttonTextColor:

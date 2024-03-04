@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       IconButton.outlined(
                         onPressed: () => {
                           ToastHelper.showErrorToast(
-                              "Bu özellik şu anda kullanılamıyor")
+                              ProfileEditConstants.featureUnavailable)
                         },
                         icon: ProfilePageConstants.shareIcon,
                       ),

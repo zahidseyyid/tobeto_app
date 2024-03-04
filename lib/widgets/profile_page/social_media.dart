@@ -90,12 +90,12 @@ class SocialMediaItem extends StatelessWidget {
       {super.key, required this.username, required this.platform});
   @override
   Widget build(BuildContext context) {
-    if (platform == "Twitter") {
+    if (platform == SocialMediaEditConstants.dropdownTwitter) {
       return GestureDetector(
         onTap: () => onSocialIconClick(username, platform),
         child: SocialMediaConstants.twitterIcon,
       );
-    } else if (platform == "Facebook") {
+    } else if (platform == SocialMediaEditConstants.dropdownFacebook) {
       return GestureDetector(
           onTap: () => onSocialIconClick(username, platform),
           child: SocialMediaConstants.facebookIcon);

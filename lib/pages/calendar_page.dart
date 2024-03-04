@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
@@ -50,7 +51,7 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
           );
         }
-        return const Text("No event found.");
+        return const Text(LessonConstants.lessonsNotFound);
       },
     );
   }

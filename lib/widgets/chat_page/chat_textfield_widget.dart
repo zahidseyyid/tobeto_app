@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
@@ -23,13 +24,13 @@ class ChatTextField extends StatelessWidget {
               child: TextField(
                 controller: _messageController,
                 decoration: const InputDecoration(
-                  hintText: 'Mesajınızı yazın',
+                  hintText: ChatBotConstants.enterYourMessage,
                   border: InputBorder.none,
                 ),
               ),
             ),
             IconButton(
-              icon: const Icon(Icons.send),
+              icon: ChatBotConstants.sendMessageIcon,
               onPressed: onPressed,
             ),
           ],

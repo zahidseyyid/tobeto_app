@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
-  //TODO: Renk temadan çekilecek
   final VoidCallback onPressed;
   final String buttonText;
   final double? width;
@@ -39,7 +38,8 @@ class _CustomButtonState extends State<CustomButton> {
         child: Text(
           widget.buttonText,
           style: TextStyle(
-            color: widget.buttonTextColor ?? Colors.white,
+            color: widget.buttonTextColor ??
+                Theme.of(context).colorScheme.background,
             fontSize: 16,
             fontWeight: FontWeight.w800,
           ),
