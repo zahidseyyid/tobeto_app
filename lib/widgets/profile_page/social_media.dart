@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/models/user_profile_model/social_media_account.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
-import 'package:flutter_application_1/widgets/profile_page/education.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/models/user_profile_model/social_media_account.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_card.dart';
+import 'package:tobeto_app/widgets/profile_page/education.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart'; // url_launcher eklenmiş hali
 

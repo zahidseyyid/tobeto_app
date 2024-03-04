@@ -1,14 +1,12 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/models/user_profile_model/work_history.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
-import 'package:flutter_application_1/widgets/profile_page/education.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/models/user_profile_model/work_history.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_card.dart';
+import 'package:tobeto_app/widgets/profile_page/education.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WorkExperienceWidget extends StatefulWidget {
@@ -25,11 +23,8 @@ class _WorkExperienceWidgetState extends State<WorkExperienceWidget> {
     final userBlocState = context.watch<UserBloc>().state;
 
     if (userBlocState is UserFetchedState) {
-      print("fetched : WorkExperienceWidget");
       userProfile = userBlocState.user;
-    } else {
-      print("else : WorkExperienceWidget");
-    }
+    } else {}
     if (userProfile == null) {
       return const Center(child: Text(WorkExperienceConstants.defaultError));
     }

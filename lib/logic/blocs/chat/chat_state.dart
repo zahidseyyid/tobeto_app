@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/models/chat_bot_model.dart';
+import 'package:tobeto_app/models/chat_bot_model.dart';
 
 abstract class ChatState {}
 

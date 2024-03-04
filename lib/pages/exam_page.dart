@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/models/exam_model.dart';
-import 'package:flutter_application_1/data/questions.dart';
-import 'package:flutter_application_1/widgets/evaluation_page/answer_card.dart';
-import 'package:flutter_application_1/widgets/evaluation_page/timer_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/button.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/models/exam_model.dart';
+import 'package:tobeto_app/data/questions.dart';
+import 'package:tobeto_app/widgets/evaluation_page/answer_card.dart';
+import 'package:tobeto_app/widgets/evaluation_page/timer_widget.dart';
+import 'package:tobeto_app/widgets/home_page/button.dart';
+import 'package:tobeto_app/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
 class ExamPage extends StatefulWidget {
   const ExamPage({super.key, required this.category});

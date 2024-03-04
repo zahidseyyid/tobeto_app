@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/education_details_page/education_about.dart';
-import 'package:flutter_application_1/widgets/education_details_page/education_list_tile.dart';
-import 'package:flutter_application_1/widgets/education_details_page/video_player.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/models/education_model.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/education_details_page/education_about.dart';
+import 'package:tobeto_app/widgets/education_details_page/education_list_tile.dart';
+import 'package:tobeto_app/widgets/education_details_page/video_player.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LessonDetailPage extends StatefulWidget {

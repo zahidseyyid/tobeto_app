@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
 
 class ChatCard extends StatelessWidget {
   final String name;

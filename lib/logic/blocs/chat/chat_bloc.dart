@@ -1,7 +1,7 @@
-import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
-import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
-import 'package:flutter_application_1/logic/repositories/chat_bot_repository.dart';
-import 'package:flutter_application_1/models/chat_bot_model.dart';
+import 'package:tobeto_app/logic/blocs/chat/chat_event.dart';
+import 'package:tobeto_app/logic/blocs/chat/chat_state.dart';
+import 'package:tobeto_app/logic/repositories/chat_bot_repository.dart';
+import 'package:tobeto_app/models/chat_bot_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {

@@ -1,16 +1,17 @@
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/discussion/discussion_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/repositories/announcement_repository.dart';
-import 'package:flutter_application_1/logic/repositories/auth_repository.dart';
-import 'package:flutter_application_1/logic/repositories/chat_bot_repository.dart';
-import 'package:flutter_application_1/logic/repositories/lesson_repository.dart';
-import 'package:flutter_application_1/logic/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../logic/blocs/announcement/announcement_bloc.dart';
+import '../logic/blocs/auth/auth_bloc.dart';
+import '../logic/blocs/catalog/catalog_bloc.dart';
+import '../logic/blocs/chat/chat_bloc.dart';
+import '../logic/blocs/discussion/discussion_bloc.dart';
+import '../logic/blocs/lesson/lesson_bloc.dart';
+import '../logic/blocs/user/user_bloc.dart';
+import '../logic/repositories/announcement_repository.dart';
+import '../logic/repositories/auth_repository.dart';
+import '../logic/repositories/chat_bot_repository.dart';
+import '../logic/repositories/lesson_repository.dart';
+import '../logic/repositories/user_repository.dart';
 
 final _authRepository = AuthRepository();
 final _userRepository = UserRepository();

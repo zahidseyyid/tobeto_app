@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/constants/collection_names.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';
+import 'package:tobeto_app/constants/collection_names.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/models/education_model.dart';
+import 'package:tobeto_app/utils/firebase_firestore_exception.dart';
 
 class LessonRepository {
   late List<Education> educations, userLessons;

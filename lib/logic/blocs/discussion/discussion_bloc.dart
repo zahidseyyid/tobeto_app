@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/logic/blocs/discussion/discussion_event.dart';
-import 'package:flutter_application_1/logic/blocs/discussion/discussion_state.dart';
-import 'package:flutter_application_1/logic/repositories/chat_bot_repository.dart';
+import 'package:tobeto_app/logic/blocs/discussion/discussion_event.dart';
+import 'package:tobeto_app/logic/blocs/discussion/discussion_state.dart';
+import 'package:tobeto_app/logic/repositories/chat_bot_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DiscussionBloc extends Bloc<DiscussionEvent, DiscussionState> {

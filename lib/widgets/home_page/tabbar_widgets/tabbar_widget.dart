@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/announcements_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/applications_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessons_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/announcement/announcement_bloc.dart';
+import 'package:tobeto_app/logic/blocs/announcement/announcement_event.dart';
+import 'package:tobeto_app/logic/blocs/announcement/announcement_state.dart';
+import 'package:tobeto_app/logic/blocs/lesson/lesson_bloc.dart';
+import 'package:tobeto_app/logic/blocs/lesson/lesson_event.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/announcements_widget.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/applications_widget.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessons_widget.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -180,7 +180,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             ),
           );
         }
-        return const Text(AnnouncementConstants.announcementNotFound);
+        return const Text("No announcement found.");
       },
     );
   }

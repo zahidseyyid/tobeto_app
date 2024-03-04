@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/footer.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_banner.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_tabbar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/search_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/drawer.dart';
+import 'package:tobeto_app/widgets/home_page/footer.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_banner.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/edu_tabbar.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/search_widget.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
 class LessonsPage extends StatefulWidget {

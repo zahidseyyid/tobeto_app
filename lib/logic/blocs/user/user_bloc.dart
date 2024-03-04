@@ -1,9 +1,7 @@
-// ignore_for_file: avoid_print
-
-import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/logic/repositories/user_repository.dart';
-import 'package:flutter_application_1/models/user_model.dart';
+import 'package:tobeto_app/logic/blocs/user/user_event.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/logic/repositories/user_repository.dart';
+import 'package:tobeto_app/models/user_model.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,22 +38,18 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   // Kullanıcı güncellenemediğinde, UserUpdateErrorState durumunu yayınlar ve hata mesajını içerir.
   void _onUserUpdateEvent(
       UserUpdateEvent event, Emitter<UserState> emit) async {
-    print("girdi"); // İşlem başladı
     emit(UserFetchLoadingState()); // Kullanıcı güncelleniyor durumunu yayınla
-    print("loading state emit edildi"); // Yükleme durumu yayınlandı
+
     try {
-      print("try içi"); // Try bloğuna girildi
       await _userRepository.updateUser(
           event.userProfile, event.userId); // Kullanıcıyı güncelle
-      print("updateUser çağrıldı"); // Kullanıcı güncelleme fonksiyonu çağrıldı
+
       emit(UserInitialState()); // Kullanıcı başlangıç durumunu yayınla
-      print("UserInitialState emit edildi"); // Başlangıç durumu yayınlandı
     } catch (e) {
       // Hata oluştuğunda
-      print(e); // Hatayı yazdır
+
       emit(UserUpdateErrorState(
           updateErrorMessage: e.toString())); // Hata durumunu yayınla
-      print("UserUpdateErrorState emit edildi"); // Hata durumu yayınlandı
     }
   }
 

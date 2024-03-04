@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/models/exam_model.dart';
+import 'package:tobeto_app/models/exam_model.dart';
 
 const List<ExamModel> exam = [
   ExamModel(

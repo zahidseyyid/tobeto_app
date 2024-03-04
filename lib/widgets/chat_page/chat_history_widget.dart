@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/chat_page/chat_textfield_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_chat_card.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/chat_page/chat_textfield_widget.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_chat_card.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/blocs/user/user_bloc.dart';

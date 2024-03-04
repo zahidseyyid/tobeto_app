@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
 
 class SurveysWidget extends StatelessWidget {
   final String text;

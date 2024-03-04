@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/models/user_profile_model/education_history.dart';
-import 'package:flutter_application_1/models/user_profile_model/social_media_account.dart';
-import 'package:flutter_application_1/models/user_profile_model/work_history.dart';
+import 'package:tobeto_app/models/user_profile_model/education_history.dart';
+import 'package:tobeto_app/models/user_profile_model/social_media_account.dart';
+import 'package:tobeto_app/models/user_profile_model/work_history.dart';
 
 class UserProfile {
   String uid;

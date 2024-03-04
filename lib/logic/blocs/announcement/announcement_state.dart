@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/models/announcements_model.dart';
+import 'package:tobeto_app/models/announcements_model.dart';
 
 abstract class AnnouncementState {}
 

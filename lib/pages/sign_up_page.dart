@@ -1,16 +1,14 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_event.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/sign_in_sign_up_page/textfield.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_bloc.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_event.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_state.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_event.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/sign_in_sign_up_page/textfield.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -42,14 +40,10 @@ class _MyStatefulWidgetState extends State<SignUpPage> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthError) {
-          print("AuthError : SignUpPage");
           ToastHelper.showErrorToast(state.errorMessage);
         } else if (state is Authenticated) {
-          print("Authenticated : SignUpPage");
           Navigator.pushReplacementNamed(context, "/home");
-        } else if (state is AuthLoading) {
-          print("AuthLoading : SignUpPage");
-        }
+        } else if (state is AuthLoading) {}
       },
       child: Scaffold(
         body: Container(

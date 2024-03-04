@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/models/user_model.dart';
+import 'package:tobeto_app/models/user_model.dart';
 
 abstract class UserEvent {}
 

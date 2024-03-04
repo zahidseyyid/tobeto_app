@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_card.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_profile_sizedbox.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_card.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circle_avatar.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_profile_sizedbox.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileInformationWidget extends StatefulWidget {

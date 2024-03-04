@@ -1,14 +1,12 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
-import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
-import 'package:flutter_application_1/widgets/chat_page/chat_history_widget.dart';
-import 'package:flutter_application_1/widgets/chat_page/chat_textfield_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/chat/chat_bloc.dart';
+import 'package:tobeto_app/logic/blocs/chat/chat_event.dart';
+import 'package:tobeto_app/logic/blocs/chat/chat_state.dart';
+import 'package:tobeto_app/widgets/chat_page/chat_history_widget.dart';
+import 'package:tobeto_app/widgets/chat_page/chat_textfield_widget.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
