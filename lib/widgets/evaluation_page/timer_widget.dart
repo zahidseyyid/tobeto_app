@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 
 class TimerWidget extends StatefulWidget {
@@ -29,7 +30,7 @@ class _TimerWidgetState extends State<TimerWidget>
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         // Süre dolduğunda yapılacak işlemler burada
-        ToastHelper.showErrorToast("Süre doldu");
+        ToastHelper.showErrorToast(ExamConstants.timeIsUp);
         Navigator.pop(context);
       }
     });
@@ -39,7 +40,8 @@ class _TimerWidgetState extends State<TimerWidget>
         return LinearProgressIndicator(
           value: _animationController.value,
           backgroundColor: Colors.grey[300],
-          valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF9333FF)),
+          valueColor: AlwaysStoppedAnimation<Color>(
+              Theme.of(context).colorScheme.secondary),
           minHeight: screenHeight / 50,
           borderRadius: BorderRadius.circular(20),
         );

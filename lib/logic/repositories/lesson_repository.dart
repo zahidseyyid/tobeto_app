@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/constants/collection_names.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/education_model.dart';
 import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';
 
@@ -13,7 +14,8 @@ class LessonRepository {
     try {
       final querySnapshot = await _firebaseFirestore
           .collection(Collections.EDUCATION)
-          .where(Collections.FETCH_CATEGORY, isEqualTo: "Katalog")
+          .where(Collections.FETCH_CATEGORY,
+              isEqualTo: DrawerConstants.catalogPage)
           .orderBy(FieldPath.documentId,
               descending: true) //ilk eklenen verinin en üstte gözükmesi için
           .get();
@@ -36,7 +38,8 @@ class LessonRepository {
     try {
       final querySnapshot = await _firebaseFirestore
           .collection(Collections.EDUCATION)
-          .where(Collections.FETCH_CATEGORY, isEqualTo: "Katalog")
+          .where(Collections.FETCH_CATEGORY,
+              isEqualTo: DrawerConstants.catalogPage)
           .where(Collections.TEACHER, isEqualTo: teacher)
           .orderBy(FieldPath.documentId,
               descending: true) // İlk eklenen verinin en üstte gözükmesi için

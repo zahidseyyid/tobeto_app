@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_event.dart';
 import 'package:flutter_application_1/logic/blocs/chat/chat_state.dart';
@@ -40,9 +41,9 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
     var logoAsset = getLogo(brightness);
     return Scaffold(
       appBar: AppBar(
-          title: const Text('TobetoAI Sohbet'),
+          title: const Text(ChatBotConstants.chatBotDiscussion),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: ChatBotConstants.arrowBackIcon,
             onPressed: () {
               Navigator.pop(
                   context, true); // Geri dönüş değeri true olarak ayarlandı
@@ -51,22 +52,17 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
       body: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           if (state is ChatInitialState) {
-            print("ChatInitialState");
             if (widget.discussionId == null) {
-              print("ChatInitialState - widget.discussionId == null");
               context.read<ChatBloc>().add(ChatEmptyDiscussionEvent());
             } else {
-              print("ChatInitialState - widget.discussionId != null");
               context.read<ChatBloc>().add(ChatFetchEvent(
                   uid: widget.uid, discussionId: widget.discussionId!));
             }
           } else if (state is ChatFetchLoadingState) {
-            print("ChatFetchLoadingState");
             return const Center(
               child: Center(child: CustomCircularProgress()),
             );
           } else if (state is ChatFetchedState) {
-            print("ChatFetchedState");
             return ChatHistoryWidget(
               chatMessages: state.chatMessages,
               messageController: _messageController,
@@ -86,12 +82,10 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
               },
             );
           } else if (state is ChatFetchErrorState) {
-            print("ChatFetchErrorState");
             return Center(
               child: Center(child: Text(state.errorMessage)),
             );
           } else if (state is ChatEmptyDiscussion) {
-            print("EmptyDiscussion");
             return SingleChildScrollView(
               reverse: true,
               child: Column(
@@ -108,7 +102,7 @@ class _ChatBotMessagePageState extends State<ChatBotMessagePage> {
                           width: 200,
                         )),
                         const SizedBox(height: 20),
-                        const Text("İlk mesajınızı yazın"),
+                        const Text(ChatBotConstants.enterYourFirstMessage),
                       ],
                     ),
                   ),

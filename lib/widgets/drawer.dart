@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
@@ -11,7 +10,6 @@ import 'package:flutter_application_1/constants/constant_image.dart';
 import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/models/user_model.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/pages/calendar_page.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +53,7 @@ class MyDrawer extends StatelessWidget {
                     height: 200,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: LessonConstants.closeIcon,
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -115,18 +113,17 @@ class MyDrawer extends StatelessWidget {
                         flex: 0,
                         child: (userProfile == null ||
                                 userProfile.profilePictureUrl == null)
-                            ? const Icon(Icons.person)
+                            ? SignUpPageConstants.personIcon
                             : CustomCircleAvatar(
                                 radius: 20,
                                 pickedImage: File(""),
                                 userPhotoUrl:
                                     userProfile.profilePictureUrl ?? ""),
                       ),
-                      //SizedBox(width: deviceWidth / 20),
                       Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: paddingHMedium,
                             child: Text(
                               (userProfile == null)
                                   ? DrawerConstants.error
@@ -134,7 +131,6 @@ class MyDrawer extends StatelessWidget {
                               maxLines: 1,
                             ),
                           )),
-                      // SizedBox(width: deviceWidth / 16),
                       Expanded(
                         flex: 0,
                         child: GestureDetector(
@@ -149,9 +145,9 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
             const Divider(),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(DrawerConstants.tobetoCopyright),
+            Padding(
+              padding: paddingAllMedium,
+              child: const Text(DrawerConstants.tobetoCopyright),
             ),
           ],
         ),

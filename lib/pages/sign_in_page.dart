@@ -142,10 +142,10 @@ class _MyStatefulWidgetState extends State<SignInPage> {
                                       AuthPasswordReset(
                                           eMail: eMailController.text));
                                   ToastHelper.showSuccesToast(
-                                      "Şifre sıfırlama maili gönderildi. Lütfen e-mailinizi kontrol ediniz.");
+                                      SigninPageConstants.passwordReset);
                                 } else {
                                   ToastHelper.showErrorToast(
-                                      "Lütfen e-mail adresinizi giriniz");
+                                      SigninPageConstants.enterYourEmail);
                                 }
                               },
                               child: const Text(

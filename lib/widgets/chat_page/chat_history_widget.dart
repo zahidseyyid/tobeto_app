@@ -34,7 +34,7 @@ class ChatHistoryWidget extends StatelessWidget {
       name = userState.user!.nameSurname;
     } else {
       photo = CustomCircleAvatarConstants.defaultPhotoUrl;
-      name = "Öğrenci";
+      name = ChatBotConstants.studentTitle;
     }
     return SingleChildScrollView(
       child: Column(
@@ -63,7 +63,7 @@ class ChatHistoryWidget extends StatelessWidget {
                                   photo: CustomCircleAvatarConstants
                                       .defaultPhotoUrl,
                                   message: chatMessages![index].response!,
-                                  name: "TobetoAI",
+                                  name: ChatBotConstants.chatBotTitle,
                                 ),
                         ],
                       );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 class ChatCard extends StatelessWidget {
   final String name;
@@ -15,14 +16,15 @@ class ChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment:
-          name == "TobetoAI" ? Alignment.centerLeft : Alignment.centerRight,
+      alignment: name == ChatBotConstants.chatBotTitle
+          ? Alignment.centerLeft
+          : Alignment.centerRight,
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.7,
         child: Column(
           children: [
             Card(
-              color: name == "TobetoAI"
+              color: name == ChatBotConstants.chatBotTitle
                   ? Theme.of(context).colorScheme.background
                   : Theme.of(context).colorScheme.secondary,
               elevation: 1,
@@ -43,7 +45,7 @@ class ChatCard extends StatelessWidget {
                         Text(name,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: name == "TobetoAI"
+                                color: name == ChatBotConstants.chatBotTitle
                                     ? Theme.of(context).colorScheme.primary
                                     : Theme.of(context)
                                         .colorScheme
@@ -56,7 +58,7 @@ class ChatCard extends StatelessWidget {
                       child: Text(
                         message,
                         style: TextStyle(
-                            color: name == "TobetoAI"
+                            color: name == ChatBotConstants.chatBotTitle
                                 ? Theme.of(context).colorScheme.primary
                                 : Theme.of(context).colorScheme.background),
                       ),

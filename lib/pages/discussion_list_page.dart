@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_event.dart';
 import 'package:flutter_application_1/logic/blocs/discussion/discussion_state.dart';
-import 'package:flutter_application_1/pages/chat_bot_message_page.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -36,7 +36,7 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Sohbet Listesi'),
+          title: const Text(ChatBotConstants.discussionList),
         ),
         body: BlocBuilder<DiscussionBloc, DiscussionState>(
           builder: (context, state) {
@@ -82,7 +82,7 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
                                     children: [
                                       IconButton(
                                         icon: Icon(
-                                          Icons.delete,
+                                          ChatBotConstants.deleteIcon,
                                           color: Theme.of(context)
                                               .colorScheme
                                               .error,
@@ -121,7 +121,7 @@ class _DiscussionListPageState extends State<DiscussionListPage> {
                 ],
               ));
             }
-            return const Text("Hata");
+            return const Text(DrawerConstants.error);
           },
         ));
   }
@@ -154,7 +154,7 @@ class NewDiscussionButton extends StatelessWidget {
           });
         },
         child: Text(
-          'Yeni Bir Sohbet Oluştur',
+          ChatBotConstants.createNewDiscussion,
           style: TextStyle(
             color: Theme.of(context).colorScheme.background,
           ),

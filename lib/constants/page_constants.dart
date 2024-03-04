@@ -7,6 +7,10 @@ class SigninPageConstants {
   static const String signInButtonText = "Giriş Yap";
   static const String signUpButtonText = "Kayıt Ol";
   static const String passwordRequestText = "Parolamı Unuttum";
+  static const String passwordReset =
+      "Şifre sıfırlama maili gönderildi. Lütfen e-mailinizi kontrol ediniz.";
+  static const String enterYourEmail = "Lütfen e-mail adresinizi giriniz";
+
   static const Icon mailIcon = Icon(Icons.mail);
   static const Icon lockIcon = Icon(Icons.lock);
 }
@@ -202,7 +206,7 @@ class WorkExperienceConstants {
 
 class SocialMediaConstants {
   static const String socialMediaTitle = "Sosyal Medya Bilgileri";
-  static const String socialMediaNotFound = "Sosyal medya bilgsi yok";
+  static const String socialMediaNotFound = "Sosyal medya bilgisi yok";
 
   static const Icon facebookIcon = Icon(
     FontAwesomeIcons.facebook,
@@ -324,6 +328,17 @@ class ProfileEditConstants {
   static const String aboutMe = "Hakkınızda";
   static const String aboutMeHint = "Hakkınızda Metnini Giriniz";
   static const String saveButton = "Kaydet";
+  static const String featureUnavailable = "Bu özellik şu anda kullanılamıyor";
+  static const String education = "Eğitim Durumu*";
+  static const String educationHint = "Eğitim Durumu Giriniz";
+  static const String schoolName = "Okul Adı*";
+  static const String schoolNameHint = "Okul Adı Giriniz";
+  static const String department = "Bölüm*";
+  static const String departmentHint = "Bölüm Giriniz";
+  static const String startDate = "Başlangıç Tarihi*";
+  static const String startDateHint = "Başlangıç Tarihi Giriniz";
+  static const String endDate = "Bitiş Tarihi*";
+  static const String endDateHint = "Bitiş Tarihi Giriniz";
 }
 
 class ProfilePageConstants {
@@ -334,6 +349,24 @@ class ProfilePageConstants {
 class LessonDetailsConstants {
   static const String content = "İçerik";
   static const String about = "Hakkında";
+  static const String lessonLiked = "Ders Beğenildi";
+  static const String lessonDisliked = "Beğeniden Çıkarıldı";
+  static const String lessonAddFavorites = "Favoriye Eklendi";
+  static const String lessonRemovedToFavorites = "Favorilerden Çıkarıldı";
+  static const String startDate = "Başlangıç:";
+  static const String endDate = "Bitiş:";
+  static const String spendTime = "Geçirdiğin Süre:";
+  static const String estimatedTime = "Tahmini Süre:";
+  static const String category = "Kategori:";
+  static const String teacher = "Eğitimci:";
+  static const String videoCount = "Video Sayısı:";
+  static const String hour = " saat";
+  static const String minute = " dakika";
+  static const IconData calendarIcon = Icons.calendar_month;
+  static const IconData watchIcon = Icons.watch_later_outlined;
+  static const IconData categoryIcon = Icons.category;
+  static const IconData personIcon = Icons.person;
+  static const IconData languageIcon = Icons.language;
 }
 
 class EvaluationConstants {
@@ -383,6 +416,21 @@ class HeaderConstants {
   static const String welcome = "'ya hoş geldin\n";
   static const String newGenerationLearningExperience =
       "Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!";
+  static const String freeEducationForFuture =
+      "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.";
+  static const String lookingFor = 'Aradığın ';
+  static const String quotationMarks = '"';
+  static const String job = 'İş';
+  static const String hear = ' burada!';
+}
+
+class TabbarConstants {
+  static const String applications = "Başvurularım";
+  static const String educations = "Eğitimlerim";
+  static const String announcements = "Duyuru ve Haberlerim";
+  static const String surveys = "Anketlerim";
+  static const String surveyNotFound =
+      "Atanmış herhangi bir anketiniz bulunmamaktadır";
 }
 
 class FooterConstants {
@@ -397,15 +445,55 @@ class CustomCircleAvatarConstants {
 
 class ChatBotConstants {
   static const String chatBotTitle = "TobetoAI";
+  static const String chatBotDiscussion = 'TobetoAI Sohbet';
   static const String studentTitle = "Öğrenci";
   static const String message = "prompt";
   static const String response = "response";
   static const String timestamp = "timestamp";
   static const String defaultPhotoUrl =
       "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+  static const String discussionList = 'Sohbet Listesi';
+  static const String enterYourFirstMessage = "İlk mesajınızı yazın";
+  static const String enterYourMessage = "Mesajınızı yazın";
+  static const String createNewDiscussion = 'Yeni Bir Sohbet Oluştur';
+  static const IconData deleteIcon = Icons.delete;
+  static const Icon arrowBackIcon = Icon(Icons.arrow_back);
+  static const Icon sendMessageIcon = Icon(Icons.send);
 }
 
 class ExamConstants {
   static const String title =
       "\nBu sınav 25 sorudan oluşmakta olup sınav süresi 30 dakikadır.\n\nSınav çoktan seçmeli test şeklinde olup sınavı yarıda bıraktığınız taktirde çözdüğünüz kısım kadarıyla değerlendirileceksiniz.";
+  static const String exams = "Sınavlarım";
+  static const String evaluationExam =
+      "Herkes için Kodlama 1D Değerlendirme Sınavı";
+  static const String codingForEveryone = "Herkes için Kodlama - 1D";
+  static const String lessonMinute45 = "45 Dakika";
+  static const String lessonMinute = "Dakika";
+  static const String multibleChoice = "Çoktan Seçmeli";
+  static const String examTime = "Sınav Süresi: ";
+  static const String questionItem = "Soru Sayısı: ";
+  static const String examType = "Soru Tipi: ";
+  static const String examFinish = "Test Bitti";
+  static const String correctAnswer = 'Doğru';
+  static const String wrongAnswer = 'Yanlış';
+  static const String emptyAnswer = "Boş";
+  static const String point = "Puan";
+  static const String nextQuestion = "Diğer Soru";
+  static const String dialogText =
+      " Sevgili Adayımız, \n\nHerkes için Kodlama Eğitimi'ni tamamladığınız için tebrik ederiz. Bu eğitim sonrası bir sonraki aşamaya geçiş için 25 sorudan oluşan bir değerlendirme sınavımız bulunmaktadır. \n\nBu test her kullanıcı için sadece 1 kez sunulmakta olup 45 dakika içinde tamamlanması gerekmektedir. \n\nTüm değerlendirme kriterleri sonrası Mesleki Gelişim Eğitimlerine geçişiniz ile ilgili bilgilendirileceksiniz. \n\nSevgiler, \nTOBETO";
+  static const String timeIsUp = "Süre doldu";
+  static const Icon checkIcon =
+      Icon(Icons.check, color: Colors.white, size: 25);
+}
+
+class HomePageConstants {
+  static const String createProfile = "Profilini oluştur";
+  static const String evaluateYourself = "Kendini Değerlendir";
+  static const String startLearning = "Öğrenmeye başla";
+}
+
+class Page404Constants {
+  static const String pageNotFound = "Sayfa Bulunamadı. 404 Hatası!";
+  static const String goToLoginScreen = "Giriş Ekranına Git";
 }

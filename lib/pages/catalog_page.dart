@@ -36,7 +36,7 @@ class CatalogPage extends StatelessWidget {
                     catalogFilterWidget(context);
                   },
                   buttonText: CatalogConstants.filter,
-                  buttonColor: const Color(0xFF9933FF),
+                  buttonColor: Theme.of(context).colorScheme.secondary,
                   width: deviceWidth * .85,
                   height: deviceHeight / 22,
                   buttonTextColor: Theme.of(context).colorScheme.background),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
@@ -17,7 +18,7 @@ class CustomElevatedButton extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final double deviceWidth = mediaQueryData.size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: paddingHMedium,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor:

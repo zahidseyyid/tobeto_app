@@ -15,7 +15,7 @@ class FooterWidget extends StatelessWidget {
     return Padding(
       padding: paddingOnlyTopSuperBig,
       child: Container(
-        color: const Color(0xFF9933FF),
+        color: Theme.of(context).colorScheme.secondary,
         padding: paddingAllBig * 1.5,
         child: Column(
           children: [
@@ -32,11 +32,11 @@ class FooterWidget extends StatelessWidget {
                       CustomButton(
                         onPressed: () {
                           ToastHelper.showErrorToast(
-                              "Bu özellik şu anda kullanılamıyor");
+                              ProfileEditConstants.featureUnavailable);
                         },
                         buttonText: FooterConstants.contactUs,
-                        buttonColor: Colors.white,
-                        buttonTextColor: Colors.black,
+                        buttonColor: Theme.of(context).colorScheme.background,
+                        buttonTextColor: Theme.of(context).colorScheme.primary,
                       ),
                     ],
                   ),
@@ -45,11 +45,11 @@ class FooterWidget extends StatelessWidget {
             ),
             Padding(
               padding: paddingBig,
-              child: const Text(
+              child: Text(
                 FooterConstants.tobeto,
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Theme.of(context).colorScheme.background,
                 ),
               ),
             ),

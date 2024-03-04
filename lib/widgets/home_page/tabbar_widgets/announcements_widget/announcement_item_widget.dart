@@ -26,7 +26,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
       case AnnouncementConstants.news:
         filtering = list.where((element) => !(element.isAnnouncement)).toList();
         break;
-      case "Invisible": //Okunanlar görünmeyecek
+      case AnnouncementConstants.invisible: //Okunanlar görünmeyecek
         filtering = list.where((element) => !(element.isRead)).toList();
       case "Tarihe göre (Y-E)":
         list.sort((a, b) => b.date.compareTo(a.date));
@@ -132,7 +132,7 @@ class _AnnouncementItemWidgetState extends State<AnnouncementItemWidget> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.calendar_month_outlined,
+                                  Icon(AnnouncementConstants.calendarIcon,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .primary

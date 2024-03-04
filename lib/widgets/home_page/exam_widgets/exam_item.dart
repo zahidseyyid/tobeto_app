@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 
 class ExamItem extends StatelessWidget {
-  //TODO: Text ve iconlar constant olmalı
   final String quizTitle;
   final String description;
   final String time;
@@ -18,7 +19,7 @@ class ExamItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: paddingAllBig,
       child: SizedBox(
         width: 190,
         height: 250,
@@ -37,14 +38,14 @@ class ExamItem extends StatelessWidget {
             child: Card(
               // Card'ın arka plan rengi burada belirlenir
               child: Padding(
-                padding: const EdgeInsets.all(2.0),
+                padding: paddingAllSmall,
                 child: Stack(
                   children: [
                     Column(
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: paddingAllSmall,
                             child: Text(
                               quizTitle,
                               style: const TextStyle(
@@ -55,17 +56,16 @@ class ExamItem extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, left: 6, right: 6, bottom: 18),
+                          padding: paddingHSmall + paddingOnlyBottomBig,
                           child: Text(description),
                         ),
                         Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(6.0),
+                            Padding(
+                              padding: paddingAllSmall,
                               child: Icon(
-                                Icons.timer_outlined,
-                                color: Colors.purple,
+                                CatalogConstants.accessTime,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                             ),
                             Text(time,
@@ -85,11 +85,7 @@ class ExamItem extends StatelessWidget {
                           color: Theme.of(context).colorScheme.secondary,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(0.50),
-                          child:
-                              Icon(Icons.check, color: Colors.white, size: 25),
-                        ),
+                        child: ExamConstants.checkIcon,
                       ),
                     ),
                   ],

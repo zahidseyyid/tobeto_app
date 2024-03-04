@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/constant_image.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
 import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
@@ -16,7 +18,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class TabBarWidget extends StatefulWidget {
-  //TODO: Text ve iconlar constant olmalı
   const TabBarWidget(
       {super.key,
       required this.lessonList,
@@ -43,25 +44,30 @@ class _TabBarWidgetState extends State<TabBarWidget> {
 
     int unReadAnnouncement =
         Provider.of<StateData>(context, listen: true).unReadAnnouncement;
+    // TODO: Renk temadan alınacak
+    const TextSpan textSpan = TextSpan(
+      text: HeaderConstants.quotationMarks,
+      style: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFF00D29B),
+      ),
+    );
     return BlocBuilder<AnnouncementBloc, AnnouncementState>(
       builder: (context, state) {
         if (state is AnnouncementInitial) {
-          print("AnnouncementInitial : TabBarWidget");
           context.read<AnnouncementBloc>().add(FetchAnnouncements(
               userAnnouncementList: widget.userAnnouncementList));
           return const Center(
             child: CustomCircularProgress(),
           );
         } else if (state is AnnouncementLoading) {
-          print("AnnouncementLoading : TabBarWidget");
           return const Center(
             child: CustomCircularProgress(),
           );
         } else if (state is AnnouncementError) {
-          print("AnnouncementError : TabBarWidget");
           ToastHelper.showErrorToast(state.errorMessage);
         } else if (state is AnnouncementLoaded) {
-          print("AnnouncementLoaded : TabBarWidget");
           unReadAnnouncement = state.announcementList
               .where((element) => !(element.isRead))
               .toList()
@@ -80,14 +86,13 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                     child: Image.asset(PageImageConstants.istanbulCoding),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 15, bottom: 15),
-                  child: Text(
-                    "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+                Padding(
+                  padding: paddingMedium,
+                  child: const Text(
+                    HeaderConstants.freeEducationForFuture,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
-                      letterSpacing: 1,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -95,27 +100,13 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                 const Text.rich(
                   //Tırnak işaretli yeşil kısım
                   TextSpan(
-                    text: 'Aradığın ',
+                    text: HeaderConstants.lookingFor,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     children: <InlineSpan>[
-                      TextSpan(
-                        text: '"',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF00D29B),
-                        ),
-                      ),
-                      TextSpan(text: 'İş'),
-                      TextSpan(
-                        text: '"',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF00D29B),
-                        ),
-                      ),
-                      TextSpan(text: ' burada!'),
+                      textSpan,
+                      TextSpan(text: HeaderConstants.job),
+                      textSpan,
+                      TextSpan(text: HeaderConstants.hear),
                     ],
                   ),
                 ),
@@ -129,16 +120,18 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         indicatorColor: Theme.of(context).colorScheme.primary,
                         labelColor: Theme.of(context).colorScheme.primary,
                         isScrollable: true,
-                        labelPadding: const EdgeInsets.all(5),
+                        labelPadding: paddingAllSmall,
                         tabAlignment: TabAlignment.start,
                         tabs: List.generate(4, (index) {
                           if (index == 0) {
-                            return const Tab(text: "Başvurularım");
+                            return const Tab(
+                                text: TabbarConstants.applications);
                           } else if (index == 1) {
-                            return const Tab(text: "Eğitimlerim");
+                            return const Tab(text: TabbarConstants.educations);
                           } else if (index == 2) {
                             if (unReadAnnouncement == 0) {
-                              return const Tab(text: "Duyuru ve Haberlerim");
+                              return const Tab(
+                                  text: TabbarConstants.announcements);
                             } else {
                               //kırmızı bildirim kısmı
                               return Badge(
@@ -147,12 +140,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
                                 ),
+                                //TODO:rengi temadan alınacak
                                 backgroundColor: Colors.red[400],
-                                child: const Tab(text: "Duyuru ve Haberlerim"),
+                                child: const Tab(
+                                    text: TabbarConstants.announcements),
                               );
                             }
                           } else if (index == 3) {
-                            return const Tab(text: "Anketlerim");
+                            return const Tab(text: TabbarConstants.surveys);
                           }
                           return const Tab(text: "");
                         }),
@@ -174,8 +169,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                             AnnouncementsWidget(
                                 userAnnouncementList:
                                     widget.userAnnouncementList),
-                            const SurveysWidget(
-                                "Atanmış herhangi bir anketiniz bulunmamaktadır"),
+                            const SurveysWidget(TabbarConstants.surveyNotFound),
                           ],
                         ),
                       ),
@@ -186,8 +180,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
             ),
           );
         }
-        print("return");
-        return const Text("No announcement found.");
+        return const Text(AnnouncementConstants.announcementNotFound);
       },
     );
   }

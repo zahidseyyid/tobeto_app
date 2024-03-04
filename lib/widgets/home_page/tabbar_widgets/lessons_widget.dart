@@ -4,11 +4,9 @@ import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
 import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
-import 'package:flutter_application_1/pages/lesson_details_page.dart';
 import 'package:flutter_application_1/utils/error_toast.dart';
 import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/surveys_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class LessonsWidget extends StatefulWidget {
@@ -64,7 +62,7 @@ class _LessonsWidgetState extends State<LessonsWidget> {
                       );
                     } else {
                       return Padding(
-                        padding: const EdgeInsets.all(5),
+                        padding: paddingAllSmall,
                         child: Container(
                           width: deviceWidth * 0.8,
                           decoration: BoxDecoration(

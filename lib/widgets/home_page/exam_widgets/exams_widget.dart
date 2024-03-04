@@ -1,52 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_text.dart';
+import 'package:flutter_application_1/constants/constant_padding.dart';
+import 'package:flutter_application_1/constants/page_constants.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_dialog.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_item.dart';
 import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
 class ExamsWidget extends StatelessWidget {
-  //TODO: Text ve iconlar constant olmalı
   const ExamsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     void onClick() {
       Navigator.of(context).pop();
-      examResultDialogWidget(
-          context, correctAnswer, wrongAnswer, emptyAnswer, point, () {
+      examResultDialogWidget(context, 24, 1, 0, 96, () {
         Navigator.of(context).pop();
       });
     }
 
     return SizedBox(
-      //margin: const EdgeInsets.only(bottom: 20),
-      width: 500,
-      height: 340,
+      width: screenWidth,
+      height: screenHeight * 0.4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text("Sınavlarım",
+          Padding(
+            padding: paddingAllSmall,
+            child: const Text(ExamConstants.exams,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                 )),
           ),
           ExamItem(
-            quizTitle: "Herkes için Kodlama 1D Değerlendirme Sınavı",
-            description: "Herkes için Kodlama - 1D",
-            time: "45 Dakika",
+            quizTitle: ExamConstants.evaluationExam,
+            description: ExamConstants.codingForEveryone,
+            time: ExamConstants.lessonMinute45,
             onTap: () {
               examDialogWidget(
                   context,
-                  dialogTitle,
-                  dialogText,
+                  ExamConstants.codingForEveryone,
+                  ExamConstants.dialogText,
                   true,
-                  "45 Dakika",
+                  45,
                   25,
-                  "Çoktan Seçmeli",
-                  "Raporu Görüntüle",
+                  EvaluationConstants.viewReport,
                   onClick);
             },
           ),

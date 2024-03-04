@@ -88,10 +88,12 @@ class ApplicationsWidget extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       ApplicationConstants.accepted,
-                      style: TextStyle(fontSize: 15, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Theme.of(context).colorScheme.background),
                     ),
                   ),
                 ),
