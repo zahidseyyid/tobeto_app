@@ -1,23 +1,21 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/pages/sign_in_page.dart';
-import 'package:flutter_application_1/widgets/home_page/gradientcard_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exams_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/footer.dart';
-import 'package:flutter_application_1/widgets/home_page/header_widget.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/tabbar_widget.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_bloc.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_state.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_event.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/pages/sign_in_page.dart';
+import 'package:tobeto_app/widgets/home_page/gradientcard_widget.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/widgets/drawer.dart';
+import 'package:tobeto_app/widgets/home_page/exam_widgets/exams_widget.dart';
+import 'package:tobeto_app/widgets/home_page/footer.dart';
+import 'package:tobeto_app/widgets/home_page/header_widget.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/tabbar_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -56,6 +54,7 @@ class HomePage extends StatelessWidget {
               return const SignInPage();
             } else if (state is UserFetchedState) {
               user = state.user!;
+
               return SingleChildScrollView(
                 child: Column(
                   children: <Widget>[

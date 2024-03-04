@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_application_1/utils/firebase_auth_exception.dart';
+import 'package:tobeto_app/utils/firebase_auth_exception.dart';
 
 class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;

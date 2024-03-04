@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/catalog/catalog_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/catalog/catalog_event.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/widgets/home_page/button.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+
 import 'package:provider/provider.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+
+import '../../constants/page_constants.dart';
+import '../../logic/blocs/catalog/catalog_bloc.dart';
+import '../../logic/blocs/catalog/catalog_event.dart';
+import '../home_page/button.dart';
+import '../home_page/tabbar_widgets/lessonsPage_widgets/dropdown_sort.dart';
+import '../home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 
 void catalogFilterWidget(
   BuildContext context,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});

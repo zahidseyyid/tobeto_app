@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/pages/announcements_page.dart';
-import 'package:flutter_application_1/pages/calendar_page.dart';
-import 'package:flutter_application_1/pages/catalog_page.dart';
-import 'package:flutter_application_1/pages/discussion_list_page.dart';
-import 'package:flutter_application_1/pages/evaluation_page.dart';
-import 'package:flutter_application_1/pages/lessons_page.dart';
-import 'package:flutter_application_1/pages/page_404.dart';
-import 'package:flutter_application_1/pages/profile.dart';
-import 'package:flutter_application_1/pages/profile_edit_page.dart';
-import 'package:flutter_application_1/pages/splash_page.dart';
+import 'package:tobeto_app/models/education_model.dart';
+import 'package:tobeto_app/pages/announcements_page.dart';
+import 'package:tobeto_app/pages/calendar_page.dart';
+import 'package:tobeto_app/pages/catalog_page.dart';
+import 'package:tobeto_app/pages/discussion_list_page.dart';
+import 'package:tobeto_app/pages/evaluation_page.dart';
+import 'package:tobeto_app/pages/lessons_page.dart';
+import 'package:tobeto_app/pages/page_404.dart';
+import 'package:tobeto_app/pages/profile.dart';
+import 'package:tobeto_app/pages/profile_edit_page.dart';
+import 'package:tobeto_app/pages/splash_page.dart';
 
 import '../../constants/route_constants.dart';
 import '../../pages/chat_bot_message_page.dart';
@@ -47,7 +47,6 @@ class CustomRouter {
             );
           }
           final String discussionId = args['discussionId'] as String;
-
           return MaterialPageRoute(
             builder: (_) => ChatBotMessagePage(
               uid: uid,

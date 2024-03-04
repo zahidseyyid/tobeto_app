@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_event.dart';
-import 'package:flutter_application_1/logic/blocs/announcement/announcement_state.dart';
-import 'package:flutter_application_1/logic/repositories/announcement_repository.dart';
+import 'package:tobeto_app/logic/blocs/announcement/announcement_event.dart';
+import 'package:tobeto_app/logic/blocs/announcement/announcement_state.dart';
+import 'package:tobeto_app/logic/repositories/announcement_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {

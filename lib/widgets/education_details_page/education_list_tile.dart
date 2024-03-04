@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/models/education_model.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/models/education_model.dart';
 
 class EducationListTile extends StatelessWidget {
   const EducationListTile({

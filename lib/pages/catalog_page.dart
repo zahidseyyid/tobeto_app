@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/catalog_page/catalog_banner.dart';
-import 'package:flutter_application_1/widgets/catalog_page/catalog_filter_widget.dart';
-import 'package:flutter_application_1/widgets/catalog_page/catalog_lessons_item.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/button.dart';
-import 'package:flutter_application_1/widgets/home_page/footer.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/catalog_page/catalog_banner.dart';
+import 'package:tobeto_app/widgets/catalog_page/catalog_filter_widget.dart';
+import 'package:tobeto_app/widgets/catalog_page/catalog_lessons_item.dart';
+import 'package:tobeto_app/widgets/drawer.dart';
+import 'package:tobeto_app/widgets/home_page/button.dart';
+import 'package:tobeto_app/widgets/home_page/footer.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
 class CatalogPage extends StatelessWidget {

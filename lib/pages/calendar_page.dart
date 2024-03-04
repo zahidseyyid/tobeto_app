@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_event.dart';
-import 'package:flutter_application_1/logic/blocs/lesson/lesson_state.dart';
-import 'package:flutter_application_1/models/education_model.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/lesson/lesson_bloc.dart';
+import 'package:tobeto_app/logic/blocs/lesson/lesson_event.dart';
+import 'package:tobeto_app/logic/blocs/lesson/lesson_state.dart';
+import 'package:tobeto_app/models/education_model.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/drawer.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 

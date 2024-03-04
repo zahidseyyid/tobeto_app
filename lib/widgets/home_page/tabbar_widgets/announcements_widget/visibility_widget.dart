@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/home_page/tabbar_widgets/lessonsPage_widgets/state.dart';
 import 'package:provider/provider.dart';
 
 class VisibilityWidget extends StatefulWidget {

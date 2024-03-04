@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_app_bar.dart';
-import 'package:flutter_application_1/widgets/profile_page/about_me.dart';
-import 'package:flutter_application_1/widgets/profile_page/education.dart';
-import 'package:flutter_application_1/widgets/profile_page/profile_information.dart';
-import 'package:flutter_application_1/widgets/profile_page/social_media.dart';
-import 'package:flutter_application_1/widgets/profile_page/work_experience.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/drawer.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_app_bar.dart';
+import 'package:tobeto_app/widgets/profile_page/about_me.dart';
+import 'package:tobeto_app/widgets/profile_page/education.dart';
+import 'package:tobeto_app/widgets/profile_page/profile_information.dart';
+import 'package:tobeto_app/widgets/profile_page/social_media.dart';
+import 'package:tobeto_app/widgets/profile_page/work_experience.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

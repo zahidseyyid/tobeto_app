@@ -1,9 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/constants/collection_names.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/utils/firebase_firestore_exception.dart';
+import 'package:tobeto_app/constants/collection_names.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/utils/firebase_firestore_exception.dart';
 
 class UserRepository {
   final CollectionReference collectionReference =

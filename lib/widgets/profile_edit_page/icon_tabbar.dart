@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/education_edit.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/experience_edit.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/profile_edit.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/settings_edit.dart';
-import 'package:flutter_application_1/widgets/profile_edit_page/social_media_edit.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/profile_edit_page/education_edit.dart';
+import 'package:tobeto_app/widgets/profile_edit_page/experience_edit.dart';
+import 'package:tobeto_app/widgets/profile_edit_page/profile_edit.dart';
+import 'package:tobeto_app/widgets/profile_edit_page/settings_edit.dart';
+import 'package:tobeto_app/widgets/profile_edit_page/social_media_edit.dart';
 
 class IconTabBarWidget extends StatefulWidget {
   const IconTabBarWidget({Key? key}) : super(key: key);

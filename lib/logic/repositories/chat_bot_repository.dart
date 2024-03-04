@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/constants/collection_names.dart';
-import 'package:flutter_application_1/models/chat_bot_model.dart';
-import 'package:flutter_application_1/models/discussion_model.dart';
+import 'package:tobeto_app/constants/collection_names.dart';
+import 'package:tobeto_app/models/chat_bot_model.dart';
+import 'package:tobeto_app/models/discussion_model.dart';
 
 class ChatRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

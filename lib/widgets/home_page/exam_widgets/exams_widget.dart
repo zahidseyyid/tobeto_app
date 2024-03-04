@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_dialog.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_item.dart';
-import 'package:flutter_application_1/widgets/home_page/exam_widgets/exam_result_dialog.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/widgets/home_page/exam_widgets/exam_dialog.dart';
+import 'package:tobeto_app/widgets/home_page/exam_widgets/exam_item.dart';
+import 'package:tobeto_app/widgets/home_page/exam_widgets/exam_result_dialog.dart';
 
 class ExamsWidget extends StatelessWidget {
   const ExamsWidget({super.key});
@@ -14,7 +14,12 @@ class ExamsWidget extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     void onClick() {
       Navigator.of(context).pop();
-      examResultDialogWidget(context, 24, 1, 0, 96, () {
+      examResultDialogWidget(
+          context,
+          ExamResultConstants.correctAnswer as int,
+          ExamResultConstants.wrongAnswer as int,
+          ExamResultConstants.emptyAnswer as int,
+          ExamResultConstants.point as int, () {
         Navigator.of(context).pop();
       });
     }
@@ -40,8 +45,8 @@ class ExamsWidget extends StatelessWidget {
             onTap: () {
               examDialogWidget(
                   context,
-                  ExamConstants.codingForEveryone,
-                  ExamConstants.dialogText,
+                  ExamResultConstants.dialogTitle,
+                  ExamResultConstants.dialogText,
                   true,
                   45,
                   25,

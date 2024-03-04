@@ -1,10 +1,8 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_bloc.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_state.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatelessWidget {
@@ -20,19 +18,13 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthInitial || state is AuthLoading) {
-          print("AuthInitial : SplashWidgetPage");
         } else if (state is AuthError) {
-          print("AuthError : SplashWidgetPage");
           Navigator.pushReplacementNamed(context, "/sign_in");
         } else if (state is Unauthenticated) {
-          print("Unauthenticated : SplashWidgetPage");
           Navigator.pushReplacementNamed(context, "/sign_in");
         } else if (state is Authenticated) {
-          print("Authenticated : SplashWidgetPage");
           Navigator.pushReplacementNamed(context, "/home");
-        } else {
-          print("else : SplashWidgetPage");
-        }
+        } else {}
       },
       child: Scaffold(
         body: Center(

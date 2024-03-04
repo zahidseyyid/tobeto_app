@@ -1,20 +1,16 @@
-// ignore_for_file: avoid_print
-
 import 'dart:io';
-
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_event.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circular_progress.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_elevated_button.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_text_formfield_profile.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_event.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circular_progress.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circle_avatar.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_elevated_button.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_text_formfield_profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -38,11 +34,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         profilePictureUrl = File(pickedImage.path);
         uploadImage(url);
       });
-    } else {
-      if (kDebugMode) {
-        print("Resim seçilmedi");
-      }
-    }
+    } else {}
   }
 
   Future<void> uploadImage(String uid) async {
@@ -52,9 +44,8 @@ class _ProfileEditState extends State<ProfileEdit> {
       UploadTask uploadTask = ref.putFile(profilePictureUrl);
       await uploadTask;
       profilePictureUrlString = await ref.getDownloadURL();
-      print('Image uploaded to Firebase Storage successfully.');
     } catch (e) {
-      print('Error uploading image to Firebase Storage: $e');
+      throw Exception(e);
     }
   }
 

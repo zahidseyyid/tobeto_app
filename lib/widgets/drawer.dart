@@ -1,17 +1,16 @@
-// ignore_for_file: avoid_print
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_event.dart';
-import 'package:flutter_application_1/logic/blocs/auth/auth_state.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_bloc.dart';
-import 'package:flutter_application_1/logic/blocs/user/user_state.dart';
-import 'package:flutter_application_1/constants/constant_image.dart';
-import 'package:flutter_application_1/constants/page_constants.dart';
-import 'package:flutter_application_1/models/user_model.dart';
-import 'package:flutter_application_1/constants/constant_padding.dart';
-import 'package:flutter_application_1/utils/error_toast.dart';
-import 'package:flutter_application_1/widgets/home_page/tabbar_widgets/custom_widget/custom_circle_avatar.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_bloc.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_event.dart';
+import 'package:tobeto_app/logic/blocs/auth/auth_state.dart';
+import 'package:tobeto_app/logic/blocs/user/user_bloc.dart';
+import 'package:tobeto_app/logic/blocs/user/user_state.dart';
+import 'package:tobeto_app/constants/constant_image.dart';
+import 'package:tobeto_app/constants/page_constants.dart';
+import 'package:tobeto_app/models/user_model.dart';
+import 'package:tobeto_app/constants/constant_padding.dart';
+import 'package:tobeto_app/utils/error_toast.dart';
+import 'package:tobeto_app/widgets/custom_widget/custom_circle_avatar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -30,13 +29,10 @@ class MyDrawer extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthError) {
-          print("AuthError : MyDrawer");
           ToastHelper.showErrorToast(state.errorMessage);
           Navigator.pushReplacementNamed(context, "/sign_in");
         } else if (state is Authenticated) {
-          print("Authenticated : MyDrawer");
         } else if (state is Unauthenticated) {
-          print("Unauthenticated : MyDrawer");
           Navigator.pushReplacementNamed(context, "/sign_in");
         }
       },

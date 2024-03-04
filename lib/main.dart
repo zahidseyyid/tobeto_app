@@ -1,15 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/configs/bloc_configs.dart';
-import 'package:flutter_application_1/configs/routes/route.dart';
-import 'package:flutter_application_1/firebase_options.dart';
-import 'package:flutter_application_1/pages/auth_control_page.dart';
-import 'package:flutter_application_1/theme/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:tobeto_app/configs/bloc_configs.dart';
+import 'package:tobeto_app/configs/routes/route.dart';
+import 'package:tobeto_app/firebase_options.dart';
+import 'package:tobeto_app/utils/theme/theme.dart';
+
+import 'pages/auth_control_page.dart';
 
 void main() async {
-  //TODO: Theme ve colorlar düzenlenecek
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
