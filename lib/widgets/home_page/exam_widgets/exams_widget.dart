@@ -14,12 +14,7 @@ class ExamsWidget extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     void onClick() {
       Navigator.of(context).pop();
-      examResultDialogWidget(
-          context,
-          ExamResultConstants.correctAnswer as int,
-          ExamResultConstants.wrongAnswer as int,
-          ExamResultConstants.emptyAnswer as int,
-          ExamResultConstants.point as int, () {
+      examResultDialogWidget(context, 24, 1, 0, 96, () {
         Navigator.of(context).pop();
       });
     }

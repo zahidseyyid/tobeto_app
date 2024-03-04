@@ -502,8 +502,4 @@ class ExamResultConstants {
   static const dialogTitle = 'Herkes için Kodlama 1D Değerlendirme Sınavı';
   static const dialogText =
       " Sevgili Adayımız, \n\nHerkes için Kodlama Eğitimi'ni tamamladığınız için tebrik ederiz. Bu eğitim sonrası bir sonraki aşamaya geçiş için 25 sorudan oluşan bir değerlendirme sınavımız bulunmaktadır. \n\nBu test her kullanıcı için sadece 1 kez sunulmakta olup 45 dakika içinde tamamlanması gerekmektedir. \n\nTüm değerlendirme kriterleri sonrası Mesleki Gelişim Eğitimlerine geçişiniz ile ilgili bilgilendirileceksiniz. \n\nSevgiler, \nTOBETO";
-  static const correctAnswer = "24";
-  static const wrongAnswer = "1";
-  static const emptyAnswer = "0";
-  static const point = "96";
 }
