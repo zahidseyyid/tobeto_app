@@ -1,3 +1,5 @@
+<p align = "center" ><img width="500" alt="login page"  src=  "https://github.com/balciemirhan/TobetoApp/assets/120199233/8630ff60-e72a-49df-bab0-ef3127ba3dd8" class="right" > <p>
+
 # Tobeto Projesi
 
 Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek amacıyla oluşturulmuştur. Proje, Flutter kullanılarak geliştirilmiştir. Tobeto'nun web sitesinin klonu mobil olarak uygulanmıştır.
@@ -7,6 +9,15 @@ Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek 
 - [Seyyid Hamza Zahid](https://github.com/zahidseyyid)
 - [Beyza Koşer](https://github.com/beyzakoser)
 - [Muhammet Ölmez](https://github.com/MuhammetMM)
+
+## Özellikler
+-  Kolay profil yönetimi
+-  Duyuru ve anketlerden haberdar olmak
+-  Eğitimleri inceleme ve katılma
+-  Video izleme sistemi
+-  Takvim sistemi
+-  Quiz sistemi
+-  Chatbot sistemi
 
 ## Proje Çıktıları
 
@@ -37,3 +48,6 @@ Bu repository, Tobeto adlı eğitim platformu için mobil uygulama geliştirmek 
 <img width="180" alt="Ekran Resmi 2024-03-04 19 56 03" src="https://github.com/zahidseyyid/pairProject/assets/32619670/2cce8b02-e2e3-4ba7-b56c-2fbe4f35e772">
 
 </p>
+
+# Geri Bildirim
+Uygulamamızın gelişimini desteklemek ve karşılaştığınız sorunların çözümü için bizimle iletişime geçebilirsiniz.
