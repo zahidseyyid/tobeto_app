@@ -33,7 +33,6 @@ migrate_working_dir/
 /build/
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
-lib/firebase_options.dart
 
 # Symbolication related
 app.*.symbols
@@ -47,11 +46,6 @@ app.*.map.json
 /android/app/release
 macos/Podfile.lock
 pubspec.lock
-macos/Runner.xcworkspace/contents.xcworkspacedata
-macos/Runner.xcodeproj/project.pbxproj
-ios/Runner.xcodeproj/project.pbxproj
 ios/Podfile.lock
 ios/Podfile
-ios/Flutter/AppFrameworkInfo.plist
 .vscode/settings.json
-macos/Runner.xcodeproj/project.pbxproj
